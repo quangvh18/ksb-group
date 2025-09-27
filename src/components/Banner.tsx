@@ -10,7 +10,7 @@ export default function Banner() {
     if (video) {
       video.load();
       
-      video.play().catch((error) => {
+      video.play().catch(() => {
       });
     } else {
     }
