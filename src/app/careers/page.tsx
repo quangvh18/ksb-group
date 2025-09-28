@@ -100,7 +100,7 @@ export default function Careers() {
             <h2 className="text-5xl font-bold text-gray-800 mb-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">Kiến tạo hệ sinh thái – Chắp cánh ước mơ lớn</h2>
             <h3 className="text-3xl font-semibold mb-8" style={{color: 'rgba(217, 37, 31, 1)'}} data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">Tầm nhìn về con người</h3>
             <p className="text-xl text-gray-700 leading-relaxed max-w-4xl mx-auto" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
-              Tại KSB GROUP, chúng tôi tin rằng con người là tài sản giá trị nhất. Với các giá trị cốt lõi "Tử tế – Sáng tạo – Nhiệt huyết – Ước mơ lớn", chúng tôi xây dựng một môi trường làm việc truyền cảm hứng, nơi mỗi cá nhân đều có cơ hội phát triển tối đa năng lực, đồng thời tạo ra những giá trị tích cực và bền vững cho xã hội.
+              Tại KSB GROUP, chúng tôi tin rằng con người là tài sản giá trị nhất. Với các giá trị cốt lõi &quot;Tử tế – Sáng tạo – Nhiệt huyết – Ước mơ lớn&quot;, chúng tôi xây dựng một môi trường làm việc truyền cảm hứng, nơi mỗi cá nhân đều có cơ hội phát triển tối đa năng lực, đồng thời tạo ra những giá trị tích cực và bền vững cho xã hội.
             </p>
             <p className="text-xl text-gray-700 leading-relaxed max-w-4xl mx-auto mt-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800">
               Chúng tôi trân trọng sự đa dạng trong đội ngũ, đề cao tinh thần chủ động và tinh thần doanh chủ, để cùng nhau hiện thực hóa mục tiêu đưa các tinh hoa toàn cầu đến gần hơn với người tiêu dùng Việt.
@@ -237,7 +237,7 @@ export default function Careers() {
               <div className="w-full lg:w-7/12 flex justify-center flex-col pl-0 lg:pl-8">
                 <h3 className="text-6xl font-bold mb-6" style={{color: 'rgba(217, 37, 31, 1)'}}>Sáng Tạo</h3>
                 <p className="text-xl text-gray-700 leading-relaxed">
-                  Làm việc với tinh thần "có thể thay đổi mọi thứ"
+                  Làm việc với tinh thần &quot;có thể thay đổi mọi thứ&quot;
                 </p>
               </div>
             </div>
@@ -350,7 +350,7 @@ export default function Careers() {
               </h3>
 
               {/* Email Section */}
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 mb-8 shadow-lg border border-white/50 group-hover:shadow-lg transition-all duration-500 ease-in-out">
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 mb-8 border border-white/50 transition-all duration-500 ease-in-out">
                 <p className="text-lg text-gray-700 mb-6 group-hover:text-gray-800 transition-colors duration-300">
                   Chi tiết vui lòng liên hệ tới địa chỉ email:
                 </p>
