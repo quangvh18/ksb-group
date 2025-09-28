@@ -97,14 +97,43 @@ export default function Careers() {
       <div className="py-20 bg-white">
         <div className="container mx-auto px-5 w-[1250px] lg:w-[1250px] md:w-[950px]">
           <div className="text-center mb-16" data-aos="fade-up" data-aos-duration="1000">
-            <h2 className="text-5xl font-bold text-gray-800 mb-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">Kiến tạo hệ sinh thái – Chắp cánh ước mơ lớn</h2>
-            <h3 className="text-3xl font-semibold mb-8" style={{color: 'rgba(217, 37, 31, 1)'}} data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">Tầm nhìn về con người</h3>
-            <p className="text-xl text-gray-700 leading-relaxed max-w-4xl mx-auto" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
-              Tại KSB GROUP, chúng tôi tin rằng con người là tài sản giá trị nhất. Với các giá trị cốt lõi &quot;Tử tế – Sáng tạo – Nhiệt huyết – Ước mơ lớn&quot;, chúng tôi xây dựng một môi trường làm việc truyền cảm hứng, nơi mỗi cá nhân đều có cơ hội phát triển tối đa năng lực, đồng thời tạo ra những giá trị tích cực và bền vững cho xã hội.
-            </p>
-            <p className="text-xl text-gray-700 leading-relaxed max-w-4xl mx-auto mt-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800">
-              Chúng tôi trân trọng sự đa dạng trong đội ngũ, đề cao tinh thần chủ động và tinh thần doanh chủ, để cùng nhau hiện thực hóa mục tiêu đưa các tinh hoa toàn cầu đến gần hơn với người tiêu dùng Việt.
-            </p>
+            {/* Main Title with Gradient */}
+            <div className="relative mb-8" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+              <h2 className="text-6xl font-bold mb-4 bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 bg-clip-text text-transparent leading-tight">
+                Kiến tạo hệ sinh thái
+              </h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-red-500 to-orange-500 mx-auto mb-4 rounded-full"></div>
+              <h2 className="text-6xl font-bold bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 bg-clip-text text-transparent leading-tight">
+                Chắp cánh ước mơ lớn
+              </h2>
+            </div>
+
+            {/* Subtitle with Enhanced Design */}
+            <div className="relative mb-12" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+              <div className="inline-block relative">
+                <h3 className="text-4xl font-bold bg-gradient-to-r from-red-600 to-orange-500 bg-clip-text text-transparent relative z-10">
+                  Tầm nhìn về con người
+                </h3>
+                <div className="absolute -inset-1 bg-gradient-to-r from-red-100 to-orange-100 rounded-lg blur-sm opacity-30"></div>
+              </div>
+            </div>
+
+            {/* Content with Enhanced Typography */}
+            <div className="max-w-5xl mx-auto space-y-8">
+              <div className="bg-gradient-to-r from-gray-50 to-white p-8 rounded-2xl border border-gray-100 shadow-sm" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+                <p className="text-xl text-gray-700 leading-relaxed text-justify">
+                  Tại <span className="font-bold text-gray-800">KSB GROUP</span>, chúng tôi tin rằng con người là tài sản giá trị nhất. Với các giá trị cốt lõi 
+                  <span className="font-bold text-red-600 mx-2">&quot;Tử tế – Sáng tạo – Nhiệt huyết – Ước mơ lớn&quot;</span>, 
+                  chúng tôi xây dựng một môi trường làm việc truyền cảm hứng, nơi mỗi cá nhân đều có cơ hội phát triển tối đa năng lực, đồng thời tạo ra những giá trị tích cực và bền vững cho xã hội.
+                </p>
+              </div>
+
+              <div className="bg-gradient-to-r from-white to-gray-50 p-8 rounded-2xl border border-gray-100 shadow-sm" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800">
+                <p className="text-xl text-gray-700 leading-relaxed text-justify">
+                  Chúng tôi trân trọng sự đa dạng trong đội ngũ, đề cao tinh thần chủ động và tinh thần doanh chủ, để cùng nhau hiện thực hóa mục tiêu đưa các tinh hoa toàn cầu đến gần hơn với người tiêu dùng Việt.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -121,58 +150,58 @@ export default function Careers() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
-              <div className="qmenu_card icon_card group block bg-white border border-gray-200 rounded-[50px_0px_50px_0px] min-h-[200px] p-6 text-center shadow-lg hover:shadow-xl  transition-all duration-500 ease-in-out h-full flex flex-col">
+              <div className="qmenu_card icon_card group block bg-white border border-gray-200 rounded-[50px_0px_50px_0px] min-h-[200px] p-6 text-center shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-500 ease-in-out h-full flex flex-col cursor-pointer">
                 <div className="qmenu_icon w-full h-[120px] mb-4 flex items-center justify-center">
-                  <div className="w-20 h-20 rounded-full bg-transparent group-hover:bg-[#f0ffbe] flex items-center justify-center transition-all duration-500 ease-in-out">
-                    <svg className="w-16 h-16 text-[#9a9a9a] group-hover:text-[#0b5739] transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-20 h-20 rounded-full bg-[#f0ffbe] flex items-center justify-center transition-all duration-500 ease-in-out">
+                    <svg className="w-16 h-16 text-[#0b5739] transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
                     </svg>
                   </div>
                 </div>
-                <h3 className="text-[#9a9a9a] text-[20px] block text-center font-semibold mb-3 group-hover:text-black transition-colors duration-300">Với Cổ đông</h3>
-                <p className="text-[#9a9a9a] text-sm group-hover:text-gray-700 transition-colors duration-300 flex-grow">Minh bạch, trung thực và luôn hướng đến giá trị phát triển bền vững</p>
+                <h3 className="text-black text-[20px] block text-center font-semibold mb-3 transition-colors duration-300">Với Cổ đông</h3>
+                <p className="text-gray-700 text-sm transition-colors duration-300 flex-grow">Minh bạch, trung thực và luôn hướng đến giá trị phát triển bền vững</p>
               </div>
             </div>
 
             <div className="text-center" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-              <div className="qmenu_card icon_card group block bg-white border border-gray-200 rounded-[0px_50px_0px_50px] min-h-[200px] p-6 text-center shadow-lg hover:shadow-xl  transition-all duration-500 ease-in-out h-full flex flex-col">
+              <div className="qmenu_card icon_card group block bg-white border border-gray-200 rounded-[0px_50px_0px_50px] min-h-[200px] p-6 text-center shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-500 ease-in-out h-full flex flex-col cursor-pointer">
                 <div className="qmenu_icon w-full h-[120px] mb-4 flex items-center justify-center">
-                  <div className="w-20 h-20 rounded-full bg-transparent group-hover:bg-[#f0ffbe] flex items-center justify-center transition-all duration-500 ease-in-out">
-                    <svg className="w-16 h-16 text-[#9a9a9a] group-hover:text-[#0b5739] transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-20 h-20 rounded-full bg-[#f0ffbe] flex items-center justify-center transition-all duration-500 ease-in-out">
+                    <svg className="w-16 h-16 text-[#0b5739] transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
                     </svg>
                   </div>
                 </div>
-                <h3 className="text-[#9a9a9a] text-[20px] block text-center font-semibold mb-3 group-hover:text-black transition-colors duration-300">Với Khách hàng</h3>
-                <p className="text-[#9a9a9a] text-sm group-hover:text-gray-700 transition-colors duration-300 flex-grow">Sản phẩm – dịch vụ chất lượng cao, sáng tạo và phù hợp với nhu cầu thực tiễn</p>
+                <h3 className="text-black text-[20px] block text-center font-semibold mb-3 transition-colors duration-300">Với Khách hàng</h3>
+                <p className="text-gray-700 text-sm transition-colors duration-300 flex-grow">Sản phẩm – dịch vụ chất lượng cao, sáng tạo và phù hợp với nhu cầu thực tiễn</p>
               </div>
             </div>
 
             <div className="text-center" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
-              <div className="qmenu_card icon_card group block bg-white border border-gray-200 rounded-[50px_0px_50px_0px] min-h-[200px] p-6 text-center shadow-lg hover:shadow-xl  transition-all duration-500 ease-in-out h-full flex flex-col">
+              <div className="qmenu_card icon_card group block bg-white border border-gray-200 rounded-[50px_0px_50px_0px] min-h-[200px] p-6 text-center shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-500 ease-in-out h-full flex flex-col cursor-pointer">
                 <div className="qmenu_icon w-full h-[120px] mb-4 flex items-center justify-center">
-                  <div className="w-20 h-20 rounded-full bg-transparent group-hover:bg-[#f0ffbe] flex items-center justify-center transition-all duration-500 ease-in-out">
-                    <svg className="w-16 h-16 text-[#9a9a9a] group-hover:text-[#0b5739] transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-20 h-20 rounded-full bg-[#f0ffbe] flex items-center justify-center transition-all duration-500 ease-in-out">
+                    <svg className="w-16 h-16 text-[#0b5739] transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V8a2 2 0 012-2V6"></path>
                     </svg>
                   </div>
                 </div>
-                <h3 className="text-[#9a9a9a] text-[20px] block text-center font-semibold mb-3 group-hover:text-black transition-colors duration-300">Với Đối tác</h3>
-                <p className="text-[#9a9a9a] text-sm group-hover:text-gray-700 transition-colors duration-300 flex-grow">Tinh thần hợp tác, tôn trọng lẫn nhau và cùng tạo giá trị bền vững</p>
+                <h3 className="text-black text-[20px] block text-center font-semibold mb-3 transition-colors duration-300">Với Đối tác</h3>
+                <p className="text-gray-700 text-sm transition-colors duration-300 flex-grow">Tinh thần hợp tác, tôn trọng lẫn nhau và cùng tạo giá trị bền vững</p>
               </div>
             </div>
 
             <div className="text-center" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
-              <div className="qmenu_card icon_card group block bg-white border border-gray-200 rounded-[0px_50px_0px_50px] min-h-[200px] p-6 text-center shadow-lg hover:shadow-xl  transition-all duration-500 ease-in-out h-full flex flex-col">
+              <div className="qmenu_card icon_card group block bg-white border border-gray-200 rounded-[0px_50px_0px_50px] min-h-[200px] p-6 text-center shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-500 ease-in-out h-full flex flex-col cursor-pointer">
                 <div className="qmenu_icon w-full h-[120px] mb-4 flex items-center justify-center">
-                  <div className="w-20 h-20 rounded-full bg-transparent group-hover:bg-[#f0ffbe] flex items-center justify-center transition-all duration-500 ease-in-out">
-                    <svg className="w-16 h-16 text-[#9a9a9a] group-hover:text-[#0b5739] transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-20 h-20 rounded-full bg-[#f0ffbe] flex items-center justify-center transition-all duration-500 ease-in-out">
+                    <svg className="w-16 h-16 text-[#0b5739] transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                     </svg>
                   </div>
                 </div>
-                <h3 className="text-[#9a9a9a] text-[20px] block text-center font-semibold mb-3 group-hover:text-black transition-colors duration-300">Nội bộ</h3>
-                <p className="text-[#9a9a9a] text-sm group-hover:text-gray-700 transition-colors duration-300 flex-grow">Tinh thần bứt phá, sáng tạo, kỷ luật, hợp tác và hiệu quả</p>
+                <h3 className="text-black text-[20px] block text-center font-semibold mb-3 transition-colors duration-300">Nội bộ</h3>
+                <p className="text-gray-700 text-sm transition-colors duration-300 flex-grow">Tinh thần bứt phá, sáng tạo, kỷ luật, hợp tác và hiệu quả</p>
               </div>
             </div>
           </div>
@@ -254,98 +283,98 @@ export default function Careers() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            <div className="qmenu_card icon_card group block bg-white border border-gray-200 rounded-[50px_0px_50px_0px] min-h-[280px] p-6 text-center shadow-lg hover:shadow-xl  transition-all duration-500 ease-in-out h-full flex flex-col" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+            <div className="qmenu_card icon_card group block bg-white border border-gray-200 rounded-[50px_0px_50px_0px] min-h-[280px] p-6 text-center shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-500 ease-in-out h-full flex flex-col cursor-pointer" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
               <div className="qmenu_icon w-full h-[100px] mb-4 flex items-center justify-center">
-                <div className="w-16 h-16 rounded-full bg-transparent group-hover:bg-[#f0ffbe] flex items-center justify-center transition-all duration-500 ease-in-out">
-                  <svg className="w-12 h-12 text-[#9a9a9a] group-hover:text-[#0b5739] transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-16 h-16 rounded-full bg-[#f0ffbe] flex items-center justify-center transition-all duration-500 ease-in-out">
+                  <svg className="w-12 h-12 text-[#0b5739] transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
                   </svg>
                 </div>
               </div>
-              <h3 className="text-[#9a9a9a] text-[20px] block text-center font-semibold mb-3 group-hover:text-black transition-colors duration-300">Lễ tân</h3>
-              <p className="text-[#9a9a9a] text-sm group-hover:text-gray-700 transition-colors duration-300 flex-grow mb-4">Đón tiếp khách hàng và hỗ trợ các hoạt động văn phòng</p>
+              <h3 className="text-black text-[20px] block text-center font-semibold mb-3 transition-colors duration-300">Lễ tân</h3>
+              <p className="text-gray-700 text-sm transition-colors duration-300 flex-grow mb-4">Đón tiếp khách hàng và hỗ trợ các hoạt động văn phòng</p>
               <a href="#contact" className="inline-block text-white px-6 py-3 rounded-full transition-all duration-500 ease-in-out  hover:shadow-2xl transform hover:-translate-y-1 bg-gray-800 hover:bg-gray-900 text-sm">
                 Ứng tuyển ngay
               </a>
             </div>
 
-            <div className="qmenu_card icon_card group block bg-white border border-gray-200 rounded-[0px_50px_0px_50px] min-h-[280px] p-6 text-center shadow-lg hover:shadow-xl  transition-all duration-500 ease-in-out h-full flex flex-col" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+            <div className="qmenu_card icon_card group block bg-white border border-gray-200 rounded-[0px_50px_0px_50px] min-h-[280px] p-6 text-center shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-500 ease-in-out h-full flex flex-col cursor-pointer" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
               <div className="qmenu_icon w-full h-[100px] mb-4 flex items-center justify-center">
-                <div className="w-16 h-16 rounded-full bg-transparent group-hover:bg-[#f0ffbe] flex items-center justify-center transition-all duration-500 ease-in-out">
-                  <svg className="w-12 h-12 text-[#9a9a9a] group-hover:text-[#0b5739] transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-16 h-16 rounded-full bg-[#f0ffbe] flex items-center justify-center transition-all duration-500 ease-in-out">
+                  <svg className="w-12 h-12 text-[#0b5739] transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m-9 0h10M7 4a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V6a2 2 0 00-2-2M7 4h10"></path>
                   </svg>
                 </div>
               </div>
-              <h3 className="text-[#9a9a9a] text-[20px] block text-center font-semibold mb-3 group-hover:text-black transition-colors duration-300">Nhân viên Digital Marketing</h3>
-              <p className="text-[#9a9a9a] text-sm group-hover:text-gray-700 transition-colors duration-300 flex-grow mb-4">Phát triển và thực hiện các chiến lược marketing số</p>
+              <h3 className="text-black text-[20px] block text-center font-semibold mb-3 transition-colors duration-300">Nhân viên Digital Marketing</h3>
+              <p className="text-gray-700 text-sm transition-colors duration-300 flex-grow mb-4">Phát triển và thực hiện các chiến lược marketing số</p>
               <a href="#contact" className="inline-block text-white px-6 py-3 rounded-full transition-all duration-500 ease-in-out  hover:shadow-2xl transform hover:-translate-y-1 bg-gray-800 hover:bg-gray-900 text-sm">
                 Ứng tuyển ngay
               </a>
             </div>
 
-            <div className="qmenu_card icon_card group block bg-white border border-gray-200 rounded-[50px_0px_50px_0px] min-h-[280px] p-6 text-center shadow-lg hover:shadow-xl  transition-all duration-500 ease-in-out h-full flex flex-col" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+            <div className="qmenu_card icon_card group block bg-white border border-gray-200 rounded-[50px_0px_50px_0px] min-h-[280px] p-6 text-center shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-500 ease-in-out h-full flex flex-col cursor-pointer" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
               <div className="qmenu_icon w-full h-[100px] mb-4 flex items-center justify-center">
-                <div className="w-16 h-16 rounded-full bg-transparent group-hover:bg-[#f0ffbe] flex items-center justify-center transition-all duration-500 ease-in-out">
-                  <svg className="w-12 h-12 text-[#9a9a9a] group-hover:text-[#0b5739] transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-16 h-16 rounded-full bg-[#f0ffbe] flex items-center justify-center transition-all duration-500 ease-in-out">
+                  <svg className="w-12 h-12 text-[#0b5739] transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
                   </svg>
                 </div>
               </div>
-              <h3 className="text-[#9a9a9a] text-[20px] block text-center font-semibold mb-3 group-hover:text-black transition-colors duration-300">Chuyên viên mua hàng</h3>
-              <p className="text-[#9a9a9a] text-sm group-hover:text-gray-700 transition-colors duration-300 flex-grow mb-4">Quản lý và thực hiện các hoạt động mua sắm, đàm phán</p>
+              <h3 className="text-black text-[20px] block text-center font-semibold mb-3 transition-colors duration-300">Chuyên viên mua hàng</h3>
+              <p className="text-gray-700 text-sm transition-colors duration-300 flex-grow mb-4">Quản lý và thực hiện các hoạt động mua sắm, đàm phán</p>
               <a href="#contact" className="inline-block text-white px-6 py-3 rounded-full transition-all duration-500 ease-in-out  hover:shadow-2xl transform hover:-translate-y-1 bg-gray-800 hover:bg-gray-900 text-sm">
                 Ứng tuyển ngay
               </a>
             </div>
 
-            <div className="qmenu_card icon_card group block bg-white border border-gray-200 rounded-[0px_50px_0px_50px] min-h-[280px] p-6 text-center shadow-lg hover:shadow-xl  transition-all duration-500 ease-in-out h-full flex flex-col" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+            <div className="qmenu_card icon_card group block bg-white border border-gray-200 rounded-[0px_50px_0px_50px] min-h-[280px] p-6 text-center shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-500 ease-in-out h-full flex flex-col cursor-pointer" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
               <div className="qmenu_icon w-full h-[100px] mb-4 flex items-center justify-center">
-                <div className="w-16 h-16 rounded-full bg-transparent group-hover:bg-[#f0ffbe] flex items-center justify-center transition-all duration-500 ease-in-out">
-                  <svg className="w-12 h-12 text-[#9a9a9a] group-hover:text-[#0b5739] transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-16 h-16 rounded-full bg-[#f0ffbe] flex items-center justify-center transition-all duration-500 ease-in-out">
+                  <svg className="w-12 h-12 text-[#0b5739] transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
                   </svg>
                 </div>
               </div>
-              <h3 className="text-[#9a9a9a] text-[20px] block text-center font-semibold mb-3 group-hover:text-black transition-colors duration-300">Kiểm soát kinh doanh</h3>
-              <p className="text-[#9a9a9a] text-sm group-hover:text-gray-700 transition-colors duration-300 flex-grow mb-4">Giám sát và kiểm soát các hoạt động kinh doanh</p>
+              <h3 className="text-black text-[20px] block text-center font-semibold mb-3 transition-colors duration-300">Kiểm soát kinh doanh</h3>
+              <p className="text-gray-700 text-sm transition-colors duration-300 flex-grow mb-4">Giám sát và kiểm soát các hoạt động kinh doanh</p>
               <a href="#contact" className="inline-block text-white px-6 py-3 rounded-full transition-all duration-500 ease-in-out  hover:shadow-2xl transform hover:-translate-y-1 bg-gray-800 hover:bg-gray-900 text-sm">
                 Ứng tuyển ngay
               </a>
             </div>
 
-            <div className="qmenu_card icon_card group block bg-white border border-gray-200 rounded-[50px_0px_50px_0px] min-h-[280px] p-6 text-center shadow-lg hover:shadow-xl  transition-all duration-500 ease-in-out h-full flex flex-col" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
+            <div className="qmenu_card icon_card group block bg-white border border-gray-200 rounded-[50px_0px_50px_0px] min-h-[280px] p-6 text-center shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-500 ease-in-out h-full flex flex-col cursor-pointer" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
               <div className="qmenu_icon w-full h-[100px] mb-4 flex items-center justify-center">
-                <div className="w-16 h-16 rounded-full bg-transparent group-hover:bg-[#f0ffbe] flex items-center justify-center transition-all duration-500 ease-in-out">
-                  <svg className="w-12 h-12 text-[#9a9a9a] group-hover:text-[#0b5739] transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-16 h-16 rounded-full bg-[#f0ffbe] flex items-center justify-center transition-all duration-500 ease-in-out">
+                  <svg className="w-12 h-12 text-[#0b5739] transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                   </svg>
                 </div>
               </div>
-              <h3 className="text-[#9a9a9a] text-[20px] block text-center font-semibold mb-3 group-hover:text-black transition-colors duration-300">Admin</h3>
-              <p className="text-[#9a9a9a] text-sm group-hover:text-gray-700 transition-colors duration-300 flex-grow mb-4">Quản lý và hỗ trợ các hoạt động hành chính</p>
+              <h3 className="text-black text-[20px] block text-center font-semibold mb-3 transition-colors duration-300">Admin</h3>
+              <p className="text-gray-700 text-sm transition-colors duration-300 flex-grow mb-4">Quản lý và hỗ trợ các hoạt động hành chính</p>
               <a href="#contact" className="inline-block text-white px-6 py-3 rounded-full transition-all duration-500 ease-in-out  hover:shadow-2xl transform hover:-translate-y-1 bg-gray-800 hover:bg-gray-900 text-sm">
                 Ứng tuyển ngay
               </a>
             </div>
           </div>
 
-          <div id="contact" className="qmenu_card icon_card group block bg-white border border-gray-200 rounded-[50px_0px_50px_0px] min-h-[400px] p-12 text-center shadow-lg hover:shadow-xl  transition-all duration-500 ease-in-out" 
+          <div id="contact" className="qmenu_card icon_card group block bg-white border border-gray-200 rounded-[50px_0px_50px_0px] min-h-[400px] p-12 text-center shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-500 ease-in-out cursor-pointer" 
                data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
             
             <div className="relative z-10 text-center">
               {/* Icon */}
               <div className="qmenu_icon w-full h-[120px] mb-8 flex items-center justify-center">
-                <div className="w-20 h-20 rounded-full bg-transparent group-hover:bg-[#f0ffbe] flex items-center justify-center transition-all duration-500 ease-in-out">
-                  <svg className="w-16 h-16 text-[#9a9a9a] group-hover:text-[#0b5739] transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-20 h-20 rounded-full bg-[#f0ffbe] flex items-center justify-center transition-all duration-500 ease-in-out">
+                  <svg className="w-16 h-16 text-[#0b5739] transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                   </svg>
                 </div>
               </div>
 
               {/* Title */}
-              <h3 className="text-[#9a9a9a] text-[32px] block text-center font-bold mb-8 group-hover:text-black transition-colors duration-300">
+              <h3 className="text-black text-[32px] block text-center font-bold mb-8 transition-colors duration-300">
                 Liên hệ ứng tuyển
               </h3>
 
@@ -366,13 +395,6 @@ export default function Careers() {
                   </svg>
                   hr@ksbgroup.vn
                 </a>
-              </div>
-
-              {/* Slogan */}
-              <div className="relative">
-                <p className="text-[#9a9a9a] text-xl font-bold group-hover:text-black transition-colors duration-300">
-                  KSB GROUP – Nơi bạn kiến tạo giá trị, cùng vươn tầm toàn cầu.
-                </p>
               </div>
             </div>
           </div>
