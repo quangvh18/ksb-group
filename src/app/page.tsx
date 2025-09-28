@@ -1,8 +1,10 @@
 import Image from 'next/image'
+import Banner from '../components/Banner'
 
 export default function Home() {
   return (
     <div>
+      <Banner />
       <main className="pt-[70px]">
         <div className="container mx-auto px-5 w-[1250px] lg:w-[1250px] md:w-[950px]">
           {/* News & Community Section */}

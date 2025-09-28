@@ -1,5 +1,50 @@
 @import "tailwindcss";
 
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom smooth scroll with easing */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Account for fixed header */
+}
+
+/* Enhanced smooth scroll animation */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+/* Custom scroll animation for better control */
+* {
+    scroll-behavior: smooth;
+}
+
+/* Custom smooth scale animation */
+@keyframes smoothScale {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+    100% {
+        transform: scale(1.02);
+    }
+}
+
+.qmenu_card {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.qmenu_card:hover {
+    animation: smoothScale 0.6s ease-in-out;
+    animation-delay: 0.1s;
+    animation-fill-mode: forwards;
+}
+
 body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;

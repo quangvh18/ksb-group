@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Header() {
   return (
@@ -23,55 +24,39 @@ export default function Header() {
            <div className="mx-auto relative">
             <ul className="mb-0 text-[1.1em] p-0 m-0 list-none block">
                <li className="float-left leading-[70px] p-0 relative z-[999]">
-                 <a href="#" className="no-underline block font-normal px-5 text-white">
+                 <Link href="/" className="no-underline block font-normal px-5 text-white hover:text-orange-400 transition-colors">
                    Trang chủ
-                 </a>
+                 </Link>
                </li>
                <li className="float-left leading-[70px] p-0 relative z-[998]">
-                 <a href="#" className="no-underline block font-normal px-5 text-white">
+                 <Link href="/about" className="no-underline block font-normal px-5 text-white hover:text-orange-400 transition-colors">
                    Về chúng tôi
-                 </a>
-                <div className="hidden group-hover:block">
-                  <ul className="block">
-                    <li><a href="#" className="no-underline">Giới thiệu công ty</a></li>
-                    <li><a href="#" className="no-underline">Lịch sử phát triển</a></li>
-                    <li><a href="#" className="no-underline">Tầm nhìn - Sứ mệnh</a></li>
-                    <li><a href="#" className="no-underline">Đội ngũ lãnh đạo</a></li>
-                    <li><a href="#" className="no-underline">Văn hóa doanh nghiệp</a></li>
-                  </ul>
-                </div>
-              </li>
+                 </Link>
+               </li>
                <li className="float-left leading-[70px] p-0 relative z-[997]">
-                 <a href="#" className="no-underline block font-normal px-5 text-white">
-                   Dịch vụ
-                 </a>
-                 <div className="hidden group-hover:block">
-                   <ul className="block">
-                     <li><a href="#" className="no-underline">Dịch vụ tư vấn</a></li>
-                     <li><a href="#" className="no-underline">Dịch vụ thiết kế</a></li>
-                     <li><a href="#" className="no-underline">Dịch vụ phát triển</a></li>
-                     <li><a href="#" className="no-underline">Dịch vụ bảo trì</a></li>
-                     <li><a href="#" className="no-underline">Dịch vụ hỗ trợ</a></li>
-                   </ul>
-                 </div>
+                 <Link href="/ecosystem" className="no-underline block font-normal px-5 text-white hover:text-orange-400 transition-colors">
+                   Hệ sinh thái
+                 </Link>
                </li>
                <li className="float-left leading-[70px] p-0 relative z-[996]">
-                 <a href="#" className="no-underline block font-normal px-5 text-white">
+                 <Link href="/news" className="no-underline block font-normal px-5 text-white hover:text-orange-400 transition-colors">
                    Tin tức
-                 </a>
-                 <div className="hidden group-hover:block">
-                   <ul className="block">
-                     <li><a href="#" className="no-underline">Tin tức công ty</a></li>
-                     <li><a href="#" className="no-underline">Thông báo</a></li>
-                     <li><a href="#" className="no-underline">Sự kiện</a></li>
-                     <li><a href="#" className="no-underline">Báo chí nói về chúng tôi</a></li>
-                   </ul>
-                 </div>
+                 </Link>
                </li>
                <li className="float-left leading-[70px] p-0 relative z-[995]">
-                 <a href="#" className="no-underline block font-normal px-5 text-white">
+                 <Link href="/careers" className="no-underline block font-normal px-5 text-white hover:text-orange-400 transition-colors">
+                   Tuyển dụng
+                 </Link>
+               </li>
+               <li className="float-left leading-[70px] p-0 relative z-[994]">
+                 <Link href="/partners" className="no-underline block font-normal px-5 text-white hover:text-orange-400 transition-colors">
+                   Đối tác
+                 </Link>
+               </li>
+               <li className="float-left leading-[70px] p-0 relative z-[993]">
+                 <Link href="/contact" className="no-underline block font-normal px-5 text-white hover:text-orange-400 transition-colors">
                    Liên hệ
-                 </a>
+                 </Link>
                </li>
             </ul>
           </div>
