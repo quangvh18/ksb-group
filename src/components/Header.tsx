@@ -1,7 +1,20 @@
+'use client';
+
 import Image from 'next/image'
 import Link from 'next/link'
+import { useState } from 'react'
 
 export default function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <header className="bg-[rgba(46,58,54,0.5)] fixed w-full top-0 z-[1000] backdrop-blur-sm">
       <div className="relative mx-auto">
@@ -21,7 +34,8 @@ export default function Header() {
              </a>
            </div>
            
-           <div className="mx-auto relative">
+           {/* Desktop Navigation - Hidden on mobile */}
+           <div className="mx-auto relative hidden lg:block">
             <ul className="mb-0 text-[1.1em] p-0 m-0 list-none block">
                <li className="float-left leading-[70px] p-0 relative z-[999]">
                  <Link href="/" className="no-underline block font-bold px-5 text-white hover:bg-[#780000] hover:text-white transition-all duration-200">
@@ -60,30 +74,140 @@ export default function Header() {
                </li>
             </ul>
           </div>
-          
-          <div className="px-[10px]">
-            <a href="https://www.instagram.com/sahmyook_island/" target="_blank" className="block py-[15px] px-[10px] bg-white rounded-b-[10px] no-underline">
-              <Image 
-                src="/images/insta-icon.png" 
-                alt="Instagram" 
-                width={30}
-                height={30}
-                className="w-[30px] h-[30px] align-middle border-0" 
-              />
-            </a>
+
+          {/* Mobile Menu Button - Only visible on mobile and tablet */}
+          <div className="lg:hidden flex items-center">
+            <button
+              onClick={toggleMenu}
+              className="text-white p-2 hover:bg-[#780000] rounded transition-all duration-200"
+              aria-label="Toggle menu"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {isMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
           </div>
           
-          <div className="bg-white h-[60px] py-[10px] px-[30px] rounded-b-[10px] shadow-[0px_3px_10px_0px_rgba(0,105,52,0.35)]">
-            <a href="https://36mall.co.kr/main/index.php">
-              <Image 
-                src="/images/symall-logo.png" 
-                alt="KSB Mall" 
-                width={100}
-                height={40}
-              />
-            </a>
+          {/* Desktop Right Section - Hidden on mobile and tablet */}
+          <div className="hidden lg:flex items-center space-x-2">
+            <div className="px-[10px]">
+              <a href="https://www.instagram.com/sahmyook_island/" target="_blank" className="block py-[15px] px-[10px] bg-white rounded-b-[10px] no-underline">
+                <Image 
+                  src="/images/insta-icon.png" 
+                  alt="Instagram" 
+                  width={30}
+                  height={30}
+                  className="w-[30px] h-[30px] align-middle border-0" 
+                />
+              </a>
+            </div>
+            
+            <div className="bg-white h-[60px] py-[10px] px-[30px] rounded-b-[10px] shadow-[0px_3px_10px_0px_rgba(0,105,52,0.35)]">
+              <a href="https://36mall.co.kr/main/index.php">
+                <Image 
+                  src="/images/symall-logo.png" 
+                  alt="KSB Mall" 
+                  width={100}
+                  height={40}
+                />
+              </a>
+            </div>
           </div>
         </nav>
+
+        {/* Mobile Drawer Menu */}
+        {isMenuOpen && (
+          <div className="lg:hidden absolute top-full left-0 w-full bg-[#2e3a36] border-t border-white/20">
+            <div className="px-4 py-6">
+              <nav className="space-y-1">
+                <Link 
+                  href="/" 
+                  className="block w-full px-4 py-4 text-white font-bold hover:bg-[#780000] transition-all duration-200"
+                  onClick={closeMenu}
+                >
+                  Trang chủ
+                </Link>
+                <Link 
+                  href="/about" 
+                  className="block w-full px-4 py-4 text-white font-bold hover:bg-[#780000] transition-all duration-200"
+                  onClick={closeMenu}
+                >
+                  Về chúng tôi
+                </Link>
+                <Link 
+                  href="/ecosystem" 
+                  className="block w-full px-4 py-4 text-white font-bold hover:bg-[#780000] transition-all duration-200"
+                  onClick={closeMenu}
+                >
+                  Hệ sinh thái
+                </Link>
+                <Link 
+                  href="/news" 
+                  className="block w-full px-4 py-4 text-white font-bold hover:bg-[#780000] transition-all duration-200"
+                  onClick={closeMenu}
+                >
+                  Tin tức
+                </Link>
+                <Link 
+                  href="/careers" 
+                  className="block w-full px-4 py-4 text-white font-bold hover:bg-[#780000] transition-all duration-200"
+                  onClick={closeMenu}
+                >
+                  Tuyển dụng
+                </Link>
+                <Link 
+                  href="/partners" 
+                  className="block w-full px-4 py-4 text-white font-bold hover:bg-[#780000] transition-all duration-200"
+                  onClick={closeMenu}
+                >
+                  Đối tác
+                </Link>
+                <Link 
+                  href="/contact" 
+                  className="block w-full px-4 py-4 text-white font-bold hover:bg-[#780000] transition-all duration-200"
+                  onClick={closeMenu}
+                >
+                  Liên hệ
+                </Link>
+              </nav>
+              
+              {/* Mobile Social Links */}
+              <div className="mt-6 pt-6 border-t border-white/20">
+                <div className="flex items-center justify-center space-x-4">
+                  <a 
+                    href="https://www.instagram.com/sahmyook_island/" 
+                    target="_blank" 
+                    className="p-3 bg-white rounded-full hover:bg-[#780000] transition-all duration-200"
+                  >
+                    <Image 
+                      src="/images/insta-icon.png" 
+                      alt="Instagram" 
+                      width={24}
+                      height={24}
+                      className="w-6 h-6" 
+                    />
+                  </a>
+                  <a 
+                    href="https://36mall.co.kr/main/index.php"
+                    className="p-3 bg-white rounded-full hover:bg-[#780000] transition-all duration-200"
+                  >
+                    <Image 
+                      src="/images/symall-logo.png" 
+                      alt="KSB Mall" 
+                      width={60}
+                      height={24}
+                      className="w-15 h-6" 
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </header>
   );

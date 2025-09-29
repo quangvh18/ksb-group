@@ -12,34 +12,34 @@ interface ValueCard {
 
 const valuesData: ValueCard[] = [
   {
-    title: "Mục đích thành lập",
-    subtitle: "Nuôi dưỡng tài năng tương lai và thực hiện trách nhiệm xã hội",
+    title: "Sứ mệnh",
+    subtitle: "Mang đến sản phẩm chất lượng cao, sáng tạo và bền vững",
     content: [
-      "Samyuk Foods là một tổ chức phi lợi nhuận của Học viện Samyuk, được thành lập nhằm mục đích thực hiện trách nhiệm xã hội của mình bằng cách truyền bá phúc âm về sức khỏe thông qua các doanh nghiệp thực phẩm tốt cho sức khỏe góp phần vào sức khỏe của quốc gia, hỗ trợ các chương trình giáo dục góp phần phát triển tài năng và thực hành chia sẻ và phục vụ cộng đồng địa phương."
+      "Chúng tôi cam kết mang đến cho khách hàng những sản phẩm chất lượng cao, sáng tạo và bền vững, được sản xuất và phân phối một cách chuyên nghiệp, góp phần xây dựng một giá trị thực về sức khỏe và kinh tế cho nhân loại."
     ],
     titleColor: "green"
   },
   {
-    title: "Sứ mệnh",
-    subtitle: "Thực phẩm lành mạnh và an toàn cùng sản xuất trung thực",
-    content: [
-      "Để tạo ra một thế giới tươi đẹp, nơi con người và thiên nhiên cùng tồn tại, chúng tôi sản xuất và cung cấp 'thực phẩm tốt cho sức khỏe làm từ nguyên liệu có nguồn gốc thực vật' một cách an toàn và trung thực, có thể mang 'sức khỏe đến toàn thế giới'."
-    ],
-    titleColor: "blue"
-  },
-  {
     title: "Giá trị cốt lõi",
-    subtitle: "Phát triển tài năng, quản lý đạo đức, chất lượng hàng đầu, sự hài lòng của khách hàng",
+    subtitle: "Kỉ luật, sáng tạo, bứt phá",
     content: [
-      "Chúng tôi nỗ lực bồi dưỡng nhân tài thông qua giáo dục và vun đắp sự hòa hợp giữa các thành viên thông qua quản lý đạo đức công bằng và minh bạch. Chúng tôi cũng nỗ lực không ngừng cải thiện chất lượng dựa trên năng lực công nghệ. Chúng tôi trân trọng khách hàng và phấn đấu trở thành một công ty phục vụ cộng đồng, đặt sự hài lòng của khách hàng lên hàng đầu."
+      "KSB GROUP phát triển dựa trên 3 giá trị cốt lõi: Kỉ luật, sáng tạo, bứt phá. Chúng tôi đề cao tính kỷ luật để đảm bảo sự chuyên nghiệp và hiệu quả; nuôi dưỡng tinh thần sáng tạo để không ngừng đổi mới, thích ứng với thị trường; và khát khao bứt phá để vươn xa, chinh phục những cột mốc lớn hơn mỗi ngày."
     ],
     titleColor: "blue"
   },
   {
     title: "Tầm nhìn",
-    subtitle: "Doanh nghiệp thực phẩm chức năng góp phần bảo vệ sức khỏe con người",
+    subtitle: "Tập đoàn đa quốc gia hàng đầu trong lĩnh vực sản xuất và phân phối",
     content: [
-      "Dựa trên một thương hiệu sữa đậu nành chuyên biệt, chúng tôi đang phát triển thành một 'doanh nghiệp thực phẩm tốt cho sức khỏe' góp phần mang lại sức khỏe và hạnh phúc cho toàn thể nhân loại."
+      "Trở thành tập đoàn đa quốc gia hàng đầu trong lĩnh vực sản xuất và phân phối các sản phẩm xanh, kết hợp nhập khẩu tinh hoa thế giới và xuất khẩu sản phẩm lành mạnh, góp phần nâng cao giá trị kinh tế và sức khỏe cho nhân loại."
+    ],
+    titleColor: "blue"
+  },
+  {
+    title: "Hệ sinh thái",
+    subtitle: "Đa dạng lĩnh vực hoạt động",
+    content: [
+      "KSB GROUP hoạt động đa dạng trong các lĩnh vực: Hóa - Mỹ phẩm, Xuất nhập khẩu thực phẩm & hàng tiêu dùng, và Thực phẩm đông lạnh. Với hệ thống chi nhánh và cơ sở vật chất chiến lược trải dài, chúng tôi kiến tạo nên những chuỗi giá trị vượt trội."
     ],
     titleColor: "green"
   }
@@ -47,7 +47,7 @@ const valuesData: ValueCard[] = [
 
 export const metadata: Metadata = {
   title: "Về chúng tôi - KSB Group",
-  description: "Chúng tôi nghiên cứu các chế độ ăn chay lành mạnh có thể kết hợp với nhau.",
+  description: "Tập đoàn KSB tự hào kiến tạo nên một nền tảng vững mạnh với hệ sinh thái kinh doanh bền vững.",
 };
 
 export default function AboutPage() {
@@ -61,7 +61,7 @@ export default function AboutPage() {
       <div className="sub_page intro intro_01">
         <PageHeader 
           title="Về chúng tôi"
-          description="Chúng tôi nghiên cứu các chế độ ăn chay lành mạnh có thể kết hợp với nhau."
+          description="Tập đoàn KSB tự hào kiến tạo nên một nền tảng vững mạnh với hệ sinh thái kinh doanh bền vững."
           breadcrumbItems={breadcrumbItems}
         />
 
@@ -70,12 +70,12 @@ export default function AboutPage() {
           <div className="container mx-auto px-5 max-w-[1250px] lg:max-w-[1250px] md:max-w-[950px]">
             <div className="text-center space-y-8">
               <h2 className="text-3xl lg:text-4xl font-bold text-black leading-tight" data-aos="fade-up" data-aos-delay="100">
-                Từ &ldquo;Công ty chuyên sản xuất sữa đậu nành&rdquo;<br />
-                đến &ldquo;Doanh nghiệp thực phẩm sức khỏe&rdquo;
+                Tập đoàn KSB - Nền tảng vững mạnh<br />
+                với hệ sinh thái kinh doanh bền vững
               </h2>
               
               <p className="text-lg text-black leading-relaxed max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="200">
-                KSB Group đã không ngừng nghiên cứu và phát triển, đầu tư vào các thiết bị tiên tiến nhất để tạo ra những sản phẩm thực phẩm sức khỏe chất lượng cao nhất mà mọi người, bất kể tuổi tác hay giới tính, đều có thể yên tâm sử dụng. Kết quả là, chúng tôi đã đạt được thành tựu vĩ đại khi giành được &ldquo;Giải thưởng Thương hiệu của Năm 2023&rdquo; trong nước 17 năm liên tiếp và tại thị trường Trung Quốc 8 năm liên tiếp, điều này càng có ý nghĩa hơn khi được người tiêu dùng bình chọn.
+                Tập đoàn KSB tự hào kiến tạo nên một nền tảng vững mạnh, kế thừa và phát triển từ tâm huyết của Công ty TNHH XNK Thiên Thuận Phát. Với hơn một thập kỷ miệt mài gieo trồng giá trị, chúng tôi đã vun đắp một hệ sinh thái kinh doanh bền vững, với những ngành nghề đa dạng trong các lĩnh vực khác nhau, vươn mình trở thành biểu tượng của sự uy tín và chất lượng.
               </p>
             </div>
           </div>
@@ -96,7 +96,7 @@ export default function AboutPage() {
                   alt="KSB Group Factory"
                   width={600}
                   height={400}
-                  className="w-full h-auto rounded-[3rem_0rem_3rem_0rem] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_16px_-4px_rgba(0,0,0,0.1)] transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] cursor-pointer relative z-10"
+                  className="w-full h-auto rounded-[3rem_0rem_3rem_0rem] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_16px_-4px_rgba(0,0,0,0.1)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] cursor-pointer relative z-10"
                 />
                 
                 {/* Pink tint overlay */}
@@ -106,23 +106,24 @@ export default function AboutPage() {
               {/* Text Content - Right Side */}
               <div className="space-y-8 order-1 lg:order-2">
                 <h2 className="text-3xl lg:text-4xl font-bold text-black leading-tight" data-aos="fade-left" data-aos-delay="100">
-                  Triết lý và Tầm nhìn của KSB Group
+                  Sứ mệnh, Giá trị cốt lõi và Tầm nhìn
                 </h2>
                 
                 <p className="text-lg text-black leading-relaxed" data-aos="fade-left" data-aos-delay="200">
-                  KSB Group đã không ngừng nghiên cứu và phát triển, đầu tư vào các thiết bị tiên tiến nhất 
-                  để tạo ra những sản phẩm thực phẩm sức khỏe chất lượng cao nhất mà mọi người, 
-                  bất kể tuổi tác hay giới tính, đều có thể yên tâm sử dụng.
+                  Từ nền tảng vững chắc của hoạt động buôn bán, bán lẻ và nhập khẩu độc quyền, 
+                  KSB GROUP đã kiên cường kiến tạo vị thế dẫn đầu, đồng thời định hình một chuẩn mực mới 
+                  trong ngành sản xuất bánh kẹo.
                 </p>
                 
                 <p className="text-lg text-black leading-relaxed" data-aos="fade-left" data-aos-delay="300">
-                  &ldquo;KSB Group hôm nay vẫn chuẩn bị cho ngày mai được hứa hẹn với hy vọng và niềm tin không thay đổi.&rdquo;
+                  KSB đã chạm tới mọi miền đất nước, mở rộng tầm ảnh hưởng mạnh mẽ với hệ thống chi nhánh 
+                  và cơ sở vật chất chiến lược trải dài. Chúng tôi không chỉ là đối tác nhập khẩu được tin cậy, 
+                  mà còn là người kiến tạo nên những chuỗi giá trị vượt trội.
                 </p>
                 
                 <p className="text-lg text-black leading-relaxed" data-aos="fade-left" data-aos-delay="400">
-                  KSB Group, luôn nghĩ về sức khỏe con người, dựa trên triết lý thành lập 
-                  &ldquo;Sức khỏe cho toàn thế giới&rdquo;, những con người chân thật, với những nguyên liệu chân thật, 
-                  thực hiện hương vị chân thật, góp phần vào sức khỏe nhân loại.
+                  KSB cam kết không ngừng vươn xa, kiến tạo giá trị và khẳng định vững chắc vị thế quyền lực 
+                  của một tập đoàn hàng đầu trên bản đồ kinh tế Việt Nam.
                 </p>
               </div>
             </div>

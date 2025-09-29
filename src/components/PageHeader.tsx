@@ -22,6 +22,7 @@ export default function PageHeader({ title, description, breadcrumbItems }: Page
           height={400}
           className="w-full h-auto"
           style={{ display: 'block' }}
+          priority={true}
         />
         <div className="absolute inset-0 flex flex-col justify-center items-center text-center" style={{
           paddingTop: '80px',
