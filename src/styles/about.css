@@ -1,0 +1,174 @@
+/* About page specific styles */
+.sub_page.intro.intro_01 {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Banner natural size styles */
+.sub_page_head {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    position: relative !important;
+}
+
+.sub_page_head img {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+}
+
+.sub_page_head h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.sub_page_head p {
+    font-size: 1.2rem;
+    color: #ffffff;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Text overlay positioning */
+.sub_page_head .absolute {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+}
+
+/* Ensure text is visible */
+.sub_page_head h2,
+.sub_page_head p {
+    position: relative !important;
+    z-index: 15 !important;
+    color: #ffffff !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5) !important;
+}
+
+.sub_menu {
+    background: linear-gradient(130deg, rgba(64, 64, 64, 0.9) 0%, rgba(96, 96, 96, 0.9) 100%);
+    border-bottom: 1px solid #dee2e6;
+    padding: 15px 0;
+}
+
+.sub_menu .container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Breadcrumb icon styles */
+.sub_menu svg {
+    transition: all 0.3s ease;
+    opacity: 0.8;
+}
+
+.sub_menu a:hover svg,
+.sub_menu span:hover svg {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.sub_menu a:hover,
+.sub_menu span:hover {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.home_link a {
+    display: inline-block;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.home_link a:hover {
+    background-color: #f8f9fa;
+}
+
+.intro_script {
+    margin-bottom: 40px;
+}
+
+.intro_tit h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    line-height: 1.4;
+}
+
+.intro_sub p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 0;
+}
+
+/* Grid layout classes - now using Tailwind */
+
+.intro-img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.tit-text {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.tit-text-p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 0;
+}
+
+/* Card styles - now using Tailwind classes */
+
+.border-radius-left {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.border-radius-right {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.fadein-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive design - now using Tailwind responsive classes */

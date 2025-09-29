@@ -24,37 +24,37 @@ export default function Header() {
            <div className="mx-auto relative">
             <ul className="mb-0 text-[1.1em] p-0 m-0 list-none block">
                <li className="float-left leading-[70px] p-0 relative z-[999]">
-                 <Link href="/" className="no-underline block font-normal px-5 text-white hover:text-orange-400 transition-colors">
+                 <Link href="/" className="no-underline block font-bold px-5 text-white hover:bg-[#780000] hover:text-white transition-all duration-200">
                    Trang chủ
                  </Link>
                </li>
                <li className="float-left leading-[70px] p-0 relative z-[998]">
-                 <Link href="/about" className="no-underline block font-normal px-5 text-white hover:text-orange-400 transition-colors">
+                 <Link href="/about" className="no-underline block font-bold px-5 text-white hover:bg-[#780000] hover:text-white transition-all duration-200">
                    Về chúng tôi
                  </Link>
                </li>
                <li className="float-left leading-[70px] p-0 relative z-[997]">
-                 <Link href="/ecosystem" className="no-underline block font-normal px-5 text-white hover:text-orange-400 transition-colors">
+                 <Link href="/ecosystem" className="no-underline block font-bold px-5 text-white hover:bg-[#780000] hover:text-white transition-all duration-200">
                    Hệ sinh thái
                  </Link>
                </li>
                <li className="float-left leading-[70px] p-0 relative z-[996]">
-                 <Link href="/news" className="no-underline block font-normal px-5 text-white hover:text-orange-400 transition-colors">
+                 <Link href="/news" className="no-underline block font-bold px-5 text-white hover:bg-[#780000] hover:text-white transition-all duration-200">
                    Tin tức
                  </Link>
                </li>
                <li className="float-left leading-[70px] p-0 relative z-[995]">
-                 <Link href="/careers" className="no-underline block font-normal px-5 text-white hover:text-orange-400 transition-colors">
+                 <Link href="/careers" className="no-underline block font-bold px-5 text-white hover:bg-[#780000] hover:text-white transition-all duration-200">
                    Tuyển dụng
                  </Link>
                </li>
                <li className="float-left leading-[70px] p-0 relative z-[994]">
-                 <Link href="/partners" className="no-underline block font-normal px-5 text-white hover:text-orange-400 transition-colors">
+                 <Link href="/partners" className="no-underline block font-bold px-5 text-white hover:bg-[#780000] hover:text-white transition-all duration-200">
                    Đối tác
                  </Link>
                </li>
                <li className="float-left leading-[70px] p-0 relative z-[993]">
-                 <Link href="/contact" className="no-underline block font-normal px-5 text-white hover:text-orange-400 transition-colors">
+                 <Link href="/contact" className="no-underline block font-bold px-5 text-white hover:bg-[#780000] hover:text-white transition-all duration-200">
                    Liên hệ
                  </Link>
                </li>
