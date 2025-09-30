@@ -22,7 +22,7 @@ export default function Header() {
            <h2 className="absolute text-[0] leading-[0] overflow-hidden text-[30px] mt-[20px] mb-[10px]">KSB GROUP</h2>
            
            <div className="float-left flex items-center h-[70px] px-0">
-             <a href="https://www.sahmyook.co.kr">
+             <Link href="/">
                <Image 
                  src="https://thienthuanphat.vn/Data/images/banner-cn/logo/fa-ksb.webp" 
                  alt="KSB Group Logo" 
@@ -31,7 +31,7 @@ export default function Header() {
                  priority={true}
                  className="h-10 w-auto" 
                />
-             </a>
+             </Link>
            </div>
            
            {/* Desktop Navigation - Hidden on mobile */}

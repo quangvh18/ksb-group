@@ -36,7 +36,10 @@ export default async function Home() {
   return (
     <div>
       <Banner />
-      <main className="pt-[70px]">
+      <main>
+        {/* KSB Group Summary Section */}
+        <KSBGroupSection />
+
         {/* News & Community Section */}
         <section className="synew">
           <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
@@ -115,8 +118,7 @@ export default async function Home() {
           </div>
         </section>
 
-        {/* KSB Group Summary Section */}
-        <KSBGroupSection />
+        
 
         {/* Quick Menu Section */}
         <section className="syqmenu mt-20" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
