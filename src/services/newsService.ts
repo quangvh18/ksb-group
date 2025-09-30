@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import { extractPlainText, getContentPreview } from '../utils/contentRenderer';
+import { getContentPreview, ContentBlock } from '../utils/contentRenderer';
 
 // Interface cho News API response
 export interface NewsItem {
@@ -8,7 +8,7 @@ export interface NewsItem {
   title: string;
   slug: string;
   summary?: string;
-  content?: any[];
+  content?: ContentBlock[];
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
@@ -45,7 +45,7 @@ export interface NewsItem {
     url: string;
     provider?: string;
   };
-  gallery?: any[];
+  gallery?: ContentBlock[];
 }
 
 export interface NewsApiResponse {
@@ -191,7 +191,7 @@ export interface TransformedNewsItem {
   date: string;
   category: string;
   fullDate: string;
-  content: any[];
+  content: ContentBlock[];
   altText: string;
 }
 

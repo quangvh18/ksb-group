@@ -1,7 +1,5 @@
 'use client';
 
-import Image from 'next/image';
-
 export default function KSBGroupSection() {
   return (
     <section className="ksb-summary py-20 bg-gray-50">

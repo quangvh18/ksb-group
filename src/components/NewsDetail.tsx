@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { renderContent } from '../utils/contentRenderer';
 import { TransformedNewsItem } from '../services/newsService';
 
@@ -28,9 +29,11 @@ export default function NewsDetail({ news }: NewsDetailProps) {
       {/* Featured Image */}
       {news.image && (
         <div className="mb-8">
-          <img
+          <Image
             src={news.image}
             alt={news.altText}
+            width={800}
+            height={400}
             className="w-full h-64 md:h-96 object-cover rounded-lg shadow-lg"
           />
         </div>
