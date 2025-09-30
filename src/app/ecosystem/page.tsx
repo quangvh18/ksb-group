@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import PageHeader from "../../components/PageHeader";
 
 export const metadata: Metadata = {
   title: "Hệ sinh thái - KSB Group",
@@ -6,17 +7,21 @@ export const metadata: Metadata = {
 };
 
 export default function EcosystemPage() {
+  const breadcrumbItems = [
+    { label: "Trang chủ", href: "/" },
+    { label: "Hệ sinh thái", isActive: true }
+  ];
+
   return (
     <div>
-      <main className="pt-[70px]">
+      <PageHeader 
+        title="Hệ sinh thái"
+        description="Khám phá hệ sinh thái đa dạng của KSB Group với các thương hiệu, dịch vụ và giải pháp toàn diện"
+        breadcrumbItems={breadcrumbItems}
+      />
+      <main>
         <div className="container mx-auto px-5 max-w-[1250px] lg:max-w-[1250px] md:max-w-[950px] w-full">
           <section className="py-16">
-            <div className="text-center mb-12">
-              <h1 className="text-5xl font-bold text-gray-800 mb-4">Hệ sinh thái KSB</h1>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Khám phá hệ sinh thái đa dạng của KSB Group với các thương hiệu, dịch vụ và giải pháp toàn diện
-              </p>
-            </div>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow border-l-4 border-red-500">

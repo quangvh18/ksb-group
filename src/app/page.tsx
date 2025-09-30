@@ -1,7 +1,38 @@
 import Image from 'next/image'
-import Banner from '../components/Banner'
+import { newsService, transformNewsItem, fallbackNewsData, TransformedNewsItem } from '../services/newsService'
+import dynamic from 'next/dynamic'
 
-export default function Home() {
+const Banner = dynamic(() => import('../components/Banner'))
+const KSBGroupSection = dynamic(() => import('../components/KSBGroupSection'))
+
+// Function để tạo slug từ title
+function createSlug(title: string): string {
+  return title
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/đ/g, "d")
+    .replace(/Đ/g, "D")
+    .replace(/[^a-z0-9\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .trim();
+}
+
+// Function để fetch news data using service
+async function getNewsData(): Promise<TransformedNewsItem[]> {
+  try {
+    const newsData = await newsService.getNews(1, 3); // Chỉ lấy 3 bài tin tức cho trang chủ
+    return newsData.map(transformNewsItem);
+  } catch (error) {
+    console.error('Error fetching news data:', error);
+    // Return fallback data if API fails
+    return fallbackNewsData.slice(0, 3); // Chỉ lấy 3 bài đầu
+  }
+}
+
+export default async function Home() {
+  // Fetch news data from API using service
+  const newsData = await getNewsData();
   return (
     <div>
       <Banner />
@@ -26,63 +57,65 @@ export default function Home() {
             <div className="row -mx-[15px] flex flex-wrap">
               <div className="w-full px-[15px]">
                 <ul className="main_news_list relative">
-                  <li className="float-right w-[calc(45%-20px)] absolute top-[-230px] z-[2] right-0" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="200">
+                  {newsData.map((news, index) => {
+                    const newsSlug = createSlug(news.title);
+                    const isFirstItem = index === 0;
+                    
+                    if (isFirstItem) {
+                      // Bài tin tức đầu tiên - layout đặc biệt
+                      return (
+                        <li key={news.id} className="float-right w-[calc(45%-20px)] absolute top-[-230px] z-[2] right-0" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="200">
                     <a 
                       className="news_img float-left w-full min-h-[200px] lg:min-h-[430px] bg-cover bg-center bg-no-repeat rounded-[50px_0px_50px_0px] lg:rounded-[100px_0px_100px_0px] lg:w-[calc(100%-52px)]" 
-                      style={{backgroundImage: "url('/images/news-1.jpg')"}}
-                      href="#"
+                            style={{backgroundImage: `url('${news.image}')`}}
+                            href={`/news/${newsSlug}`}
                     ></a>
                     <div className="news_text p-5 lg:bg-[#006b11] lg:w-[calc(100%-40px)] lg:float-right lg:p-[390px_40px_30px] lg:min-h-[500px] lg:absolute lg:top-[56px] lg:z-[-1] lg:right-0 lg:rounded-[0px_100px_0px_100px]">
                       <div className="news_tit">
                         <h3 className="text-xl lg:text-white lg:leading-[1.35em] min-h-[53px] mb-0 mt-0">
-                          <a href="#" className="hover:!text-[#68ad94] lg:hover:!text-white transition-colors duration-200">KSB Group, Ngày chống sa sút trí tuệ lần thứ 18...</a>
+                                <a href={`/news/${newsSlug}`} className="hover:!text-[#68ad94] lg:hover:!text-white transition-colors duration-200">
+                                  {news.title.length > 50 ? `${news.title.substring(0, 50)}...` : news.title}
+                                </a>
                         </h3>
                       </div>
                       <div className="news_detail">
-                        <a href="#" className="text-[#68ad94] lg:text-[#a7e7b1] text-[1.2em] float-right lg:mt-5">Xem thêm →</a>
+                              <a href={`/news/${newsSlug}`} className="text-[#68ad94] lg:text-[#a7e7b1] text-[1.2em] float-right lg:mt-5">Xem thêm →</a>
                       </div>
                     </div>
           </li>
-                  
-                  <li className="float-left w-[calc(27.5%-20px)] mr-5" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                      );
+                    } else {
+                      // Các bài tin tức khác - layout thông thường
+                      return (
+                        <li key={news.id} className="float-left w-[calc(27.5%-20px)] mr-5" data-aos="fade-up" data-aos-duration="1000" data-aos-delay={400 + ((index - 1) * 200)}>
                     <a 
                       className="news_img float-left w-full min-h-[200px] bg-cover bg-center bg-no-repeat rounded-[50px_0px_50px_0px]" 
-                      style={{backgroundImage: "url('/images/news-2.jpg')"}}
-                      href="#"
+                            style={{backgroundImage: `url('${news.image}')`}}
+                            href={`/news/${newsSlug}`}
                     ></a>
                     <div className="news_text px-0 py-5 inline-block w-full">
                       <div className="news_tit">
                         <h3 className="text-xl min-h-[53px] mb-0 mt-0">
-                          <a href="#" className="text-[#333] hover:!text-[#68ad94] transition-colors duration-200">KSB Group, Xuất khẩu &apos;Sữa đậu nành&apos; sang Singapore...</a>
+                                <a href={`/news/${newsSlug}`} className="text-[#333] hover:!text-[#68ad94] transition-colors duration-200">
+                                  {news.title.length > 50 ? `${news.title.substring(0, 50)}...` : news.title}
+                                </a>
                         </h3>
                       </div>
                       <div className="news_detail">
-                        <a href="#" className="text-[#68ad94] text-[1.2em] float-right">Xem thêm →</a>
+                              <a href={`/news/${newsSlug}`} className="text-[#68ad94] text-[1.2em] float-right">Xem thêm →</a>
                       </div>
                     </div>
           </li>
-                  
-                  <li className="float-left w-[calc(27.5%-20px)] mr-5" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
-                    <a 
-                      className="news_img float-left w-full min-h-[200px] bg-cover bg-center bg-no-repeat rounded-[50px_0px_50px_0px]" 
-                      style={{backgroundImage: "url('/images/news-3.jpg')"}}
-                      href="#"
-                    ></a>
-                    <div className="news_text px-0 py-5 inline-block w-full">
-                      <div className="news_tit">
-                        <h3 className="text-xl min-h-[53px] mb-0 mt-0">
-                          <a href="#" className="text-[#333] hover:!text-[#68ad94] transition-colors duration-200">KSB Group, Giải thưởng Thương hiệu của năm 2025...</a>
-                        </h3>
-                      </div>
-                      <div className="news_detail">
-                        <a href="#" className="text-[#68ad94] text-[1.2em] float-right">Xem thêm →</a>
-                      </div>
-                    </div>
-                  </li>
+                      );
+                    }
+                  })}
                 </ul>
               </div>
             </div>
           </section>
+
+          {/* KSB Group Summary Section */}
+          <KSBGroupSection />
 
               {/* Quick Menu Section */}
           <section className="syqmenu mt-20" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
@@ -91,7 +124,7 @@ export default function Home() {
                 <div className="qmenu_card symall_card bg-[#f1f1f1] rounded-[100px_0px_100px_0px] min-h-[360px] pt-[70px] pl-[30px] relative">
                   <div className="symall_card_cont">
                     <Image 
-                      src="/images/symall-logo-big.png" 
+                      src="https://thienthuanphat.vn/Data/images/banner-cn/logo/fa-ksb.webp" 
                       alt="KSB Mall" 
                       width={200}
                       height={80}
@@ -99,7 +132,7 @@ export default function Home() {
                       className="mb-4" 
                     />
                     <div className="btn_symall mt-[50px]">
-                      <a href="https://36mall.co.kr/main/index.php" target="_blank" className="border border-[#80ac9c] leading-[59px] text-[#80ac9c] text-[20px] min-w-[220px] rounded-[30px] p-[6px] no-underline inline-block text-center hover:bg-[#006b11] hover:text-white transition-colors">
+                      <a href="https://shopthienthuanphat.com/" target="_blank" className="border border-[#80ac9c] leading-[59px] text-[#80ac9c] text-[20px] min-w-[220px] rounded-[30px] p-[6px] no-underline inline-block text-center hover:bg-[#006b11] hover:text-white transition-colors">
                         KSB Mall ngay →
                       </a>
                     </div>

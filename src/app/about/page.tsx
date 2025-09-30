@@ -182,7 +182,7 @@ export default function AboutPage() {
                     </div>
                       <div className="px-6 py-6 flex-1 flex flex-col justify-start bg-white">
                       {item.content.map((paragraph, pIndex) => (
-                          <p key={pIndex} className="text-sm leading-relaxed text-black text-left transition-all duration-300 group-hover:text-gray-800 group-hover:font-medium">
+                          <p key={pIndex} className="text-sm leading-relaxed text-black text-left transition-all duration-300 group-hover:text-gray-800">
                           {paragraph}
                         </p>
                       ))}

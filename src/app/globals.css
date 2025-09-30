@@ -63,12 +63,27 @@ html {
 }
 
 body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: var(--font-noto-sans), "Noto Sans", "Noto Sans KR", "Malgun Gothic", "맑은 고딕", "Apple SD Gothic Neo", "Helvetica Neue", Arial, sans-serif;
     font-size: 14px;
-    line-height: 1.42857143;
+    line-height: 1.6;
     color: #333;
     background-color: #fff;
     margin: 0;
+    font-weight: 400;
+}
+
+/* Ensure header pushes content down on mobile/tablet */
+@media (max-width: 1023px) {
+    header {
+        position: relative !important;
+        top: auto !important;
+        z-index: auto !important;
+    }
+}
+
+/* Breadcrumb hover effect - full height background only */
+#sub_menu.group:hover {
+    background: linear-gradient(130deg, rgba(120, 0, 0, 0.9) 0%, rgba(120, 0, 0, 0.9) 100%) !important;
 }
 
 /* Global styles */

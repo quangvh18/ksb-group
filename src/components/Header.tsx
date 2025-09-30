@@ -16,7 +16,7 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-[rgba(46,58,54,0.5)] fixed w-full top-0 z-[1000] backdrop-blur-sm">
+    <header className="bg-[#2e3a36] relative w-full lg:bg-[rgba(46,58,54,0.5)] lg:fixed lg:top-0 lg:z-[1000]">
       <div className="relative mx-auto">
          <nav className="relative w-full max-w-[1200px] mx-auto flex justify-between">
            <h2 className="absolute text-[0] leading-[0] overflow-hidden text-[30px] mt-[20px] mb-[10px]">KSB GROUP</h2>
@@ -24,7 +24,7 @@ export default function Header() {
            <div className="float-left flex items-center h-[70px] px-0">
              <a href="https://www.sahmyook.co.kr">
                <Image 
-                 src="/images/logo-header.png" 
+                 src="https://thienthuanphat.vn/Data/images/banner-cn/logo/fa-ksb.webp" 
                  alt="KSB Group Logo" 
                  width={120}
                  height={40}
@@ -106,13 +106,14 @@ export default function Header() {
               </a>
             </div>
             
-            <div className="bg-white h-[60px] py-[10px] px-[30px] rounded-b-[10px] shadow-[0px_3px_10px_0px_rgba(0,105,52,0.35)]">
-              <a href="https://36mall.co.kr/main/index.php">
+            <div className="bg-white h-[60px] py-[10px] px-[30px] rounded-b-[10px] shadow-[0px_3px_10px_0px_rgba(0,105,52,0.35)] flex items-center justify-center">
+              <a href="https://shopthienthuanphat.com/" className="block">
                 <Image 
-                  src="/images/symall-logo.png" 
+                  src="https://thienthuanphat.vn/Data/images/banner-cn/logo/logo-ttp-2022-so-full-02-01.webp" 
                   alt="KSB Mall" 
-                  width={100}
-                  height={40}
+                  width={80}
+                  height={32}
+                  className="max-w-full h-auto object-contain"
                 />
               </a>
             </div>
@@ -192,11 +193,11 @@ export default function Header() {
                     />
                   </a>
                   <a 
-                    href="https://36mall.co.kr/main/index.php"
+                    href="https://shopthienthuanphat.com/"
                     className="p-3 bg-white rounded-full hover:bg-[#780000] transition-all duration-200"
                   >
                     <Image 
-                      src="/images/symall-logo.png" 
+                      src="https://thienthuanphat.vn/Data/images/banner-cn/logo/fa-ksb.webp" 
                       alt="KSB Mall" 
                       width={60}
                       height={24}
