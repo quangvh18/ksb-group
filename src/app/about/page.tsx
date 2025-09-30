@@ -67,7 +67,7 @@ export default function AboutPage() {
 
         {/* Vietnamese Introduction Section */}
         <div className="bg-white py-16" data-aos="fade-up">
-          <div className="container mx-auto px-5 max-w-[1250px] lg:max-w-[1250px] md:max-w-[950px]">
+          <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
             <div className="text-center space-y-8">
               <h2 className="text-3xl lg:text-4xl font-bold text-black leading-tight" data-aos="fade-up" data-aos-delay="100">
                 Tập đoàn KSB - Nền tảng vững mạnh<br />
@@ -83,7 +83,7 @@ export default function AboutPage() {
 
         {/* Company Introduction Section */}
         <div className="bg-white py-16" data-aos="fade-up">
-          <div className="container mx-auto px-5 max-w-[1250px] lg:max-w-[1250px] md:max-w-[950px]">
+          <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               {/* Company Image with Shadow Effect - Left Side */}
               <div className="relative order-2 lg:order-1" data-aos="fade-right" data-aos-delay="200">
@@ -131,7 +131,7 @@ export default function AboutPage() {
         </div>
 
         <div className="bg-white py-16" data-aos="fade-up">
-          <div className="container mx-auto px-5 max-w-[1250px] lg:max-w-[1250px] md:max-w-[950px]">
+          <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
               {valuesData.map((item, index) => {
                 const colors = [

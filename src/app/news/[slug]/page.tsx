@@ -148,7 +148,7 @@ export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
       <div id="sub_menu" className="min-h-[36px] sm:min-h-[40px] md:min-h-[44px] flex items-stretch" style={{
         background: 'linear-gradient(130deg, rgba(64, 64, 64, 0.9) 0%, rgba(96, 96, 96, 0.9) 100%)'
       }}>
-        <div className="w-full container mx-auto px-5 max-w-[1250px] lg:max-w-[1250px] md:max-w-[950px] flex items-stretch">
+        <div className="w-full container mx-auto px-2 md:px-5 max-w-[1300px] flex items-stretch">
           <nav className="flex items-stretch flex-wrap space-x-1 sm:space-x-2 text-xs sm:text-sm md:text-base w-full" aria-label="Breadcrumb">
             <div className="flex items-stretch">
               <Link 
@@ -184,7 +184,7 @@ export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
       
       <main>
         <article className="bg-white py-16">
-          <div className="container mx-auto px-5 max-w-4xl">
+          <div className="container mx-auto px-2 md:px-5 max-w-4xl">
             {/* Article Header */}
             <header className="mb-12 text-center">
               

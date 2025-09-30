@@ -37,11 +37,11 @@ export default async function Home() {
     <div>
       <Banner />
       <main className="pt-[70px]">
-        <div className="container mx-auto px-5 w-[1250px] lg:w-[1250px] md:w-[950px]">
-          {/* News & Community Section */}
-          <section className="synew">
-            <div className="row -mx-[15px] flex flex-wrap">
-              <div className="w-1/2 md:w-1/2 sm:w-full px-[15px]" data-aos="fade-up" data-aos-duration="1000">
+        {/* News & Community Section */}
+        <section className="synew">
+          <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
+            <div className="row flex flex-wrap">
+              <div className="w-1/2 md:w-1/2 sm:w-full" data-aos="fade-up" data-aos-duration="1000">
                 <div className="text-left">
                       <h1 className="main_section_tit text-[#8f8f8f] text-[5.2em] mt-[50px] font-bold leading-tight">
                     Tin tức <span>&amp;</span><br />
@@ -54,8 +54,8 @@ export default async function Home() {
               </div>
             </div>
 
-            <div className="row -mx-[15px] flex flex-wrap">
-              <div className="w-full px-[15px]">
+            <div className="row flex flex-wrap">
+              <div className="w-full">
                 <ul className="main_news_list relative">
                   {newsData.map((news, index) => {
                     const newsSlug = createSlug(news.title);
@@ -112,15 +112,17 @@ export default async function Home() {
                 </ul>
               </div>
             </div>
-          </section>
+          </div>
+        </section>
 
-          {/* KSB Group Summary Section */}
-          <KSBGroupSection />
+        {/* KSB Group Summary Section */}
+        <KSBGroupSection />
 
-              {/* Quick Menu Section */}
-          <section className="syqmenu mt-20" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
-            <div className="row big_qmenu -mx-[15px] flex flex-wrap mb-8">
-              <div className="w-2/3 md:w-2/3 sm:w-full px-[15px]" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="400">
+        {/* Quick Menu Section */}
+        <section className="syqmenu mt-20" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
+          <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
+            <div className="row big_qmenu flex flex-wrap mb-8">
+              <div className="w-2/3 md:w-2/3 sm:w-full" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="400">
                 <div className="qmenu_card symall_card bg-[#f1f1f1] rounded-[100px_0px_100px_0px] min-h-[360px] pt-[70px] pl-[30px] relative">
                   <div className="symall_card_cont">
                     <Image 
@@ -140,7 +142,7 @@ export default async function Home() {
                   </div>
                 </div>
               </div>
-              <div className="w-1/3 md:w-1/3 sm:w-full px-[15px]" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="600">
+              <div className="w-1/3 md:w-1/3 sm:w-full" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="600">
                 <div className="qmenu_card sysecret_card bg-[#f1f1f1] rounded-[0px_100px_0px_100px] bg-cover p-[40px_20px] text-center" style={{backgroundImage: "url('/images/secret-bg.png')"}}>
                   <div className="sysecret_card_cont">
                     <div className="sysecret_icon mb-6 p-5 rounded-[100px] border-2 border-white w-[103px] h-[103px] inline-block">
@@ -169,8 +171,8 @@ export default async function Home() {
               </div>
             </div>
 
-            <div className="small_qmenu mt-[50px] mb-12 pb-12 -mx-[15px] flex flex-nowrap" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="800">
-              <div className="w-1/6 px-[10px] mb-4 relative flex-shrink-0">
+            <div className="small_qmenu mt-[50px] mb-12 pb-12 flex flex-nowrap" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="800">
+              <div className="w-1/6 mb-4 relative flex-shrink-0">
                 <a className="qmenu_card icon_card group block bg-[#f1f1f1] rounded-[50px_0px_50px_0px] min-h-[120px] p-4 text-center hover:bg-white hover:shadow-lg transition-all duration-300 no-underline" href="#">
                   <div className="qmenu_icon w-full h-[140px] mb-2 flex items-center justify-center">
                     <div className="w-20 h-20 rounded-full bg-transparent group-hover:bg-[#f0ffbe] flex items-center justify-center transition-all duration-300">
@@ -182,7 +184,7 @@ export default async function Home() {
                   <h3 className="text-[#9a9a9a] text-[20px] block text-center font-semibold mt-[10px] mb-[5px] group-hover:text-black transition-colors duration-300">Triết lý</h3>
                 </a>
               </div>
-              <div className="w-1/6 px-[10px] mb-4 relative flex-shrink-0">
+              <div className="w-1/6 mb-4 relative flex-shrink-0">
                 <a className="qmenu_card icon_card group block bg-[#f1f1f1] rounded-[0px_50px_0px_50px] min-h-[120px] p-4 text-center hover:bg-white hover:shadow-lg transition-all duration-300 no-underline" href="#">
                   <div className="qmenu_icon w-full h-[140px] mb-2 flex items-center justify-center">
                     <div className="w-20 h-20 rounded-full bg-transparent group-hover:bg-[#f0ffbe] flex items-center justify-center transition-all duration-300">
@@ -194,7 +196,7 @@ export default async function Home() {
                   <h3 className="text-[#9a9a9a] text-[20px] block text-center font-semibold mt-[10px] mb-[5px] group-hover:text-black transition-colors duration-300">Lịch sử</h3>
                 </a>
               </div>
-              <div className="w-1/6 px-[10px] mb-4 relative flex-shrink-0">
+              <div className="w-1/6 mb-4 relative flex-shrink-0">
                 <a className="qmenu_card icon_card group block bg-[#f1f1f1] rounded-[50px_0px_50px_0px] min-h-[120px] p-4 text-center hover:bg-white hover:shadow-lg transition-all duration-300 no-underline" href="#">
                   <div className="qmenu_icon w-full h-[140px] mb-2 flex items-center justify-center">
                     <div className="w-20 h-20 rounded-full bg-transparent group-hover:bg-[#f0ffbe] flex items-center justify-center transition-all duration-300">
@@ -206,7 +208,7 @@ export default async function Home() {
                   <h3 className="text-[#9a9a9a] text-[20px] block text-center font-semibold mt-[10px] mb-[5px] group-hover:text-black transition-colors duration-300">Chứng nhận</h3>
                 </a>
               </div>
-              <div className="w-1/6 px-[10px] mb-4 relative flex-shrink-0">
+              <div className="w-1/6 mb-4 relative flex-shrink-0">
                 <a className="qmenu_card icon_card group block bg-[#f1f1f1] rounded-[0px_50px_0px_50px] min-h-[120px] p-4 text-center hover:bg-white hover:shadow-lg transition-all duration-300 no-underline" href="#">
                   <div className="qmenu_icon w-full h-[140px] mb-2 flex items-center justify-center">
                     <div className="w-20 h-20 rounded-full bg-transparent group-hover:bg-[#f0ffbe] flex items-center justify-center transition-all duration-300">
@@ -218,7 +220,7 @@ export default async function Home() {
                   <h3 className="text-[#9a9a9a] text-[20px] block text-center font-semibold mt-[10px] mb-[5px] group-hover:text-black transition-colors duration-300">Thành tích</h3>
                 </a>
               </div>
-              <div className="w-1/6 px-[10px] mb-4 relative flex-shrink-0">
+              <div className="w-1/6 mb-4 relative flex-shrink-0">
                 <a className="qmenu_card icon_card group block bg-[#f1f1f1] rounded-[50px_0px_50px_0px] min-h-[120px] p-4 text-center hover:bg-white hover:shadow-lg transition-all duration-300 no-underline" href="#">
                   <div className="qmenu_icon w-full h-[140px] mb-2 flex items-center justify-center">
                     <div className="w-20 h-20 rounded-full bg-transparent group-hover:bg-[#f0ffbe] flex items-center justify-center transition-all duration-300">
@@ -230,7 +232,7 @@ export default async function Home() {
                   <h3 className="text-[#9a9a9a] text-[20px] block text-center font-semibold mt-[10px] mb-[5px] group-hover:text-black transition-colors duration-300">Xã hội</h3>
                 </a>
               </div>
-              <div className="w-1/6 px-[10px] mb-4 relative flex-shrink-0">
+              <div className="w-1/6 mb-4 relative flex-shrink-0">
                 <a className="qmenu_card icon_card group block bg-[#f1f1f1] rounded-[0px_50px_0px_50px] min-h-[120px] p-4 text-center hover:bg-white hover:shadow-lg transition-all duration-300 no-underline" href="#">
                   <div className="qmenu_icon w-full h-[140px] mb-2 flex items-center justify-center">
                     <div className="w-20 h-20 rounded-full bg-transparent group-hover:bg-[#f0ffbe] flex items-center justify-center transition-all duration-300">
@@ -243,8 +245,8 @@ export default async function Home() {
                 </a>
               </div>
             </div>
-          </section>
-        </div>
+          </div>
+        </section>
         
         {/* Brand Section */}
         <div className="box-brand relative bg-gray-50 py-16" data-aos="fade-up" data-aos-duration="1200">
@@ -254,7 +256,7 @@ export default async function Home() {
           <span className="brand-img-3 absolute bottom-10 left-10 w-16 h-16 opacity-20">
             <Image src="https://cjfoods.com.vn/themes/nest/images/home-ver1/brand-img-3.svg" alt="" width={64} height={64} className="w-full h-full" />
           </span>
-          <div className="container relative mx-auto px-5 w-[1400px] lg:w-[1200px] md:w-[900px]">
+          <div className="container relative mx-auto px-2 md:px-5 max-w-[1300px]">
             <span className="brand-img-1 absolute top-0 left-0 w-24 h-24 opacity-20">
               <Image src="https://cjfoods.com.vn/themes/nest/images/home-ver1/brand-img-1.svg" alt="" width={96} height={96} className="w-full h-full" />
             </span>

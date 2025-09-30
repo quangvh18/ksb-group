@@ -65,7 +65,7 @@ export default function PageHeader({ title, description, breadcrumbItems }: Page
       <div id="sub_menu" className="min-h-[44px] sm:min-h-[48px] md:min-h-[52px] flex items-stretch" style={{
         background: 'linear-gradient(130deg, rgba(64, 64, 64, 0.9) 0%, rgba(96, 96, 96, 0.9) 100%)'
       }}>
-        <div className="w-full container mx-auto px-5 max-w-[1250px] lg:max-w-[1250px] md:max-w-[950px] flex items-stretch">
+        <div className="w-full container mx-auto px-2 md:px-5 max-w-[1300px] flex items-stretch">
           <nav className="flex items-stretch flex-wrap space-x-1 xs:space-x-1.5 sm:space-x-2 md:space-x-3 text-[11px] xs:text-xs sm:text-sm md:text-base lg:text-lg w-full" aria-label="Breadcrumb">
             {breadcrumbItems.map((item, index) => (
               <div key={index} className="flex items-stretch">

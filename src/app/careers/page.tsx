@@ -69,7 +69,7 @@ export default function Careers() {
       />
       {/* Company Introduction Section */}
       <div className="bg-white py-16" data-aos="fade-up">
-        <div className="container mx-auto px-5 max-w-[1250px] lg:max-w-[1250px] md:max-w-[950px]">
+        <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Company Image with Shadow Effect - Left Side */}
             <div className="relative order-2 lg:order-1" data-aos="fade-right" data-aos-delay="200">
@@ -125,7 +125,7 @@ export default function Careers() {
 
       {/* Company Vision Section */}
       <div className="bg-white py-16" data-aos="fade-up">
-        <div className="container mx-auto px-5 max-w-[1250px] lg:max-w-[1250px] md:max-w-[950px]">
+        <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
           <div className="text-center space-y-8">
             <h2 className="text-3xl lg:text-4xl font-bold text-black leading-tight" data-aos="fade-up" data-aos-delay="100">
               Tầm nhìn về con người
@@ -139,7 +139,7 @@ export default function Careers() {
       </div>
 
       <div className="bg-white py-16" data-aos="fade-up">
-        <div className="container mx-auto px-5 max-w-[1250px] lg:max-w-[1250px] md:max-w-[950px]">
+        <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
             {/* Vision Card 1 - Kiến tạo hệ sinh thái */}
             <div className="w-full flex" data-aos="zoom-in" data-aos-delay="100">
@@ -204,7 +204,7 @@ export default function Careers() {
 
       {/* Core Values Section */}
       <div className="bg-white py-16" data-aos="fade-up">
-        <div className="container mx-auto px-5 max-w-[1250px] lg:max-w-[1250px] md:max-w-[950px]">
+        <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
           <div className="text-center space-y-8">
             <h2 className="text-3xl lg:text-4xl font-bold text-black leading-tight" data-aos="fade-up" data-aos-delay="100">
               Giá trị cốt lõi
@@ -218,7 +218,7 @@ export default function Careers() {
       </div>
 
       <div className="bg-white py-16" data-aos="fade-up">
-        <div className="container mx-auto px-5 max-w-[1250px] lg:max-w-[1250px] md:max-w-[950px]">
+        <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
             {/* Value Card 1 - Tử tế */}
             <div className="w-full flex" data-aos="zoom-in" data-aos-delay="100">
@@ -341,7 +341,7 @@ export default function Careers() {
 
       {/* Work Culture Section */}
       <div className="bg-white py-16" data-aos="fade-up">
-        <div className="container mx-auto px-5 max-w-[1250px] lg:max-w-[1250px] md:max-w-[950px]">
+        <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
           <div className="text-center space-y-8">
             <h2 className="text-3xl lg:text-4xl font-bold text-black leading-tight" data-aos="fade-up" data-aos-delay="100">
               Văn hóa làm việc tại KSB GROUP
@@ -355,7 +355,7 @@ export default function Careers() {
       </div>
 
       <div className="bg-white py-16" data-aos="fade-up">
-        <div className="container mx-auto px-5 max-w-[1250px] lg:max-w-[1250px] md:max-w-[950px]">
+        <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
             {/* Culture Card 1 - Với Cổ đông */}
             <div className="w-full flex" data-aos="zoom-in" data-aos-delay="100">
@@ -480,7 +480,7 @@ export default function Careers() {
 
       {/* Job Openings Section */}
       <div id="job" className="bg-white py-16" data-aos="fade-up">
-        <div className="container mx-auto px-5 max-w-[1250px] lg:max-w-[1250px] md:max-w-[950px]">
+        <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
           <div className="text-center space-y-8">
             <h2 className="text-3xl lg:text-4xl font-bold text-black leading-tight" data-aos="fade-up" data-aos-delay="100">
               Các vị trí đang tuyển dụng
@@ -494,7 +494,7 @@ export default function Careers() {
           </div>
 
       <div className="bg-white py-16" data-aos="fade-up">
-        <div className="container mx-auto px-5 max-w-[1250px] lg:max-w-[1250px] md:max-w-[950px]">
+        <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
             {/* Job Card 1 - Lễ tân */}
             <div className="w-full flex" data-aos="zoom-in" data-aos-delay="100">
@@ -662,7 +662,7 @@ export default function Careers() {
 
       {/* Contact Section */}
       <div className="bg-white py-16" data-aos="fade-up">
-        <div className="container mx-auto px-5 max-w-[1250px] lg:max-w-[1250px] md:max-w-[950px]">
+        <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
           <div 
             id="contact" 
             className="qmenu_card icon_card group block bg-white border border-gray-200 rounded-[50px_0px_50px_0px] min-h-[400px] p-12 text-center shadow-lg transition-all duration-700 ease-out cursor-pointer relative overflow-hidden will-change-transform" 

@@ -68,7 +68,7 @@ export default function PartnersPage() {
       />
       {/* Hero Section with Partner Logos */}
       <div className="bg-white py-16" data-aos="fade-up">
-        <div className="container mx-auto px-5 max-w-[1250px] lg:max-w-[1250px] md:max-w-[950px]">
+        <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="w-full flex" data-aos="zoom-in" data-aos-delay="100">
               <div className="bg-white rounded-[3rem_0rem_3rem_0rem] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_16px_-4px_rgba(0,0,0,0.1)] w-full flex flex-col overflow-hidden transition-all duration-700 ease-out hover:transform hover:-translate-y-3 hover:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.25),0_12px_30px_-8px_rgba(0,0,0,0.15)] hover:scale-[1.02] cursor-pointer relative group">
@@ -147,7 +147,7 @@ export default function PartnersPage() {
 
       {/* Strategic Partners Section */}
       <div className="bg-gray-50 py-16" data-aos="fade-up">
-        <div className="container mx-auto px-5 max-w-[1250px] lg:max-w-[1250px] md:max-w-[950px]">
+        <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
           <div className="text-center mb-16" data-aos="fade-up" data-aos-duration="1000">
             <h2 className="text-4xl font-bold text-gray-800 mb-6">Các đối tác chiến lược</h2>
             <p className="text-xl text-gray-700 leading-relaxed max-w-4xl mx-auto">
@@ -233,7 +233,7 @@ export default function PartnersPage() {
 
       {/* Why Partner with KSB Section */}
       <div className="bg-white py-16" data-aos="fade-up">
-        <div className="container mx-auto px-5 max-w-[1250px] lg:max-w-[1250px] md:max-w-[950px]">
+        <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
           <div className="text-center mb-16" data-aos="fade-up" data-aos-duration="1000">
             <h2 className="text-4xl font-bold text-gray-800 mb-6">Tại sao nên đầu tư và hợp tác cùng KSB Group?</h2>
           </div>
@@ -304,7 +304,7 @@ export default function PartnersPage() {
 
       {/* Partnership Opportunities Section */}
       <div className="bg-gray-50 py-16" data-aos="fade-up">
-        <div className="container mx-auto px-5 max-w-[1250px] lg:max-w-[1250px] md:max-w-[950px]">
+        <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
           <div className="text-center mb-16" data-aos="fade-up" data-aos-duration="1000">
             <h2 className="text-4xl font-bold text-gray-800 mb-6">Cơ hội hợp tác</h2>
             <p className="text-xl text-gray-700 leading-relaxed max-w-4xl mx-auto">
@@ -360,7 +360,7 @@ export default function PartnersPage() {
 
       {/* Contact Section */}
       <div className="bg-white py-16" data-aos="fade-up">
-        <div className="container mx-auto px-5 max-w-[1250px] lg:max-w-[1250px] md:max-w-[950px]">
+        <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
           <div 
             id="contact" 
             className="qmenu_card icon_card group block bg-white border border-gray-200 rounded-[50px_0px_50px_0px] min-h-[400px] p-12 text-center shadow-lg transition-all duration-700 ease-out cursor-pointer relative overflow-hidden will-change-transform" 

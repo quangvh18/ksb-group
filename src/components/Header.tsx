@@ -18,7 +18,7 @@ export default function Header() {
   return (
     <header className="bg-[#2e3a36] relative w-full lg:bg-[rgba(46,58,54,0.5)] lg:fixed lg:top-0 lg:z-[1000]">
       <div className="relative mx-auto">
-         <nav className="relative w-full max-w-[1200px] mx-auto flex justify-between">
+         <nav className="relative w-full max-w-[1300px] mx-auto px-2 md:px-5 flex justify-between">
            <h2 className="absolute text-[0] leading-[0] overflow-hidden text-[30px] mt-[20px] mb-[10px]">KSB GROUP</h2>
            
            <div className="float-left flex items-center h-[70px] px-0">

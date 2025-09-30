@@ -20,7 +20,7 @@ export default function EcosystemPage() {
         breadcrumbItems={breadcrumbItems}
       />
       <main>
-        <div className="container mx-auto px-5 max-w-[1250px] lg:max-w-[1250px] md:max-w-[950px] w-full">
+        <div className="container mx-auto px-2 md:px-5 max-w-[1300px] w-full">
           <section className="py-16">
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
