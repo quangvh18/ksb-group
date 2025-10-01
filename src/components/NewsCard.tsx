@@ -30,7 +30,7 @@ const NewsCard = ({ title, image, link = '#', featured = false, leafDirection = 
           alt={title}
           className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
-        <div className={`absolute inset-0 bg-gradient-to-t from-success/95 via-success/60 to-transparent ${leafClass}`} />
+        <div className={`absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/70 via-black/40 to-transparent ${leafClass}`} />
         <div className={`absolute top-0 ${leafDirection === 'right' ? 'left-0' : 'right-0'} w-16 h-16 bg-white/20 ${cornerClass}`}></div>
 
         <div className="relative h-full p-6 md:p-8 flex flex-col justify-end">

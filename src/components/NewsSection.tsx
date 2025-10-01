@@ -26,7 +26,7 @@ const NewsSection = async () => {
   const regular = newsData.slice(1, 3)
 
   return (
-    <section className="max-w-7xl mx-auto px-6 py-6 md:py-8 h-screen flex flex-col overflow-hidden">
+    <section className="max-w-7xl mx-auto px-6 pt-12 md:pt-16 pb-24 md:pb-28">
       <div className="mb-6 md:mb-8 text-center">
         <h2 className="text-4xl md:text-5xl font-bold text-muted-foreground mb-4 text-center">
           Tin tức & Cộng đồng
@@ -36,9 +36,9 @@ const NewsSection = async () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 flex-1 min-h-0" data-aos="fade-up" data-aos-delay="150">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6" data-aos="fade-up" data-aos-delay="150">
         {/* Left column - 2 regular cards */}
-        <div className="grid grid-rows-2 gap-4 min-h-0">
+        <div className="flex flex-col gap-4">
           {regular.map((news, index) => (
             <div key={index} data-aos="zoom-in" data-aos-delay={200 + index * 100}>
               <NewsCard
@@ -46,14 +46,13 @@ const NewsSection = async () => {
                 image={news.image}
                 link={`/news/${createSlug(news.title)}`}
                 leafDirection={index % 2 === 0 ? 'left' : 'right'}
-                fullHeight
               />
             </div>
           ))}
         </div>
 
         {/* Right column - 1 featured card */}
-        <div className="min-h-[400px] lg:min-h-[600px] h-full min-h-0" data-aos="zoom-in" data-aos-delay="250">
+        <div className="min-h-[400px] lg:min-h-[600px]" data-aos="zoom-in" data-aos-delay="250">
           {featured && (
             <NewsCard
               title={featured.title}
@@ -61,7 +60,6 @@ const NewsSection = async () => {
               link={`/news/${createSlug(featured.title)}`}
               featured
               leafDirection="left"
-              fullHeight
             />
           )}
         </div>
