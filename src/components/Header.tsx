@@ -38,37 +38,37 @@ export default function Header() {
            <div className="mx-auto relative hidden lg:block">
             <ul className="mb-0 text-[1.1em] p-0 m-0 list-none block">
                <li className="float-left leading-[70px] p-0 relative z-[999]">
-                 <Link href="/" className="no-underline block font-bold px-5 text-white hover:bg-[#780000] hover:text-white transition-all duration-200">
+                 <Link href="/" className="no-underline block font-bold px-5 text-white hover:bg-[#c9184a] hover:text-white transition-all duration-200">
                    Trang chủ
                  </Link>
                </li>
                <li className="float-left leading-[70px] p-0 relative z-[998]">
-                 <Link href="/about" className="no-underline block font-bold px-5 text-white hover:bg-[#780000] hover:text-white transition-all duration-200">
+                 <Link href="/about" className="no-underline block font-bold px-5 text-white hover:bg-[#c9184a] hover:text-white transition-all duration-200">
                    Về chúng tôi
                  </Link>
                </li>
                <li className="float-left leading-[70px] p-0 relative z-[997]">
-                 <Link href="/ecosystem" className="no-underline block font-bold px-5 text-white hover:bg-[#780000] hover:text-white transition-all duration-200">
+                 <Link href="/ecosystem" className="no-underline block font-bold px-5 text-white hover:bg-[#c9184a] hover:text-white transition-all duration-200">
                    Hệ sinh thái
                  </Link>
                </li>
                <li className="float-left leading-[70px] p-0 relative z-[996]">
-                 <Link href="/news" className="no-underline block font-bold px-5 text-white hover:bg-[#780000] hover:text-white transition-all duration-200">
+                 <Link href="/news" className="no-underline block font-bold px-5 text-white hover:bg-[#c9184a] hover:text-white transition-all duration-200">
                    Tin tức
                  </Link>
                </li>
                <li className="float-left leading-[70px] p-0 relative z-[995]">
-                 <Link href="/careers" className="no-underline block font-bold px-5 text-white hover:bg-[#780000] hover:text-white transition-all duration-200">
+                 <Link href="/careers" className="no-underline block font-bold px-5 text-white hover:bg-[#c9184a] hover:text-white transition-all duration-200">
                    Tuyển dụng
                  </Link>
                </li>
                <li className="float-left leading-[70px] p-0 relative z-[994]">
-                 <Link href="/partners" className="no-underline block font-bold px-5 text-white hover:bg-[#780000] hover:text-white transition-all duration-200">
+                 <Link href="/partners" className="no-underline block font-bold px-5 text-white hover:bg-[#c9184a] hover:text-white transition-all duration-200">
                    Đối tác
                  </Link>
                </li>
                <li className="float-left leading-[70px] p-0 relative z-[993]">
-                 <Link href="/contact" className="no-underline block font-bold px-5 text-white hover:bg-[#780000] hover:text-white transition-all duration-200">
+                 <Link href="/contact" className="no-underline block font-bold px-5 text-white hover:bg-[#c9184a] hover:text-white transition-all duration-200">
                    Liên hệ
                  </Link>
                </li>
@@ -79,7 +79,7 @@ export default function Header() {
           <div className="lg:hidden flex items-center">
             <button
               onClick={toggleMenu}
-              className="text-white p-2 hover:bg-[#780000] rounded transition-all duration-200"
+              className="text-white p-2 hover:bg-[#c9184a] rounded transition-all duration-200"
               aria-label="Toggle menu"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -127,49 +127,49 @@ export default function Header() {
               <nav className="space-y-1">
                 <Link 
                   href="/" 
-                  className="block w-full px-4 py-4 text-white font-bold hover:bg-[#780000] transition-all duration-200"
+                  className="block w-full px-4 py-4 text-white font-bold hover:bg-[#c9184a] transition-all duration-200"
                   onClick={closeMenu}
                 >
                   Trang chủ
                 </Link>
                 <Link 
                   href="/about" 
-                  className="block w-full px-4 py-4 text-white font-bold hover:bg-[#780000] transition-all duration-200"
+                  className="block w-full px-4 py-4 text-white font-bold hover:bg-[#c9184a] transition-all duration-200"
                   onClick={closeMenu}
                 >
                   Về chúng tôi
                 </Link>
                 <Link 
                   href="/ecosystem" 
-                  className="block w-full px-4 py-4 text-white font-bold hover:bg-[#780000] transition-all duration-200"
+                  className="block w-full px-4 py-4 text-white font-bold hover:bg-[#c9184a] transition-all duration-200"
                   onClick={closeMenu}
                 >
                   Hệ sinh thái
                 </Link>
                 <Link 
                   href="/news" 
-                  className="block w-full px-4 py-4 text-white font-bold hover:bg-[#780000] transition-all duration-200"
+                  className="block w-full px-4 py-4 text-white font-bold hover:bg-[#c9184a] transition-all duration-200"
                   onClick={closeMenu}
                 >
                   Tin tức
                 </Link>
                 <Link 
                   href="/careers" 
-                  className="block w-full px-4 py-4 text-white font-bold hover:bg-[#780000] transition-all duration-200"
+                  className="block w-full px-4 py-4 text-white font-bold hover:bg-[#c9184a] transition-all duration-200"
                   onClick={closeMenu}
                 >
                   Tuyển dụng
                 </Link>
                 <Link 
                   href="/partners" 
-                  className="block w-full px-4 py-4 text-white font-bold hover:bg-[#780000] transition-all duration-200"
+                  className="block w-full px-4 py-4 text-white font-bold hover:bg-[#c9184a] transition-all duration-200"
                   onClick={closeMenu}
                 >
                   Đối tác
                 </Link>
                 <Link 
                   href="/contact" 
-                  className="block w-full px-4 py-4 text-white font-bold hover:bg-[#780000] transition-all duration-200"
+                  className="block w-full px-4 py-4 text-white font-bold hover:bg-[#c9184a] transition-all duration-200"
                   onClick={closeMenu}
                 >
                   Liên hệ
@@ -182,7 +182,7 @@ export default function Header() {
                   <a 
                     href="https://www.instagram.com/sahmyook_island/" 
                     target="_blank" 
-                    className="p-3 bg-white rounded-full hover:bg-[#780000] transition-all duration-200"
+                    className="p-3 bg-white rounded-full hover:bg-[#c9184a] transition-all duration-200"
                   >
                     <Image 
                       src="/images/insta-icon.png" 
@@ -194,7 +194,7 @@ export default function Header() {
                   </a>
                   <a 
                     href="https://shopthienthuanphat.com/"
-                    className="p-3 bg-white rounded-full hover:bg-[#780000] transition-all duration-200"
+                    className="p-3 bg-white rounded-full hover:bg-[#c9184a] transition-all duration-200"
                   >
                     <Image 
                       src="https://thienthuanphat.vn/Data/images/banner-cn/logo/fa-ksb.webp" 

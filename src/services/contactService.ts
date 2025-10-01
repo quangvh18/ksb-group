@@ -1,10 +1,16 @@
 // Contact Service for API calls
+import axios from 'axios';
+
 const API_BASE_URL = 'https://admin.ksbgroup.vn/api';
 
 export interface RequestType {
   id: number;
+  documentId: string;
   name: string;
-  description?: string;
+  description: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
 }
 
 export interface ContactRequestData {
@@ -24,29 +30,79 @@ export interface ContactRequestResponse {
 // Get request types from API
 export async function getRequestTypes(): Promise<RequestType[]> {
   try {
+    console.log('Fetching request types from API...');
+    
+    // Use GET method (POST requires data payload)
     const response = await fetch(`${API_BASE_URL}/request-types`, {
-      method: 'POST',
+      method: 'GET',
+      mode: 'cors',
       headers: {
         'Content-Type': 'application/json',
+        'Accept': 'application/json',
       },
-      body: JSON.stringify({}),
     });
+
+    console.log('API Response status:', response.status);
+    console.log('API Response ok:', response.ok);
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
     const data = await response.json();
+    console.log('API Response data:', data);
     return data.data || [];
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error fetching request types:', error);
+    
     // Return fallback data if API fails
+    console.log('Using fallback data for request types');
     return [
-      { id: 1, name: "Tư vấn sản phẩm", description: "Tư vấn về các sản phẩm và dịch vụ" },
-      { id: 2, name: "Hỗ trợ kỹ thuật", description: "Hỗ trợ các vấn đề kỹ thuật" },
-      { id: 3, name: "Phản hồi khách hàng về sản phẩm", description: "Phản hồi về chất lượng sản phẩm" },
-      { id: 4, name: "Đối tác cung ứng", description: "Hợp tác cung ứng sản phẩm" },
-      { id: 5, name: "Đối tác phân phối", description: "Hợp tác phân phối sản phẩm" }
+      { 
+        id: 1, 
+        documentId: "fallback-1", 
+        name: "Tư vấn sản phẩm", 
+        description: "Tư vấn về các sản phẩm và dịch vụ",
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        publishedAt: new Date().toISOString()
+      },
+      { 
+        id: 2, 
+        documentId: "fallback-2", 
+        name: "Hỗ trợ kỹ thuật", 
+        description: "Hỗ trợ các vấn đề kỹ thuật",
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        publishedAt: new Date().toISOString()
+      },
+      { 
+        id: 3, 
+        documentId: "fallback-3", 
+        name: "Ý kiến khách hàng", 
+        description: "Ý kiến khách hàng",
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        publishedAt: new Date().toISOString()
+      },
+      { 
+        id: 4, 
+        documentId: "fallback-4", 
+        name: "Đối tác cung ứng", 
+        description: "Đối tác cung ứng",
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        publishedAt: new Date().toISOString()
+      },
+      { 
+        id: 5, 
+        documentId: "fallback-5", 
+        name: "Đối tác phân phối", 
+        description: "Đối tác phân phối",
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        publishedAt: new Date().toISOString()
+      }
     ];
   }
 }
@@ -62,30 +118,24 @@ export async function submitContactRequest(data: ContactRequestData): Promise<Co
       };
     }
 
-    const response = await fetch(`${API_BASE_URL}/contact-requests`, {
-      method: 'POST',
+    const response = await axios.post(`${API_BASE_URL}/contact-requests`, {
+      data: {
+        fullName: data.fullName,
+        phone: data.phone,
+        email: data.email,
+        content: data.content
+      }
+    }, {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        data: {
-          fullName: data.fullName,
-          phone: data.phone,
-          email: data.email,
-          content: data.content
-        }
-      }),
+      timeout: 10000, // 10 seconds timeout
     });
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const result = await response.json();
     return {
       success: true,
       message: 'Gửi yêu cầu thành công! Chúng tôi sẽ liên hệ lại trong thời gian sớm nhất.',
-      data: result
+      data: response.data
     };
   } catch (error) {
     console.error('Error submitting contact request:', error);

@@ -25,7 +25,9 @@ export default function ContactPage() {
   useEffect(() => {
     const loadRequestTypes = async () => {
       try {
+        console.log('Loading request types...');
         const types = await getRequestTypes();
+        console.log('Loaded request types:', types);
         setRequestTypes(types);
       } catch (error) {
         console.error('Error loading request types:', error);

@@ -97,6 +97,36 @@ export class NewsService {
     }
   }
 
+  // Get news with pagination and metadata
+  async getNewsWithMeta(page: number = 1, pageSize: number = 15): Promise<{ data: NewsItem[], total: number }> {
+    try {
+      const response: AxiosResponse<NewsApiResponse> = await axios.get(
+        `${this.baseURL}/news`,
+        {
+          params: {
+            'populate': '*',
+            'pagination[page]': page,
+            'pagination[pageSize]': pageSize,
+            'sort': 'publishedAt:desc'
+          },
+          headers: {
+            'Content-Type': 'application/json',
+            ...(this.apiKey && { 'Authorization': `Bearer ${this.apiKey}` })
+          },
+          timeout: 10000, // 10 seconds timeout
+        }
+      );
+
+      return {
+        data: response.data.data,
+        total: response.data.meta.pagination.total
+      };
+    } catch (error) {
+      console.error('Error fetching news with metadata:', error);
+      throw new Error('Failed to fetch news data');
+    }
+  }
+
   // Get single news item by ID
   async getNewsById(id: number): Promise<NewsItem | null> {
     try {
