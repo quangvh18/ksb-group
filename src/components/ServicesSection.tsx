@@ -72,7 +72,6 @@ export default function ServicesSection() {
     }, ROTATION_MS);
   };
 
-  const topPercent = currentImageIndex === 0 ? 24 : currentImageIndex === 1 ? 50 : 76;
 
   // Start rotation only when section is in viewport; reset to first item on start
   useEffect(() => {

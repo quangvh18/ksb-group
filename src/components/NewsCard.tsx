@@ -18,13 +18,13 @@ const NewsCard = ({ title, image, link = '#', featured = false, leafDirection = 
     : 'rounded-[3rem_0rem_3rem_0rem]'
   const cornerClass = leafDirection === 'right' ? 'rounded-br-full right-0' : 'rounded-bl-full left-0'
   const baseCardClass = fullHeight
-    ? `bg-card ${leafClass} overflow-hidden group cursor-pointer shadow-lg border border-black/10 transition-all duration-300 relative h-full flex flex-col`
-    : `bg-card ${leafClass} overflow-hidden group cursor-pointer shadow-lg border border-black/10 transition-all duration-300 relative`
+    ? `bg-card ${leafClass} overflow-hidden group cursor-pointer shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_16px_-4px_rgba(0,0,0,0.1)] border border-black/10 transition-all duration-300 relative h-full flex flex-col hover:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.25),0_8px_24px_-4px_rgba(0,0,0,0.15)]`
+    : `bg-card ${leafClass} overflow-hidden group cursor-pointer shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_16px_-4px_rgba(0,0,0,0.1)] border border-black/10 transition-all duration-300 relative hover:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.25),0_8px_24px_-4px_rgba(0,0,0,0.15)]`
   const imageWrapperClass = fullHeight ? 'flex-1 overflow-hidden' : 'aspect-video overflow-hidden'
 
   if (featured) {
     return (
-      <Link href={link} className={`block relative h-full ${leafClass} overflow-hidden group cursor-pointer shadow-lg border border-white/10`}>
+      <Link href={link} className={`block relative h-full ${leafClass} overflow-hidden group cursor-pointer shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_16px_-4px_rgba(0,0,0,0.1)] border border-white/10 hover:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.25),0_8px_24px_-4px_rgba(0,0,0,0.15)] transition-all duration-300`}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={image}
@@ -60,7 +60,7 @@ const NewsCard = ({ title, image, link = '#', featured = false, leafDirection = 
       </div>
 
       <div className="p-4 md:p-5">
-        <h3 className="text-foreground text-base font-medium mb-4 leading-relaxed line-clamp-2">
+        <h3 className="text-foreground text-base font-medium mb-4 leading-relaxed line-clamp-2 min-h-[3.5rem] flex items-center">
           {title}
         </h3>
         <span className="inline-flex items-center gap-2 text-success transition-all duration-300 text-sm font-medium">

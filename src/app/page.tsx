@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { newsService, transformNewsItem, fallbackNewsData, TransformedNewsItem } from '../services/newsService'
 import dynamic from 'next/dynamic'
 import HomeFeature from '../components/HomeFeature'
@@ -8,18 +7,6 @@ const Banner = dynamic(() => import('../components/Banner'))
 const KSBGroupSection = dynamic(() => import('../components/KSBGroupSection'))
 const ServicesSection = dynamic(() => import('../components/ServicesSection'))
 
-// Function để tạo slug từ title
-function createSlug(title: string): string {
-  return title
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/đ/g, "d")
-    .replace(/Đ/g, "D")
-    .replace(/[^a-z0-9\s-]/g, "")
-    .replace(/\s+/g, "-")
-    .trim();
-}
 
 // Function để fetch news data using service
 async function getNewsData(): Promise<TransformedNewsItem[]> {
@@ -35,7 +22,7 @@ async function getNewsData(): Promise<TransformedNewsItem[]> {
 
 export default async function Home() {
   // Fetch news data from API using service
-  const newsData = await getNewsData();
+  await getNewsData();
   return (
     <div>
       <Banner />

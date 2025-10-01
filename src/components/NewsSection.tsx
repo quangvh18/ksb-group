@@ -18,7 +18,7 @@ const NewsSection = async () => {
   try {
     const apiNews = await newsService.getNews(1, 3)
     newsData = apiNews.map(transformNewsItem)
-  } catch (e) {
+  } catch {
     newsData = fallbackNewsData.slice(0, 3)
   }
 

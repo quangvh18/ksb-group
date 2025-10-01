@@ -91,15 +91,15 @@ export default function Careers() {
             
             {/* Text Content - Right Side */}
             <div className="space-y-8 order-1 lg:order-2">
-              <h2 className="text-3xl lg:text-4xl font-bold text-black leading-tight" data-aos="fade-left" data-aos-delay="100">
+              <h2 className="text-4xl md:text-5xl font-bold text-muted-foreground leading-tight" data-aos="fade-left" data-aos-delay="100">
                 Văn Hóa KSB
               </h2>
               
-              <p className="text-lg text-black leading-relaxed" data-aos="fade-left" data-aos-delay="200">
+              <p className="text-base text-muted-foreground leading-relaxed" data-aos="fade-left" data-aos-delay="200">
                 KSB GROUP sáng tạo nét văn hóa nhằm đóng góp vào cuộc sống thêm sức khỏe, niềm vui và tiện lợi. Nếu điều này nói lên đúng những gì bạn đang cần tìm cho công việc của mình, vậy bạn còn chần chừ gì không tham gia cùng chúng tôi?
               </p>
               
-              <p className="text-lg text-black leading-relaxed" data-aos="fade-left" data-aos-delay="300">
+              <p className="text-base text-muted-foreground leading-relaxed" data-aos="fade-left" data-aos-delay="300">
                 KSB luôn rộng cửa chào đón những tài năng ở mọi nơi. Chúng tôi tin rằng mỗi cá nhân đều có thể đóng góp giá trị độc đáo cho sự phát triển của tập đoàn.
               </p>
               
@@ -127,11 +127,11 @@ export default function Careers() {
       <div className="bg-white py-16" data-aos="fade-up">
         <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
           <div className="text-center space-y-8">
-            <h2 className="text-3xl lg:text-4xl font-bold text-black leading-tight" data-aos="fade-up" data-aos-delay="100">
+            <h2 className="text-4xl md:text-5xl font-bold text-muted-foreground leading-tight" data-aos="fade-up" data-aos-delay="100">
               Tầm nhìn về con người
               </h2>
             
-            <p className="text-lg text-black leading-relaxed max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+            <p className="text-base text-muted-foreground leading-relaxed max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="200">
               Tại KSB GROUP, chúng tôi tin rằng con người là tài sản giá trị nhất. Với các giá trị cốt lõi &ldquo;Tử tế – Sáng tạo – Nhiệt huyết – Ước mơ lớn&rdquo;, chúng tôi xây dựng một môi trường làm việc truyền cảm hứng.
             </p>
           </div>
@@ -206,11 +206,11 @@ export default function Careers() {
       <div className="bg-white py-16" data-aos="fade-up">
         <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
           <div className="text-center space-y-8">
-            <h2 className="text-3xl lg:text-4xl font-bold text-black leading-tight" data-aos="fade-up" data-aos-delay="100">
+            <h2 className="text-4xl md:text-5xl font-bold text-muted-foreground leading-tight" data-aos="fade-up" data-aos-delay="100">
               Giá trị cốt lõi
             </h2>
             
-            <p className="text-lg text-black leading-relaxed max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+            <p className="text-base text-muted-foreground leading-relaxed max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="200">
               Với các giá trị cốt lõi &ldquo;Tử tế – Sáng tạo – Nhiệt huyết – Ước mơ lớn&rdquo;, chúng tôi xây dựng một môi trường làm việc truyền cảm hứng.
             </p>
           </div>
@@ -343,11 +343,11 @@ export default function Careers() {
       <div className="bg-white py-16" data-aos="fade-up">
         <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
           <div className="text-center space-y-8">
-            <h2 className="text-3xl lg:text-4xl font-bold text-black leading-tight" data-aos="fade-up" data-aos-delay="100">
+            <h2 className="text-4xl md:text-5xl font-bold text-muted-foreground leading-tight" data-aos="fade-up" data-aos-delay="100">
               Văn hóa làm việc tại KSB GROUP
             </h2>
             
-            <p className="text-lg text-black leading-relaxed max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+            <p className="text-base text-muted-foreground leading-relaxed max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="200">
               Tại KSB GROUP, chúng tôi xây dựng một nền văn hóa dựa trên sự truyền cảm hứng, chuyên nghiệp và minh bạch. Trong nội bộ, tinh thần bứt phá và sáng tạo được khuyến khích mạnh mẽ, cùng với môi trường làm việc kỷ luật, hợp tác và hiệu quả.
             </p>
           </div>
@@ -482,11 +482,11 @@ export default function Careers() {
       <div id="job" className="bg-white py-16" data-aos="fade-up">
         <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
           <div className="text-center space-y-8">
-            <h2 className="text-3xl lg:text-4xl font-bold text-black leading-tight" data-aos="fade-up" data-aos-delay="100">
+            <h2 className="text-4xl md:text-5xl font-bold text-muted-foreground leading-tight" data-aos="fade-up" data-aos-delay="100">
               Các vị trí đang tuyển dụng
             </h2>
             
-            <p className="text-lg text-black leading-relaxed max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+            <p className="text-base text-muted-foreground leading-relaxed max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="200">
               Tham gia cùng chúng tôi để kiến tạo giá trị và vươn tầm toàn cầu
             </p>
           </div>
