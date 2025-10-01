@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic'
 
 const Banner = dynamic(() => import('../components/Banner'))
 const KSBGroupSection = dynamic(() => import('../components/KSBGroupSection'))
+const ServicesSection = dynamic(() => import('../components/ServicesSection'))
 
 // Function để tạo slug từ title
 function createSlug(title: string): string {
@@ -39,6 +40,7 @@ export default async function Home() {
       <main>
         {/* KSB Group Summary Section */}
         <KSBGroupSection />
+        <ServicesSection />
 
         {/* News & Community Section */}
         <section className="synew">

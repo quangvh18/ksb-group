@@ -118,7 +118,7 @@ export default function KSBGroupSection() {
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 uppercase tracking-wide">
             KSB Group
           </h2>
-          
+
         </div>
 
         <div className="relative">
@@ -147,9 +147,9 @@ export default function KSBGroupSection() {
                   <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-transparent"></div>
                   <div className="absolute top-6 left-6">
                     <h3 className="text-2xl font-bold text-white mb-2">F&B</h3>
-                  <p className="text-white text-sm leading-relaxed">
-                    Nhập khẩu & phân phối F&B chất lượng cao; đối tác Hàn, Đài Loan, Pháp… Dẫn đầu xu hướng ẩm thực.
-                  </p>
+                    <p className="text-white text-sm leading-relaxed">
+                      Nhập khẩu & phân phối F&B chất lượng cao. Đối tác quốc tế: Hàn Quốc, Đài Loan, Pháp, Ba Lan, Đức, New Zealand. Dẫn đầu xu hướng ẩm thực.
+                    </p>
                   </div>
                   <div className="absolute bottom-6 left-6">
                     <button className="w-10 h-10 bg-[#c9184a] rounded-lg flex items-center justify-center hover:bg-[#a0153a] transition-colors">
@@ -169,9 +169,9 @@ export default function KSBGroupSection() {
                   <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-transparent"></div>
                   <div className="absolute top-6 left-6">
                     <h3 className="text-2xl font-bold text-white mb-2">HÓA - MỸ PHẨM</h3>
-                  <p className="text-white text-sm leading-relaxed">
-                    Chăm sóc sức khỏe & làm đẹp; đối tác quốc tế (Biofresh—Bulgaria…). Cam kết chất lượng bền vững.
-                  </p>
+                    <p className="text-white text-sm leading-relaxed">
+                      Chăm sóc sức khỏe & làm đẹp. Đối tác quốc tế: Biofresh (Bulgaria), Trung Quốc. Cam kết chất lượng bền vững.
+                    </p>
                   </div>
                   <div className="absolute bottom-6 left-6">
                     <button className="w-10 h-10 bg-[#c9184a] rounded-lg flex items-center justify-center hover:bg-[#a0153a] transition-colors">
@@ -191,9 +191,9 @@ export default function KSBGroupSection() {
                   <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-transparent"></div>
                   <div className="absolute top-6 left-6">
                     <h3 className="text-2xl font-bold text-white mb-2">SẢN XUẤT</h3>
-                  <p className="text-white text-sm leading-relaxed">
-                    Sản xuất hiện đại, phân phối phủ toàn quốc. Kiến tạo chuỗi cung ứng hiệu quả, tin cậy.
-                  </p>
+                    <p className="text-white text-sm leading-relaxed">
+                      Sản xuất hiện đại, phân phối thực phẩm phủ toàn quốc. Kiến tạo chuỗi cung ứng hiệu quả, tin cậy.
+                    </p>
                   </div>
                   <div className="absolute bottom-6 left-6">
                     <button className="w-10 h-10 bg-[#c9184a] rounded-lg flex items-center justify-center hover:bg-[#a0153a] transition-colors">
@@ -213,9 +213,9 @@ export default function KSBGroupSection() {
                   <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-transparent"></div>
                   <div className="absolute top-6 left-6">
                     <h3 className="text-2xl font-bold text-white mb-2">TIÊU DÙNG</h3>
-                  <p className="text-white text-sm leading-relaxed">
-                    Hàng tiêu dùng nhập khẩu: Choco Samjin, Boring Oat Milk… Trải nghiệm khác biệt cho người Việt.
-                  </p>
+                    <p className="text-white text-sm leading-relaxed">
+                      Hàng tiêu dùng nhập khẩu: Choco Samjin, Boring Oat Milk. Trải nghiệm khác biệt cho người tiêu dùng Việt.
+                    </p>
                   </div>
                   <div className="absolute bottom-6 left-6">
                     <button className="w-10 h-10 bg-[#c9184a] rounded-lg flex items-center justify-center hover:bg-[#a0153a] transition-colors">
@@ -236,9 +236,9 @@ export default function KSBGroupSection() {
                   <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-transparent"></div>
                   <div className="absolute top-6 left-6">
                     <h3 className="text-2xl font-bold text-white mb-2">LOGISTICS</h3>
-                  <p className="text-white text-sm leading-relaxed">
-                    Logistics đồng bộ, tối ưu dòng chảy thương mại. Kết nối giá trị – lan tỏa niềm tin.
-                  </p>
+                    <p className="text-white text-sm leading-relaxed">
+                      Logistics đồng bộ, tối ưu dòng chảy thương mại. Kết nối giá trị – lan tỏa niềm tin.
+                    </p>
                   </div>
                   <div className="absolute bottom-6 left-6">
                     <button className="w-10 h-10 bg-[#c9184a] rounded-lg flex items-center justify-center hover:bg-[#a0153a] transition-colors">
@@ -258,9 +258,9 @@ export default function KSBGroupSection() {
                   <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-transparent"></div>
                   <div className="absolute top-6 left-6">
                     <h3 className="text-2xl font-bold text-white mb-2">CÔNG NGHỆ</h3>
-                  <p className="text-white text-sm leading-relaxed">
-                    Ứng dụng công nghệ, mở rộng hệ sinh thái. Nâng tầm trải nghiệm, dẫn dắt chuyển đổi số.
-                  </p>
+                    <p className="text-white text-sm leading-relaxed">
+                      Ứng dụng công nghệ, mở rộng hệ sinh thái. Nâng tầm trải nghiệm, dẫn dắt chuyển đổi số.
+                    </p>
                   </div>
                   <div className="absolute bottom-6 left-6">
                     <button className="w-10 h-10 bg-[#c9184a] rounded-lg flex items-center justify-center hover:bg-[#a0153a] transition-colors">
