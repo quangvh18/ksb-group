@@ -36,23 +36,24 @@ const NewsSection = async () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 flex-1 min-h-0">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 flex-1 min-h-0" data-aos="fade-up" data-aos-delay="150">
         {/* Left column - 2 regular cards */}
         <div className="grid grid-rows-2 gap-4 min-h-0">
           {regular.map((news, index) => (
-            <NewsCard
-              key={index}
-              title={news.title}
-              image={news.image}
-              link={`/news/${createSlug(news.title)}`}
-              leafDirection={index % 2 === 0 ? 'left' : 'right'}
-              fullHeight
-            />
+            <div key={index} data-aos="zoom-in" data-aos-delay={200 + index * 100}>
+              <NewsCard
+                title={news.title}
+                image={news.image}
+                link={`/news/${createSlug(news.title)}`}
+                leafDirection={index % 2 === 0 ? 'left' : 'right'}
+                fullHeight
+              />
+            </div>
           ))}
         </div>
 
         {/* Right column - 1 featured card */}
-        <div className="min-h-[400px] lg:min-h-[600px] h-full min-h-0">
+        <div className="min-h-[400px] lg:min-h-[600px] h-full min-h-0" data-aos="zoom-in" data-aos-delay="250">
           {featured && (
             <NewsCard
               title={featured.title}
