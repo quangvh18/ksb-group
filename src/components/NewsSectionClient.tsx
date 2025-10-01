@@ -25,7 +25,7 @@ export default function NewsSectionClient({ initialNews, totalCount }: NewsSecti
   const [newsData, setNewsData] = useState<TransformedNewsItem[]>(initialNews);
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
-  const [hasMore, setHasMore] = useState(initialNews.length < totalCount);
+  const [hasMore, setHasMore] = useState(false); // Không hiển thị nút "Xem thêm" cho trang chủ
 
   const loadMoreNews = async () => {
     if (isLoading || !hasMore) return;
@@ -47,7 +47,7 @@ export default function NewsSectionClient({ initialNews, totalCount }: NewsSecti
   };
 
   const featured = newsData[0];
-  const regular = newsData.slice(1);
+  const regular = newsData.slice(1, 3); // Chỉ lấy 2 bài nhỏ
 
   return (
     <section className="max-w-7xl mx-auto px-6 pt-12 md:pt-16 pb-24 md:pb-28">

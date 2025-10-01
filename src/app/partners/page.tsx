@@ -404,10 +404,7 @@ export default function PartnersPage() {
 
               {/* Contact Info */}
               <div 
-                className="bg-gradient-to-br from-white/90 to-white/80 backdrop-blur-sm rounded-2xl p-8 mb-8 border border-white/50 transition-all duration-700 ease-out group-hover:bg-white/95 group-hover:border-[#c9184a]/20"
-                style={{
-                  boxShadow: '0 4px 15px rgba(0,0,0,0.05)'
-                }}
+                className="bg-gradient-to-br from-white/90 to-white/80 backdrop-blur-sm rounded-2xl p-8 mb-8 transition-all duration-700 ease-out group-hover:bg-white/95"
               >
                 <div className="text-lg text-gray-700 mb-6 group-hover:text-gray-800 transition-colors duration-500 ease-out">
                   <div className="mb-4">

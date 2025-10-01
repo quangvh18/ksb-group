@@ -18,13 +18,13 @@ const NewsCard = ({ title, image, link = '#', featured = false, leafDirection = 
     : 'rounded-[3rem_0rem_3rem_0rem]'
   const cornerClass = leafDirection === 'right' ? 'rounded-br-full right-0' : 'rounded-bl-full left-0'
   const baseCardClass = fullHeight
-    ? `bg-card ${leafClass} overflow-hidden group cursor-pointer shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_16px_-4px_rgba(0,0,0,0.1)] border border-black/10 transition-all duration-300 relative h-full flex flex-col hover:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.25),0_8px_24px_-4px_rgba(0,0,0,0.15)]`
-    : `bg-card ${leafClass} overflow-hidden group cursor-pointer shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_16px_-4px_rgba(0,0,0,0.1)] border border-black/10 transition-all duration-300 relative hover:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.25),0_8px_24px_-4px_rgba(0,0,0,0.15)]`
-  const imageWrapperClass = fullHeight ? 'flex-1 overflow-hidden' : 'aspect-video overflow-hidden'
+    ? `bg-white ${leafClass} overflow-hidden group cursor-pointer shadow-lg border border-gray-200 transition-all duration-300 relative h-full flex flex-col hover:shadow-xl`
+    : `bg-white ${leafClass} overflow-hidden group cursor-pointer shadow-lg border border-gray-200 transition-all duration-300 relative h-full flex flex-col hover:shadow-xl`
+  const imageWrapperClass = 'flex-1 overflow-hidden'
 
   if (featured) {
     return (
-      <Link href={link} className={`block relative h-full ${leafClass} overflow-hidden group cursor-pointer shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_16px_-4px_rgba(0,0,0,0.1)] border border-white/10 hover:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.25),0_8px_24px_-4px_rgba(0,0,0,0.15)] transition-all duration-300`}>
+      <Link href={link} className={`block relative h-full ${leafClass} overflow-hidden group cursor-pointer bg-white shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300`}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={image}
@@ -32,7 +32,6 @@ const NewsCard = ({ title, image, link = '#', featured = false, leafDirection = 
           className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
         <div className={`absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/70 via-black/40 to-transparent ${leafClass}`} />
-        <div className={`absolute top-0 ${leafDirection === 'right' ? 'left-0' : 'right-0'} w-16 h-16 bg-white/20 ${cornerClass}`}></div>
 
         <div className="relative h-full p-6 md:p-8 flex flex-col justify-end">
           <h3 className="text-white text-xl md:text-2xl font-semibold mb-6 leading-relaxed">
@@ -49,7 +48,6 @@ const NewsCard = ({ title, image, link = '#', featured = false, leafDirection = 
 
   return (
     <Link href={link} className={baseCardClass}>
-      <div className={`absolute top-0 ${leafDirection === 'right' ? 'left-0' : 'right-0'} w-10 h-10 bg-white/40 ${cornerClass}`}></div>
       <div className={imageWrapperClass}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img

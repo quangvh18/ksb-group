@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { useEffect } from 'react';
 import PageHeader from "../../components/PageHeader";
+import JobListings from "../../components/JobListings";
 
 export default function Careers() {
   const breadcrumbItems = [
@@ -74,7 +75,7 @@ export default function Careers() {
             {/* Company Image with Shadow Effect - Left Side */}
             <div className="relative order-2 lg:order-1" data-aos="fade-right" data-aos-delay="200">
               {/* Shadow div with same size and leaf style */}
-              <div className="absolute top-0 left-0 w-full h-full bg-[#e5989b] rounded-[3rem_0rem_3rem_0rem] transform translate-x-8 translate-y-8 z-0"></div>
+              <div className="absolute top-0 left-0 w-full h-full bg-gray-200 rounded-[3rem_0rem_3rem_0rem] transform translate-x-8 translate-y-8 z-0"></div>
               
               {/* Company image with right and bottom offset */}
               <Image 
@@ -91,32 +92,22 @@ export default function Careers() {
             
             {/* Text Content - Right Side */}
             <div className="space-y-8 order-1 lg:order-2">
-              <h2 className="text-4xl md:text-5xl font-bold text-muted-foreground leading-tight" data-aos="fade-left" data-aos-delay="100">
+              <h2 className="text-4xl md:text-5xl font-bold text-muted-foreground leading-tight" data-aos="fade-up" data-aos-delay="100">
                 Văn Hóa KSB
               </h2>
               
-              <p className="text-base text-muted-foreground leading-relaxed" data-aos="fade-left" data-aos-delay="200">
+              <p className="text-base text-muted-foreground leading-relaxed" data-aos="fade-up" data-aos-delay="200">
                 KSB GROUP sáng tạo nét văn hóa nhằm đóng góp vào cuộc sống thêm sức khỏe, niềm vui và tiện lợi. Nếu điều này nói lên đúng những gì bạn đang cần tìm cho công việc của mình, vậy bạn còn chần chừ gì không tham gia cùng chúng tôi?
               </p>
               
-              <p className="text-base text-muted-foreground leading-relaxed" data-aos="fade-left" data-aos-delay="300">
+              <p className="text-base text-muted-foreground leading-relaxed" data-aos="fade-up" data-aos-delay="300">
                 KSB luôn rộng cửa chào đón những tài năng ở mọi nơi. Chúng tôi tin rằng mỗi cá nhân đều có thể đóng góp giá trị độc đáo cho sự phát triển của tập đoàn.
               </p>
               
-              <a className="text-white text-xl font-bold px-8 py-4 rounded-full inline-block transition-all duration-300 ease-in-out hover:shadow-2xl transform hover:-translate-y-2 hover:scale-105 w-fit group relative overflow-hidden" 
+              <a className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-[#c9184a] hover:bg-[#a0153a] text-white font-semibold shadow transition-colors duration-300" 
                  href="#job"
-                 data-aos="fade-left" data-aos-delay="400"
-                 style={{
-                   background: 'linear-gradient(130deg, rgba(217, 37, 31, 1) 0%, rgba(233, 128, 30, 1) 100%)',
-                   boxShadow: '0 10px 25px rgba(217, 37, 31, 0.3)'
-                 }}>
-                <span className="relative z-10 flex items-center">
+                 data-aos="fade-up" data-aos-delay="400">
                   XEM TUYỂN DỤNG 
-                  <svg className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                  </svg>
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out"></div>
               </a>
             </div>
           </div>
@@ -126,75 +117,44 @@ export default function Careers() {
       {/* Company Vision Section */}
       <div className="bg-white py-16" data-aos="fade-up">
         <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
-          <div className="text-center space-y-8">
-            <h2 className="text-4xl md:text-5xl font-bold text-muted-foreground leading-tight" data-aos="fade-up" data-aos-delay="100">
+          <div className="flex justify-center">
+            <div className="w-full max-w-4xl relative">
+              {/* Leaf shadow */}
+              <div className="absolute top-0 left-0 w-full h-full bg-gray-200 rounded-[3rem_0rem_3rem_0rem] transform translate-x-2 translate-y-2 z-0"></div>
+              
+              {/* Main card */}
+              <div className="bg-white rounded-[3rem_0rem_3rem_0rem] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_16px_-4px_rgba(0,0,0,0.1)] hover:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.25),0_8px_24px_-4px_rgba(0,0,0,0.15)] transition-all duration-300 cursor-pointer group relative z-10 overflow-hidden p-8" data-aos="zoom-in" data-aos-delay="100">
+                {/* Leaf shape decoration */}
+                <div className="absolute top-0 right-0 w-12 h-12 bg-white/20 rounded-bl-full"></div>
+                
+                <div className="text-center">
+                  <h2 className="text-4xl md:text-5xl font-bold text-muted-foreground leading-tight mb-6 group-hover:text-[#c9184a] transition-colors duration-300">
               Tầm nhìn về con người
               </h2>
             
-            <p className="text-base text-muted-foreground leading-relaxed max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                  <p className="text-base text-muted-foreground leading-relaxed mb-8">
               Tại KSB GROUP, chúng tôi tin rằng con người là tài sản giá trị nhất. Với các giá trị cốt lõi &ldquo;Tử tế – Sáng tạo – Nhiệt huyết – Ước mơ lớn&rdquo;, chúng tôi xây dựng một môi trường làm việc truyền cảm hứng.
             </p>
-          </div>
-        </div>
-      </div>
 
-      <div className="bg-white py-16" data-aos="fade-up">
-        <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
-            {/* Vision Card 1 - Kiến tạo hệ sinh thái */}
-            <div className="w-full flex" data-aos="zoom-in" data-aos-delay="100">
-              <div className="bg-white rounded-[3rem_0rem_3rem_0rem] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_16px_-4px_rgba(0,0,0,0.1)] w-full flex flex-col overflow-hidden transition-all duration-500 hover:transform hover:-translate-y-2 hover:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.25),0_8px_24px_-4px_rgba(0,0,0,0.15)] hover:scale-105 cursor-pointer relative group">
-                {/* Decorative corner */}
-                <div className="absolute top-0 right-0 w-16 h-16 bg-white opacity-20 rounded-bl-full"></div>
-                
-                <div className="px-6 pt-6 pb-0 bg-white text-gray-800 border-b border-gray-200 flex-shrink-0 h-[160px] flex flex-col justify-center relative">
-                  {/* Icon */}
-                  <div className="absolute top-4 right-4 w-8 h-8 text-black transition-all duration-300 group-hover:scale-125 group-hover:rotate-12">
-                    <svg fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
-                    </svg>
-            </div>
-
-                  <h3 className="text-xl font-bold mb-3 text-[#c9184a] text-center transition-all duration-300 group-hover:text-[#a0153a] group-hover:scale-110">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                    <div className="space-y-4">
+                      <h3 className="text-xl font-bold text-[#c9184a] group-hover:text-[#a0153a] transition-colors duration-300">
                     Kiến tạo hệ sinh thái
                 </h3>
-                  <h5 className="text-sm font-medium text-black leading-relaxed h-[60px] flex items-center transition-all duration-300 group-hover:text-gray-700">
-                    Môi trường phát triển
-                  </h5>
-                </div>
-                <div className="px-6 py-6 flex-1 flex flex-col justify-start bg-white">
-                  <p className="text-sm leading-relaxed text-black text-left transition-all duration-300 group-hover:text-gray-800">
+                      <p className="text-sm text-gray-700 leading-relaxed">
                     Chúng tôi xây dựng một môi trường làm việc truyền cảm hứng, nơi mỗi cá nhân đều có cơ hội phát triển tối đa năng lực, đồng thời tạo ra những giá trị tích cực và bền vững cho xã hội.
                   </p>
                 </div>
-              </div>
-            </div>
 
-            {/* Vision Card 2 - Chắp cánh ước mơ lớn */}
-            <div className="w-full flex" data-aos="zoom-in" data-aos-delay="200">
-              <div className="bg-white rounded-[0rem_3rem_0rem_3rem] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_16px_-4px_rgba(0,0,0,0.1)] w-full flex flex-col overflow-hidden transition-all duration-500 hover:transform hover:-translate-y-2 hover:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.25),0_8px_24px_-4px_rgba(0,0,0,0.15)] hover:scale-105 cursor-pointer relative group">
-                {/* Decorative corner */}
-                <div className="absolute top-0 left-0 w-16 h-16 bg-white opacity-20 rounded-br-full"></div>
-                
-                <div className="px-6 pt-6 pb-0 bg-white text-gray-800 border-b border-gray-200 flex-shrink-0 h-[160px] flex flex-col justify-center relative">
-                  {/* Icon */}
-                  <div className="absolute top-4 right-4 w-8 h-8 text-black transition-all duration-300 group-hover:scale-125 group-hover:rotate-12">
-                    <svg fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                    </svg>
-              </div>
-
-                  <h3 className="text-xl font-bold mb-3 text-[#c9184a] text-center transition-all duration-300 group-hover:text-[#a0153a] group-hover:scale-110">
+                    <div className="space-y-4">
+                      <h3 className="text-xl font-bold text-[#c9184a] group-hover:text-[#a0153a] transition-colors duration-300">
                     Chắp cánh ước mơ lớn
                   </h3>
-                  <h5 className="text-sm font-medium text-black leading-relaxed h-[60px] flex items-center transition-all duration-300 group-hover:text-gray-700">
-                    Tinh thần doanh chủ
-                  </h5>
-                </div>
-                <div className="px-6 py-6 flex-1 flex flex-col justify-start bg-white">
-                  <p className="text-sm leading-relaxed text-black text-left transition-all duration-300 group-hover:text-gray-800">
+                      <p className="text-sm text-gray-700 leading-relaxed">
                   Chúng tôi trân trọng sự đa dạng trong đội ngũ, đề cao tinh thần chủ động và tinh thần doanh chủ, để cùng nhau hiện thực hóa mục tiêu đưa các tinh hoa toàn cầu đến gần hơn với người tiêu dùng Việt.
                 </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -202,142 +162,6 @@ export default function Careers() {
         </div>
       </div>
 
-      {/* Core Values Section */}
-      <div className="bg-white py-16" data-aos="fade-up">
-        <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
-          <div className="text-center space-y-8">
-            <h2 className="text-4xl md:text-5xl font-bold text-muted-foreground leading-tight" data-aos="fade-up" data-aos-delay="100">
-              Giá trị cốt lõi
-            </h2>
-            
-            <p className="text-base text-muted-foreground leading-relaxed max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="200">
-              Với các giá trị cốt lõi &ldquo;Tử tế – Sáng tạo – Nhiệt huyết – Ước mơ lớn&rdquo;, chúng tôi xây dựng một môi trường làm việc truyền cảm hứng.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div className="bg-white py-16" data-aos="fade-up">
-        <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
-            {/* Value Card 1 - Tử tế */}
-            <div className="w-full flex" data-aos="zoom-in" data-aos-delay="100">
-              <div className="bg-white rounded-[3rem_0rem_3rem_0rem] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_16px_-4px_rgba(0,0,0,0.1)] w-full flex flex-col overflow-hidden transition-all duration-500 hover:transform hover:-translate-y-2 hover:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.25),0_8px_24px_-4px_rgba(0,0,0,0.15)] hover:scale-105 cursor-pointer relative group">
-                {/* Decorative corner */}
-                <div className="absolute top-0 right-0 w-16 h-16 bg-white opacity-20 rounded-bl-full"></div>
-                
-                <div className="px-6 pt-6 pb-0 bg-white text-gray-800 border-b border-gray-200 flex-shrink-0 h-[160px] flex flex-col justify-center relative">
-                  {/* Icon */}
-                  <div className="absolute top-4 right-4 w-8 h-8 text-black transition-all duration-300 group-hover:scale-125 group-hover:rotate-12">
-                    <svg fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clipRule="evenodd"/>
-                    </svg>
-                  </div>
-                  
-                  <h3 className="text-xl font-bold mb-3 text-[#c9184a] text-center transition-all duration-300 group-hover:text-[#a0153a] group-hover:scale-110">
-                    Tử tế
-                  </h3>
-                  <h5 className="text-sm font-medium text-black leading-relaxed h-[60px] flex items-center transition-all duration-300 group-hover:text-gray-700">
-                    Lòng nhân ái
-                  </h5>
-                </div>
-                <div className="px-6 py-6 flex-1 flex flex-col justify-start bg-white">
-                  <p className="text-sm leading-relaxed text-black text-left transition-all duration-300 group-hover:text-gray-800">
-                    Đối xử với mọi người bằng sự tôn trọng, lòng nhân ái và sự chân thành trong mọi tương tác.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Value Card 2 - Sáng tạo */}
-            <div className="w-full flex" data-aos="zoom-in" data-aos-delay="200">
-              <div className="bg-white rounded-[0rem_3rem_0rem_3rem] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_16px_-4px_rgba(0,0,0,0.1)] w-full flex flex-col overflow-hidden transition-all duration-500 hover:transform hover:-translate-y-2 hover:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.25),0_8px_24px_-4px_rgba(0,0,0,0.15)] hover:scale-105 cursor-pointer relative group">
-                {/* Decorative corner */}
-                <div className="absolute top-0 left-0 w-16 h-16 bg-white opacity-20 rounded-br-full"></div>
-                
-                <div className="px-6 pt-6 pb-0 bg-white text-gray-800 border-b border-gray-200 flex-shrink-0 h-[160px] flex flex-col justify-center relative">
-                  {/* Icon */}
-                  <div className="absolute top-4 right-4 w-8 h-8 text-black transition-all duration-300 group-hover:scale-125 group-hover:rotate-12">
-                    <svg fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                    </svg>
-                  </div>
-                  
-                  <h3 className="text-xl font-bold mb-3 text-[#c9184a] text-center transition-all duration-300 group-hover:text-[#a0153a] group-hover:scale-110">
-                    Sáng tạo
-                  </h3>
-                  <h5 className="text-sm font-medium text-black leading-relaxed h-[60px] flex items-center transition-all duration-300 group-hover:text-gray-700">
-                    Đổi mới liên tục
-                  </h5>
-                </div>
-                <div className="px-6 py-6 flex-1 flex flex-col justify-start bg-white">
-                  <p className="text-sm leading-relaxed text-black text-left transition-all duration-300 group-hover:text-gray-800">
-                    Khuyến khích tư duy sáng tạo, đổi mới và tìm kiếm những giải pháp độc đáo cho mọi thách thức.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Value Card 3 - Nhiệt huyết */}
-            <div className="w-full flex" data-aos="zoom-in" data-aos-delay="300">
-              <div className="bg-white rounded-[3rem_0rem_3rem_0rem] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_16px_-4px_rgba(0,0,0,0.1)] w-full flex flex-col overflow-hidden transition-all duration-500 hover:transform hover:-translate-y-2 hover:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.25),0_8px_24px_-4px_rgba(0,0,0,0.15)] hover:scale-105 cursor-pointer relative group">
-                {/* Decorative corner */}
-                <div className="absolute top-0 right-0 w-16 h-16 bg-white opacity-20 rounded-bl-full"></div>
-                
-                <div className="px-6 pt-6 pb-0 bg-white text-gray-800 border-b border-gray-200 flex-shrink-0 h-[160px] flex flex-col justify-center relative">
-                  {/* Icon */}
-                  <div className="absolute top-4 right-4 w-8 h-8 text-black transition-all duration-300 group-hover:scale-125 group-hover:rotate-12">
-                    <svg fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                    </svg>
-                  </div>
-                  
-                  <h3 className="text-xl font-bold mb-3 text-[#c9184a] text-center transition-all duration-300 group-hover:text-[#a0153a] group-hover:scale-110">
-                    Nhiệt huyết
-                  </h3>
-                  <h5 className="text-sm font-medium text-black leading-relaxed h-[60px] flex items-center transition-all duration-300 group-hover:text-gray-700">
-                    Đam mê công việc
-                  </h5>
-                </div>
-                <div className="px-6 py-6 flex-1 flex flex-col justify-start bg-white">
-                  <p className="text-sm leading-relaxed text-black text-left transition-all duration-300 group-hover:text-gray-800">
-                    Làm việc với niềm đam mê, nhiệt huyết và cam kết cao nhất để đạt được mục tiêu chung.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Value Card 4 - Ước mơ lớn */}
-            <div className="w-full flex" data-aos="zoom-in" data-aos-delay="400">
-              <div className="bg-white rounded-[0rem_3rem_0rem_3rem] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_16px_-4px_rgba(0,0,0,0.1)] w-full flex flex-col overflow-hidden transition-all duration-500 hover:transform hover:-translate-y-2 hover:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.25),0_8px_24px_-4px_rgba(0,0,0,0.15)] hover:scale-105 cursor-pointer relative group">
-                {/* Decorative corner */}
-                <div className="absolute top-0 left-0 w-16 h-16 bg-white opacity-20 rounded-br-full"></div>
-                
-                <div className="px-6 pt-6 pb-0 bg-white text-gray-800 border-b border-gray-200 flex-shrink-0 h-[160px] flex flex-col justify-center relative">
-                  {/* Icon */}
-                  <div className="absolute top-4 right-4 w-8 h-8 text-black transition-all duration-300 group-hover:scale-125 group-hover:rotate-12">
-                    <svg fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                    </svg>
-                  </div>
-                  
-                  <h3 className="text-xl font-bold mb-3 text-[#c9184a] text-center transition-all duration-300 group-hover:text-[#a0153a] group-hover:scale-110">
-                    Ước mơ lớn
-                  </h3>
-                  <h5 className="text-sm font-medium text-black leading-relaxed h-[60px] flex items-center transition-all duration-300 group-hover:text-gray-700">
-                    Tầm nhìn xa
-                  </h5>
-                </div>
-                <div className="px-6 py-6 flex-1 flex flex-col justify-start bg-white">
-                  <p className="text-sm leading-relaxed text-black text-left transition-all duration-300 group-hover:text-gray-800">
-                    Dám mơ ước và theo đuổi những mục tiêu lớn lao, không ngại thử thách để vươn tới thành công.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
       {/* Work Culture Section */}
       <div className="bg-white py-16" data-aos="fade-up">
@@ -359,27 +183,27 @@ export default function Careers() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
             {/* Culture Card 1 - Với Cổ đông */}
             <div className="w-full flex" data-aos="zoom-in" data-aos-delay="100">
-              <div className="bg-white rounded-[3rem_0rem_3rem_0rem] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_16px_-4px_rgba(0,0,0,0.1)] w-full flex flex-col overflow-hidden transition-all duration-500 hover:transform hover:-translate-y-2 hover:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.25),0_8px_24px_-4px_rgba(0,0,0,0.15)] hover:scale-105 cursor-pointer relative group">
+              <div className="bg-white group-hover:bg-[#c9184a] rounded-[3rem_0rem_3rem_0rem] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_16px_-4px_rgba(0,0,0,0.1)] w-full flex flex-col overflow-hidden transition-all duration-500 hover:transform hover:-translate-y-2 hover:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.25),0_8px_24px_-4px_rgba(0,0,0,0.15)] hover:scale-105 cursor-pointer relative group">
                 {/* Decorative corner */}
                 <div className="absolute top-0 right-0 w-16 h-16 bg-white opacity-20 rounded-bl-full"></div>
                 
-                <div className="px-6 pt-6 pb-0 bg-white text-gray-800 border-b border-gray-200 flex-shrink-0 h-[160px] flex flex-col justify-center relative">
+                <div className="px-6 pt-6 pb-0 bg-white group-hover:bg-[#c9184a] text-gray-800 group-hover:text-white border-b border-gray-200 group-hover:border-white/20 flex-shrink-0 h-[160px] flex flex-col justify-center relative transition-all duration-300">
                   {/* Icon */}
-                  <div className="absolute top-4 right-4 w-8 h-8 text-black transition-all duration-300 group-hover:scale-125 group-hover:rotate-12">
+                  <div className="absolute top-4 right-4 w-8 h-8 text-black group-hover:text-white transition-all duration-300 group-hover:scale-125 group-hover:rotate-12">
                     <svg fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" clipRule="evenodd"/>
                     </svg>
                   </div>
                   
-                  <h3 className="text-xl font-bold mb-3 text-[#c9184a] text-center transition-all duration-300 group-hover:text-[#a0153a] group-hover:scale-110">
+                  <h3 className="text-xl font-bold mb-3 text-[#c9184a] group-hover:text-white text-center transition-all duration-300 group-hover:scale-110">
                     Với Cổ đông
                   </h3>
-                  <h5 className="text-sm font-medium text-black leading-relaxed h-[60px] flex items-center transition-all duration-300 group-hover:text-gray-700">
+                  <h5 className="text-sm font-medium text-black group-hover:text-white leading-relaxed h-[60px] flex items-center transition-all duration-300">
                     Minh bạch và bền vững
                   </h5>
                 </div>
-                <div className="px-6 py-6 flex-1 flex flex-col justify-start bg-white">
-                  <p className="text-sm leading-relaxed text-black text-left transition-all duration-300 group-hover:text-gray-800">
+                <div className="px-6 py-6 flex-1 flex flex-col justify-start bg-white group-hover:bg-[#c9184a] transition-all duration-300">
+                  <p className="text-sm leading-relaxed text-black group-hover:text-white text-left transition-all duration-300">
                     Minh bạch, trung thực và luôn hướng đến giá trị phát triển bền vững
                   </p>
                 </div>
@@ -388,27 +212,27 @@ export default function Careers() {
 
             {/* Culture Card 2 - Với Khách hàng */}
             <div className="w-full flex" data-aos="zoom-in" data-aos-delay="200">
-              <div className="bg-white rounded-[0rem_3rem_0rem_3rem] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_16px_-4px_rgba(0,0,0,0.1)] w-full flex flex-col overflow-hidden transition-all duration-500 hover:transform hover:-translate-y-2 hover:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.25),0_8px_24px_-4px_rgba(0,0,0,0.15)] hover:scale-105 cursor-pointer relative group">
+              <div className="bg-white group-hover:bg-[#c9184a] rounded-[0rem_3rem_0rem_3rem] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_16px_-4px_rgba(0,0,0,0.1)] w-full flex flex-col overflow-hidden transition-all duration-500 hover:transform hover:-translate-y-2 hover:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.25),0_8px_24px_-4px_rgba(0,0,0,0.15)] hover:scale-105 cursor-pointer relative group">
                 {/* Decorative corner */}
                 <div className="absolute top-0 left-0 w-16 h-16 bg-white opacity-20 rounded-br-full"></div>
                 
-                <div className="px-6 pt-6 pb-0 bg-white text-gray-800 border-b border-gray-200 flex-shrink-0 h-[160px] flex flex-col justify-center relative">
+                <div className="px-6 pt-6 pb-0 bg-white group-hover:bg-[#c9184a] text-gray-800 group-hover:text-white border-b border-gray-200 group-hover:border-white/20 flex-shrink-0 h-[160px] flex flex-col justify-center relative transition-all duration-300">
                   {/* Icon */}
-                  <div className="absolute top-4 right-4 w-8 h-8 text-black transition-all duration-300 group-hover:scale-125 group-hover:rotate-12">
+                  <div className="absolute top-4 right-4 w-8 h-8 text-black group-hover:text-white transition-all duration-300 group-hover:scale-125 group-hover:rotate-12">
                     <svg fill="currentColor" viewBox="0 0 20 20">
                       <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
                     </svg>
                   </div>
                   
-                  <h3 className="text-xl font-bold mb-3 text-[#c9184a] text-center transition-all duration-300 group-hover:text-[#a0153a] group-hover:scale-110">
+                  <h3 className="text-xl font-bold mb-3 text-[#c9184a] group-hover:text-white text-center transition-all duration-300 group-hover:scale-110">
                     Với Khách hàng
                   </h3>
-                  <h5 className="text-sm font-medium text-black leading-relaxed h-[60px] flex items-center transition-all duration-300 group-hover:text-gray-700">
+                  <h5 className="text-sm font-medium text-black group-hover:text-white leading-relaxed h-[60px] flex items-center transition-all duration-300">
                     Chất lượng và sáng tạo
                   </h5>
                 </div>
-                <div className="px-6 py-6 flex-1 flex flex-col justify-start bg-white">
-                  <p className="text-sm leading-relaxed text-black text-left transition-all duration-300 group-hover:text-gray-800">
+                <div className="px-6 py-6 flex-1 flex flex-col justify-start bg-white group-hover:bg-[#c9184a] transition-all duration-300">
+                  <p className="text-sm leading-relaxed text-black group-hover:text-white text-left transition-all duration-300">
                     Sản phẩm – dịch vụ chất lượng cao, sáng tạo và phù hợp với nhu cầu thực tiễn
                   </p>
                 </div>
@@ -417,27 +241,27 @@ export default function Careers() {
 
             {/* Culture Card 3 - Với Đối tác */}
             <div className="w-full flex" data-aos="zoom-in" data-aos-delay="300">
-              <div className="bg-white rounded-[3rem_0rem_3rem_0rem] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_16px_-4px_rgba(0,0,0,0.1)] w-full flex flex-col overflow-hidden transition-all duration-500 hover:transform hover:-translate-y-2 hover:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.25),0_8px_24px_-4px_rgba(0,0,0,0.15)] hover:scale-105 cursor-pointer relative group">
+              <div className="bg-white group-hover:bg-[#c9184a] rounded-[3rem_0rem_3rem_0rem] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_16px_-4px_rgba(0,0,0,0.1)] w-full flex flex-col overflow-hidden transition-all duration-500 hover:transform hover:-translate-y-2 hover:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.25),0_8px_24px_-4px_rgba(0,0,0,0.15)] hover:scale-105 cursor-pointer relative group">
                 {/* Decorative corner */}
                 <div className="absolute top-0 right-0 w-16 h-16 bg-white opacity-20 rounded-bl-full"></div>
                 
-                <div className="px-6 pt-6 pb-0 bg-white text-gray-800 border-b border-gray-200 flex-shrink-0 h-[160px] flex flex-col justify-center relative">
+                <div className="px-6 pt-6 pb-0 bg-white group-hover:bg-[#c9184a] text-gray-800 group-hover:text-white border-b border-gray-200 group-hover:border-white/20 flex-shrink-0 h-[160px] flex flex-col justify-center relative transition-all duration-300">
                   {/* Icon */}
-                  <div className="absolute top-4 right-4 w-8 h-8 text-black transition-all duration-300 group-hover:scale-125 group-hover:rotate-12">
+                  <div className="absolute top-4 right-4 w-8 h-8 text-black group-hover:text-white transition-all duration-300 group-hover:scale-125 group-hover:rotate-12">
                     <svg fill="currentColor" viewBox="0 0 20 20">
                       <path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V8a2 2 0 012-2V6"/>
                     </svg>
                   </div>
                   
-                  <h3 className="text-xl font-bold mb-3 text-[#c9184a] text-center transition-all duration-300 group-hover:text-[#a0153a] group-hover:scale-110">
+                  <h3 className="text-xl font-bold mb-3 text-[#c9184a] group-hover:text-white text-center transition-all duration-300 group-hover:scale-110">
                     Với Đối tác
                   </h3>
-                  <h5 className="text-sm font-medium text-black leading-relaxed h-[60px] flex items-center transition-all duration-300 group-hover:text-gray-700">
+                  <h5 className="text-sm font-medium text-black group-hover:text-white leading-relaxed h-[60px] flex items-center transition-all duration-300">
                     Hợp tác và tôn trọng
                   </h5>
                 </div>
-                <div className="px-6 py-6 flex-1 flex flex-col justify-start bg-white">
-                  <p className="text-sm leading-relaxed text-black text-left transition-all duration-300 group-hover:text-gray-800">
+                <div className="px-6 py-6 flex-1 flex flex-col justify-start bg-white group-hover:bg-[#c9184a] transition-all duration-300">
+                  <p className="text-sm leading-relaxed text-black group-hover:text-white text-left transition-all duration-300">
                     Tinh thần hợp tác, tôn trọng lẫn nhau và cùng tạo giá trị bền vững
                   </p>
                 </div>
@@ -446,27 +270,27 @@ export default function Careers() {
 
             {/* Culture Card 4 - Nội bộ */}
             <div className="w-full flex" data-aos="zoom-in" data-aos-delay="400">
-              <div className="bg-white rounded-[0rem_3rem_0rem_3rem] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_16px_-4px_rgba(0,0,0,0.1)] w-full flex flex-col overflow-hidden transition-all duration-500 hover:transform hover:-translate-y-2 hover:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.25),0_8px_24px_-4px_rgba(0,0,0,0.15)] hover:scale-105 cursor-pointer relative group">
+              <div className="bg-white group-hover:bg-[#c9184a] rounded-[0rem_3rem_0rem_3rem] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_16px_-4px_rgba(0,0,0,0.1)] w-full flex flex-col overflow-hidden transition-all duration-500 hover:transform hover:-translate-y-2 hover:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.25),0_8px_24px_-4px_rgba(0,0,0,0.15)] hover:scale-105 cursor-pointer relative group">
                 {/* Decorative corner */}
                 <div className="absolute top-0 left-0 w-16 h-16 bg-white opacity-20 rounded-br-full"></div>
                 
-                <div className="px-6 pt-6 pb-0 bg-white text-gray-800 border-b border-gray-200 flex-shrink-0 h-[160px] flex flex-col justify-center relative">
+                <div className="px-6 pt-6 pb-0 bg-white group-hover:bg-[#c9184a] text-gray-800 group-hover:text-white border-b border-gray-200 group-hover:border-white/20 flex-shrink-0 h-[160px] flex flex-col justify-center relative transition-all duration-300">
                   {/* Icon */}
-                  <div className="absolute top-4 right-4 w-8 h-8 text-black transition-all duration-300 group-hover:scale-125 group-hover:rotate-12">
+                  <div className="absolute top-4 right-4 w-8 h-8 text-black group-hover:text-white transition-all duration-300 group-hover:scale-125 group-hover:rotate-12">
                     <svg fill="currentColor" viewBox="0 0 20 20">
                       <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
                     </svg>
                   </div>
                   
-                  <h3 className="text-xl font-bold mb-3 text-[#c9184a] text-center transition-all duration-300 group-hover:text-[#a0153a] group-hover:scale-110">
+                  <h3 className="text-xl font-bold mb-3 text-[#c9184a] group-hover:text-white text-center transition-all duration-300 group-hover:scale-110">
                     Nội bộ
                   </h3>
-                  <h5 className="text-sm font-medium text-black leading-relaxed h-[60px] flex items-center transition-all duration-300 group-hover:text-gray-700">
+                  <h5 className="text-sm font-medium text-black group-hover:text-white leading-relaxed h-[60px] flex items-center transition-all duration-300">
                     Bứt phá và sáng tạo
                   </h5>
                 </div>
-                <div className="px-6 py-6 flex-1 flex flex-col justify-start bg-white">
-                  <p className="text-sm leading-relaxed text-black text-left transition-all duration-300 group-hover:text-gray-800">
+                <div className="px-6 py-6 flex-1 flex flex-col justify-start bg-white group-hover:bg-[#c9184a] transition-all duration-300">
+                  <p className="text-sm leading-relaxed text-black group-hover:text-white text-left transition-all duration-300">
                     Tinh thần bứt phá, sáng tạo, kỷ luật, hợp tác và hiệu quả
                   </p>
                 </div>
@@ -479,185 +303,8 @@ export default function Careers() {
 
 
       {/* Job Openings Section */}
-      <div id="job" className="bg-white py-16" data-aos="fade-up">
-        <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
-          <div className="text-center space-y-8">
-            <h2 className="text-4xl md:text-5xl font-bold text-muted-foreground leading-tight" data-aos="fade-up" data-aos-delay="100">
-              Các vị trí đang tuyển dụng
-            </h2>
-            
-            <p className="text-base text-muted-foreground leading-relaxed max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="200">
-              Tham gia cùng chúng tôi để kiến tạo giá trị và vươn tầm toàn cầu
-            </p>
-          </div>
-        </div>
-          </div>
-
-      <div className="bg-white py-16" data-aos="fade-up">
-        <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
-            {/* Job Card 1 - Lễ tân */}
-            <div className="w-full flex" data-aos="zoom-in" data-aos-delay="100">
-              <div className="bg-white rounded-[3rem_0rem_3rem_0rem] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_16px_-4px_rgba(0,0,0,0.1)] w-full flex flex-col overflow-hidden transition-all duration-500 hover:transform hover:-translate-y-2 hover:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.25),0_8px_24px_-4px_rgba(0,0,0,0.15)] hover:scale-105 cursor-pointer relative group">
-                {/* Decorative corner */}
-                <div className="absolute top-0 right-0 w-16 h-16 bg-white opacity-20 rounded-bl-full"></div>
-                
-                <div className="px-6 pt-6 pb-0 bg-white text-gray-800 border-b border-gray-200 flex-shrink-0 h-[160px] flex flex-col justify-center relative">
-                  {/* Icon */}
-                  <div className="absolute top-4 right-4 w-8 h-8 text-black transition-all duration-300 group-hover:scale-125 group-hover:rotate-12">
-                    <svg fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-                  </svg>
-                </div>
-                  
-                  <h3 className="text-xl font-bold mb-3 text-[#c9184a] text-center transition-all duration-300 group-hover:text-[#a0153a] group-hover:scale-110">
-                    Lễ tân
-                  </h3>
-                  <h5 className="text-sm font-medium text-black leading-relaxed h-[60px] flex items-center transition-all duration-300 group-hover:text-gray-700">
-                    Đón tiếp khách hàng
-                  </h5>
-              </div>
-                <div className="px-6 py-6 flex-1 flex flex-col justify-between bg-white min-h-[120px]">
-                  <p className="text-sm leading-relaxed text-black text-left transition-all duration-300 group-hover:text-gray-800 mb-4 flex-1">
-                    Đón tiếp khách hàng và hỗ trợ các hoạt động văn phòng
-                  </p>
-                  <a href="#contact" className="inline-block text-white px-4 py-2 rounded-full transition-all duration-500 ease-in-out hover:shadow-2xl transform hover:-translate-y-1 bg-gray-800 hover:bg-gray-900 text-sm text-center">
-                Ứng tuyển ngay
-              </a>
-            </div>
-              </div>
-            </div>
-
-            {/* Job Card 2 - Digital Marketing */}
-            <div className="w-full flex" data-aos="zoom-in" data-aos-delay="200">
-              <div className="bg-white rounded-[0rem_3rem_0rem_3rem] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_16px_-4px_rgba(0,0,0,0.1)] w-full flex flex-col overflow-hidden transition-all duration-500 hover:transform hover:-translate-y-2 hover:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.25),0_8px_24px_-4px_rgba(0,0,0,0.15)] hover:scale-105 cursor-pointer relative group">
-                {/* Decorative corner */}
-                <div className="absolute top-0 left-0 w-16 h-16 bg-white opacity-20 rounded-br-full"></div>
-                
-                <div className="px-6 pt-6 pb-0 bg-white text-gray-800 border-b border-gray-200 flex-shrink-0 h-[160px] flex flex-col justify-center relative">
-                  {/* Icon */}
-                  <div className="absolute top-4 right-4 w-8 h-8 text-black transition-all duration-300 group-hover:scale-125 group-hover:rotate-12">
-                    <svg fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m-9 0h10M7 4a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V6a2 2 0 00-2-2M7 4h10"/>
-                  </svg>
-                </div>
-                  
-                  <h3 className="text-xl font-bold mb-3 text-[#c9184a] text-center transition-all duration-300 group-hover:text-[#a0153a] group-hover:scale-110">
-                    Digital Marketing
-                  </h3>
-                  <h5 className="text-sm font-medium text-black leading-relaxed h-[60px] flex items-center transition-all duration-300 group-hover:text-gray-700">
-                    Chiến lược marketing số
-                  </h5>
-              </div>
-                <div className="px-6 py-6 flex-1 flex flex-col justify-between bg-white min-h-[120px]">
-                  <p className="text-sm leading-relaxed text-black text-left transition-all duration-300 group-hover:text-gray-800 mb-4 flex-1">
-                    Phát triển và thực hiện các chiến lược marketing số
-                  </p>
-                  <a href="#contact" className="inline-block text-white px-4 py-2 rounded-full transition-all duration-500 ease-in-out hover:shadow-2xl transform hover:-translate-y-1 bg-gray-800 hover:bg-gray-900 text-sm text-center">
-                Ứng tuyển ngay
-              </a>
-            </div>
-              </div>
-            </div>
-
-            {/* Job Card 3 - Chuyên viên mua hàng */}
-            <div className="w-full flex" data-aos="zoom-in" data-aos-delay="300">
-              <div className="bg-white rounded-[3rem_0rem_3rem_0rem] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_16px_-4px_rgba(0,0,0,0.1)] w-full flex flex-col overflow-hidden transition-all duration-500 hover:transform hover:-translate-y-2 hover:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.25),0_8px_24px_-4px_rgba(0,0,0,0.15)] hover:scale-105 cursor-pointer relative group">
-                {/* Decorative corner */}
-                <div className="absolute top-0 right-0 w-16 h-16 bg-white opacity-20 rounded-bl-full"></div>
-                
-                <div className="px-6 pt-6 pb-0 bg-white text-gray-800 border-b border-gray-200 flex-shrink-0 h-[160px] flex flex-col justify-center relative">
-                  {/* Icon */}
-                  <div className="absolute top-4 right-4 w-8 h-8 text-black transition-all duration-300 group-hover:scale-125 group-hover:rotate-12">
-                    <svg fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
-                  </svg>
-                </div>
-                  
-                  <h3 className="text-xl font-bold mb-3 text-[#c9184a] text-center transition-all duration-300 group-hover:text-[#a0153a] group-hover:scale-110">
-                    Chuyên viên mua hàng
-                  </h3>
-                  <h5 className="text-sm font-medium text-black leading-relaxed h-[60px] flex items-center transition-all duration-300 group-hover:text-gray-700">
-                    Quản lý mua sắm
-                  </h5>
-              </div>
-                <div className="px-6 py-6 flex-1 flex flex-col justify-between bg-white min-h-[120px]">
-                  <p className="text-sm leading-relaxed text-black text-left transition-all duration-300 group-hover:text-gray-800 mb-4 flex-1">
-                    Quản lý và thực hiện các hoạt động mua sắm, đàm phán
-                  </p>
-                  <a href="#contact" className="inline-block text-white px-4 py-2 rounded-full transition-all duration-500 ease-in-out hover:shadow-2xl transform hover:-translate-y-1 bg-gray-800 hover:bg-gray-900 text-sm text-center">
-                Ứng tuyển ngay
-              </a>
-            </div>
-              </div>
-            </div>
-
-            {/* Job Card 4 - Kiểm soát kinh doanh */}
-            <div className="w-full flex" data-aos="zoom-in" data-aos-delay="400">
-              <div className="bg-white rounded-[0rem_3rem_0rem_3rem] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_16px_-4px_rgba(0,0,0,0.1)] w-full flex flex-col overflow-hidden transition-all duration-500 hover:transform hover:-translate-y-2 hover:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.25),0_8px_24px_-4px_rgba(0,0,0,0.15)] hover:scale-105 cursor-pointer relative group">
-                {/* Decorative corner */}
-                <div className="absolute top-0 left-0 w-16 h-16 bg-white opacity-20 rounded-br-full"></div>
-                
-                <div className="px-6 pt-6 pb-0 bg-white text-gray-800 border-b border-gray-200 flex-shrink-0 h-[160px] flex flex-col justify-center relative">
-                  {/* Icon */}
-                  <div className="absolute top-4 right-4 w-8 h-8 text-black transition-all duration-300 group-hover:scale-125 group-hover:rotate-12">
-                    <svg fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
-                  </svg>
-                </div>
-                  
-                  <h3 className="text-xl font-bold mb-3 text-[#c9184a] text-center transition-all duration-300 group-hover:text-[#a0153a] group-hover:scale-110">
-                    Kiểm soát kinh doanh
-                  </h3>
-                  <h5 className="text-sm font-medium text-black leading-relaxed h-[60px] flex items-center transition-all duration-300 group-hover:text-gray-700">
-                    Giám sát hoạt động
-                  </h5>
-              </div>
-                <div className="px-6 py-6 flex-1 flex flex-col justify-between bg-white min-h-[120px]">
-                  <p className="text-sm leading-relaxed text-black text-left transition-all duration-300 group-hover:text-gray-800 mb-4 flex-1">
-                    Giám sát và kiểm soát các hoạt động kinh doanh
-                  </p>
-                  <a href="#contact" className="inline-block text-white px-4 py-2 rounded-full transition-all duration-500 ease-in-out hover:shadow-2xl transform hover:-translate-y-1 bg-gray-800 hover:bg-gray-900 text-sm text-center">
-                Ứng tuyển ngay
-              </a>
-            </div>
-              </div>
-            </div>
-
-            {/* Job Card 5 - Admin */}
-            <div className="w-full flex" data-aos="zoom-in" data-aos-delay="500">
-              <div className="bg-white rounded-[3rem_0rem_3rem_0rem] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_16px_-4px_rgba(0,0,0,0.1)] w-full flex flex-col overflow-hidden transition-all duration-500 hover:transform hover:-translate-y-2 hover:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.25),0_8px_24px_-4px_rgba(0,0,0,0.15)] hover:scale-105 cursor-pointer relative group">
-                {/* Decorative corner */}
-                <div className="absolute top-0 right-0 w-16 h-16 bg-white opacity-20 rounded-bl-full"></div>
-                
-                <div className="px-6 pt-6 pb-0 bg-white text-gray-800 border-b border-gray-200 flex-shrink-0 h-[160px] flex flex-col justify-center relative">
-                  {/* Icon */}
-                  <div className="absolute top-4 right-4 w-8 h-8 text-black transition-all duration-300 group-hover:scale-125 group-hover:rotate-12">
-                    <svg fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-                      <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                  </svg>
-                </div>
-                  
-                  <h3 className="text-xl font-bold mb-3 text-[#c9184a] text-center transition-all duration-300 group-hover:text-[#a0153a] group-hover:scale-110">
-                    Admin
-                  </h3>
-                  <h5 className="text-sm font-medium text-black leading-relaxed h-[60px] flex items-center transition-all duration-300 group-hover:text-gray-700">
-                    Quản lý hành chính
-                  </h5>
-              </div>
-                <div className="px-6 py-6 flex-1 flex flex-col justify-between bg-white min-h-[120px]">
-                  <p className="text-sm leading-relaxed text-black text-left transition-all duration-300 group-hover:text-gray-800 mb-4 flex-1">
-                    Quản lý và hỗ trợ các hoạt động hành chính
-                  </p>
-                  <a href="#contact" className="inline-block text-white px-4 py-2 rounded-full transition-all duration-500 ease-in-out hover:shadow-2xl transform hover:-translate-y-1 bg-gray-800 hover:bg-gray-900 text-sm text-center">
-                Ứng tuyển ngay
-              </a>
-                </div>
-              </div>
-            </div>
-          </div>
-            </div>
+      <div id="job" data-aos="fade-up">
+        <JobListings />
           </div>
 
       {/* Contact Section */}
@@ -706,31 +353,16 @@ export default function Careers() {
 
               {/* Email Section */}
               <div 
-                className="bg-gradient-to-br from-white/90 to-white/80 backdrop-blur-sm rounded-2xl p-8 mb-8 border border-white/50 transition-all duration-700 ease-out group-hover:bg-white/95 group-hover:border-[#c9184a]/20"
-                style={{
-                  boxShadow: '0 4px 15px rgba(0,0,0,0.05)'
-                }}
+                className="bg-gradient-to-br from-white/90 to-white/80 backdrop-blur-sm rounded-2xl p-8 mb-8 transition-all duration-700 ease-out group-hover:bg-white/95"
               >
-                <p className="text-lg text-gray-700 mb-6 group-hover:text-gray-800 transition-colors duration-500 ease-out">
+                <p id="email-contact" className="text-lg text-gray-700 mb-6 group-hover:text-gray-800 transition-colors duration-500 ease-out">
                   Chi tiết vui lòng liên hệ tới địa chỉ email:
                 </p>
                 <a 
                   href="mailto:hr@ksbgroup.vn" 
-                  className="email-button inline-flex items-center text-xl font-bold px-8 py-4 rounded-2xl transition-all duration-500 ease-out transform group/email relative overflow-hidden will-change-transform"
-                  style={{
-                    background: 'linear-gradient(135deg, rgba(217, 37, 31, 1) 0%, rgba(233, 128, 30, 1) 100%)',
-                    color: 'white',
-                    boxShadow: '0 10px 25px rgba(217, 37, 31, 0.3)',
-                    transform: 'translateY(0) translateZ(0)'
-                  }}
+                  className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-[#c9184a] hover:bg-[#a0153a] text-white font-semibold shadow transition-colors duration-300"
                 >
-                  <span className="relative z-10 flex items-center">
-                    <svg className="w-6 h-6 mr-3 transition-transform duration-500 ease-out group-hover/email:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                    </svg>
                     hr@ksbgroup.vn
-                  </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover/email:translate-x-full transition-transform duration-700 ease-out pointer-events-none"></div>
                 </a>
               </div>
             </div>
