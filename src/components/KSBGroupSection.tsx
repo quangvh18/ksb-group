@@ -114,11 +114,13 @@ export default function KSBGroupSection() {
   return (
     <section className="ksb-summary py-20 bg-gray-50 relative">
       <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
-        <div className="mb-12">
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 uppercase tracking-wide">
+        <div className="mb-6 md:mb-8 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-muted-foreground mb-4 text-center">
             KSB Group
           </h2>
-
+          <p className="text-muted-foreground text-base text-center">
+            Khám phá hệ sinh thái và lĩnh vực hoạt động của KSB Group.
+          </p>
         </div>
 
         <div className="relative">

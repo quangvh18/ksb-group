@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { newsService, transformNewsItem, fallbackNewsData, TransformedNewsItem } from '../services/newsService'
 import dynamic from 'next/dynamic'
+import NewsSection from '../components/NewsSection'
 
 const Banner = dynamic(() => import('../components/Banner'))
 const KSBGroupSection = dynamic(() => import('../components/KSBGroupSection'))
@@ -41,84 +42,8 @@ export default async function Home() {
         {/* KSB Group Summary Section */}
         <KSBGroupSection />
         <ServicesSection />
-
-        {/* News & Community Section */}
-        <section className="synew">
-          <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
-            <div className="row flex flex-wrap">
-              <div className="w-1/2 md:w-1/2 sm:w-full" data-aos="fade-up" data-aos-duration="1000">
-                <div className="text-left">
-                      <h1 className="main_section_tit text-[#8f8f8f] text-[5.2em] mt-[50px] font-bold leading-tight">
-                    Tin tức <span>&amp;</span><br />
-                    Cộng đồng
-                  </h1>
-                  <p className="main_section_sub text-[1.29em] text-[#828282] mb-[40px]">
-                    Khám phá những tin tức mới nhất và thay đổi của KSB Group.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="row flex flex-wrap">
-              <div className="w-full">
-                <ul className="main_news_list relative">
-                  {newsData.map((news, index) => {
-                    const newsSlug = createSlug(news.title);
-                    const isFirstItem = index === 0;
-                    
-                    if (isFirstItem) {
-                      // Bài tin tức đầu tiên - layout đặc biệt
-                      return (
-                        <li key={news.id} className="float-right w-[calc(45%-20px)] absolute top-[-230px] z-[2] right-0" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="200">
-                    <a 
-                      className="news_img float-left w-full min-h-[200px] lg:min-h-[430px] bg-cover bg-center bg-no-repeat rounded-[50px_0px_50px_0px] lg:rounded-[100px_0px_100px_0px] lg:w-[calc(100%-52px)]" 
-                            style={{backgroundImage: `url('${news.image}')`}}
-                            href={`/news/${newsSlug}`}
-                    ></a>
-                    <div className="news_text p-5 lg:bg-[#006b11] lg:w-[calc(100%-40px)] lg:float-right lg:p-[390px_40px_30px] lg:min-h-[500px] lg:absolute lg:top-[56px] lg:z-[-1] lg:right-0 lg:rounded-[0px_100px_0px_100px]">
-                      <div className="news_tit">
-                        <h3 className="text-xl lg:text-white lg:leading-[1.35em] min-h-[53px] mb-0 mt-0">
-                                <a href={`/news/${newsSlug}`} className="hover:!text-[#68ad94] lg:hover:!text-white transition-colors duration-200">
-                                  {news.title.length > 50 ? `${news.title.substring(0, 50)}...` : news.title}
-                                </a>
-                        </h3>
-                      </div>
-                      <div className="news_detail">
-                              <a href={`/news/${newsSlug}`} className="text-[#68ad94] lg:text-[#a7e7b1] text-[1.2em] float-right lg:mt-5">Xem thêm →</a>
-                      </div>
-                    </div>
-          </li>
-                      );
-                    } else {
-                      // Các bài tin tức khác - layout thông thường
-                      return (
-                        <li key={news.id} className="float-left w-[calc(27.5%-20px)] mr-5" data-aos="fade-up" data-aos-duration="1000" data-aos-delay={400 + ((index - 1) * 200)}>
-                    <a 
-                      className="news_img float-left w-full min-h-[200px] bg-cover bg-center bg-no-repeat rounded-[50px_0px_50px_0px]" 
-                            style={{backgroundImage: `url('${news.image}')`}}
-                            href={`/news/${newsSlug}`}
-                    ></a>
-                    <div className="news_text px-0 py-5 inline-block w-full">
-                      <div className="news_tit">
-                        <h3 className="text-xl min-h-[53px] mb-0 mt-0">
-                                <a href={`/news/${newsSlug}`} className="text-[#333] hover:!text-[#68ad94] transition-colors duration-200">
-                                  {news.title.length > 50 ? `${news.title.substring(0, 50)}...` : news.title}
-                                </a>
-                        </h3>
-                      </div>
-                      <div className="news_detail">
-                              <a href={`/news/${newsSlug}`} className="text-[#68ad94] text-[1.2em] float-right">Xem thêm →</a>
-                      </div>
-                    </div>
-          </li>
-                      );
-                    }
-                  })}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* News & Community Section - replaced with new components */}
+        <NewsSection />
 
         
 

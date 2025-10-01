@@ -126,9 +126,14 @@ export default function ServicesSection() {
       <div className="container mx-auto px-4 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <ScrollAnimation animation="slide-up" delay={0}>
-            <h2 className="text-4xl lg:text-5xl font-light tracking-tight mb-10 text-center">
-              Dịch vụ của chúng tôi
-            </h2>
+            <div className="mb-6 md:mb-8">
+              <h2 className="text-4xl md:text-5xl font-bold text-muted-foreground mb-4 text-center">
+                Dịch vụ của chúng tôi
+              </h2>
+              <p className="text-muted-foreground text-base text-center">
+                Khám phá những lĩnh vực dịch vụ chủ lực và năng lực cốt lõi của KSB Group.
+              </p>
+            </div>
           </ScrollAnimation>
 
           <ScrollAnimation animation="fade-in" delay={100}>
