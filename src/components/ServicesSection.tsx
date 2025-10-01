@@ -55,7 +55,7 @@ export default function ServicesSection() {
   const [useFallback, setUseFallback] = useState<boolean>(false);
   const rotationIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const sectionRef = useRef<HTMLDivElement | null>(null);
-  const ROTATION_MS = 10000;
+  const ROTATION_MS = 5000;
 
   const handleActivate = (index: number) => {
     setActiveIndex(index);

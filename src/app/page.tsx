@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { newsService, transformNewsItem, fallbackNewsData, TransformedNewsItem } from '../services/newsService'
 import dynamic from 'next/dynamic'
+import HomeFeature from '../components/HomeFeature'
 import NewsSection from '../components/NewsSection'
 
 const Banner = dynamic(() => import('../components/Banner'))
@@ -39,143 +40,13 @@ export default async function Home() {
     <div>
       <Banner />
       <main>
+        <HomeFeature />
         {/* KSB Group Summary Section */}
         <KSBGroupSection />
         <ServicesSection />
         {/* News & Community Section - replaced with new components */}
         <NewsSection />
 
-        
-
-        {/* Quick Menu Section */}
-        <section className="syqmenu mt-20" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
-          <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
-            <div className="row big_qmenu flex flex-wrap mb-8">
-              <div className="w-2/3 md:w-2/3 sm:w-full" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="400">
-                <div className="qmenu_card symall_card bg-[#f1f1f1] rounded-[100px_0px_100px_0px] min-h-[360px] pt-[70px] pl-[30px] relative">
-                  <div className="symall_card_cont">
-                    <Image 
-                      src="https://thienthuanphat.vn/Data/images/banner-cn/logo/fa-ksb.webp" 
-                      alt="KSB Mall" 
-                      width={200}
-                      height={80}
-                      priority={true}
-                      className="mb-4" 
-                    />
-                    <div className="btn_symall mt-[50px]">
-                      <a href="https://shopthienthuanphat.com/" target="_blank" className="border border-[#80ac9c] leading-[59px] text-[#80ac9c] text-[20px] min-w-[220px] rounded-[30px] p-[6px] no-underline inline-block text-center hover:bg-[#006b11] hover:text-white transition-colors">
-                        KSB Mall ngay →
-                      </a>
-                    </div>
-                    <div className="symall_pc_img absolute w-[550px] h-[384px] bg-no-repeat bg-[url('/images/symall-pc.png')] float-right right-0 top-[-24px] block"></div>
-                  </div>
-                </div>
-              </div>
-              <div className="w-1/3 md:w-1/3 sm:w-full" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="600">
-                <div className="qmenu_card sysecret_card bg-[#f1f1f1] rounded-[0px_100px_0px_100px] bg-cover p-[40px_20px] text-center" style={{backgroundImage: "url('/images/secret-bg.png')"}}>
-                  <div className="sysecret_card_cont">
-                    <div className="sysecret_icon mb-6 p-5 rounded-[100px] border-2 border-white w-[103px] h-[103px] inline-block">
-            <Image
-                        src="/images/secret-icon.png" 
-                        alt="KSB Secret" 
-                        width={60}
-                        height={60}
-                        priority={true}
-                      />
-                    </div>
-                    <div className="sysecret_tit mb-4">
-                      <h3 className="text-2xl font-bold text-white">KSB Bí quyết</h3>
-                    </div>
-                    <div className="sysecret_sub">
-                      <p className="mb-4 text-white leading-tight whitespace-nowrap">
-                        Bí quyết nấu ăn chỉ dành cho thành viên KSB Group!<br />
-                        Khám phá công thức KSB Bí quyết.
-                      </p>
-                      <a href="https://36mall.co.kr/board/list.php?bdId=sahmyook" className="inline-block rounded-[20px] p-[5px_20px] text-white border border-white no-underline hover:underline transition-colors duration-200">
-                        Xem thêm →
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="small_qmenu mt-[50px] mb-12 pb-12 flex flex-nowrap" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="800">
-              <div className="w-1/6 mb-4 relative flex-shrink-0">
-                <a className="qmenu_card icon_card group block bg-[#f1f1f1] rounded-[50px_0px_50px_0px] min-h-[120px] p-4 text-center hover:bg-white hover:shadow-lg transition-all duration-300 no-underline" href="#">
-                  <div className="qmenu_icon w-full h-[140px] mb-2 flex items-center justify-center">
-                    <div className="w-20 h-20 rounded-full bg-transparent group-hover:bg-[#f0ffbe] flex items-center justify-center transition-all duration-300">
-                      <svg className="w-16 h-16 text-[#9a9a9a] group-hover:text-[#0b5739] transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V8a2 2 0 012-2V6"></path>
-                      </svg>
-                    </div>
-                  </div>
-                  <h3 className="text-[#9a9a9a] text-[20px] block text-center font-semibold mt-[10px] mb-[5px] group-hover:text-black transition-colors duration-300">Triết lý</h3>
-                </a>
-              </div>
-              <div className="w-1/6 mb-4 relative flex-shrink-0">
-                <a className="qmenu_card icon_card group block bg-[#f1f1f1] rounded-[0px_50px_0px_50px] min-h-[120px] p-4 text-center hover:bg-white hover:shadow-lg transition-all duration-300 no-underline" href="#">
-                  <div className="qmenu_icon w-full h-[140px] mb-2 flex items-center justify-center">
-                    <div className="w-20 h-20 rounded-full bg-transparent group-hover:bg-[#f0ffbe] flex items-center justify-center transition-all duration-300">
-                      <svg className="w-16 h-16 text-[#9a9a9a] group-hover:text-[#0b5739] transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                      </svg>
-                    </div>
-                  </div>
-                  <h3 className="text-[#9a9a9a] text-[20px] block text-center font-semibold mt-[10px] mb-[5px] group-hover:text-black transition-colors duration-300">Lịch sử</h3>
-                </a>
-              </div>
-              <div className="w-1/6 mb-4 relative flex-shrink-0">
-                <a className="qmenu_card icon_card group block bg-[#f1f1f1] rounded-[50px_0px_50px_0px] min-h-[120px] p-4 text-center hover:bg-white hover:shadow-lg transition-all duration-300 no-underline" href="#">
-                  <div className="qmenu_icon w-full h-[140px] mb-2 flex items-center justify-center">
-                    <div className="w-20 h-20 rounded-full bg-transparent group-hover:bg-[#f0ffbe] flex items-center justify-center transition-all duration-300">
-                      <svg className="w-16 h-16 text-[#9a9a9a] group-hover:text-[#0b5739] transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
-                      </svg>
-                    </div>
-                  </div>
-                  <h3 className="text-[#9a9a9a] text-[20px] block text-center font-semibold mt-[10px] mb-[5px] group-hover:text-black transition-colors duration-300">Chứng nhận</h3>
-                </a>
-              </div>
-              <div className="w-1/6 mb-4 relative flex-shrink-0">
-                <a className="qmenu_card icon_card group block bg-[#f1f1f1] rounded-[0px_50px_0px_50px] min-h-[120px] p-4 text-center hover:bg-white hover:shadow-lg transition-all duration-300 no-underline" href="#">
-                  <div className="qmenu_icon w-full h-[140px] mb-2 flex items-center justify-center">
-                    <div className="w-20 h-20 rounded-full bg-transparent group-hover:bg-[#f0ffbe] flex items-center justify-center transition-all duration-300">
-                      <svg className="w-16 h-16 text-[#9a9a9a] group-hover:text-[#0b5739] transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path>
-                      </svg>
-                    </div>
-                  </div>
-                  <h3 className="text-[#9a9a9a] text-[20px] block text-center font-semibold mt-[10px] mb-[5px] group-hover:text-black transition-colors duration-300">Thành tích</h3>
-                </a>
-              </div>
-              <div className="w-1/6 mb-4 relative flex-shrink-0">
-                <a className="qmenu_card icon_card group block bg-[#f1f1f1] rounded-[50px_0px_50px_0px] min-h-[120px] p-4 text-center hover:bg-white hover:shadow-lg transition-all duration-300 no-underline" href="#">
-                  <div className="qmenu_icon w-full h-[140px] mb-2 flex items-center justify-center">
-                    <div className="w-20 h-20 rounded-full bg-transparent group-hover:bg-[#f0ffbe] flex items-center justify-center transition-all duration-300">
-                      <svg className="w-16 h-16 text-[#9a9a9a] group-hover:text-[#0b5739] transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                      </svg>
-                    </div>
-                  </div>
-                  <h3 className="text-[#9a9a9a] text-[20px] block text-center font-semibold mt-[10px] mb-[5px] group-hover:text-black transition-colors duration-300">Xã hội</h3>
-                </a>
-              </div>
-              <div className="w-1/6 mb-4 relative flex-shrink-0">
-                <a className="qmenu_card icon_card group block bg-[#f1f1f1] rounded-[0px_50px_0px_50px] min-h-[120px] p-4 text-center hover:bg-white hover:shadow-lg transition-all duration-300 no-underline" href="#">
-                  <div className="qmenu_icon w-full h-[140px] mb-2 flex items-center justify-center">
-                    <div className="w-20 h-20 rounded-full bg-transparent group-hover:bg-[#f0ffbe] flex items-center justify-center transition-all duration-300">
-                      <svg className="w-16 h-16 text-[#9a9a9a] group-hover:text-[#0b5739] transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-                      </svg>
-                    </div>
-                  </div>
-                  <h3 className="text-[#9a9a9a] text-[20px] block text-center font-semibold mt-[10px] mb-[5px] group-hover:text-black transition-colors duration-300">Cơ sở</h3>
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
         
         {/* Brand Section */}
         <div className="box-brand relative bg-gray-50 py-16" data-aos="fade-up" data-aos-duration="1200">
