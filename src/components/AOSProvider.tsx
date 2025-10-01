@@ -13,7 +13,16 @@ export default function AOSProvider({ children }: { children: React.ReactNode })
       easing: 'ease-in-out',
       once: false,
       mirror: true,
-      offset: 100,
+      offset: 50,
+      delay: 0,
+      disable: false,
+      startEvent: 'DOMContentLoaded',
+      initClassName: 'aos-init',
+      animatedClassName: 'aos-animate',
+      useClassNames: false,
+      disableMutationObserver: false,
+      debounceDelay: 50,
+      throttleDelay: 99,
     });
   }, []);
 

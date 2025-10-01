@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import PageHeader from "../../components/PageHeader";
+import OrgChart from "../../components/OrgChart";
 import "../../styles/about.css";
 
 interface ValueCard {
@@ -69,12 +70,12 @@ export default function AboutPage() {
         <div className="bg-white py-16" data-aos="fade-up">
           <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
             <div className="text-center space-y-8">
-              <h2 className="text-3xl lg:text-4xl font-bold text-black leading-tight" data-aos="fade-up" data-aos-delay="100">
+              <h2 className="text-4xl md:text-5xl font-bold text-muted-foreground leading-tight" data-aos="fade-up" data-aos-delay="100">
                 Tập đoàn KSB - Nền tảng vững mạnh<br />
                 với hệ sinh thái kinh doanh bền vững
               </h2>
               
-              <p className="text-lg text-black leading-relaxed max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+              <p className="text-base text-muted-foreground leading-relaxed max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="200">
                 Tập đoàn KSB tự hào kiến tạo nên một nền tảng vững mạnh, kế thừa và phát triển từ tâm huyết của Công ty TNHH XNK Thiên Thuận Phát. Với hơn một thập kỷ miệt mài gieo trồng giá trị, chúng tôi đã vun đắp một hệ sinh thái kinh doanh bền vững, với những ngành nghề đa dạng trong các lĩnh vực khác nhau, vươn mình trở thành biểu tượng của sự uy tín và chất lượng.
               </p>
             </div>
@@ -86,7 +87,7 @@ export default function AboutPage() {
           <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               {/* Company Image with Shadow Effect - Left Side */}
-              <div className="relative order-2 lg:order-1" data-aos="fade-right" data-aos-delay="200">
+              <div className="relative order-2 lg:order-1" data-aos="zoom-in" data-aos-delay="200">
                 {/* Shadow div with same size and leaf style */}
                 <div className="absolute top-0 left-0 w-full h-full bg-[#e5989b] rounded-[3rem_0rem_3rem_0rem] transform translate-x-8 translate-y-8 z-0"></div>
                 
@@ -105,23 +106,23 @@ export default function AboutPage() {
               
               {/* Text Content - Right Side */}
               <div className="space-y-8 order-1 lg:order-2">
-                <h2 className="text-3xl lg:text-4xl font-bold text-black leading-tight" data-aos="fade-left" data-aos-delay="100">
+                <h2 className="text-4xl md:text-5xl font-bold text-muted-foreground leading-tight" data-aos="fade-up" data-aos-delay="100">
                   Sứ mệnh, Giá trị cốt lõi và Tầm nhìn
                 </h2>
                 
-                <p className="text-lg text-black leading-relaxed" data-aos="fade-left" data-aos-delay="200">
+                <p className="text-base text-muted-foreground leading-relaxed" data-aos="fade-up" data-aos-delay="200">
                   Từ nền tảng vững chắc của hoạt động buôn bán, bán lẻ và nhập khẩu độc quyền, 
                   KSB GROUP đã kiên cường kiến tạo vị thế dẫn đầu, đồng thời định hình một chuẩn mực mới 
                   trong ngành sản xuất bánh kẹo.
                 </p>
                 
-                <p className="text-lg text-black leading-relaxed" data-aos="fade-left" data-aos-delay="300">
+                <p className="text-base text-muted-foreground leading-relaxed" data-aos="fade-up" data-aos-delay="300">
                   KSB đã chạm tới mọi miền đất nước, mở rộng tầm ảnh hưởng mạnh mẽ với hệ thống chi nhánh 
                   và cơ sở vật chất chiến lược trải dài. Chúng tôi không chỉ là đối tác nhập khẩu được tin cậy, 
                   mà còn là người kiến tạo nên những chuỗi giá trị vượt trội.
                 </p>
                 
-                <p className="text-lg text-black leading-relaxed" data-aos="fade-left" data-aos-delay="400">
+                <p className="text-base text-muted-foreground leading-relaxed" data-aos="fade-up" data-aos-delay="400">
                   KSB cam kết không ngừng vươn xa, kiến tạo giá trị và khẳng định vững chắc vị thế quyền lực 
                   của một tập đoàn hàng đầu trên bản đồ kinh tế Việt Nam.
                 </p>
@@ -194,6 +195,9 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
+
+        {/* Organization Chart Section */}
+        <OrgChart />
       </div>
     </div>
   );

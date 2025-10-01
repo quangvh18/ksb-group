@@ -172,3 +172,45 @@
 }
 
 /* Responsive design - now using Tailwind responsive classes */
+
+/* Organization Chart Styles */
+.bg-org-director {
+  background: linear-gradient(135deg, #c9184a 0%, #a0153a 100%);
+}
+
+.bg-org-manager {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+}
+
+.bg-org-regional {
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+}
+
+.bg-org-support {
+  background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+}
+
+.bg-org-line {
+  background-color: #bdc3c7;
+}
+
+.shadow-card {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Organization chart responsive adjustments */
+@media (max-width: 768px) {
+  .org-chart-container {
+    overflow-x: auto;
+  }
+  
+  .org-chart-grid {
+    min-width: 600px;
+  }
+}
+
+/* Writing mode for vertical text */
+.writing-mode-vertical-rl {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}

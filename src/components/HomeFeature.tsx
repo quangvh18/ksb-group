@@ -26,7 +26,7 @@ export default function HomeFeature() {
             <p className="text-base text-muted-foreground leading-relaxed mb-8" data-aos="fade-up" data-aos-delay="150">
               Xuất phát từ nền tảng vững trãi của Công ty TNHH XNK Thiên Thuận Phát, KSB Group đã không ngừng mở rộng và phát triển trong suốt hơn một thập kỷ qua. Chúng tôi tự hào sở hữu hệ sinh thái đa ngành gồm F&amp;B, hóa - mỹ phẩm, sản xuất – phân phối thực phẩm và hàng tiêu dùng nhập khẩu, với mạng lưới hoạt động phủ rộng trên toàn quốc.
             </p>
-            <Link href="#ksb-group" className="inline-block">
+            <Link href="/about" className="inline-block">
               <span className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-[#c9184a] hover:bg-[#a0153a] text-white font-semibold shadow transition-colors duration-300">
                 Tìm hiểu thêm
               </span>
