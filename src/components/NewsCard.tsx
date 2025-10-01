@@ -1,6 +1,7 @@
 'use client'
 
 import { ArrowRight } from 'lucide-react'
+import Link from 'next/link'
 
 interface NewsCardProps {
   title: string;
@@ -23,7 +24,7 @@ const NewsCard = ({ title, image, link = '#', featured = false, leafDirection = 
 
   if (featured) {
     return (
-      <div className={`relative h-full ${leafClass} overflow-hidden group cursor-pointer shadow-lg border border-white/10`}>
+      <Link href={link} className={`block relative h-full ${leafClass} overflow-hidden group cursor-pointer shadow-lg border border-white/10`}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={image}
@@ -37,21 +38,17 @@ const NewsCard = ({ title, image, link = '#', featured = false, leafDirection = 
           <h3 className="text-white text-xl md:text-2xl font-semibold mb-6 leading-relaxed">
             {title}
           </h3>
-
-          <a
-            href={link}
-            className="inline-flex items-center gap-2 text-white transition-all duration-300 text-sm font-medium"
-          >
+          <span className="inline-flex items-center gap-2 text-white transition-all duration-300 text-sm font-medium">
             Xem thêm
             <ArrowRight className="w-4 h-4" />
-          </a>
+          </span>
         </div>
-      </div>
+      </Link>
     )
   }
 
   return (
-    <div className={baseCardClass}>
+    <Link href={link} className={baseCardClass}>
       <div className={`absolute top-0 ${leafDirection === 'right' ? 'left-0' : 'right-0'} w-10 h-10 bg-white/40 ${cornerClass}`}></div>
       <div className={imageWrapperClass}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -66,16 +63,12 @@ const NewsCard = ({ title, image, link = '#', featured = false, leafDirection = 
         <h3 className="text-foreground text-base font-medium mb-4 leading-relaxed line-clamp-2">
           {title}
         </h3>
-
-        <a
-          href={link}
-          className="inline-flex items-center gap-2 text-success transition-all duration-300 text-sm font-medium"
-        >
+        <span className="inline-flex items-center gap-2 text-success transition-all duration-300 text-sm font-medium">
           Xem thêm
           <ArrowRight className="w-4 h-4" />
-        </a>
+        </span>
       </div>
-    </div>
+    </Link>
   )
 }
 
