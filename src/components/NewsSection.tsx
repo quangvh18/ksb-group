@@ -28,10 +28,10 @@ const NewsSection = async () => {
   return (
     <section className="max-w-7xl mx-auto px-6 pt-12 md:pt-16 pb-24 md:pb-28">
       <div className="mb-6 md:mb-8 text-center">
-        <h2 className="text-4xl md:text-5xl font-bold text-muted-foreground mb-4 text-center">
+        <h2 className="text-4xl md:text-5xl font-bold text-muted-foreground mb-4 text-center" data-aos="fade-up" data-aos-delay="100">
           Tin tức & Cộng đồng
         </h2>
-        <p className="text-muted-foreground text-base text-center">
+        <p className="text-muted-foreground text-base text-center" data-aos="fade-up" data-aos-delay="150">
           Khám phá những tin tức mới nhất và thay đổi của KSB Group.
         </p>
       </div>
