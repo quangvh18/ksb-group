@@ -120,6 +120,15 @@ const translations = {
     'org.asm': 'ASM',
     'org.sales': 'SALES',
     'org.npp': 'NPP',
+    // Additional org chart items
+    'org.north.region': 'VP. BẮC',
+    'org.central.region': 'VP. TRUNG', 
+    'org.south.region': 'VP. NAM',
+    'org.hr.dept': 'P. NHÂN SỰ',
+    'org.technical.dept': 'P. KỸ THUẬT',
+    'org.accounting.dept': 'P. KẾ TOÁN',
+    'org.warehouse.dept': 'KHO',
+    'org.general.dept': 'P. TỔNG HỢP',
     
     // Contact Page
     'contact.title': 'Liên hệ',
@@ -259,6 +268,15 @@ const translations = {
     'org.asm': 'ASM',
     'org.sales': 'SALES',
     'org.npp': 'NPP',
+    // Additional org chart items
+    'org.north.region': 'NORTHERN REGION',
+    'org.central.region': 'CENTRAL REGION',
+    'org.south.region': 'SOUTHERN REGION',
+    'org.hr.dept': 'HR DEPT',
+    'org.technical.dept': 'TECHNICAL DEPT',
+    'org.accounting.dept': 'ACCOUNTING DEPT',
+    'org.warehouse.dept': 'WAREHOUSE',
+    'org.general.dept': 'GENERAL DEPT',
     
     // Contact Page
     'contact.title': 'Contact',

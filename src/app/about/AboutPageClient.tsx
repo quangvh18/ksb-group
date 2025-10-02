@@ -135,29 +135,6 @@ export default function AboutPageClient() {
                       <div className={`absolute top-0 right-0 w-16 h-16 ${colorScheme.bg} opacity-20 rounded-bl-full`}></div>
                       
                       <div className={`px-6 pt-6 pb-0 bg-white text-gray-800 border-b ${colorScheme.border} flex-shrink-0 h-[160px] flex flex-col justify-center relative`}>
-                        {/* Icon */}
-                        <div className={`absolute top-4 right-4 w-8 h-8 ${colorScheme.icon} transition-all duration-300 group-hover:scale-125 group-hover:rotate-12`}>
-                          {index === 0 && (
-                            <svg fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clipRule="evenodd"/>
-                            </svg>
-                          )}
-                          {index === 1 && (
-                            <svg fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
-                            </svg>
-                          )}
-                          {index === 2 && (
-                            <svg fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clipRule="evenodd"/>
-                            </svg>
-                          )}
-                          {index === 3 && (
-                            <svg fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd"/>
-                            </svg>
-                          )}
-                        </div>
                         
                         <h3 className="text-xl font-bold mb-3 text-[#c9184a] text-center transition-all duration-300 group-hover:text-[#a0153a] group-hover:scale-110">
                           {item.title}

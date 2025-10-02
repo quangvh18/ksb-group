@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import { Noto_Sans } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import AOSProvider from "../components/AOSProvider";
 import { LanguageProvider } from "../contexts/LanguageContext";
 
-const notoSans = Noto_Sans({
-  variable: "--font-noto-sans",
-  subsets: ["latin", "vietnamese"],
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
 });
 
@@ -25,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${notoSans.variable} antialiased`}
+        className={`${inter.variable} antialiased`}
       >
         <LanguageProvider>
           <AOSProvider>

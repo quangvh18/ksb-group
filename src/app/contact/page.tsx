@@ -75,11 +75,6 @@ export default function ContactPage() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  // Handle scroll to careers section
-  const handleApplyNow = () => {
-    // Navigate to careers page and scroll to the contact section
-    window.location.href = '/careers#contact';
-  };
 
   return (
     <div className="overflow-x-hidden">
@@ -100,15 +95,6 @@ export default function ContactPage() {
               <p className="text-base text-muted-foreground leading-relaxed max-w-4xl mx-auto" data-aos="fade-in" data-aos-delay="200">
                 KSB Group luôn sẵn sàng lắng nghe và hỗ trợ khách hàng. Hãy liên hệ với chúng tôi để được tư vấn và giải đáp mọi thắc mắc.
               </p>
-              
-              <div className="text-center" data-aos="fade-in" data-aos-delay="300">
-                <button
-                  onClick={handleApplyNow}
-                  className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-[#c9184a] hover:bg-[#a0153a] text-white font-semibold shadow transition-colors duration-300"
-                >
-                  Ứng tuyển ngay
-                </button>
-              </div>
             </div>
           </div>
         </div>
