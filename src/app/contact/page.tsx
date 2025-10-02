@@ -1,15 +1,15 @@
 'use client';
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import PageHeader from "../../components/PageHeader";
 import { getRequestTypes, submitContactRequest, RequestType, ContactRequestData } from "../../services/contactService";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 export default function ContactPage() {
-  const router = useRouter();
+  const { t } = useLanguage();
   const breadcrumbItems = [
-    { label: "Trang chủ", href: "/" },
-    { label: "Liên hệ", isActive: true }
+    { label: t('nav.home'), href: "/" },
+    { label: t('nav.contact'), isActive: true }
   ];
   const [selectedSubject, setSelectedSubject] = useState("");
   const [showOptions, setShowOptions] = useState(false);
@@ -52,7 +52,13 @@ export default function ContactPage() {
         content: formData.content
       };
 
-      const result = await submitContactRequest(contactData);
+      const messages = {
+        contentLimitError: t('contact.form.content.limit'),
+        successMessage: t('contact.success'),
+        errorMessage: t('contact.error')
+      };
+      
+      const result = await submitContactRequest(contactData, messages);
       
       if (result.success) {
         setMessage({ type: 'success', text: result.message });
@@ -63,7 +69,7 @@ export default function ContactPage() {
         setMessage({ type: 'error', text: result.message });
       }
     } catch {
-      setMessage({ type: 'error', text: 'Có lỗi xảy ra khi gửi yêu cầu. Vui lòng thử lại sau.' });
+      setMessage({ type: 'error', text: t('contact.error') });
     } finally {
       setIsLoading(false);
     }
@@ -79,8 +85,8 @@ export default function ContactPage() {
   return (
     <div className="overflow-x-hidden">
       <PageHeader 
-        title="Liên hệ"
-        description="Liên hệ với KSB Group để được tư vấn và hỗ trợ tốt nhất"
+        title={t('contact.title')}
+        description={t('contact.description')}
         breadcrumbItems={breadcrumbItems}
       />
       <main>
@@ -89,11 +95,11 @@ export default function ContactPage() {
           <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
             <div className="text-center space-y-8">
               <h2 className="text-4xl md:text-5xl font-bold text-muted-foreground leading-tight" data-aos="fade-in" data-aos-delay="100">
-                Thông tin liên hệ
+                {t('contact.info.title')}
               </h2>
               
               <p className="text-base text-muted-foreground leading-relaxed max-w-4xl mx-auto" data-aos="fade-in" data-aos-delay="200">
-                KSB Group luôn sẵn sàng lắng nghe và hỗ trợ khách hàng. Hãy liên hệ với chúng tôi để được tư vấn và giải đáp mọi thắc mắc.
+                {t('contact.description')}
               </p>
             </div>
           </div>
@@ -122,9 +128,9 @@ export default function ContactPage() {
                               <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd"/>
                             </svg>
                           </div>
-                          <h3 className="text-xl font-bold text-[#c9184a] mb-2">Địa chỉ</h3>
+                          <h3 className="text-xl font-bold text-[#c9184a] mb-2">{t('footer.address')}</h3>
                           <p className="text-sm text-gray-600 leading-relaxed">
-                            Tầng 4, căn V10-A01, KĐT Terra An Hưng, phố Nguyễn Thanh Bình, Phường La Khê, Quận Hà Đông, Thành phố Hà Nội, Việt Nam
+                            {t('footer.address.detail')}
                           </p>
                         </div>
 
@@ -135,10 +141,10 @@ export default function ContactPage() {
                               <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
                             </svg>
                           </div>
-                          <h3 className="text-xl font-bold text-[#c9184a] mb-2">Điện thoại</h3>
+                          <h3 className="text-xl font-bold text-[#c9184a] mb-2">{t('footer.phone')}</h3>
                           <p className="text-sm text-gray-600 leading-relaxed">
-                            <strong>Hotline:</strong> 19001181<br/>
-                            <strong>Giờ làm việc:</strong> 8:00 - 17:30 (T2-T6)
+                            {t('footer.phone.detail')}<br/>
+                            {t('footer.phone.hours')}
                           </p>
                         </div>
 
@@ -152,8 +158,8 @@ export default function ContactPage() {
                           </div>
                           <h3 className="text-xl font-bold text-[#c9184a] mb-2">Email</h3>
                           <p className="text-sm text-gray-600 leading-relaxed">
-                            <strong>Email chung:</strong> info@ksbgroup.vn<br/>
-                            <strong>Hỗ trợ:</strong> support@ksbgroup.vn
+                            {t('footer.email.general')}<br/>
+                            {t('footer.email.support')}
                           </p>
                         </div>
                       </div>
@@ -172,23 +178,23 @@ export default function ContactPage() {
               {/* Contact Form - Left Side */}
               <div className="space-y-8 order-2 lg:order-1">
                 <h2 className="text-4xl md:text-5xl font-bold text-muted-foreground leading-tight" data-aos="fade-in" data-aos-delay="100">
-                  Gửi yêu cầu liên hệ
+                  {t('contact.form.submit')}
                 </h2>
                 
                 <p className="text-base text-muted-foreground leading-relaxed" data-aos="fade-in" data-aos-delay="200">
-                  Điền thông tin vào form bên dưới để gửi yêu cầu liên hệ. Chúng tôi sẽ phản hồi trong thời gian sớm nhất.
+                  {t('contact.description')}
                 </p>
                 
                 <form onSubmit={handleSubmit} className="space-y-6" data-aos="fade-in" data-aos-delay="300">
                   {/* Custom Select Dropdown */}
                   <div className="relative z-10">
-                    <label className="block text-base font-semibold text-gray-700 mb-3">Loại yêu cầu *</label>
+                    <label className="block text-base font-semibold text-gray-700 mb-3">{t('contact.form.subject')} *</label>
                     <div className="relative flex items-center">
                       <input 
                         type="text" 
                         name="subject" 
                         id="select-form" 
-                        placeholder="Chọn nội dung"
+                        placeholder={t('contact.form.subject.placeholder')}
                         value={selectedSubject}
                         readOnly
                         onClick={() => setShowOptions(!showOptions)}
@@ -220,10 +226,10 @@ export default function ContactPage() {
                   
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-base font-semibold text-gray-700 mb-3">Họ và tên *</label>
+                      <label className="block text-base font-semibold text-gray-700 mb-3">{t('contact.form.name')} *</label>
                       <input 
                         type="text" 
-                        placeholder="Nhập họ và tên" 
+                        placeholder={t('contact.form.name.placeholder')} 
                         name="name" 
                         value={formData.name}
                         onChange={handleInputChange}
@@ -233,10 +239,10 @@ export default function ContactPage() {
                     </div>
                     
                     <div>
-                      <label className="block text-base font-semibold text-gray-700 mb-3">Số điện thoại *</label>
+                      <label className="block text-base font-semibold text-gray-700 mb-3">{t('contact.form.phone')} *</label>
                       <input 
                         type="tel" 
-                        placeholder="Nhập số điện thoại" 
+                        placeholder={t('contact.form.phone.placeholder')} 
                         name="phone" 
                         value={formData.phone}
                         onChange={handleInputChange}
@@ -247,10 +253,10 @@ export default function ContactPage() {
                   </div>
                   
                   <div>
-                    <label className="block text-base font-semibold text-gray-700 mb-3">Email *</label>
+                    <label className="block text-base font-semibold text-gray-700 mb-3">{t('contact.form.email')} *</label>
                     <input 
                       type="email" 
-                      placeholder="Nhập địa chỉ email" 
+                      placeholder={t('contact.form.email.placeholder')} 
                       name="email" 
                       value={formData.email}
                       onChange={handleInputChange}
@@ -260,9 +266,9 @@ export default function ContactPage() {
                   </div>
                   
                   <div>
-                    <label className="block text-base font-semibold text-gray-700 mb-3">Nội dung liên hệ *</label>
+                    <label className="block text-base font-semibold text-gray-700 mb-3">{t('contact.form.message')} *</label>
                     <textarea 
-                      placeholder="Mô tả chi tiết yêu cầu của bạn..." 
+                      placeholder={t('contact.form.message.placeholder')} 
                       name="content" 
                       value={formData.content}
                       onChange={handleInputChange}
@@ -272,7 +278,7 @@ export default function ContactPage() {
                       required
                     />
                     <div className="text-right text-sm text-gray-500 mt-1">
-                      {formData.content.length}/255 ký tự
+                      {formData.content.length}/255 {t('contact.form.character.count')}
                     </div>
                   </div>
                   
@@ -282,7 +288,7 @@ export default function ContactPage() {
                       disabled={isLoading}
                       className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-[#c9184a] hover:bg-[#a0153a] disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-semibold shadow transition-colors duration-300"
                     >
-                      {isLoading ? 'Đang gửi...' : 'Gửi yêu cầu'}
+                      {isLoading ? t('contact.form.submitting') : t('contact.form.submit')}
                     </button>
                   </div>
                   
@@ -327,7 +333,7 @@ export default function ContactPage() {
                       allowFullScreen
                       loading="lazy"
                       referrerPolicy="no-referrer-when-downgrade"
-                      title="KSB Group - Tầng 4, căn V10-A01, KĐT Terra An Hưng"
+                      title={`KSB Group - ${t('footer.address.detail')}`}
                     ></iframe>
                   </div>
                   

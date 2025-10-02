@@ -54,7 +54,7 @@ export default function ServicesSection() {
       ],
       image: 'https://images.unsplash.com/photo-1510626176961-4b57d4fbad03?q=80&w=1600&auto=format&fit=crop',
     },
-  ], [t, language]);
+  ], [t]);
 
   const handleActivate = (index: number) => {
     setActiveIndex(index);

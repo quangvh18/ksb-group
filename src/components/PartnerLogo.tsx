@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 
 interface PartnerLogoProps {
   src: string;
@@ -8,7 +9,7 @@ interface PartnerLogoProps {
   fallback?: string;
 }
 
-export default function PartnerLogo({ src, alt, fallback }: PartnerLogoProps) {
+export default function PartnerLogo({ src, alt }: PartnerLogoProps) {
   const [imageError, setImageError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -44,13 +45,14 @@ export default function PartnerLogo({ src, alt, fallback }: PartnerLogoProps) {
           <div className="text-gray-400 text-xs">Đang tải...</div>
         </div>
       )}
-      <img
+      <Image
         src={src}
         alt={alt}
+        width={120}
+        height={80}
         className="max-w-full max-h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
         onError={handleImageError}
         onLoad={handleImageLoad}
-        style={{ maxWidth: '120px', maxHeight: '80px' }}
       />
     </div>
   );

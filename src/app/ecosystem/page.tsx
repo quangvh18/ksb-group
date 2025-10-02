@@ -1,22 +1,20 @@
-import type { Metadata } from "next";
-import PageHeader from "../../components/PageHeader";
+'use client';
 
-export const metadata: Metadata = {
-  title: "Hệ sinh thái - KSB Group",
-  description: "Khám phá hệ sinh thái đa dạng của KSB Group với các thương hiệu và dịch vụ",
-};
+import PageHeader from "../../components/PageHeader";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 export default function EcosystemPage() {
+  const { t } = useLanguage();
   const breadcrumbItems = [
-    { label: "Trang chủ", href: "/" },
-    { label: "Hệ sinh thái", isActive: true }
+    { label: t('nav.home'), href: "/" },
+    { label: t('nav.ecosystem'), isActive: true }
   ];
 
   return (
     <div>
       <PageHeader 
-        title="Hệ sinh thái"
-        description="Khám phá hệ sinh thái đa dạng của KSB Group với các thương hiệu, dịch vụ và giải pháp toàn diện"
+        title={t('ecosystem.title')}
+        description={t('ecosystem.description')}
         breadcrumbItems={breadcrumbItems}
       />
       <main>

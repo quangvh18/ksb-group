@@ -27,10 +27,10 @@ export default function Footer() {
             <p className="text-left text-xs sm:text-sm md:text-sm leading-relaxed">
               <strong className="block mb-2 sm:mb-3">{t('footer.company')}</strong>
               <span className="block mb-2">
-                <strong>{t('footer.address')}:</strong> Tầng 4, căn V10-A01, KĐT Terra An Hưng Phố Nguyễn Thanh Bình, Phường Dương Nội, TP Hà Nội, Việt Nam
+                <strong>{t('footer.address')}:</strong> {t('footer.address.detail')}
               </span>
               <span className="block mb-2">
-                <strong>{t('footer.factory')}:</strong> Cụm công nghiệp Long Xuyên, Phường Kinh Môn, TP Hải Phòng, Việt Nam
+                <strong>{t('footer.factory')}:</strong> {t('footer.factory.detail')}
               </span>
               <span className="block mt-3 text-[11px] sm:text-xs">
                 ⓒ {t('footer.copyright')}
@@ -43,7 +43,8 @@ export default function Footer() {
             <dl>
               <dt className="font-bold text-xs sm:text-sm md:text-sm mb-2 sm:mb-3">{t('footer.phone')}</dt>
               <dd className="text-xs sm:text-sm md:text-sm">
-                <a href="tel:19001181" className="hover:underline hover:text-blue-600">19001181</a>
+                <a href="tel:19001181" className="hover:underline hover:text-blue-600 block mb-1">{t('footer.phone.detail')}</a>
+                <span className="text-[10px] sm:text-xs text-gray-600">{t('footer.phone.hours')}</span>
               </dd>
             </dl>
           </div>
@@ -54,10 +55,13 @@ export default function Footer() {
               <dt className="font-bold text-xs sm:text-sm md:text-sm mb-2 sm:mb-3">{t('footer.email')}</dt>
               <dd className="text-xs sm:text-sm md:text-sm">
                 <a href="mailto:info@ksbgroup.vn" className="hover:underline hover:text-blue-600 block mb-1">
-                  info@ksbgroup.vn
+                  {t('footer.email.general')}
+                </a>
+                <a href="mailto:support@ksbgroup.vn" className="hover:underline hover:text-blue-600 block mb-1">
+                  {t('footer.email.support')}
                 </a>
                 <a href="https://ksbgroup.vn" target="_blank" rel="noopener noreferrer" className="hover:underline hover:text-blue-600 block">
-                  ksbgroup.vn
+                  {t('footer.website.detail')}
                 </a>
               </dd>
             </dl>

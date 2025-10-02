@@ -108,13 +108,20 @@ export async function getRequestTypes(): Promise<RequestType[]> {
 }
 
 // Submit contact request
-export async function submitContactRequest(data: ContactRequestData): Promise<ContactRequestResponse> {
+export async function submitContactRequest(
+  data: ContactRequestData, 
+  messages?: {
+    contentLimitError: string;
+    successMessage: string;
+    errorMessage: string;
+  }
+): Promise<ContactRequestResponse> {
   try {
     // Validate content length
     if (data.content.length > 255) {
       return {
         success: false,
-        message: 'Nội dung không được vượt quá 255 ký tự'
+        message: messages?.contentLimitError || 'Nội dung không được vượt quá 255 ký tự'
       };
     }
 
@@ -134,14 +141,14 @@ export async function submitContactRequest(data: ContactRequestData): Promise<Co
 
     return {
       success: true,
-      message: 'Gửi yêu cầu thành công! Chúng tôi sẽ liên hệ lại trong thời gian sớm nhất.',
+      message: messages?.successMessage || 'Gửi yêu cầu thành công! Chúng tôi sẽ liên hệ lại trong thời gian sớm nhất.',
       data: response.data
     };
   } catch (error) {
     console.error('Error submitting contact request:', error);
     return {
       success: false,
-      message: 'Có lỗi xảy ra khi gửi yêu cầu. Vui lòng thử lại sau.'
+      message: messages?.errorMessage || 'Có lỗi xảy ra khi gửi yêu cầu. Vui lòng thử lại sau.'
     };
   }
 }

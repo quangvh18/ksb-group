@@ -193,8 +193,8 @@ const OrgChart = () => {
   const { t, language } = useLanguage();
 
   // Memoize organization data to ensure re-render when language changes
-  const orgData = useMemo(() => getOrgData(t), [t, language]);
-  const officeData = useMemo(() => getOfficeData(t), [t, language]);
+  const orgData = useMemo(() => getOrgData(t), [t]);
+  const officeData = useMemo(() => getOfficeData(t), [t]);
 
   useEffect(() => {
     // Refresh AOS when component mounts to ensure animations work

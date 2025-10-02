@@ -16,7 +16,6 @@ const NewsCard = ({ title, image, link = '#', featured = false, leafDirection = 
   const leafClass = leafDirection === 'right'
     ? 'rounded-[0rem_3rem_0rem_3rem]'
     : 'rounded-[3rem_0rem_3rem_0rem]'
-  const cornerClass = leafDirection === 'right' ? 'rounded-br-full right-0' : 'rounded-bl-full left-0'
   const baseCardClass = fullHeight
     ? `bg-white ${leafClass} overflow-hidden group cursor-pointer shadow-lg border border-gray-200 transition-all duration-300 relative h-full flex flex-col hover:shadow-xl`
     : `bg-white ${leafClass} overflow-hidden group cursor-pointer shadow-lg border border-gray-200 transition-all duration-300 relative h-full flex flex-col hover:shadow-xl`

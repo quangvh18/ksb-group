@@ -1,14 +1,13 @@
-import type { Metadata } from "next";
+'use client';
+
 import PageHeader from "../../components/PageHeader";
 import Image from "next/image";
 import Link from "next/link";
 import "../../styles/news.css";
 import { newsService, transformNewsItem, fallbackNewsData, TransformedNewsItem } from "../../services/newsService";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { useEffect, useState } from "react";
 
-export const metadata: Metadata = {
-  title: "Tin tức - KSB Group",
-  description: "Cập nhật tin tức mới nhất về KSB Group và ngành thực phẩm",
-};
 
 // Function để tạo slug từ title
 function createSlug(title: string): string {
@@ -35,28 +34,55 @@ async function getNewsData(): Promise<TransformedNewsItem[]> {
   }
 }
 
-export default async function NewsPage() {
+export default function NewsPage() {
+  const { t } = useLanguage();
+  const [newsData, setNewsData] = useState<TransformedNewsItem[]>([]);
+  const [loading, setLoading] = useState(true);
+  
   const breadcrumbItems = [
-    { label: "Trang chủ", href: "/" },
-    { label: "Tin tức", isActive: true }
+    { label: t('nav.home'), href: "/" },
+    { label: t('nav.news'), isActive: true }
   ];
 
   // Fetch news data from API using service
-  const newsData = await getNewsData();
+  useEffect(() => {
+    const fetchNews = async () => {
+      try {
+        const data = await getNewsData();
+        setNewsData(data);
+      } catch (error) {
+        console.error('Error fetching news:', error);
+        setNewsData(fallbackNewsData);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    fetchNews();
+  }, []);
 
   return (
     <div>
       <PageHeader 
-        title="Tin tức"
-        description=""
+        title={t('news.title')}
+        description={t('news.description')}
         breadcrumbItems={breadcrumbItems}
       />
       <main>
         <div className="bg-white py-16" data-aos="fade-up">
           <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {newsData.map((news, index) => {
+            {loading ? (
+              <div className="text-center py-16">
+                <div className="text-lg text-gray-600">{t('common.loading')}</div>
+              </div>
+            ) : newsData.length === 0 ? (
+              <div className="text-center py-16">
+                <div className="text-lg text-gray-600">{t('news.noNews')}</div>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {newsData.map((news, index) => {
                 // Alternating leaf patterns
                 const isLeftLeaf = index % 2 === 0;
                 const leafClass = isLeftLeaf ? "rounded-[3rem_0rem_3rem_0rem]" : "rounded-[0rem_3rem_0rem_3rem]";
@@ -112,7 +138,7 @@ export default async function NewsPage() {
                         <div className="px-6 py-4 flex-1 flex flex-col justify-end bg-white">
                           <div className="flex items-center justify-between">
                             <div className="flex items-center text-[#c9184a] font-medium text-sm transition-all duration-500 group-hover:translate-x-1 group-hover:text-[#a0153a]">
-                              Đọc thêm
+                              {t('news.readMore')}
                               <svg className="w-4 h-4 ml-2 transition-transform duration-500 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                               </svg>
@@ -126,8 +152,9 @@ export default async function NewsPage() {
                     </Link>
                   </div>
                 );
-              })}
-            </div>
+                })}
+              </div>
+            )}
           </div>
         </div>
       </main>
