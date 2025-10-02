@@ -1,7 +1,8 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useMemo } from 'react';
 import ScrollAnimation from './ScrollAnimation';
+import { useLanguage } from '../contexts/LanguageContext';
 
 type ServiceItem = {
   title: string;
@@ -10,52 +11,50 @@ type ServiceItem = {
   image: string;
 };
 
-const SERVICES: ServiceItem[] = [
-  {
-    title: 'Thực phẩm',
-    summary:
-      'Hệ sinh thái toàn diện từ nhập khẩu độc quyền, sản xuất nội địa đến phân phối hàng tiêu dùng cao cấp.',
-    bullets: [
-      'Nhập khẩu độc quyền và phân phối các thương hiệu quốc tế như Choco Samjin (Hàn Quốc), sữa yến mạch Boring (New Zealand).',
-      'Sản xuất nội địa thực phẩm chất lượng cao qua các công ty thành viên: Thiên Thuận Phát, Ecobin, Bách Mộc An và KangNam.',
-      'Hệ thống phân phối rộng khắp, đảm bảo nguồn gốc xuất xứ và tiêu chuẩn vệ sinh an toàn thực phẩm.',
-    ],
-    image:
-      'https://images.unsplash.com/photo-1726160183083-de85fe0879d4?q=80&w=1600&auto=format&fit=crop',
-  },
-  {
-    title: 'Hóa - Mỹ phẩm nhập khẩu',
-    summary:
-      'Phát triển và phân phối các thương hiệu mỹ phẩm thiên nhiên cao cấp từ châu Âu.',
-    bullets: [
-      'Biofresh – thương hiệu mỹ phẩm thiên nhiên đến từ Bulgaria với dấu ấn khác biệt trên thị trường Việt Nam.',
-      'Sản phẩm chăm sóc da, chăm sóc cá nhân từ nguyên liệu thiên nhiên, an toàn và hiệu quả.',
-      'Phân phối đa kênh: hệ thống bán lẻ, siêu thị và thương mại điện tử.',
-    ],
-    image:
-      'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?q=80&w=1600&auto=format&fit=crop',
-  },
-  {
-    title: 'Đồ uống',
-    summary:
-      'Nhập khẩu và phân phối các dòng đồ uống cao cấp từ các thương hiệu quốc tế uy tín.',
-    bullets: [
-      'Đa dạng sản phẩm: nước giải khát, nước trái cây, sữa hạt, cà phê và trà cao cấp.',
-      'Nguồn cung ổn định từ các đối tác quốc tế, cập nhật xu hướng đồ uống mới.',
-      'Hệ thống phân phối chuyên nghiệp, đảm bảo chất lượng từ kho đến người tiêu dùng.',
-    ],
-    image:
-      'https://images.unsplash.com/photo-1510626176961-4b57d4fbad03?q=80&w=1600&auto=format&fit=crop',
-  },
-];
+// Services data will be generated dynamically based on language
 
 export default function ServicesSection() {
+  const { t, language } = useLanguage();
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
   const [useFallback, setUseFallback] = useState<boolean>(false);
   const rotationIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const ROTATION_MS = 5000;
+
+  // Generate services data based on current language - recalculate when language changes
+  const SERVICES: ServiceItem[] = useMemo(() => [
+    {
+      title: t('services.cosmetics.title'),
+      summary: t('services.cosmetics.summary'),
+      bullets: [
+        t('services.cosmetics.bullet1'),
+        t('services.cosmetics.bullet2'),
+        t('services.cosmetics.bullet3'),
+      ],
+      image: 'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?q=80&w=1600&auto=format&fit=crop',
+    },
+    {
+      title: t('services.candy.title'),
+      summary: t('services.candy.summary'),
+      bullets: [
+        t('services.candy.bullet1'),
+        t('services.candy.bullet2'),
+        t('services.candy.bullet3'),
+      ],
+      image: 'https://images.unsplash.com/photo-1726160183083-de85fe0879d4?q=80&w=1600&auto=format&fit=crop',
+    },
+    {
+      title: t('services.import.title'),
+      summary: t('services.import.summary'),
+      bullets: [
+        t('services.import.bullet1'),
+        t('services.import.bullet2'),
+        t('services.import.bullet3'),
+      ],
+      image: 'https://images.unsplash.com/photo-1510626176961-4b57d4fbad03?q=80&w=1600&auto=format&fit=crop',
+    },
+  ], [t, language]);
 
   const handleActivate = (index: number) => {
     setActiveIndex(index);
@@ -72,6 +71,12 @@ export default function ServicesSection() {
     }, ROTATION_MS);
   };
 
+
+  // Reset active index when language changes to force re-render
+  useEffect(() => {
+    setActiveIndex(0);
+    setCurrentImageIndex(0);
+  }, [language]);
 
   // Start rotation only when section is in viewport; reset to first item on start
   useEffect(() => {
@@ -118,7 +123,7 @@ export default function ServicesSection() {
       io.disconnect();
       stopRotation();
     };
-  }, []);
+  }, [SERVICES.length]);
 
   return (
     <section ref={sectionRef} className="py-20 bg-white">
@@ -127,10 +132,10 @@ export default function ServicesSection() {
           <ScrollAnimation animation="slide-up" delay={0}>
             <div className="mb-6 md:mb-8">
               <h2 className="text-4xl md:text-5xl font-bold text-muted-foreground mb-4 text-center">
-                Dịch vụ của chúng tôi
+                {t('services.title')}
               </h2>
               <p className="text-muted-foreground text-base text-center">
-                Khám phá những lĩnh vực dịch vụ chủ lực và năng lực cốt lõi của KSB Group.
+                {t('services.description')}
               </p>
             </div>
           </ScrollAnimation>
@@ -145,7 +150,7 @@ export default function ServicesSection() {
                     const neutralText = index === 0 || index === 2;
                     return (
                       <div
-                        key={service.title}
+                        key={`${service.title}-${language}`}
                         className={`w-full relative flex flex-col gap-3 lg:gap-5 transition-all cursor-pointer pl-3 lg:pl-4 ${neutralText ? 'text-gray-500' : ''
                           } ${index === 0 ? 'justify-start' : index === 1 ? '' : 'justify-end'} ${isActive ? 'opacity-100' : 'opacity-60 hover:opacity-100'
                           } ${isActive ? 'text-black' : ''}`}
@@ -207,7 +212,7 @@ export default function ServicesSection() {
                   {SERVICES.map((s, i) => (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
-                      key={s.image}
+                      key={`${s.image}-${language}`}
                       alt={s.title}
                       loading="lazy"
                       decoding="async"

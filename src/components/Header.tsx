@@ -3,9 +3,12 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
+import LanguageToggle from './LanguageToggle'
+import { useLanguage } from '../contexts/LanguageContext'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -39,37 +42,37 @@ export default function Header() {
             <ul className="mb-0 text-[1.1em] p-0 m-0 list-none block">
                <li className="float-left leading-[70px] p-0 relative z-[999]">
                  <Link href="/" className="no-underline block font-bold px-5 text-white hover:bg-[#c9184a] hover:text-white transition-all duration-200">
-                   Trang chủ
+                   {t('nav.home') || 'Trang chủ'}
                  </Link>
                </li>
                <li className="float-left leading-[70px] p-0 relative z-[998]">
                  <Link href="/about" className="no-underline block font-bold px-5 text-white hover:bg-[#c9184a] hover:text-white transition-all duration-200">
-                   Về chúng tôi
+                   {t('nav.about')}
                  </Link>
                </li>
                <li className="float-left leading-[70px] p-0 relative z-[997]">
                  <Link href="/ecosystem" className="no-underline block font-bold px-5 text-white hover:bg-[#c9184a] hover:text-white transition-all duration-200">
-                   Hệ sinh thái
+                   {t('nav.ecosystem')}
                  </Link>
                </li>
                <li className="float-left leading-[70px] p-0 relative z-[996]">
                  <Link href="/news" className="no-underline block font-bold px-5 text-white hover:bg-[#c9184a] hover:text-white transition-all duration-200">
-                   Tin tức
+                   {t('nav.news')}
                  </Link>
                </li>
                <li className="float-left leading-[70px] p-0 relative z-[995]">
                  <Link href="/careers" className="no-underline block font-bold px-5 text-white hover:bg-[#c9184a] hover:text-white transition-all duration-200">
-                   Tuyển dụng
+                   {t('nav.careers')}
                  </Link>
                </li>
                <li className="float-left leading-[70px] p-0 relative z-[994]">
                  <Link href="/partners" className="no-underline block font-bold px-5 text-white hover:bg-[#c9184a] hover:text-white transition-all duration-200">
-                   Đối tác
+                   {t('nav.partners')}
                  </Link>
                </li>
                <li className="float-left leading-[70px] p-0 relative z-[993]">
                  <Link href="/contact" className="no-underline block font-bold px-5 text-white hover:bg-[#c9184a] hover:text-white transition-all duration-200">
-                   Liên hệ
+                   {t('nav.contact')}
                  </Link>
                </li>
             </ul>
@@ -94,27 +97,11 @@ export default function Header() {
           
           {/* Desktop Right Section - Hidden on mobile and tablet */}
           <div className="hidden lg:flex items-center space-x-2">
-            <div className="px-[10px]">
-              <a href="https://www.instagram.com/sahmyook_island/" target="_blank" className="block py-[15px] px-[10px] bg-white rounded-b-[10px] no-underline">
-                <Image 
-                  src="/images/insta-icon.png" 
-                  alt="Instagram" 
-                  width={30}
-                  height={30}
-                  className="w-[30px] h-[30px] align-middle border-0" 
-                />
-              </a>
-            </div>
+            <LanguageToggle />
             
             <div className="bg-white h-[60px] py-[10px] px-[30px] rounded-b-[10px] shadow-[0px_3px_10px_0px_rgba(0,105,52,0.35)] flex items-center justify-center">
               <a href="https://shopthienthuanphat.com/" className="block">
-                <Image 
-                  src="https://thienthuanphat.vn/Data/images/banner-cn/logo/logo-ttp-2022-so-full-02-01.webp" 
-                  alt="KSB Mall" 
-                  width={80}
-                  height={32}
-                  className="max-w-full h-auto object-contain"
-                />
+                <span className="text-[#c9184a] font-bold text-lg tracking-wide">KSB MALL</span>
               </a>
             </div>
           </div>

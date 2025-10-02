@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import NewsCard from './NewsCard';
 import { newsService, transformNewsItem, TransformedNewsItem } from '../services/newsService';
+import { useLanguage } from '../contexts/LanguageContext';
 
 function createSlug(title: string): string {
   return title
@@ -22,6 +23,7 @@ interface NewsSectionClientProps {
 }
 
 export default function NewsSectionClient({ initialNews, totalCount }: NewsSectionClientProps) {
+  const { t } = useLanguage();
   const [newsData, setNewsData] = useState<TransformedNewsItem[]>(initialNews);
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
@@ -53,10 +55,10 @@ export default function NewsSectionClient({ initialNews, totalCount }: NewsSecti
     <section className="max-w-7xl mx-auto px-6 pt-12 md:pt-16 pb-24 md:pb-28">
       <div className="mb-6 md:mb-8 text-center">
         <h2 className="text-4xl md:text-5xl font-bold text-muted-foreground mb-4 text-center" data-aos="fade-up" data-aos-delay="100">
-          Tin tức & Cộng đồng
+          {t('news.title')}
         </h2>
         <p className="text-muted-foreground text-base text-center" data-aos="fade-up" data-aos-delay="150">
-          Khám phá những tin tức mới nhất và thay đổi của KSB Group.
+          {t('news.description')}
         </p>
       </div>
 

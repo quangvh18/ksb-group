@@ -4,7 +4,7 @@ import HomeFeature from '../components/HomeFeature'
 import NewsSection from '../components/NewsSection'
 
 const Banner = dynamic(() => import('../components/Banner'))
-const KSBGroupSection = dynamic(() => import('../components/KSBGroupSection'))
+// const KSBGroupSection = dynamic(() => import('../components/KSBGroupSection'))
 const ServicesSection = dynamic(() => import('../components/ServicesSection'))
 
 
@@ -29,7 +29,7 @@ export default async function Home() {
       <main>
         <HomeFeature />
         {/* KSB Group Summary Section */}
-        <KSBGroupSection />
+        {/* <KSBGroupSection /> */}
         <ServicesSection />
         {/* News & Community Section - replaced with new components */}
         <NewsSection />

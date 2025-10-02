@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import AOSProvider from "../components/AOSProvider";
+import { LanguageProvider } from "../contexts/LanguageContext";
 
 const notoSans = Noto_Sans({
   variable: "--font-noto-sans",
@@ -26,11 +27,13 @@ export default function RootLayout({
       <body
         className={`${notoSans.variable} antialiased`}
       >
-        <AOSProvider>
-          <Header />
-          {children}
-          <Footer />
-        </AOSProvider>
+        <LanguageProvider>
+          <AOSProvider>
+            <Header />
+            {children}
+            <Footer />
+          </AOSProvider>
+        </LanguageProvider>
       </body>
     </html>
   );

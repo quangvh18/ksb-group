@@ -1,42 +1,47 @@
+'use client';
+
 import Image from 'next/image'
+import { useLanguage } from '../contexts/LanguageContext'
 
 export default function Footer() {
+  const { t } = useLanguage();
+  
   return (
-    <footer className="footer-bottom py-6 sm:py-8 md:py-10 px-3 sm:px-4 md:px-5 pb-8 sm:pb-10 md:pb-12 border-t border-[#cfcfcf]">
+    <footer className="footer-bottom py-8 sm:py-10 md:py-12 px-3 sm:px-4 md:px-5 border-t border-[#cfcfcf]">
       <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
         <div className="flex flex-wrap">
           
           {/* Logo Section */}
-          <div className="w-full sm:w-1/2 md:w-1/4 lg:w-1/6 mb-4 sm:mb-6 md:mb-0">
+          <div className="w-full sm:w-1/2 md:w-1/4 lg:w-1/6 mb-4 sm:mb-6 md:mb-0 px-2 md:px-3">
             <Image 
               src="https://thienthuanphat.vn/Data/images/banner-cn/logo/fa-ksb.webp" 
               alt="KSB Group Logo"
-              width={150}
-              height={60}
-              className="w-32 sm:w-36 md:w-40 lg:w-full h-auto"
+              width={120}
+              height={48}
+              className="w-24 sm:w-28 md:w-32 h-auto"
             />
           </div>
           
           {/* Company Info Section */}
-          <div className="w-full sm:w-full md:w-full lg:w-1/2 mb-4 sm:mb-6 md:mb-6 lg:mb-0 order-3 sm:order-3 md:order-3 lg:order-2">
+          <div className="w-full sm:w-full md:w-full lg:w-1/2 mb-6 sm:mb-8 md:mb-6 lg:mb-0 order-3 sm:order-3 md:order-3 lg:order-2 px-2 md:px-3">
             <p className="text-left text-xs sm:text-sm md:text-sm leading-relaxed">
-              <strong className="block mb-1 sm:mb-2">CÔNG TY CỔ PHẦN TẬP ĐOÀN KSB</strong>
-              <span className="block mb-1">
-                <strong>Địa chỉ:</strong> Tầng 4, căn V10-A01, KĐT Terra An Hưng Phố Nguyễn Thanh Bình, Phường Dương Nội, TP Hà Nội, Việt Nam
+              <strong className="block mb-2 sm:mb-3">{t('footer.company')}</strong>
+              <span className="block mb-2">
+                <strong>{t('footer.address')}:</strong> Tầng 4, căn V10-A01, KĐT Terra An Hưng Phố Nguyễn Thanh Bình, Phường Dương Nội, TP Hà Nội, Việt Nam
               </span>
-              <span className="block mb-1">
-                <strong>Nhà máy:</strong> Cụm công nghiệp Long Xuyên, Phường Kinh Môn, TP Hải Phòng, Việt Nam
+              <span className="block mb-2">
+                <strong>{t('footer.factory')}:</strong> Cụm công nghiệp Long Xuyên, Phường Kinh Môn, TP Hải Phòng, Việt Nam
               </span>
-              <span className="block mt-2 text-[11px] sm:text-xs">
-                ⓒ KSB Group. Tất cả quyền được bảo lưu
+              <span className="block mt-3 text-[11px] sm:text-xs">
+                ⓒ {t('footer.copyright')}
               </span>
             </p>
           </div>
           
           {/* Phone Section */}
-          <div className="w-1/2 sm:w-1/2 md:w-1/2 lg:w-1/6 mb-4 sm:mb-6 md:mb-0 order-2 sm:order-2 md:order-2 lg:order-3">
+          <div className="w-1/2 sm:w-1/2 md:w-1/2 lg:w-1/6 mb-6 sm:mb-8 md:mb-0 order-2 sm:order-2 md:order-2 lg:order-3 px-2 md:px-3">
             <dl>
-              <dt className="font-bold text-xs sm:text-sm md:text-sm mb-1 sm:mb-2">Điện thoại</dt>
+              <dt className="font-bold text-xs sm:text-sm md:text-sm mb-2 sm:mb-3">{t('footer.phone')}</dt>
               <dd className="text-xs sm:text-sm md:text-sm">
                 <a href="tel:19001181" className="hover:underline hover:text-blue-600">19001181</a>
               </dd>
@@ -44,11 +49,11 @@ export default function Footer() {
           </div>
           
           {/* Email & Website Section */}
-          <div className="w-1/2 sm:w-1/2 md:w-1/2 lg:w-1/6 mb-4 sm:mb-6 md:mb-0 order-2 sm:order-2 md:order-2 lg:order-4">
+          <div className="w-1/2 sm:w-1/2 md:w-1/2 lg:w-1/6 mb-6 sm:mb-8 md:mb-0 order-2 sm:order-2 md:order-2 lg:order-4 px-2 md:px-3">
             <dl>
-              <dt className="font-bold text-xs sm:text-sm md:text-sm mb-1 sm:mb-2">Email & Website</dt>
+              <dt className="font-bold text-xs sm:text-sm md:text-sm mb-2 sm:mb-3">{t('footer.email')}</dt>
               <dd className="text-xs sm:text-sm md:text-sm">
-                <a href="mailto:info@ksbgroup.vn" className="hover:underline hover:text-blue-600 block mb-0.5">
+                <a href="mailto:info@ksbgroup.vn" className="hover:underline hover:text-blue-600 block mb-1">
                   info@ksbgroup.vn
                 </a>
                 <a href="https://ksbgroup.vn" target="_blank" rel="noopener noreferrer" className="hover:underline hover:text-blue-600 block">

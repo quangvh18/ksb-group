@@ -3,6 +3,7 @@
 import { Card } from "@/components/ui/card";
 import { useEffect } from "react";
 import AOS from 'aos';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface OrgNode {
   id: string;
@@ -187,6 +188,87 @@ const OrgLevel = ({ nodes, level = 0 }: OrgLevelProps) => {
 };
 
 const OrgChart = () => {
+  const { t } = useLanguage();
+
+  // Generate organization data based on current language
+  const getOrgData = (): OrgNode => ({
+    id: "ceo",
+    title: t('org.ceo'),
+    type: "director",
+    children: [
+      {
+        id: "marketing",
+        title: t('org.marketing.director'),
+        type: "manager",
+        children: [
+          { id: "phong-marketing", title: t('org.marketing.department'), type: "regional" },
+          { id: "cham-soc-kh-1", title: t('org.customer.care'), type: "regional" },
+        ],
+      },
+      {
+        id: "international",
+        title: t('org.international.director'),
+        type: "manager",
+        children: [
+          { id: "phong-kd-qt", title: t('org.international.department'), type: "regional" },
+          { id: "cham-soc-kh-2", title: t('org.customer.care'), type: "regional" },
+        ],
+      },
+      {
+        id: "production",
+        title: t('org.production.director'),
+        type: "manager",
+        children: [
+          { id: "phong-san-xuat", title: t('org.production.department'), type: "regional" },
+          {
+            id: "xuong-dong-goi",
+            title: t('org.packaging.workshop'),
+            type: "regional",
+            children: [{ id: "kho", title: t('org.warehouse'), type: "regional" }],
+          },
+        ],
+      },
+      {
+        id: "operations",
+        title: t('org.operations.director'),
+        type: "manager",
+      },
+      {
+        id: "north",
+        title: t('org.north.director'),
+        type: "manager",
+        children: [
+          { id: "asm-north-1", title: t('org.asm'), type: "regional" },
+          { id: "asm-north-2", title: t('org.asm'), type: "regional" },
+          { id: "sales-north", title: t('org.sales'), type: "regional" },
+          { id: "npp-north", title: t('org.npp'), type: "regional" },
+        ],
+      },
+      {
+        id: "central",
+        title: t('org.central.director'),
+        type: "manager",
+        children: [
+          { id: "asm-central-1", title: t('org.asm'), type: "regional" },
+          { id: "asm-central-2", title: t('org.asm'), type: "regional" },
+          { id: "sales-central", title: t('org.sales'), type: "regional" },
+          { id: "npp-central", title: t('org.npp'), type: "regional" },
+        ],
+      },
+      {
+        id: "south",
+        title: t('org.south.director'),
+        type: "manager",
+        children: [
+          { id: "asm-south-1", title: t('org.asm'), type: "regional" },
+          { id: "asm-south-2", title: t('org.asm'), type: "regional" },
+          { id: "sales-south", title: t('org.sales'), type: "regional" },
+          { id: "npp-south", title: t('org.npp'), type: "regional" },
+        ],
+      },
+    ],
+  });
+
   useEffect(() => {
     // Refresh AOS when component mounts to ensure animations work
     AOS.refresh();
@@ -196,13 +278,13 @@ const OrgChart = () => {
     <section className="py-16 px-4 bg-gradient-to-br from-background to-muted/30" data-aos="fade-up">
       <div className="container mx-auto max-w-7xl">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-muted-foreground" data-aos="fade-up" data-aos-delay="100">
-          SƠ ĐỒ TỔ CHỨC
+          {t('org.title')}
         </h2>
 
         <div className="flex flex-col items-center gap-6">
           {/* CEO Level */}
           <div data-aos="zoom-in" data-aos-delay="200">
-            <OrgNodeCard node={orgData} isRoot />
+            <OrgNodeCard node={getOrgData()} isRoot />
           </div>
           
           <div className="w-0.5 h-12 bg-org-line" data-aos="fade-up" data-aos-delay="300" />
@@ -211,7 +293,7 @@ const OrgChart = () => {
           <div className="relative w-full max-w-6xl" data-aos="fade-up" data-aos-delay="400">
             <div className="absolute top-0 left-0 right-0 h-0.5 bg-org-line" />
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 md:gap-6 pt-12">
-              {orgData.children?.map((child, index) => (
+              {getOrgData().children?.map((child, index) => (
                 <div key={child.id} className="flex flex-col items-center gap-4" data-aos="fade-up" data-aos-delay={500 + index * 100}>
                   <div className="w-0.5 h-12 bg-org-line -mt-12" />
                   <OrgNodeCard node={child} />
