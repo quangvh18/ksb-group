@@ -1,8 +1,10 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function KSBGroupSection() {
+  const { t } = useLanguage();
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [showLeftArrow, setShowLeftArrow] = useState(true);
   const [showRightArrow, setShowRightArrow] = useState(true);
@@ -10,23 +12,35 @@ export default function KSBGroupSection() {
   const [startX, setStartX] = useState(0);
   const [scrollLeftPos, setScrollLeftPos] = useState(0);
   const animationRef = useRef<number | null>(null);
+  const isScrollingRef = useRef<boolean>(false);
+  const savedScrollPosition = useRef<number>(0);
 
-  // Hàm cuộn mượt với easing (cải thiện) + hủy animation cũ nếu đang chạy
+  // Hàm cuộn mượt với easing tối ưu và debounce
   const handleScroll = (direction: 'left' | 'right') => {
+    // Ngăn chặn click liên tục khi đang scroll
+    if (isScrollingRef.current) return;
+    
     if (scrollContainerRef.current) {
+      isScrollingRef.current = true;
       const container = scrollContainerRef.current;
-      const scrollAmount = container.clientWidth * 0.8; // Cuộn 80% chiều rộng
+      const cardWidth = 320; // Width của mỗi card + gap
       const currentScroll = container.scrollLeft;
       const maxScroll = container.scrollWidth - container.clientWidth;
 
       const targetScroll =
         direction === 'right'
-          ? Math.min(currentScroll + scrollAmount, maxScroll)
-          : Math.max(currentScroll - scrollAmount, 0);
+          ? Math.min(currentScroll + cardWidth, maxScroll)
+          : Math.max(currentScroll - cardWidth, 0);
 
       const start = currentScroll;
       const distance = targetScroll - start;
-      const duration = 600; // Tăng thời gian lên 600ms cho mượt hơn
+      const duration = 350; // Tối ưu thời gian
+
+      // Hủy animation cũ nếu có
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+        animationRef.current = null;
+      }
 
       let startTime: number | null = null;
 
@@ -35,22 +49,21 @@ export default function KSBGroupSection() {
         const elapsed = timestamp - startTime;
         const progress = Math.min(elapsed / duration, 1);
 
-        // Sử dụng easeOutQuart để mượt mà hơn
-        const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+        // Sử dụng easeInCubic - bắt đầu chậm rồi tăng tốc dần
+        const easeInCubic = Math.pow(progress, 3);
 
         if (container) {
-          container.scrollLeft = start + distance * easeOutQuart;
+          container.scrollLeft = start + distance * easeInCubic;
         }
 
         if (progress < 1) {
           animationRef.current = requestAnimationFrame(step);
+        } else {
+          animationRef.current = null;
+          isScrollingRef.current = false; // Cho phép scroll tiếp
         }
       };
 
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-        animationRef.current = null;
-      }
       animationRef.current = requestAnimationFrame(step);
     }
   };
@@ -87,11 +100,28 @@ export default function KSBGroupSection() {
     }
   };
 
+  // Lưu vị trí scroll hiện tại
+  const saveScrollPosition = () => {
+    if (scrollContainerRef.current) {
+      savedScrollPosition.current = scrollContainerRef.current.scrollLeft;
+    }
+  };
+
+  // Khôi phục vị trí scroll đã lưu
+  const restoreScrollPosition = () => {
+    if (scrollContainerRef.current && savedScrollPosition.current > 0) {
+      scrollContainerRef.current.scrollLeft = savedScrollPosition.current;
+    }
+  };
+
   const updateScrollState = () => {
     if (scrollContainerRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
       setShowLeftArrow(scrollLeft > 0);
       setShowRightArrow(scrollLeft < scrollWidth - clientWidth - 10);
+      
+      // Lưu vị trí scroll khi user scroll thủ công
+      savedScrollPosition.current = scrollLeft;
     }
   };
 
@@ -110,50 +140,65 @@ export default function KSBGroupSection() {
       }
     };
   }, []);
+
+  // Lưu vị trí scroll khi resize và khôi phục sau khi layout ổn định
+  useEffect(() => {
+    const handleResize = () => {
+      saveScrollPosition();
+      // Khôi phục vị trí sau một chút delay để đảm bảo layout đã ổn định
+      setTimeout(() => {
+        restoreScrollPosition();
+      }, 100);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   return (
-    <section className="ksb-summary py-20 bg-gray-50 relative">
-      <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
-        <div className="mb-6 md:mb-8 text-center" data-aos="fade-up" data-aos-delay="100">
-          <h2 className="text-4xl md:text-5xl font-bold text-muted-foreground mb-4 text-center">
-            KSB Group
+    <section className="ksb-summary py-12 sm:py-16 md:py-20 bg-gray-50 relative">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1400px]">
+        <div className="mb-8 sm:mb-12 md:mb-16 text-center" data-aos="fade-up" data-aos-delay="100">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-muted-foreground mb-3 sm:mb-4 md:mb-6 leading-tight">
+            {t('ksbgroup.title')}
           </h2>
-          <p className="text-muted-foreground text-base text-center">
-            Khám phá hệ sinh thái và lĩnh vực hoạt động của KSB Group.
+          <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+            {t('ksbgroup.subtitle')}
           </p>
         </div>
 
         <div className="relative">
           <div
-            className="overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing relative"
+            className="overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing relative touch-pan-x"
             ref={scrollContainerRef}
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseLeave}
             style={{
-              scrollSnapType: 'none',
+              scrollSnapType: 'x mandatory',
               scrollbarWidth: 'none',
               msOverflowStyle: 'none',
               WebkitOverflowScrolling: 'touch',
-              willChange: 'scroll-position'
+              willChange: 'transform',
+              scrollBehavior: 'smooth'
             }}
           >
 
-            <div className="flex space-x-6 py-8 w-max items-center">
+            <div className="flex space-x-4 sm:space-x-6 lg:space-x-8 py-6 sm:py-8 lg:py-12 w-max items-center">
               {/* F&B Card */}
-              <div className="relative bg-white rounded-[3.5rem_0.75rem_3.5rem_0.75rem] shadow-[0_3px_10px_-6px_rgba(0,0,0,0.15),0_1px_4px_-2px_rgba(0,0,0,0.08)] w-[300px] flex-shrink-0 overflow-hidden group snap-start hover:shadow-[0_10px_24px_-12px_rgba(0,0,0,0.2),0_6px_16px_-8px_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.06)] transition-all duration-700 ease-out" data-aos="zoom-in" data-aos-delay="100">
+              <div className="relative bg-white rounded-[2rem_0.5rem_2rem_0.5rem] sm:rounded-[3rem_0.75rem_3rem_0.75rem] lg:rounded-[3.5rem_0.75rem_3.5rem_0.75rem] shadow-[0_3px_10px_-6px_rgba(0,0,0,0.15),0_1px_4px_-2px_rgba(0,0,0,0.08)] w-[280px] sm:w-[300px] lg:w-[320px] flex-shrink-0 overflow-hidden group snap-start hover:shadow-[0_10px_24px_-12px_rgba(0,0,0,0.2),0_6px_16px_-8px_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.06)] transition-all duration-700 ease-out" data-aos="zoom-in" data-aos-delay="100">
                 <div
-                  className="h-[28rem] bg-cover bg-center bg-no-repeat bg-[url('https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=60')]"
+                  className="h-[24rem] sm:h-[26rem] lg:h-[28rem] bg-cover bg-center bg-no-repeat bg-[url('https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=60')]"
                 >
                   <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-transparent"></div>
-                  <div className="absolute top-6 left-6">
-                    <h3 className="text-2xl font-bold text-white mb-2">F&B</h3>
-                    <p className="text-white text-sm leading-relaxed">
-                      Nhập khẩu & phân phối F&B chất lượng cao. Đối tác quốc tế: Hàn Quốc, Đài Loan, Pháp, Ba Lan, Đức, New Zealand. Dẫn đầu xu hướng ẩm thực.
+                  <div className="absolute top-4 sm:top-6 left-4 sm:left-6 right-4 sm:right-6">
+                    <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-2 sm:mb-3 leading-tight">{t('ksbgroup.fnb.title')}</h3>
+                    <p className="text-white text-xs sm:text-sm leading-relaxed">
+                      {t('ksbgroup.fnb.desc')}
                     </p>
                   </div>
-                  <div className="absolute bottom-6 left-6">
-                    <button className="w-10 h-10 bg-[#c9184a] rounded-lg flex items-center justify-center hover:bg-[#a0153a] transition-colors">
+                  <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6">
+                    <button className="w-8 h-8 sm:w-10 sm:h-10 bg-[#c9184a] rounded-lg flex items-center justify-center hover:bg-[#a0153a] transition-colors touch-manipulation">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
                       </svg>
@@ -163,19 +208,19 @@ export default function KSBGroupSection() {
               </div>
 
               {/* Hóa - Mỹ phẩm Card */}
-              <div className="relative bg-white rounded-[0.75rem_3.5rem_0.75rem_3.5rem] shadow-[0_3px_10px_-6px_rgba(0,0,0,0.15),0_1px_4px_-2px_rgba(0,0,0,0.08)] w-[300px] flex-shrink-0 overflow-hidden group snap-start hover:shadow-[0_10px_24px_-12px_rgba(0,0,0,0.2),0_6px_16px_-8px_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.06)] transition-all duration-700 ease-out" data-aos="zoom-in" data-aos-delay="200">
+              <div className="relative bg-white rounded-[0.5rem_2rem_0.5rem_2rem] sm:rounded-[0.75rem_3rem_0.75rem_3rem] lg:rounded-[0.75rem_3.5rem_0.75rem_3.5rem] shadow-[0_3px_10px_-6px_rgba(0,0,0,0.15),0_1px_4px_-2px_rgba(0,0,0,0.08)] w-[280px] sm:w-[300px] lg:w-[320px] flex-shrink-0 overflow-hidden group snap-start hover:shadow-[0_10px_24px_-12px_rgba(0,0,0,0.2),0_6px_16px_-8px_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.06)] transition-all duration-700 ease-out" data-aos="zoom-in" data-aos-delay="200">
                 <div
-                  className="h-[28rem] bg-cover bg-center bg-no-repeat bg-[url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=60')]"
+                  className="h-[24rem] sm:h-[26rem] lg:h-[28rem] bg-cover bg-center bg-no-repeat bg-[url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=60')]"
                 >
                   <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-transparent"></div>
-                  <div className="absolute top-6 left-6">
-                    <h3 className="text-2xl font-bold text-white mb-2">HÓA - MỸ PHẨM</h3>
-                    <p className="text-white text-sm leading-relaxed">
-                      Chăm sóc sức khỏe & làm đẹp. Đối tác quốc tế: Biofresh (Bulgaria), Trung Quốc. Cam kết chất lượng bền vững.
+                  <div className="absolute top-4 sm:top-6 left-4 sm:left-6 right-4 sm:right-6">
+                    <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-2 sm:mb-3 leading-tight">{t('ksbgroup.cosmetics.title')}</h3>
+                    <p className="text-white text-xs sm:text-sm leading-relaxed">
+                      {t('ksbgroup.cosmetics.desc')}
                     </p>
                   </div>
-                  <div className="absolute bottom-6 left-6">
-                    <button className="w-10 h-10 bg-[#c9184a] rounded-lg flex items-center justify-center hover:bg-[#a0153a] transition-colors">
+                  <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6">
+                    <button className="w-8 h-8 sm:w-10 sm:h-10 bg-[#c9184a] rounded-lg flex items-center justify-center hover:bg-[#a0153a] transition-colors touch-manipulation">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
                       </svg>
@@ -191,9 +236,9 @@ export default function KSBGroupSection() {
                 >
                   <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-transparent"></div>
                   <div className="absolute top-6 left-6">
-                    <h3 className="text-2xl font-bold text-white mb-2">SẢN XUẤT</h3>
+                    <h3 className="text-2xl font-bold text-white mb-2">{t('ksbgroup.food.title')}</h3>
                     <p className="text-white text-sm leading-relaxed">
-                      Sản xuất hiện đại, phân phối thực phẩm phủ toàn quốc. Kiến tạo chuỗi cung ứng hiệu quả, tin cậy.
+                      {t('ksbgroup.food.desc')}
                     </p>
                   </div>
                   <div className="absolute bottom-6 left-6">
@@ -213,9 +258,9 @@ export default function KSBGroupSection() {
                 >
                   <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-transparent"></div>
                   <div className="absolute top-6 left-6">
-                    <h3 className="text-2xl font-bold text-white mb-2">TIÊU DÙNG</h3>
+                    <h3 className="text-2xl font-bold text-white mb-2">{t('ksbgroup.consumer.title')}</h3>
                     <p className="text-white text-sm leading-relaxed">
-                      Hàng tiêu dùng nhập khẩu: Choco Samjin, Boring Oat Milk. Trải nghiệm khác biệt cho người tiêu dùng Việt.
+                      {t('ksbgroup.consumer.desc')}
                     </p>
                   </div>
                   <div className="absolute bottom-6 left-6">
@@ -236,9 +281,9 @@ export default function KSBGroupSection() {
                 >
                   <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-transparent"></div>
                   <div className="absolute top-6 left-6">
-                    <h3 className="text-2xl font-bold text-white mb-2">LOGISTICS</h3>
+                    <h3 className="text-2xl font-bold text-white mb-2">{t('ksbgroup.logistics.title')}</h3>
                     <p className="text-white text-sm leading-relaxed">
-                      Logistics đồng bộ, tối ưu dòng chảy thương mại. Kết nối giá trị – lan tỏa niềm tin.
+                      {t('ksbgroup.logistics.desc')}
                     </p>
                   </div>
                   <div className="absolute bottom-6 left-6">

@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { useEffect } from 'react';
 import PageHeader from "../../components/PageHeader";
 import JobListings from "../../components/JobListings";
+import BrandSection from "../../components/BrandSection";
 import { useLanguage } from "../../contexts/LanguageContext";
 
 export default function Careers() {
@@ -70,6 +71,7 @@ export default function Careers() {
         description={t('careers.description')}
         breadcrumbItems={breadcrumbItems}
       />
+      
       {/* Company Introduction Section */}
       <div className="bg-white py-16" data-aos="fade-up">
         <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
@@ -116,7 +118,8 @@ export default function Careers() {
         </div>
       </div>
 
-
+      {/* Brand Section */}
+      <BrandSection />
 
       {/* Company Vision Section */}
       <div className="bg-white py-16" data-aos="fade-up">
@@ -314,7 +317,7 @@ export default function Careers() {
 
               {/* Title */}
               <h3 className="text-black text-2xl block text-center font-bold mb-3 transition-all duration-500 ease-out group-hover:text-[#c9184a]">
-                {t('careers.contact.title')}
+                Ứng tuyển ngay
               </h3>
 
               {/* Contact Info */}
@@ -324,36 +327,36 @@ export default function Careers() {
                 <div className="text-sm text-gray-700 mb-3 group-hover:text-gray-800 transition-colors duration-500 ease-out">
                   <div className="text-center space-y-2">
                     <div className="font-bold text-base text-black">
-                      {t('careers.contact.subtitle')}
+                      Phòng nhân sự công ty
                     </div>
                     <div className="font-bold text-base text-black">
-                      {t('footer.company')}
+                      CÔNG TY CỔ PHẦN TẬP ĐOÀN KSB
                     </div>
                     <div className="text-sm text-gray-700 mt-4 leading-relaxed">
-                      {t('careers.contact.address')}
+                      Tầng 4, căn V10-A01, KĐT Terra An Hưng Phố Nguyễn Thanh Bình, Phường Dương Nội, TP Hà Nội, Việt Nam
                     </div>
                     <div className="text-sm text-gray-700">
-                      {t('careers.contact.phone')}
-                    </div>
-                    <div className="text-sm text-gray-700">
-                      {t('careers.contact.email')}
+                      hr@ksbgroup.vn
                     </div>
                   </div>
                 </div>
-                <a 
-                  href="mailto:hr@ksbgroup.vn" 
+                
+                {/* Apply Button */}
+                <a
+                  href="mailto:hr@ksbgroup.vn"
                   className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-[#c9184a] hover:bg-[#a0153a] text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300 text-base mt-4 transform hover:scale-105"
                 >
                   <svg className="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                   </svg>
-                  {t('careers.contact.button')}
+                  Gửi ứng tuyển
                 </a>
               </div>
             </div>
           </div>
         </div>
       </div>
+
       
       <style jsx>{`
         .qmenu_card:hover {

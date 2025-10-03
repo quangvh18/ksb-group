@@ -125,6 +125,15 @@ export async function submitContactRequest(
       };
     }
 
+    // Log the data being sent for debugging
+    console.log('Sending contact request with data:', {
+      fullName: data.fullName,
+      phone: data.phone,
+      email: data.email,
+      content: data.content,
+      requestTypeId: data.requestTypeId
+    });
+
     const response = await axios.post(`${API_BASE_URL}/contact-requests`, {
       data: {
         fullName: data.fullName,

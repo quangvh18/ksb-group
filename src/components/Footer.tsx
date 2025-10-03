@@ -44,7 +44,6 @@ export default function Footer() {
               <dt className="font-bold text-xs sm:text-sm md:text-sm mb-2 sm:mb-3">{t('footer.phone')}</dt>
               <dd className="text-xs sm:text-sm md:text-sm">
                 <a href="tel:19001181" className="hover:underline hover:text-blue-600 block mb-1">{t('footer.phone.detail')}</a>
-                <span className="text-[10px] sm:text-xs text-gray-600">{t('footer.phone.hours')}</span>
               </dd>
             </dl>
           </div>
@@ -56,9 +55,6 @@ export default function Footer() {
               <dd className="text-xs sm:text-sm md:text-sm">
                 <a href="mailto:info@ksbgroup.vn" className="hover:underline hover:text-blue-600 block mb-1">
                   {t('footer.email.general')}
-                </a>
-                <a href="mailto:support@ksbgroup.vn" className="hover:underline hover:text-blue-600 block mb-1">
-                  {t('footer.email.support')}
                 </a>
                 <a href="https://ksbgroup.vn" target="_blank" rel="noopener noreferrer" className="hover:underline hover:text-blue-600 block">
                   {t('footer.website.detail')}

@@ -45,6 +45,13 @@ export default function ContactPage() {
     setIsLoading(true);
     setMessage({ type: '', text: '' });
 
+    // Validate required fields
+    if (!selectedRequestTypeId) {
+      setMessage({ type: 'error', text: 'Vui lòng chọn loại yêu cầu' });
+      setIsLoading(false);
+      return;
+    }
+
     try {
       const contactData: ContactRequestData = {
         fullName: formData.name,
@@ -53,6 +60,9 @@ export default function ContactPage() {
         content: formData.content,
         requestTypeId: selectedRequestTypeId
       };
+
+      // Debug log to check data being sent
+      console.log('Contact data being sent:', contactData);
 
       const messages = {
         contentLimitError: t('contact.form.content.limit'),
@@ -146,8 +156,7 @@ export default function ContactPage() {
                           </div>
                           <h3 className="text-xl font-bold text-[#c9184a] mb-2">{t('footer.phone')}</h3>
                           <p className="text-sm text-gray-600 leading-relaxed">
-                            {t('footer.phone.detail')}<br/>
-                            {t('footer.phone.hours')}
+                            {t('footer.phone.detail')}
                           </p>
                         </div>
 
@@ -161,8 +170,7 @@ export default function ContactPage() {
                           </div>
                           <h3 className="text-xl font-bold text-[#c9184a] mb-2">Email</h3>
                           <p className="text-sm text-gray-600 leading-relaxed">
-                            {t('footer.email.general')}<br/>
-                            {t('footer.email.support')}
+                            {t('footer.email.general')}
                           </p>
                         </div>
                       </div>
@@ -210,18 +218,29 @@ export default function ContactPage() {
                       </div>
                     </div>
                     {showOptions && (
-                      <ul className="absolute top-full left-0 right-0 bg-white border-2 border-gray-200 rounded-xl mt-2 shadow-2xl z-50 overflow-hidden">
+                      <ul className="absolute top-full left-0 right-0 bg-white border-2 border-gray-200 rounded-xl mt-2 shadow-2xl z-50 overflow-hidden max-h-60 overflow-y-auto">
                         {requestTypes.map((type) => (
                           <li 
                             key={type.id}
-                            className="px-4 py-4 hover:bg-red-50 cursor-pointer border-b border-gray-100 last:border-b-0 transition-colors duration-200 hover:text-[#c9184a] text-base"
+                            className={`px-4 py-4 cursor-pointer border-b border-gray-100 last:border-b-0 transition-colors duration-200 text-base ${
+                              selectedRequestTypeId === type.id 
+                                ? 'bg-[#c9184a] text-white' 
+                                : 'hover:bg-red-50 hover:text-[#c9184a]'
+                            }`}
                             onClick={() => {
                               setSelectedSubject(type.name);
                               setSelectedRequestTypeId(type.id);
                               setShowOptions(false);
                             }}
                           >
-                            {type.name}
+                            <div className="flex items-center justify-between">
+                              <span>{type.name}</span>
+                              {selectedRequestTypeId === type.id && (
+                                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+                                </svg>
+                              )}
+                            </div>
                           </li>
                         ))}
                       </ul>
@@ -286,10 +305,24 @@ export default function ContactPage() {
                     </div>
                   </div>
                   
+                  {/* Selected Request Type Display */}
+                  {selectedRequestTypeId && (
+                    <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                      <div className="flex items-center">
+                        <svg className="w-5 h-5 text-green-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+                        </svg>
+                        <span className="text-green-800 font-medium">
+                          Loại yêu cầu đã chọn: <strong>{selectedSubject}</strong>
+                        </span>
+                      </div>
+                    </div>
+                  )}
+
                   <div className="flex justify-center">
                     <button 
                       type="submit"
-                      disabled={isLoading}
+                      disabled={isLoading || !selectedRequestTypeId}
                       className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-[#c9184a] hover:bg-[#a0153a] disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-semibold shadow transition-colors duration-300"
                     >
                       {isLoading ? t('contact.form.submitting') : t('contact.form.submit')}

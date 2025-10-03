@@ -8,6 +8,8 @@ import { useLanguage } from '../contexts/LanguageContext'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isAboutHovered, setIsAboutHovered] = useState(false);
+  const [isAboutMobileOpen, setIsAboutMobileOpen] = useState(false);
   const { t } = useLanguage();
 
   const toggleMenu = () => {
@@ -45,10 +47,32 @@ export default function Header() {
                    {t('nav.home') || 'Trang chủ'}
                  </Link>
                </li>
-               <li className="float-left leading-[70px] p-0 relative z-[998]">
+               <li 
+                 className="float-left leading-[70px] p-0 relative z-[998]"
+                 onMouseEnter={() => setIsAboutHovered(true)}
+                 onMouseLeave={() => setIsAboutHovered(false)}
+               >
                  <Link href="/about" className="no-underline block font-bold px-5 text-white hover:bg-[#c9184a] hover:text-white transition-all duration-200">
                    {t('nav.about')}
                  </Link>
+                 
+                 {/* Sub Menu */}
+                 {isAboutHovered && (
+                   <div className="absolute top-full left-0 bg-white shadow-lg rounded-b-lg min-w-[180px] z-[1000]">
+                     <Link 
+                       href="/about" 
+                       className="block px-5 py-3 text-lg text-gray-800 hover:bg-[#c9184a] hover:text-white transition-all duration-200 border-b border-gray-100"
+                     >
+                       {t('nav.about')}
+                     </Link>
+                     <Link 
+                       href="/about/organization" 
+                       className="block px-5 py-3 text-lg text-gray-800 hover:bg-[#c9184a] hover:text-white transition-all duration-200 last:rounded-b-lg"
+                     >
+                       {t('about.organization.title')}
+                     </Link>
+                   </div>
+                 )}
                </li>
                <li className="float-left leading-[70px] p-0 relative z-[997]">
                  <Link href="/ecosystem" className="no-underline block font-bold px-5 text-white hover:bg-[#c9184a] hover:text-white transition-all duration-200">
@@ -101,7 +125,7 @@ export default function Header() {
             
             <div className="bg-white h-[60px] py-[10px] px-[30px] rounded-b-[10px] shadow-[0px_3px_10px_0px_rgba(0,105,52,0.35)] flex items-center justify-center">
               <a href="https://shopthienthuanphat.com/" className="block">
-                <span className="text-[#c9184a] font-bold text-lg tracking-wide">KSB MALL</span>
+                <span className="text-[#f02748] font-bold text-lg tracking-wide">KSB MALL</span>
               </a>
             </div>
           </div>
@@ -119,13 +143,41 @@ export default function Header() {
                 >
                   Trang chủ
                 </Link>
-                <Link 
-                  href="/about" 
-                  className="block w-full px-4 py-4 text-white font-bold hover:bg-[#c9184a] transition-all duration-200"
-                  onClick={closeMenu}
-                >
-                  Về chúng tôi
-                </Link>
+                <div>
+                  <button
+                    onClick={() => setIsAboutMobileOpen(!isAboutMobileOpen)}
+                    className="block w-full px-4 py-4 text-white font-bold hover:bg-[#c9184a] transition-all duration-200 text-left flex items-center justify-between"
+                  >
+                    <span>Về chúng tôi</span>
+                    <svg 
+                      className={`w-4 h-4 transition-transform duration-200 ${isAboutMobileOpen ? 'rotate-180' : ''}`} 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  
+                  {isAboutMobileOpen && (
+                    <div className="ml-4 space-y-0 bg-white/10 rounded-b-lg overflow-hidden">
+                      <Link 
+                        href="/about" 
+                        className="block px-5 py-3 text-lg text-white/80 hover:bg-[#c9184a] hover:text-white transition-all duration-200"
+                        onClick={closeMenu}
+                      >
+                        {t('nav.about')}
+                      </Link>
+                      <Link 
+                        href="/about/organization" 
+                        className="block px-5 py-3 text-lg text-white/80 hover:bg-[#c9184a] hover:text-white transition-all duration-200 last:rounded-b-lg"
+                        onClick={closeMenu}
+                      >
+                        {t('about.organization.title')}
+                      </Link>
+                    </div>
+                  )}
+                </div>
                 <Link 
                   href="/ecosystem" 
                   className="block w-full px-4 py-4 text-white font-bold hover:bg-[#c9184a] transition-all duration-200"

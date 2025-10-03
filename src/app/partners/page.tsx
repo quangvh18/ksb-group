@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import PageHeader from "../../components/PageHeader";
+import BrandSection from "../../components/BrandSection";
 import { useLanguage } from "../../contexts/LanguageContext";
 
 // Define partner data structure
@@ -193,7 +194,7 @@ export default function PartnersPage() {
               />
               
               {/* Pink tint overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#f4acb7]/10 to-transparent rounded-[3rem_0rem_3rem_0rem] z-20"></div>
+              <div className="absolute inset-0 bg-opacity-10 to-transparent rounded-[3rem_0rem_3rem_0rem] z-20"></div>
             </div>
             
             {/* Text Content - Right Side */}
@@ -211,7 +212,7 @@ export default function PartnersPage() {
       </div>
 
       {/* Interactive Partners by Industry Section */}
-      <div className="bg-gray-50 py-16" data-aos="fade-up">
+      <div className="bg-gradient-to-br from-gray-50 via-white to-gray-100 py-16" data-aos="fade-up">
         <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-muted-foreground mb-4">
@@ -224,41 +225,21 @@ export default function PartnersPage() {
 
           {/* Interactive Section */}
           <div className="relative flex-1 w-full overflow-hidden min-h-[600px] rounded-[3rem_0rem_3rem_0rem] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_16px_-4px_rgba(0,0,0,0.1)]">
-            {/* Multiple background images */}
+            {/* Background image with light overlay */}
             <Image
-              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1600&auto=format&fit=crop"
-              alt="Background"
+              src="https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=1926&auto=format&fit=crop"
+              alt="Business handshake background"
               fill
               className="absolute inset-0 w-full h-full object-cover rounded-[3rem_0rem_3rem_0rem]"
             />
-            {/* Additional decorative images */}
-            <div className="absolute top-4 right-4 w-32 h-32 opacity-20">
-              <Image
-                src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=400&auto=format&fit=crop"
-                alt="Partnership"
-                fill
-                className="w-full h-full object-cover rounded-2xl"
-              />
-                  </div>
-            <div className="absolute bottom-4 left-4 w-24 h-24 opacity-15">
-              <Image
-                src="https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=400&auto=format&fit=crop"
-                alt="Business"
-                fill
-                className="w-full h-full object-cover rounded-xl"
-              />
-                </div>
-            <div className="absolute top-1/2 left-8 w-20 h-20 opacity-10 transform -translate-y-1/2">
-              <Image
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&auto=format&fit=crop"
-                alt="Teamwork"
-                fill
-                className="w-full h-full object-cover rounded-full"
-              />
-              </div>
-            {/* Lighter overlay with gradient */}
-            <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/20 to-black/30 rounded-[3rem_0rem_3rem_0rem]"></div>
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-black/25 rounded-[3rem_0rem_3rem_0rem]"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-black/20 via-black/30 to-black/20 rounded-[3rem_0rem_3rem_0rem]"></div>
+            {/* Decorative light elements */}
+            <div className="absolute top-4 right-4 w-32 h-32 bg-gradient-to-br from-blue-200/30 to-purple-200/30 rounded-2xl"></div>
+            <div className="absolute bottom-4 left-4 w-24 h-24 bg-gradient-to-br from-indigo-200/30 to-pink-200/30 rounded-xl"></div>
+            <div className="absolute top-1/2 left-8 w-20 h-20 bg-gradient-to-br from-cyan-200/30 to-blue-200/30 rounded-full transform -translate-y-1/2"></div>
+            {/* Minimal overlay for text readability */}
+            <div className="absolute inset-0 bg-gradient-to-r from-white/5 via-transparent to-white/5 rounded-[3rem_0rem_3rem_0rem]"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/2 to-white/5 rounded-[3rem_0rem_3rem_0rem]"></div>
 
             <div className="absolute inset-0 flex flex-col md:flex-row items-center md:justify-center z-10 p-4">
               {/* Cột ngành hàng */}
@@ -283,21 +264,25 @@ export default function PartnersPage() {
                           onClick={() => handleClickIndustry(item)}
                           onMouseEnter={() => setHoveredIndex(index)}
                           onMouseLeave={() => setHoveredIndex(null)}
-                          className={`group flex items-center h-16 md:h-[80px] gap-[20px] p-4 cursor-pointer transition-colors duration-300 relative
+                          className={`group flex items-center h-16 md:h-[80px] gap-[20px] p-4 cursor-pointer transition-all duration-500 ease-out relative transform-gpu will-change-transform
                             ${index === 0 ? 'rounded-tl-[2rem]' : ''}
                             ${index === industryPartnersData.length - 1 ? 'rounded-br-[2rem]' : ''}
                             ${
                               isActive
-                                ? 'bg-[#c9184a] text-white'
-                                : 'hover:bg-[#c9184a] hover:text-white'
+                                ? 'bg-[#c9184a] text-white shadow-lg scale-[1.02]'
+                                : 'hover:bg-[#c9184a] hover:text-white hover:scale-[1.01] hover:shadow-md'
                             }
                             border-b ${shouldHideBorder ? 'border-transparent' : 'border-gray-200'}
                             ${!isActive ? 'last:border-b-0' : ''}
                           `}
+                          style={{
+                            transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                            transform: 'translate3d(0, 0, 0)'
+                          }}
                         >
                           <div className="flex items-center justify-center w-8 h-8 mr-3">
                             {renderIcon(item.icon, isActive)}
-                  </div>
+                          </div>
                           <span className="text-sm md:text-[18px] font-medium">
                             {item.name}
                           </span>
@@ -305,23 +290,24 @@ export default function PartnersPage() {
                       );
                     })}
                   </ul>
+                </div>
               </div>
-            </div>
 
               {/* Cột danh sách đối tác */}
               <div className="w-full md:w-[60%] lg:w-[65%] flex items-center justify-center p-4">
                 <div
-                  className={`flex flex-wrap gap-3 md:gap-4 justify-center items-center ${
-                    isFading ? 'animate-fade-in' : ''
+                  className={`flex flex-wrap gap-3 md:gap-4 justify-center items-center transition-all duration-700 ease-out ${
+                    isFading ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'
                   }`}
                 >
                   {partners.map((partner, index) => (
                     <div
                       key={`${partner.name}-${index}`}
-                      className="bg-white/95 backdrop-blur-sm p-6 rounded-3xl shadow-lg min-w-[250px] max-w-[320px] group border border-white/20 relative overflow-hidden transform-gpu will-change-transform"
+                      className="bg-white bg-opacity-95 backdrop-blur-sm p-6 rounded-3xl shadow-lg min-w-[250px] max-w-[320px] group border border-white border-opacity-20 relative overflow-hidden transform-gpu will-change-transform"
                       style={{
-                        transition: 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                        transform: 'translate3d(0, 0, 0)'
+                        transition: 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
+                        transform: 'translate3d(0, 0, 0)',
+                        transitionDelay: `${index * 100}ms`
                       }}
                       onMouseEnter={(e) => {
                         e.currentTarget.style.transform = 'translate3d(0, -8px, 0)';
@@ -335,7 +321,7 @@ export default function PartnersPage() {
                       data-aos-delay={index * 100}
                     >
                       {/* Decorative background gradient */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-[#c9184a]/2 via-transparent to-orange-500/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div className="absolute inset-0 bg-gradient-to-br from-red-50 via-transparent to-orange-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       
                       {/* Animated border */}
                       <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-[#c9184a] via-orange-500 to-[#c9184a] opacity-0 group-hover:opacity-5 blur-sm transition-all duration-300"></div>
@@ -346,13 +332,13 @@ export default function PartnersPage() {
                             {partner.name}
                           </h3>
                           {/* Add a subtle badge */}
-                          <div className="inline-block px-3 py-1 bg-gradient-to-r from-[#c9184a]/10 to-orange-500/10 rounded-full text-xs font-medium text-[#c9184a] group-hover:from-[#c9184a]/20 group-hover:to-orange-500/20 transition-all duration-300">
+                          <div className="inline-block px-3 py-1 bg-gradient-to-r from-red-100 to-orange-100 rounded-full text-xs font-medium text-[#c9184a] group-hover:from-red-200 group-hover:to-orange-200 transition-all duration-300">
                             {partner.name.includes('2022') || partner.name.includes('2023') || partner.name.includes('2024') ? 'Doanh thu' : 
                              partner.name.includes('F&B') ? 'Thương hiệu' :
                              partner.name.includes('Mỹ phẩm') ? 'Làm đẹp' :
                              partner.name.includes('Sản xuất') ? 'Sản xuất' : 'Hệ thống'}
-              </div>
-            </div>
+                          </div>
+                        </div>
 
                         <p className="text-sm text-gray-700 leading-relaxed group-hover:text-gray-800 transition-colors duration-300">
                           {partner.description}
@@ -369,15 +355,15 @@ export default function PartnersPage() {
                                          partner.name.includes('2023') ? '80%' : '100%'
                                 }}
                               ></div>
-                </div>
-              </div>
+                              </div>
+                            </div>
                         )}
                         
                         {/* Floating particles effect */}
                         <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-[#c9184a] to-orange-500 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-ping transition-opacity duration-300"></div>
                         <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-gradient-to-r from-orange-500 to-[#c9184a] rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-pulse transition-opacity duration-300 delay-150"></div>
-                </div>
-              </div>
+                      </div>
+                    </div>
                   ))}
                 </div>
               </div>
@@ -390,7 +376,7 @@ export default function PartnersPage() {
       {/* Strategic Partners Section */}
       <div className="bg-gray-50 py-16">
         <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
-          <div className="text-center mb-16">
+          <div className="text-center mb-8">
             <h2 className="text-4xl font-bold text-black mb-6">
               {t('partners.strategic.title')}
             </h2>
@@ -399,92 +385,71 @@ export default function PartnersPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6">
-            {[
-              {
-                src: "https://thienthuanphat.vn/Data/images/default/2-01.webp",
-                alt: "Partner 1",
-                name: "Partner 1"
-              },
-              {
-                src: "https://thienthuanphat.vn/Data/images/default/4.webp",
-                alt: "Partner 2", 
-                name: "Partner 2"
-              },
-              {
-                src: "https://thienthuanphat.vn/Data/images/default/5-01.webp",
-                alt: "Partner 3",
-                name: "Partner 3"
-              },
-              {
-                src: "https://thienthuanphat.vn/Data/images/default/6-01.webp",
-                alt: "Partner 4",
-                name: "Partner 4"
-              },
-              {
-                src: "https://thienthuanphat.vn/Data/images/default/7-01.webp",
-                alt: "Partner 5",
-                name: "Partner 5"
-              },
-              {
-                src: "https://thienthuanphat.vn/Data/images/default/8.webp",
-                alt: "Partner 6",
-                name: "Partner 6"
-              },
-              {
-                src: "https://thienthuanphat.vn/Data/images/default/9-011.webp",
-                alt: "Partner 7",
-                name: "Partner 7"
-              },
-              {
-                src: "https://thienthuanphat.vn/Data/images/default/dongnam1.webp",
-                alt: "Partner 8",
-                name: "Partner 8"
-              },
-              {
-                src: "https://thienthuanphat.vn/Data/images/default/9-01.webp",
-                alt: "Partner 9",
-                name: "Partner 9"
-              },
-              {
-                src: "https://thienthuanphat.vn/Data/images/default/1-01.webp",
-                alt: "Partner 10",
-                name: "Partner 10"
-              }
-            ].map((partner, index) => (
-              <div
-                key={index}
-                className="w-full flex" 
-                data-aos="fade-up" 
-                data-aos-delay={index * 100}
-                data-aos-duration="800"
-                data-aos-easing="ease-out-cubic"
-              >
-                <div className="bg-white rounded-[3rem_0rem_3rem_0rem] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_16px_-4px_rgba(0,0,0,0.1)] w-full flex flex-col overflow-hidden transition-all duration-500 ease-out hover:transform hover:-translate-y-2 hover:shadow-[0_16px_40px_-8px_rgba(0,0,0,0.2),0_8px_24px_-4px_rgba(0,0,0,0.1)] hover:scale-[1.03] cursor-pointer relative group">
-                  <div className="px-6 pt-6 pb-2">
-                    <div className="mx-auto mb-4 flex justify-center">
-                      <Image 
-                        src={partner.src}
-                        alt={partner.alt}
-                        width={160}
-                        height={80}
-                        className="w-40 h-auto object-contain group-hover:scale-105 transition-all duration-500 ease-out filter group-hover:brightness-110 group-hover:contrast-110"
-                        onError={(e) => {
-                          e.currentTarget.style.display = 'none';
-                          if (e.currentTarget.parentElement) {
-                            e.currentTarget.parentElement.innerHTML = '<span class="text-gray-400 font-bold text-lg">Logo</span>';
-                          }
-                        }}
-                      />
-                  </div>
-                    <h3 className="text-lg font-bold text-gray-800 mb-2 text-center">{partner.name}</h3>
-                  </div>
-                </div>
-              </div>
-            ))}
-                </div>
-              </div>
+          {/* Brand Logos */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="400">
+            <div className="item text-center" data-aos="flip-up" data-aos-duration="800" data-aos-delay="100">
+              <a href="#" className="block hover:scale-105 transition-transform duration-300">
+                <Image src="https://thienthuanphat.vn/Data/images/default/2-01.webp" alt="Thương hiệu 1" width={160} height={160} className="w-40 h-40 mx-auto object-contain" />
+                <div className="name text-base font-medium text-gray-700 mt-3">Thương hiệu 1</div>
+              </a>
             </div>
+            <div className="item text-center" data-aos="flip-up" data-aos-duration="800" data-aos-delay="200">
+              <a href="#" className="block hover:scale-105 transition-transform duration-300">
+                <Image src="https://thienthuanphat.vn/Data/images/default/4.webp" alt="Thương hiệu 2" width={160} height={160} className="w-40 h-40 mx-auto object-contain" />
+                <div className="name text-base font-medium text-gray-700 mt-3">Thương hiệu 2</div>
+              </a>
+            </div>
+            <div className="item text-center" data-aos="flip-up" data-aos-duration="800" data-aos-delay="300">
+              <a href="#" className="block hover:scale-105 transition-transform duration-300">
+                <Image src="https://thienthuanphat.vn/Data/images/default/5-01.webp" alt="Thương hiệu 3" width={160} height={160} className="w-40 h-40 mx-auto object-contain" />
+                <div className="name text-base font-medium text-gray-700 mt-3">Thương hiệu 3</div>
+              </a>
+            </div>
+            <div className="item text-center" data-aos="flip-up" data-aos-duration="800" data-aos-delay="400">
+              <a href="#" className="block hover:scale-105 transition-transform duration-300">
+                <Image src="https://thienthuanphat.vn/Data/images/default/6-01.webp" alt="Thương hiệu 4" width={160} height={160} className="w-40 h-40 mx-auto object-contain" />
+                <div className="name text-base font-medium text-gray-700 mt-3">Thương hiệu 4</div>
+              </a>
+            </div>
+            <div className="item text-center" data-aos="flip-up" data-aos-duration="800" data-aos-delay="500">
+              <a href="#" className="block hover:scale-105 transition-transform duration-300">
+                <Image src="https://thienthuanphat.vn/Data/images/default/7-01.webp" alt="Thương hiệu 5" width={160} height={160} className="w-40 h-40 mx-auto object-contain" />
+                <div className="name text-base font-medium text-gray-700 mt-3">Thương hiệu 5</div>
+              </a>
+            </div>
+            <div className="item text-center" data-aos="flip-up" data-aos-duration="800" data-aos-delay="600">
+              <a href="#" className="block hover:scale-105 transition-transform duration-300">
+                <Image src="https://thienthuanphat.vn/Data/images/default/8.webp" alt="Thương hiệu 6" width={160} height={160} className="w-40 h-40 mx-auto object-contain" />
+                <div className="name text-base font-medium text-gray-700 mt-3">Thương hiệu 6</div>
+              </a>
+            </div>
+            <div className="item text-center" data-aos="flip-up" data-aos-duration="800" data-aos-delay="700">
+              <a href="#" className="block hover:scale-105 transition-transform duration-300">
+                <Image src="https://thienthuanphat.vn/Data/images/default/9-011.webp" alt="Thương hiệu 7" width={160} height={160} className="w-40 h-40 mx-auto object-contain" />
+                <div className="name text-base font-medium text-gray-700 mt-3">Thương hiệu 7</div>
+              </a>
+            </div>
+            <div className="item text-center" data-aos="flip-up" data-aos-duration="800" data-aos-delay="800">
+              <a href="#" className="block hover:scale-105 transition-transform duration-300">
+                <Image src="https://thienthuanphat.vn/Data/images/default/dongnam1.webp" alt="Thương hiệu 8" width={160} height={160} className="w-40 h-40 mx-auto object-contain" />
+                <div className="name text-base font-medium text-gray-700 mt-3">Thương hiệu 8</div>
+              </a>
+            </div>
+            <div className="item text-center" data-aos="flip-up" data-aos-duration="800" data-aos-delay="900">
+              <a href="#" className="block hover:scale-105 transition-transform duration-300">
+                <Image src="https://thienthuanphat.vn/Data/images/default/9-01.webp" alt="Thương hiệu 9" width={160} height={160} className="w-40 h-40 mx-auto object-contain" />
+                <div className="name text-base font-medium text-gray-700 mt-3">Thương hiệu 9</div>
+              </a>
+            </div>
+            <div className="item text-center" data-aos="flip-up" data-aos-duration="800" data-aos-delay="1000">
+              <a href="#" className="block hover:scale-105 transition-transform duration-300">
+                <Image src="https://thienthuanphat.vn/Data/images/default/1-01.webp" alt="Thương hiệu 10" width={160} height={160} className="w-40 h-40 mx-auto object-contain" />
+                <div className="name text-base font-medium text-gray-700 mt-3">Thương hiệu 10</div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
 
 
       {/* Partnership Opportunities Section */}
@@ -548,9 +513,9 @@ export default function PartnersPage() {
         <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
           <div 
             id="contact" 
-            className="qmenu_card icon_card group block bg-white border border-gray-200 rounded-[50px_0px_50px_0px] min-h-[400px] p-12 text-center shadow-lg transition-all duration-700 ease-out cursor-pointer relative overflow-hidden will-change-transform" 
+            className="qmenu_card icon_card group block bg-[#c9184a] border border-[#c9184a] rounded-[50px_0px_50px_0px] min-h-[400px] p-12 text-center shadow-lg transition-all duration-700 ease-out cursor-pointer relative overflow-hidden will-change-transform hover:-translate-y-2 hover:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.2),0_8px_30px_-5px_rgba(0,0,0,0.1)]" 
             style={{
-              boxShadow: '0 10px 30px -5px rgba(0,0,0,0.1), 0 4px 15px -2px rgba(0,0,0,0.05)',
+              boxShadow: '0 10px 30px -5px rgba(201, 24, 72, 0.3), 0 4px 15px -2px rgba(201, 24, 72, 0.2)',
               transform: 'translateY(0) translateZ(0)',
               backfaceVisibility: 'hidden',
               WebkitFontSmoothing: 'antialiased'
@@ -561,11 +526,11 @@ export default function PartnersPage() {
           >
             
             {/* Single shimmer effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out pointer-events-none"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white bg-opacity-10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out pointer-events-none"></div>
             
             {/* Background decoration */}
-            <div className="absolute top-4 right-4 w-16 h-16 bg-[#c9184a]/5 rounded-full transition-all duration-700 ease-out group-hover:scale-110 group-hover:bg-[#c9184a]/10"></div>
-            <div className="absolute bottom-4 left-4 w-12 h-12 bg-[#c9184a]/5 rounded-full transition-all duration-700 ease-out group-hover:scale-110 group-hover:bg-[#c9184a]/10"></div>
+            <div className="absolute top-4 right-4 w-16 h-16 bg-white bg-opacity-10 rounded-full transition-all duration-700 ease-out group-hover:scale-110 group-hover:bg-white group-hover:bg-opacity-20"></div>
+            <div className="absolute bottom-4 left-4 w-12 h-12 bg-white bg-opacity-10 rounded-full transition-all duration-700 ease-out group-hover:scale-110 group-hover:bg-white group-hover:bg-opacity-20"></div>
             
             <div className="relative z-10 text-center">
               {/* Icon */}
@@ -583,35 +548,32 @@ export default function PartnersPage() {
               </div>
 
               {/* Title */}
-              <h3 className="text-black text-xl block text-center font-bold mb-3 transition-all duration-500 ease-out group-hover:text-[#c9184a]">
+              <h3 className="text-white text-3xl block text-center font-bold mb-6 transition-all duration-500 ease-out group-hover:text-white">
                 {t('partners.contact.title')}
               </h3>
 
               {/* Contact Info */}
-              <div 
-                className="bg-gradient-to-br from-white/90 to-white/80 backdrop-blur-sm rounded-2xl p-4 mb-4 transition-all duration-700 ease-out group-hover:bg-white/95"
-              >
-                <div className="text-sm text-gray-700 mb-3 group-hover:text-gray-800 transition-colors duration-500 ease-out">
-                  <div className="mb-2">
-                    <strong>{t('partners.contact.department')}</strong>
+              <div className="text-base text-white mb-6 group-hover:text-white transition-colors duration-500 ease-out">
+                <div className="mb-4">
+                  <strong className="text-lg text-white">{t('partners.contact.department')}</strong>
+                </div>
+                <div className="space-y-3 text-left max-w-sm mx-auto text-sm">
+                  <div className="flex items-start">
+                    <span className="mr-3 text-white">📍</span>
+                    <span className="text-white">{t('footer.address.detail')}</span>
                   </div>
-                  <div className="space-y-1 text-left max-w-sm mx-auto text-xs">
-                    <div className="flex items-start">
-                      <span className="mr-3">📍</span>
-                      <span>{t('footer.address.detail')}</span>
-                    </div>
-                    <div className="flex items-center">
-                      <span className="mr-3">📞</span>
-                      <span>Hotline: 19001181</span>
-                    </div>
-                    <div className="flex items-center">
-                      <span className="mr-3">📧</span>
-                      <span>Email: info@ksbgroup.vn</span>
-                    </div>
+                  <div className="flex items-center">
+                    <span className="mr-3 text-white">📞</span>
+                    <span className="text-white">Hotline: 19001181</span>
+                  </div>
+                  <div className="flex items-center">
+                    <span className="mr-3 text-white">📧</span>
+                    <span className="text-white">Email: info@ksbgroup.vn</span>
                   </div>
                 </div>
-                <a href="mailto:info@ksbgroup.vn" 
-                   className="email-button inline-flex items-center text-base font-bold px-5 py-2.5 rounded-xl transition-all duration-500 ease-out transform group/email relative overflow-hidden will-change-transform"
+              </div>
+              <a href="mailto:info@ksbgroup.vn" 
+                   className="email-button inline-flex items-center text-base font-bold px-5 py-2.5 rounded-xl transition-all duration-500 ease-out transform group relative overflow-hidden will-change-transform hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(217,37,31,0.35)]"
                    style={{
                      background: 'linear-gradient(135deg, rgba(217, 37, 31, 1) 0%, rgba(233, 128, 30, 1) 100%)',
                      color: 'white',
@@ -620,46 +582,17 @@ export default function PartnersPage() {
                    }}
                 >
                   <span className="relative z-10 flex items-center">
-                    <svg className="w-4 h-4 mr-1.5 transition-transform duration-500 ease-out group-hover/email:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-4 h-4 mr-1.5 transition-transform duration-500 ease-out group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                     </svg>
                     {t('partners.contact.button')}
                   </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover/email:translate-x-full transition-transform duration-700 ease-out pointer-events-none"></div>
-                </a>
-              </div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white bg-opacity-20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out pointer-events-none"></div>
+              </a>
             </div>
           </div>
         </div>
       </div>
-
-      
-      <style jsx>{`
-        .qmenu_card:hover {
-          transform: translateY(-8px) translateZ(0);
-          box-shadow: 0 20px 50px -10px rgba(0,0,0,0.2), 0 8px 30px -5px rgba(0,0,0,0.1);
-        }
-        
-        .email-button:hover {
-          transform: translateY(-2px) translateZ(0);
-          box-shadow: 0 12px 30px rgba(217, 37, 31, 0.35);
-        }
-
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .animate-fade-in {
-          animation: fadeIn 0.5s ease-out;
-        }
-      `}</style>
     </div>
   );
 }

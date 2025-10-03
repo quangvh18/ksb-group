@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from "react";
 import { useLanguage } from "../contexts/LanguageContext";
 import { useJobs } from "../hooks/useJobs";
 import { JobDescriptionNode } from "../services/jobService";
@@ -7,12 +8,12 @@ import JobSearch from "./JobSearch";
 
 const JobListings = () => {
   const { t } = useLanguage();
+  const [hasSearched, setHasSearched] = useState(false);
   
   // Use custom hook for jobs data
   // Set useFallback to false to see real API responses during development
   const { jobs, loading, error, refetch, searchJobs } = useJobs({
-    pageSize: 6,
-    // Remove workArea filter to match the basic curl command
+    pageSize: 5, // Limit to 5 records
     useFallback: false // Disable fallback to see real API behavior
   });
 
@@ -50,12 +51,21 @@ const JobListings = () => {
         </div>
 
         {/* Search Component */}
-        <JobSearch onSearch={searchJobs} loading={loading} />
+        <JobSearch onSearch={(filters) => {
+          setHasSearched(true);
+          searchJobs(filters);
+        }} loading={loading} />
 
         {loading && (
-          <div className="text-center py-8">
-            <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-[#c9184a]"></div>
-            <p className="mt-2 text-gray-600">{t('jobs.loading')}</p>
+          <div className="text-center py-12">
+            <div className="relative">
+              {/* Outer spinning ring */}
+              <div className="inline-block animate-spin rounded-full h-16 w-16 border-4 border-gray-200 border-t-[#c9184a]"></div>
+              {/* Inner pulsing dot */}
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-[#c9184a] rounded-full animate-pulse"></div>
+            </div>
+            <p className="mt-4 text-gray-600 text-lg font-medium">{t('jobs.loading')}</p>
+            <p className="mt-2 text-gray-500 text-sm">Đang tìm kiếm vị trí phù hợp...</p>
           </div>
         )}
 
@@ -71,7 +81,13 @@ const JobListings = () => {
           </div>
         )}
 
-        {!loading && !error && jobs.length === 0 && (
+        {!hasSearched && !loading && (
+          <div className="text-center py-8">
+            <p className="text-gray-600">Vui lòng sử dụng công cụ tìm kiếm ở trên để xem các vị trí tuyển dụng</p>
+          </div>
+        )}
+
+        {hasSearched && !loading && !error && jobs.length === 0 && (
           <div className="text-center py-8">
             <p className="text-gray-600">{t('jobs.noJobs')}</p>
           </div>
