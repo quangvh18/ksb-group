@@ -16,21 +16,28 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "KSB Group - Tập đoàn KSB | Hệ sinh thái kinh doanh bền vững",
+    default: "KSB Group - Tập đoàn KSB | Hệ sinh thái kinh doanh đa ngành",
     template: "%s | KSB Group"
   },
-  description: "Tập đoàn KSB tự hào kiến tạo nên một nền tảng vững mạnh với hệ sinh thái kinh doanh bền vững. Khám phá các dịch vụ, tin tức và cơ hội nghề nghiệp tại KSB Group.",
+  description: "KSB Group - Tập đoàn kinh doanh đa ngành với các lĩnh vực: Hóa - Mỹ phẩm (Biofresh), Sản xuất & Phân phối thực phẩm, Thực phẩm đông lạnh. Đối tác tin cậy, chất lượng quốc tế, phục vụ thị trường Việt Nam.",
   keywords: [
     "KSB Group",
     "tập đoàn KSB", 
     "hệ sinh thái kinh doanh",
+    "Biofresh",
+    "mỹ phẩm thiên nhiên",
+    "thực phẩm nhập khẩu",
+    "tôm Bắc Cực",
     "công ty Việt Nam",
-    "dịch vụ doanh nghiệp",
-    "tin tức kinh doanh",
-    "tuyển dụng",
-    "đối tác",
+    "đối tác kinh doanh",
+    "phân phối độc quyền",
+    "chất lượng quốc tế",
     "sustainability",
-    "business ecosystem"
+    "business ecosystem",
+    "Thiên Thuận Phát",
+    "Ecobin",
+    "Bách Mộc An",
+    "KangNam"
   ],
   authors: [{ name: "KSB Group" }],
   creator: "KSB Group",
@@ -53,22 +60,22 @@ export const metadata: Metadata = {
     locale: 'vi_VN',
     url: 'https://ksbgroup.vn',
     siteName: 'KSB Group',
-    title: 'KSB Group - Tập đoàn KSB | Hệ sinh thái kinh doanh bền vững',
-    description: 'Tập đoàn KSB tự hào kiến tạo nên một nền tảng vững mạnh với hệ sinh thái kinh doanh bền vững.',
+    title: 'KSB Group - Tập đoàn KSB | Hệ sinh thái kinh doanh đa ngành',
+    description: 'KSB Group - Tập đoàn kinh doanh đa ngành với các lĩnh vực: Hóa - Mỹ phẩm (Biofresh), Sản xuất & Phân phối thực phẩm, Thực phẩm đông lạnh. Đối tác tin cậy, chất lượng quốc tế.',
     images: [
       {
-        url: '/images/office.png',
+        url: '/images/ksb.jpg',
         width: 1200,
         height: 630,
-        alt: 'KSB Group - Tập đoàn KSB',
+        alt: 'KSB Group - Tập đoàn KSB - Hệ sinh thái kinh doanh đa ngành',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'KSB Group - Tập đoàn KSB | Hệ sinh thái kinh doanh bền vững',
-    description: 'Tập đoàn KSB tự hào kiến tạo nên một nền tảng vững mạnh với hệ sinh thái kinh doanh bền vững.',
-    images: ['/images/office.png'],
+    title: 'KSB Group - Tập đoàn KSB | Hệ sinh thái kinh doanh đa ngành',
+    description: 'KSB Group - Tập đoàn kinh doanh đa ngành với các lĩnh vực: Hóa - Mỹ phẩm (Biofresh), Sản xuất & Phân phối thực phẩm, Thực phẩm đông lạnh.',
+    images: ['/images/ksb.jpg'],
     creator: '@ksbgroup',
   },
   robots: {
@@ -105,9 +112,12 @@ export default function RootLayout({
               type="organization" 
               data={{
                 name: "KSB Group",
-                description: "Tập đoàn KSB tự hào kiến tạo nên một nền tảng vững mạnh với hệ sinh thái kinh doanh bền vững",
+                description: "Tập đoàn KSB - Hệ sinh thái kinh doanh đa ngành với các lĩnh vực: Hóa - Mỹ phẩm (Biofresh), Sản xuất & Phân phối thực phẩm, Thực phẩm đông lạnh. Đối tác tin cậy, chất lượng quốc tế, phục vụ thị trường Việt Nam.",
                 url: "https://ksbgroup.vn",
                 logo: "https://ksbgroup.vn/images/logo-header.png",
+                foundingDate: "2020",
+                numberOfEmployees: "100-500",
+                industry: ["Hóa - Mỹ phẩm", "Thực phẩm", "Phân phối", "Nhập khẩu"],
                 address: {
                   streetAddress: "The Terra An Hồng - Tòa nhà Hồng, Hà Nội",
                   addressLocality: "Hà Nội",

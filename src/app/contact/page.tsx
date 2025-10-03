@@ -141,7 +141,7 @@ export default function ContactPage() {
                               <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd"/>
                             </svg>
                           </div>
-                          <h3 className="text-xl font-bold text-[#c9184a] mb-2">{t('footer.address')}</h3>
+                          <h3 className="text-xl font-bold text-[#bb252d] mb-2">{t('footer.address')}</h3>
                           <p className="text-sm text-gray-600 leading-relaxed">
                             {t('footer.address.detail')}
                           </p>
@@ -154,7 +154,7 @@ export default function ContactPage() {
                               <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
                             </svg>
                           </div>
-                          <h3 className="text-xl font-bold text-[#c9184a] mb-2">{t('footer.phone')}</h3>
+                          <h3 className="text-xl font-bold text-[#bb252d] mb-2">{t('footer.phone')}</h3>
                           <p className="text-sm text-gray-600 leading-relaxed">
                             {t('footer.phone.detail')}
                           </p>
@@ -168,7 +168,7 @@ export default function ContactPage() {
                               <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
                             </svg>
                           </div>
-                          <h3 className="text-xl font-bold text-[#c9184a] mb-2">Email</h3>
+                          <h3 className="text-xl font-bold text-[#bb252d] mb-2">{t('contact.email.title')}</h3>
                           <p className="text-sm text-gray-600 leading-relaxed">
                             {t('footer.email.general')}
                           </p>
@@ -209,7 +209,7 @@ export default function ContactPage() {
                         value={selectedSubject}
                         readOnly
                         onClick={() => setShowOptions(!showOptions)}
-                        className="w-full px-4 py-4 pr-12 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#c9184a] focus:border-[#c9184a] cursor-pointer bg-white transition-all duration-300 hover:border-[#c9184a] text-base"
+                        className="w-full px-4 py-4 pr-12 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#bb252d] focus:border-[#bb252d] cursor-pointer bg-white transition-all duration-300 hover:border-[#bb252d] text-base"
                       />
                       <div className="absolute right-4 text-gray-500 pointer-events-none">
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -224,8 +224,8 @@ export default function ContactPage() {
                             key={type.id}
                             className={`px-4 py-4 cursor-pointer border-b border-gray-100 last:border-b-0 transition-colors duration-200 text-base ${
                               selectedRequestTypeId === type.id 
-                                ? 'bg-[#c9184a] text-white' 
-                                : 'hover:bg-red-50 hover:text-[#c9184a]'
+                                ? 'bg-[#bb252d] text-white' 
+                                : 'hover:bg-red-50 hover:text-[#bb252d]'
                             }`}
                             onClick={() => {
                               setSelectedSubject(type.name);
@@ -256,7 +256,7 @@ export default function ContactPage() {
                         name="name" 
                         value={formData.name}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#c9184a] focus:border-[#c9184a] bg-white transition-all duration-300 hover:border-[#c9184a] text-base"
+                        className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#bb252d] focus:border-[#bb252d] bg-white transition-all duration-300 hover:border-[#bb252d] text-base"
                         required
                       />
                     </div>
@@ -269,7 +269,7 @@ export default function ContactPage() {
                         name="phone" 
                         value={formData.phone}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#c9184a] focus:border-[#c9184a] bg-white transition-all duration-300 hover:border-[#c9184a] text-base"
+                        className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#bb252d] focus:border-[#bb252d] bg-white transition-all duration-300 hover:border-[#bb252d] text-base"
                         required
                       />
                     </div>
@@ -283,7 +283,7 @@ export default function ContactPage() {
                       name="email" 
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#c9184a] focus:border-[#c9184a] bg-white transition-all duration-300 hover:border-[#c9184a] text-base"
+                      className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#bb252d] focus:border-[#bb252d] bg-white transition-all duration-300 hover:border-[#bb252d] text-base"
                       required
                     />
                   </div>
@@ -297,7 +297,7 @@ export default function ContactPage() {
                       onChange={handleInputChange}
                       rows={4}
                       maxLength={255}
-                      className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#c9184a] focus:border-[#c9184a] bg-white transition-all duration-300 hover:border-[#c9184a] resize-none text-base"
+                      className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#bb252d] focus:border-[#bb252d] bg-white transition-all duration-300 hover:border-[#bb252d] resize-none text-base"
                       required
                     />
                     <div className="text-right text-sm text-gray-500 mt-1">
@@ -323,7 +323,7 @@ export default function ContactPage() {
                     <button 
                       type="submit"
                       disabled={isLoading || !selectedRequestTypeId}
-                      className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-[#c9184a] hover:bg-[#a0153a] disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-semibold shadow transition-colors duration-300"
+                      className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-[#bb252d] hover:bg-[#8b1e24] disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-semibold shadow transition-colors duration-300"
                     >
                       {isLoading ? t('contact.form.submitting') : t('contact.form.submit')}
                     </button>

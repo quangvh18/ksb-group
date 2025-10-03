@@ -35,6 +35,7 @@ const translations = {
     'footer.email': 'Email & Website',
     'footer.email.detail': 'Email: info@ksbgroup.vn',
     'footer.email.general': 'Email chung: info@ksbgroup.vn',
+    'contact.email.title': 'Email',
     'footer.website.detail': 'Website: www.ksbgroup.vn',
     'footer.copyright': 'KSB Group. Tất cả quyền được bảo lưu',
     
@@ -79,13 +80,21 @@ const translations = {
     'about.description': 'Tập đoàn KSB tự hào kiến tạo nên một nền tảng vững mạnh với hệ sinh thái kinh doanh bền vững.',
     'about.intro.title': 'Nền tảng vững mạnh với hệ sinh thái kinh doanh bền vững',
     'about.intro.content': 'Tập đoàn KSB tự hào kiến tạo nên một nền tảng vững mạnh, kế thừa và phát triển từ tâm huyết của Công ty TNHH XNK Thiên Thuận Phát. Với hơn một thập kỷ miệt mài gieo trồng giá trị, chúng tôi đã vun đắp một hệ sinh thái kinh doanh bền vững, với những ngành nghề đa dạng trong các lĩnh vực khác nhau, vươn mình trở thành biểu tượng của sự uy tín và chất lượng.',
-    'about.company.title': 'Sứ mệnh, Giá trị cốt lõi và Tầm nhìn',
     'about.company.content1': 'Từ nền tảng vững chắc của hoạt động buôn bán, bán lẻ và nhập khẩu độc quyền, KSB GROUP đã kiên cường kiến tạo vị thế dẫn đầu, đồng thời định hình một chuẩn mực mới trong ngành sản xuất bánh kẹo.',
     'about.company.content2': 'KSB đã chạm tới mọi miền đất nước, mở rộng tầm ảnh hưởng mạnh mẽ với hệ thống chi nhánh và cơ sở vật chất chiến lược trải dài. Chúng tôi không chỉ là đối tác nhập khẩu được tin cậy, mà còn là người kiến tạo nên những chuỗi giá trị vượt trội.',
     'about.company.content3': 'KSB cam kết không ngừng vươn xa, kiến tạo giá trị và khẳng định vững chắc vị thế quyền lực của một tập đoàn hàng đầu trên bản đồ kinh tế Việt Nam.',
     'about.vision.title': 'Tầm nhìn',
     'about.vision.subtitle': 'Tập đoàn đa quốc gia hàng đầu trong lĩnh vực sản xuất và phân phối',
     'about.vision.content': 'Trở thành tập đoàn đa quốc gia hàng đầu trong lĩnh vực sản xuất và phân phối các sản phẩm xanh, kết hợp nhập khẩu tinh hoa thế giới và xuất khẩu sản phẩm lành mạnh, góp phần nâng cao giá trị kinh tế và sức khỏe cho nhân loại.',
+    
+    // About Us - Footprint
+    'about.footprint.title': 'Dấu ấn',
+    'about.footprint.subtitle': 'Hệ thống phân phối toàn quốc',
+    'about.footprint.description': 'Với mạng lưới phân phối phủ khắp cả nước, KSB GROUP tự hào mang đến sản phẩm chất lượng cao đến tay người tiêu dùng Việt Nam qua nhiều kênh: MT, GT, Showroom, Chuyên biệt và B2B.',
+    'about.footprint.image.alt': 'Hệ thống phân phối KSB trên toàn quốc',
+    
+    // About Us - Mission, Values, Vision Section
+    'about.mission_values_vision.title': 'Giá trị cốt lõi – Tầm nhìn – Sứ mệnh',
     'about.mission.title': 'Sứ mệnh',
     'about.mission.subtitle': 'Mang đến sản phẩm chất lượng cao, sáng tạo và bền vững',
     'about.mission.content': 'Chúng tôi cam kết mang đến cho khách hàng những sản phẩm chất lượng cao, sáng tạo và bền vững, được sản xuất và phân phối một cách chuyên nghiệp, góp phần xây dựng một giá trị thực về sức khỏe và kinh tế cho nhân loại.',
@@ -161,6 +170,10 @@ const translations = {
     'careers.description': 'Tham gia đội ngũ KSB Group - Nơi phát triển sự nghiệp của bạn',
     'careers.viewDetails': 'Xem chi tiết',
     'careers.banner.title': 'Tham gia cùng chúng tôi',
+    'careers.search.placeholder_text': 'Vui lòng sử dụng công cụ tìm kiếm ở trên để xem các vị trí tuyển dụng',
+    'careers.applyNow': 'Ứng tuyển ngay',
+    'careers.sendApplication': 'Gửi ứng tuyển',
+    'careers.company.name': 'CÔNG TY CỔ PHẦN TẬP ĐOÀN KSB',
     'careers.banner.subtitle': 'KSB GROUP sáng tạo nét văn hóa nhằm đóng góp vào cuộc sống thêm sức khỏe, niềm vui và tiện lợi. Nếu điều này nói lên đúng những gì bạn đang cần tìm cho công việc của mình, vậy bạn còn chần chừ gì không tham gia cùng chúng tôi?',
     'careers.banner.description': 'KSB luôn rộng cửa chào đón những tài năng ở mọi nơi. Chúng tôi tin rằng mỗi cá nhân đều có thể đóng góp giá trị độc đáo cho sự phát triển của tập đoàn.',
     'careers.culture.title': 'Văn hóa làm việc tại KSB GROUP',
@@ -264,6 +277,13 @@ const translations = {
     'news.description': 'Cập nhật tin tức mới nhất về KSB Group và ngành thực phẩm',
     'news.latest': 'Tin tức mới nhất',
     'news.readMore': 'Đọc thêm',
+    
+    // News Detail Page
+    'news.detail.title': 'Tin tức',
+    'news.detail.breadcrumb.home': 'Trang chủ',
+    'news.detail.breadcrumb.news': 'Tin tức',
+    'news.detail.publishedDate': 'Đăng ngày',
+    'news.detail.backToList': 'Quay lại danh sách',
     'news.backToNews': 'Quay lại tin tức',
     'news.relatedNews': 'Tin tức liên quan',
     'news.noNews': 'Không có tin tức nào',
@@ -340,57 +360,6 @@ const translations = {
     'ecosystem.services.title': 'Hệ sinh thái KSB Group',
     'ecosystem.services.description': 'Khám phá các lĩnh vực hoạt động đa dạng của chúng tôi',
     
-    // Hóa - Mỹ phẩm
-    'ecosystem.services.cosmetics.title': 'Hệ thống Hóa – Mỹ phẩm',
-    'ecosystem.services.cosmetics.summary': 'Tinh túy từ thiên nhiên, công nghệ từ thế giới',
-    'ecosystem.services.cosmetics.description': 'KSB GROUP phát triển lĩnh vực Hóa – Mỹ phẩm với định hướng mang đến các sản phẩm chăm sóc sắc đẹp và cá nhân có chất lượng cao, nguồn gốc rõ ràng và phù hợp với thị hiếu người tiêu dùng Việt.',
-    'ecosystem.services.cosmetics.biofresh.title': 'Biofresh - Thương hiệu mỹ phẩm thiên nhiên',
-    'ecosystem.services.cosmetics.biofresh.desc': 'Hệ thống cửa hàng Biofresh – thương hiệu mỹ phẩm thiên nhiên đến từ Bulgaria với hơn 20 năm danh tiếng tại thị trường châu Âu. KSB là đơn vị nhập khẩu và phân phối độc quyền Biofresh tại Việt Nam, đồng thời vận hành 3 cửa hàng chính thức tại Hà Nội.',
-    'ecosystem.services.cosmetics.products.title': 'Dòng sản phẩm chủ lực',
-    'ecosystem.services.cosmetics.products.desc': 'Dòng Rose of Bulgaria sử dụng nước hoa hồng tinh khiết từ hoa Rosa Damascena, chiết xuất tự nhiên, không chứa paraben, silicones, dầu khoáng hay chất bảo quản độc hại, phù hợp cho mọi loại da, kể cả làn da nhạy cảm nhất.',
-    'ecosystem.services.cosmetics.bullet1': 'Biofresh - Thương hiệu mỹ phẩm thiên nhiên từ Bulgaria',
-    'ecosystem.services.cosmetics.bullet2': 'Hơn 20 năm danh tiếng tại thị trường châu Âu',
-    'ecosystem.services.cosmetics.bullet3': '3 cửa hàng chính thức tại Hà Nội',
-    'ecosystem.services.cosmetics.bullet4': 'Dòng Rose of Bulgaria với nước hoa hồng tinh khiết',
-    'ecosystem.services.cosmetics.bullet5': 'Không chứa paraben, silicones, dầu khoáng hay chất bảo quản độc hại',
-    'ecosystem.services.cosmetics.bullet6': 'Phù hợp cho mọi loại da, kể cả làn da nhạy cảm nhất',
-    
-    // Sản xuất & phân phối thực phẩm
-    'ecosystem.services.food.title': 'Sản xuất & phân phối thực phẩm',
-    'ecosystem.services.food.summary': 'Sản xuất & nhập khẩu, phân phối thực phẩm và hàng tiêu dùng chất lượng cao',
-    'ecosystem.services.food.description': 'KSB Group hiện xây dựng mảng sản xuất & phân phối thực phẩm với các công ty thành viên hoạt động hiệu quả trên toàn quốc.',
-    
-    // Thiên Thuận Phát
-    'ecosystem.services.food.ttp.title': 'Công ty TNHH Xuất Nhập Khẩu Thiên Thuận Phát',
-    'ecosystem.services.food.ttp.desc': 'Đơn vị nhập khẩu và phân phối độc quyền dòng bánh kẹo nổi tiếng Choco Samjin từ Hàn Quốc. Với mạng lưới phân phối phủ khắp siêu thị, đại lý truyền thống và các kênh hiện đại, Thiên Thuận Phát đã và đang mở rộng độ phủ thương hiệu, đáp ứng nhu cầu tiêu dùng tăng cao của người Việt.',
-    
-    // Ecobin
-    'ecosystem.services.food.ecobin.title': 'Công ty TNHH MTV Sản Xuất Thương Mại và Dịch Vụ Ecobin',
-    'ecosystem.services.food.ecobin.desc': 'Nhà máy đặt tại tỉnh Hải Dương, ứng dụng công nghệ sản xuất hiện đại chuẩn Hàn Quốc, chuyên sản xuất các dòng kẹo cao cấp như kẹo sâm, kẹo gừng, kẹo quế... Toàn bộ quy trình vận hành của Ecobin tuân thủ tiêu chuẩn ISO, với cam kết mang đến sản phẩm "Chất lượng Hàn – Giá Việt".',
-    
-    // Bách Mộc An
-    'ecosystem.services.food.bma.title': 'Công ty TNHH Tập Đoàn Bách Mộc An',
-    'ecosystem.services.food.bma.desc': 'Đơn vị nhập khẩu và phân phối đa dạng các sản phẩm thực phẩm, tiêu dùng và hóa – mỹ phẩm từ nhiều quốc gia. Bách Mộc An sở hữu hệ thống phân phối với hơn 85 nhà phân phối trên toàn quốc, phục vụ cả kênh truyền thống lẫn hiện đại.',
-    
-    // KangNam
-    'ecosystem.services.food.kangnam.title': 'Công ty TNHH Tập Đoàn Đầu Tư KangNam',
-    'ecosystem.services.food.kangnam.desc': 'Đại diện nhập khẩu và phân phối độc quyền dòng sữa yến mạch cao cấp Boring từ New Zealand – một sản phẩm được ưa chuộng tại các thị trường phát triển nhờ độ lành tính và giá trị dinh dưỡng thực vật.',
-    
-    'ecosystem.services.food.bullet1': 'Thiên Thuận Phát - Nhập khẩu độc quyền bánh kẹo Choco Samjin',
-    'ecosystem.services.food.bullet2': 'Ecobin - Nhà máy sản xuất kẹo cao cấp chuẩn Hàn Quốc',
-    'ecosystem.services.food.bullet3': 'Bách Mộc An - Phân phối đa dạng với 85+ nhà phân phối',
-    'ecosystem.services.food.bullet4': 'KangNam - Sữa yến mạch cao cấp Boring từ New Zealand',
-    
-    // Thực phẩm đông lạnh
-    'ecosystem.services.frozen.title': 'Thực phẩm đông lạnh',
-    'ecosystem.services.frozen.summary': 'Dự án Tôm Bắc Cực Thượng Hạng - Khẳng định vị thế trong phân khúc thực phẩm cao cấp',
-    'ecosystem.services.frozen.description': 'KSB Group ra mắt Dự án Tôm Bắc Cực Thượng Hạng: Khẳng định vị thế trong phân khúc thực phẩm cao cấp. Đây là bước đi chiến lược nhằm đa dạng hóa danh mục sản phẩm, đồng thời khẳng định vị thế và tầm nhìn của KSB Group trong lĩnh vực nhập khẩu và phân phối thực phẩm cao cấp.',
-    'ecosystem.services.frozen.details': 'Dự án Tôm Bắc Cực Thượng Hạng là minh chứng cho cam kết của chúng tôi về chất lượng vượt trội. Sản phẩm được nhập khẩu trực tiếp từ Greenland, vùng biển nổi tiếng với nguồn tôm đánh bắt hoang dã. Với hương vị độc đáo và chất lượng tự nhiên, sản phẩm hứa hẹn sẽ mang đến một trải nghiệm ẩm thực đẳng cấp cho người tiêu dùng Việt Nam.',
-    'ecosystem.services.frozen.bullet1': 'Nhập khẩu trực tiếp từ Greenland',
-    'ecosystem.services.frozen.bullet2': 'Nguồn tôm đánh bắt hoang dã chất lượng cao',
-    'ecosystem.services.frozen.bullet3': 'Trải nghiệm ẩm thực đẳng cấp cho người tiêu dùng Việt Nam',
-    'ecosystem.services.frozen.bullet4': 'Đa dạng hóa danh mục sản phẩm cao cấp',
-    'ecosystem.services.frozen.bullet5': 'Khẳng định vị thế trong phân khúc thực phẩm cao cấp',
     
     // KSB Group Section
     'ksbgroup.title': 'Hệ sinh thái đa ngành',
@@ -403,11 +372,44 @@ const translations = {
     'ksbgroup.food.desc': 'Choco Samjin, Ecobin, Bách Mộc An, KangNam - Mô hình đa ngành tối ưu nguồn lực, chủ động chuỗi cung ứng',
     'ksbgroup.consumer.title': 'TIÊU DÙNG',
     'ksbgroup.consumer.desc': 'Hàng tiêu dùng nhập khẩu: Choco Samjin, Boring Oat Milk. Trải nghiệm khác biệt cho người tiêu dùng Việt.',
-    'ksbgroup.logistics.title': 'LOGISTICS',
-    'ksbgroup.logistics.desc': 'Logistics đồng bộ, tối ưu dòng chảy thương mại. Kết nối giá trị – lan tỏa niềm tin.',
     
     // Ecosystem Detail Section
     'ecosystem.detail.navigation.title': 'Lĩnh vực hoạt động',
+    
+    // Ecosystem Services - Cosmetics
+    'ecosystem.services.cosmetics.title': 'Hệ thống Hóa – Mỹ phẩm',
+    'ecosystem.services.cosmetics.subtitle': 'Tinh túy từ thiên nhiên, công nghệ từ thế giới',
+    'ecosystem.services.cosmetics.description': 'KSB GROUP phát triển lĩnh vực Hóa – Mỹ phẩm với định hướng mang đến các sản phẩm chăm sóc sắc đẹp và cá nhân có chất lượng cao, nguồn gốc rõ ràng và phù hợp với thị hiếu người tiêu dùng Việt.',
+    'ecosystem.services.cosmetics.biofresh.title': 'Biofresh – Thương hiệu mỹ phẩm thiên nhiên',
+    'ecosystem.services.cosmetics.biofresh.description': 'Nổi bật trong mảng này là hệ thống cửa hàng Biofresh – thương hiệu mỹ phẩm thiên nhiên đến từ Bulgaria với hơn 20 năm danh tiếng tại thị trường châu Âu. KSB là đơn vị nhập khẩu và phân phối độc quyền Biofresh tại Việt Nam, đồng thời vận hành 3 cửa hàng chính thức tại Hà Nội.',
+    'ecosystem.services.cosmetics.products.title': 'Dòng sản phẩm chủ lực',
+    'ecosystem.services.cosmetics.products.description': 'Các dòng sản phẩm chủ lực như dòng Rose of Bulgaria sử dụng nước hoa hồng tinh khiết từ hoa Rosa Damascena, chiết xuất tự nhiên, không chứa paraben, silicones, dầu khoáng hay chất bảo quản độc hại, phù hợp cho mọi loại da, kể cả làn da nhạy cảm nhất.',
+    'ecosystem.services.cosmetics.goal': 'Không ngừng mở rộng danh mục sản phẩm và nâng cao tiêu chuẩn phục vụ, KSB GROUP hướng đến mục tiêu trở thành cầu nối uy tín giữa người tiêu dùng Việt và những dòng mỹ phẩm an toàn – hiệu quả – dẫn đầu xu hướng từ khắp nơi trên thế giới.',
+    
+    // Ecosystem Services - Food Production
+    'ecosystem.services.food.title': 'Sản xuất & phân phối thực phẩm',
+    'ecosystem.services.food.subtitle': 'Sản xuất & nhập khẩu, phân phối thực phẩm và hàng tiêu dùng chất lượng cao',
+    'ecosystem.services.food.description': 'KSB Group hiện xây dựng mảng sản xuất & phân phối thực phẩm với các công ty thành viên hoạt động hiệu quả trên toàn quốc.',
+    'ecosystem.services.food.ttp.title': 'Công ty TNHH Xuất Nhập Khẩu Thiên Thuận Phát',
+    'ecosystem.services.food.ttp.description': 'Đơn vị nhập khẩu và phân phối độc quyền dòng bánh kẹo nổi tiếng Choco Samjin từ Hàn Quốc. Với mạng lưới phân phối phủ khắp siêu thị, đại lý truyền thống và các kênh hiện đại, Thiên Thuận Phát đã và đang mở rộng độ phủ thương hiệu, đáp ứng nhu cầu tiêu dùng tăng cao của người Việt.',
+    'ecosystem.services.food.ecobin.title': 'Công ty TNHH MTV Sản Xuất Thương Mại và Dịch Vụ Ecobin',
+    'ecosystem.services.food.ecobin.description': 'Nhà máy đặt tại tỉnh Hải Dương, ứng dụng công nghệ sản xuất hiện đại chuẩn Hàn Quốc, chuyên sản xuất các dòng kẹo cao cấp như kẹo sâm, kẹo gừng, kẹo quế... Toàn bộ quy trình vận hành của Ecobin tuân thủ tiêu chuẩn ISO, với cam kết mang đến sản phẩm "Chất lượng Hàn – Giá Việt".',
+    'ecosystem.services.food.bachmocan.title': 'Công ty TNHH Tập Đoàn Bách Mộc An',
+    'ecosystem.services.food.bachmocan.description': 'Đơn vị nhập khẩu và phân phối đa dạng các sản phẩm thực phẩm, tiêu dùng và hóa – mỹ phẩm từ nhiều quốc gia. Bách Mộc An sở hữu hệ thống phân phối với hơn 85 nhà phân phối trên toàn quốc, phục vụ cả kênh truyền thống lẫn hiện đại.',
+    'ecosystem.services.food.kangnam.title': 'Công ty TNHH Tập Đoàn Đầu Tư KangNam',
+    'ecosystem.services.food.kangnam.description': 'Đại diện nhập khẩu và phân phối độc quyền dòng sữa yến mạch cao cấp Boring từ New Zealand – một sản phẩm được ưa chuộng tại các thị trường phát triển nhờ độ lành tính và giá trị dinh dưỡng thực vật.',
+    
+    // Ecosystem Services - Frozen Food
+    'ecosystem.services.frozen.title': 'Thực phẩm đông lạnh',
+    'ecosystem.services.frozen.subtitle': 'KSB Group ra mắt Dự án Tôm Bắc Cực Thượng Hạng: Khẳng định vị thế trong phân khúc thực phẩm cao cấp',
+    'ecosystem.services.frozen.description': 'Chúng tôi trân trọng thông báo về một cột mốc quan trọng trong chiến lược phát triển của Tập đoàn: chính thức ra mắt dự án Tôm Bắc Cực Thượng Hạng. Đây là bước đi chiến lược nhằm đa dạng hóa danh mục sản phẩm, đồng thời khẳng định vị thế và tầm nhìn của KSB Group trong lĩnh vực nhập khẩu và phân phối thực phẩm cao cấp.',
+    'ecosystem.services.frozen.quality': 'Dự án Tôm Bắc Cực Thượng Hạng là minh chứng cho cam kết của chúng tôi về chất lượng vượt trội. Sản phẩm được nhập khẩu trực tiếp từ Greenland, vùng biển nổi tiếng với nguồn tôm đánh bắt hoang dã. Với hương vị độc đáo và chất lượng tự nhiên, sản phẩm hứa hẹn sẽ mang đến một trải nghiệm ẩm thực đẳng cấp cho người tiêu dùng Việt Nam.',
+    'ecosystem.services.quality.title': 'Chất lượng vượt trội',
+    'ecosystem.services.frozen.vision': 'Chúng tôi tin rằng với dự án này, KSB Group sẽ không chỉ đáp ứng nhu cầu ngày càng cao của thị trường, mà còn tạo ra những giá trị mới, bền vững cho cộng đồng.',
+    
+    // KSB Group - Technology
+    'ksbgroup.technology.title': 'CÔNG NGHỆ',
+    'ksbgroup.technology.desc': 'Ứng dụng công nghệ, mở rộng hệ sinh thái. Nâng tầm trải nghiệm, dẫn dắt chuyển đổi số.',
   },
   en: {
     // Header
@@ -430,6 +432,7 @@ const translations = {
     'footer.email': 'Email & Website',
     'footer.email.detail': 'Email: info@ksbgroup.vn',
     'footer.email.general': 'General email: info@ksbgroup.vn',
+    'contact.email.title': 'Email',
     'footer.website.detail': 'Website: www.ksbgroup.vn',
     'footer.copyright': 'KSB Group. All rights reserved',
     
@@ -474,13 +477,21 @@ const translations = {
     'about.description': 'KSB Group proudly creates a solid foundation with a sustainable business ecosystem.',
     'about.intro.title': 'Solid Foundation with Sustainable Business Ecosystem',
     'about.intro.content': 'KSB Group proudly creates a solid foundation, inheriting and developing from the dedication of Thien Thuan Phat Import-Export Co., Ltd. With more than a decade of diligent value cultivation, we have nurtured a sustainable business ecosystem, with diverse industries in various fields, rising to become a symbol of prestige and quality.',
-    'about.company.title': 'Mission, Core Values and Vision',
     'about.company.content1': 'From the solid foundation of trading, retail and exclusive import activities, KSB GROUP has persistently created a leading position, while defining a new standard in the candy manufacturing industry.',
     'about.company.content2': 'KSB has reached every region of the country, expanding its strong influence with a strategic system of branches and facilities spread across. We are not only a trusted import partner, but also a creator of superior value chains.',
     'about.company.content3': 'KSB is committed to continuously reaching far, creating value and firmly asserting the powerful position of a leading corporation on Vietnam economic map.',
     'about.vision.title': 'Vision',
     'about.vision.subtitle': 'Leading multinational corporation in production and distribution',
     'about.vision.content': 'To become a leading multinational corporation in the field of production and distribution of green products, combining world-class imports and healthy product exports, contributing to enhancing economic value and health for humanity.',
+    
+    // About Us - Footprint
+    'about.footprint.title': 'Footprint',
+    'about.footprint.subtitle': 'Nationwide Distribution System',
+    'about.footprint.description': 'With a distribution network covering the entire country, KSB GROUP is proud to bring high-quality products to Vietnamese consumers through multiple channels: MT, GT, Showroom, Specialty and B2B.',
+    'about.footprint.image.alt': 'KSB Distribution System Nationwide',
+    
+    // About Us - Mission, Values, Vision Section
+    'about.mission_values_vision.title': 'Core Values – Vision – Mission',
     'about.mission.title': 'Mission',
     'about.mission.subtitle': 'Delivering high-quality, innovative and sustainable products',
     'about.mission.content': 'We are committed to providing customers with high-quality, innovative and sustainable products, professionally manufactured and distributed, contributing to building real value for human health and economy.',
@@ -556,6 +567,10 @@ const translations = {
     'careers.description': 'Join KSB Group team - Where your career develops',
     'careers.viewDetails': 'View Details',
     'careers.banner.title': 'Join Our Team',
+    'careers.search.placeholder_text': 'Please use the search tool above to view job positions',
+    'careers.applyNow': 'Apply Now',
+    'careers.sendApplication': 'Send Application',
+    'careers.company.name': 'KSB GROUP JOINT STOCK COMPANY',
     'careers.banner.subtitle': 'KSB GROUP creates a culture aimed at contributing to life with more health, joy and convenience. If this speaks to exactly what you are looking for in your work, then what are you waiting for to join us?',
     'careers.banner.description': 'KSB always welcomes talents from everywhere. We believe that each individual can contribute unique value to the development of the group.',
     'careers.culture.title': 'Work Culture at KSB GROUP',
@@ -659,6 +674,13 @@ const translations = {
     'news.description': 'Latest updates about KSB Group and food industry',
     'news.latest': 'Latest News',
     'news.readMore': 'Read More',
+    
+    // News Detail Page
+    'news.detail.title': 'News',
+    'news.detail.breadcrumb.home': 'Home',
+    'news.detail.breadcrumb.news': 'News',
+    'news.detail.publishedDate': 'Published on',
+    'news.detail.backToList': 'Back to list',
     'news.backToNews': 'Back to News',
     'news.relatedNews': 'Related News',
     'news.noNews': 'No news available',
@@ -735,57 +757,6 @@ const translations = {
     'ecosystem.services.title': 'KSB Group Ecosystem',
     'ecosystem.services.description': 'Explore our diverse business areas',
     
-    // Chemicals - Cosmetics
-    'ecosystem.services.cosmetics.title': 'Chemicals - Cosmetics System',
-    'ecosystem.services.cosmetics.summary': 'Nature\'s essence, global technology',
-    'ecosystem.services.cosmetics.description': 'KSB GROUP develops the Chemicals - Cosmetics field with the orientation of bringing high-quality beauty and personal care products with clear origins and suitable for Vietnamese consumer preferences.',
-    'ecosystem.services.cosmetics.biofresh.title': 'Biofresh - Natural Cosmetics Brand',
-    'ecosystem.services.cosmetics.biofresh.desc': 'Biofresh store system – natural cosmetics brand from Bulgaria with over 20 years of reputation in the European market. KSB is the exclusive importer and distributor of Biofresh in Vietnam, operating 3 official stores in Hanoi.',
-    'ecosystem.services.cosmetics.products.title': 'Key Product Lines',
-    'ecosystem.services.cosmetics.products.desc': 'Rose of Bulgaria line uses pure rose water from Rosa Damascena flowers, natural extracts, free from parabens, silicones, mineral oils or harmful preservatives, suitable for all skin types, including the most sensitive skin.',
-    'ecosystem.services.cosmetics.bullet1': 'Biofresh - Natural cosmetics brand from Bulgaria',
-    'ecosystem.services.cosmetics.bullet2': 'Over 20 years of reputation in European market',
-    'ecosystem.services.cosmetics.bullet3': '3 official stores in Hanoi',
-    'ecosystem.services.cosmetics.bullet4': 'Rose of Bulgaria line with pure rose water',
-    'ecosystem.services.cosmetics.bullet5': 'Free from parabens, silicones, mineral oils or harmful preservatives',
-    'ecosystem.services.cosmetics.bullet6': 'Suitable for all skin types, including the most sensitive skin',
-    
-    // Food Production & Distribution
-    'ecosystem.services.food.title': 'Food Production & Distribution',
-    'ecosystem.services.food.summary': 'Manufacturing & Importing, Distribution of High-Quality Food and Consumer Goods',
-    'ecosystem.services.food.description': 'KSB Group is currently building the food production & distribution sector with member companies operating effectively nationwide.',
-    
-    // Thien Thuan Phat
-    'ecosystem.services.food.ttp.title': 'Thien Thuan Phat Import-Export Co., Ltd.',
-    'ecosystem.services.food.ttp.desc': 'Exclusive importer and distributor of the famous Choco Samjin candy line from Korea. With a distribution network covering supermarkets, traditional agents and modern channels, Thien Thuan Phat has been expanding brand coverage, meeting the increasing consumption needs of Vietnamese people.',
-    
-    // Ecobin
-    'ecosystem.services.food.ecobin.title': 'Ecobin Production, Trading and Service Co., Ltd.',
-    'ecosystem.services.food.ecobin.desc': 'Factory located in Hai Duong province, applying modern Korean-standard production technology, specializing in producing premium candy lines such as ginseng candy, ginger candy, cinnamon candy... Ecobin\'s entire operation process complies with ISO standards, with a commitment to deliver "Korean Quality - Vietnamese Price" products.',
-    
-    // Bach Moc An
-    'ecosystem.services.food.bma.title': 'Bach Moc An Group Co., Ltd.',
-    'ecosystem.services.food.bma.desc': 'Unit importing and distributing diverse food, consumer goods and chemicals - cosmetics from many countries. Bach Moc An owns a distribution system with over 85 distributors nationwide, serving both traditional and modern channels.',
-    
-    // KangNam
-    'ecosystem.services.food.kangnam.title': 'KangNam Investment Group Co., Ltd.',
-    'ecosystem.services.food.kangnam.desc': 'Exclusive importer and distributor of premium Boring oat milk from New Zealand – a product favored in developed markets due to its mildness and plant nutritional value.',
-    
-    'ecosystem.services.food.bullet1': 'Thien Thuan Phat - Exclusive importer of Choco Samjin candy',
-    'ecosystem.services.food.bullet2': 'Ecobin - Premium candy factory with Korean standards',
-    'ecosystem.services.food.bullet3': 'Bach Moc An - Diverse distribution with 85+ distributors',
-    'ecosystem.services.food.bullet4': 'KangNam - Premium Boring oat milk from New Zealand',
-    
-    // Frozen Food
-    'ecosystem.services.frozen.title': 'Frozen Food',
-    'ecosystem.services.frozen.summary': 'Premium Arctic Shrimp Project - Establishing position in premium food segment',
-    'ecosystem.services.frozen.description': 'KSB Group launches Premium Arctic Shrimp Project: Establishing position in premium food segment. This is a strategic move to diversify the product portfolio while affirming KSB Group\'s position and vision in the field of importing and distributing premium food.',
-    'ecosystem.services.frozen.details': 'The Premium Arctic Shrimp Project is proof of our commitment to superior quality. Products are imported directly from Greenland, a sea area famous for its wild-caught shrimp source. With unique flavor and natural quality, the product promises to bring a premium culinary experience to Vietnamese consumers.',
-    'ecosystem.services.frozen.bullet1': 'Direct import from Greenland',
-    'ecosystem.services.frozen.bullet2': 'High-quality wild-caught shrimp source',
-    'ecosystem.services.frozen.bullet3': 'Premium culinary experience for Vietnamese consumers',
-    'ecosystem.services.frozen.bullet4': 'Diversify premium product portfolio',
-    'ecosystem.services.frozen.bullet5': 'Establish position in premium food segment',
     
     // KSB Group Section
     'ksbgroup.title': 'Multi-industry Ecosystem',
@@ -798,11 +769,44 @@ const translations = {
     'ksbgroup.food.desc': 'Choco Samjin, Ecobin, Bach Moc An, KangNam - Multi-industry model optimizing resources, proactive supply chain',
     'ksbgroup.consumer.title': 'CONSUMER',
     'ksbgroup.consumer.desc': 'Imported consumer goods: Choco Samjin, Boring Oat Milk. Unique experience for Vietnamese consumers.',
-    'ksbgroup.logistics.title': 'LOGISTICS',
-    'ksbgroup.logistics.desc': 'Synchronized logistics, optimizing commercial flow. Connecting values – spreading trust.',
+    
+    // KSB Group - Technology
+    'ksbgroup.technology.title': 'TECHNOLOGY',
+    'ksbgroup.technology.desc': 'Applying technology, expanding the ecosystem. Elevating the experience, leading digital transformation.',
     
     // Ecosystem Detail Section
     'ecosystem.detail.navigation.title': 'Business Areas',
+    
+    // Ecosystem Services - Cosmetics
+    'ecosystem.services.cosmetics.title': 'Chemicals - Cosmetics System',
+    'ecosystem.services.cosmetics.subtitle': 'Nature\'s essence, global technology',
+    'ecosystem.services.cosmetics.description': 'KSB GROUP develops the Chemicals - Cosmetics field with the orientation of bringing high-quality beauty and personal care products, clear origin and suitable for Vietnamese consumer preferences.',
+    'ecosystem.services.cosmetics.biofresh.title': 'Biofresh – Natural Cosmetics Brand',
+    'ecosystem.services.cosmetics.biofresh.description': 'Outstanding in this field is the Biofresh store system - a natural cosmetics brand from Bulgaria with more than 20 years of reputation in the European market. KSB is the exclusive importer and distributor of Biofresh in Vietnam, operating 3 official stores in Hanoi.',
+    'ecosystem.services.cosmetics.products.title': 'Main Product Lines',
+    'ecosystem.services.cosmetics.products.description': 'Main product lines such as the Rose of Bulgaria line use pure rose water from Rosa Damascena flowers, natural extracts, free of parabens, silicones, mineral oils or harmful preservatives, suitable for all skin types, including the most sensitive skin.',
+    'ecosystem.services.cosmetics.goal': 'Continuously expanding product portfolio and improving service standards, KSB GROUP aims to become a trusted bridge between Vietnamese consumers and safe - effective - trend-leading cosmetics from around the world.',
+    
+    // Ecosystem Services - Food Production
+    'ecosystem.services.food.title': 'Food Production & Distribution',
+    'ecosystem.services.food.subtitle': 'Manufacturing & Importing, Distribution of High-Quality Food and Consumer Goods',
+    'ecosystem.services.food.description': 'KSB Group is currently building the food production & distribution sector with member companies operating effectively nationwide.',
+    'ecosystem.services.food.ttp.title': 'Thien Thuan Phat Import Export Co., Ltd.',
+    'ecosystem.services.food.ttp.description': 'Exclusive importer and distributor of the famous Choco Samjin confectionery line from Korea. With a distribution network covering supermarkets, traditional agents and modern channels, Thien Thuan Phat has been and is expanding brand coverage, meeting the increasing consumption needs of Vietnamese people.',
+    'ecosystem.services.food.ecobin.title': 'Ecobin Production, Trading and Service Co., Ltd.',
+    'ecosystem.services.food.ecobin.description': 'Factory located in Hai Duong province, applying modern Korean-standard production technology, specializing in producing high-end candy lines such as ginseng candy, ginger candy, cinnamon candy... All of Ecobin\'s operating processes comply with ISO standards, with a commitment to bring "Korean Quality - Vietnamese Price" products.',
+    'ecosystem.services.food.bachmocan.title': 'Bach Moc An Group Co., Ltd.',
+    'ecosystem.services.food.bachmocan.description': 'Importer and distributor of diverse food, consumer and chemical - cosmetic products from many countries. Bach Moc An owns a distribution system with more than 85 distributors nationwide, serving both traditional and modern channels.',
+    'ecosystem.services.food.kangnam.title': 'KangNam Investment Group Co., Ltd.',
+    'ecosystem.services.food.kangnam.description': 'Exclusive importer and distributor of the premium Boring oat milk line from New Zealand - a product favored in developed markets thanks to its mildness and plant nutritional value.',
+    
+    // Ecosystem Services - Frozen Food
+    'ecosystem.services.frozen.title': 'Frozen Food',
+    'ecosystem.services.frozen.subtitle': 'KSB Group launches Premium Arctic Shrimp Project: Affirming position in premium food segment',
+    'ecosystem.services.frozen.description': 'We are pleased to announce an important milestone in the Group\'s development strategy: officially launching the Premium Arctic Shrimp Project. This is a strategic move to diversify the product portfolio, while affirming the position and vision of KSB Group in the field of importing and distributing premium food.',
+    'ecosystem.services.frozen.quality': 'The Premium Arctic Shrimp Project is proof of our commitment to superior quality. Products are imported directly from Greenland, a sea area famous for its wild-caught shrimp source. With unique flavor and natural quality, the product promises to bring a premium culinary experience to Vietnamese consumers.',
+    'ecosystem.services.quality.title': 'Superior Quality',
+    'ecosystem.services.frozen.vision': 'We believe that with this project, KSB Group will not only meet the increasing needs of the market, but also create new, sustainable values for the community.',
   }
 };
 

@@ -62,7 +62,7 @@ const JobListings = () => {
               {/* Outer spinning ring */}
               <div className="inline-block animate-spin rounded-full h-16 w-16 border-4 border-gray-200 border-t-[#c9184a]"></div>
               {/* Inner pulsing dot */}
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-[#c9184a] rounded-full animate-pulse"></div>
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-[#bb252d] rounded-full animate-pulse"></div>
             </div>
             <p className="mt-4 text-gray-600 text-lg font-medium">{t('jobs.loading')}</p>
             <p className="mt-2 text-gray-500 text-sm">Đang tìm kiếm vị trí phù hợp...</p>
@@ -74,7 +74,7 @@ const JobListings = () => {
             <p className="text-red-600 mb-4">{t('jobs.error')}</p>
             <button 
               onClick={refetch} 
-              className="px-4 py-2 bg-[#c9184a] text-white rounded-lg hover:bg-[#a0153a] transition-colors"
+              className="px-4 py-2 bg-[#bb252d] text-white rounded-lg hover:bg-[#a0153a] transition-colors"
             >
               Thử lại
             </button>
@@ -83,7 +83,7 @@ const JobListings = () => {
 
         {!hasSearched && !loading && (
           <div className="text-center py-8">
-            <p className="text-gray-600">Vui lòng sử dụng công cụ tìm kiếm ở trên để xem các vị trí tuyển dụng</p>
+            <p className="text-gray-600">{t('careers.search.placeholder_text')}</p>
           </div>
         )}
 
@@ -117,7 +117,7 @@ const JobListings = () => {
                       {/* Position */}
                       <div className="md:col-span-3">
                         <p className="text-xs text-muted-foreground mb-1">{t('jobs.card.position')}</p>
-                        <h3 className="text-lg font-semibold group-hover:text-[#c9184a] transition-colors duration-300">{job.positionName}</h3>
+                        <h3 className="text-lg font-semibold group-hover:text-[#bb252d] transition-colors duration-300">{job.positionName}</h3>
                       </div>
 
                       {/* Work Area */}
@@ -125,7 +125,7 @@ const JobListings = () => {
                         <p className="text-xs text-muted-foreground mb-1">
                           {t('jobs.card.workArea')}
                         </p>
-                        <p className="text-sm group-hover:text-[#c9184a] transition-colors duration-300">{job.workArea}</p>
+                        <p className="text-sm group-hover:text-[#bb252d] transition-colors duration-300">{job.workArea}</p>
                       </div>
 
                       {/* Description */}
@@ -133,7 +133,7 @@ const JobListings = () => {
                         <p className="text-xs text-muted-foreground mb-1">
                           {t('jobs.card.description')}
                         </p>
-                        <p className="text-sm group-hover:text-[#c9184a] transition-colors duration-300">{extractJobDescription(job.jobDescription)}</p>
+                        <p className="text-sm group-hover:text-[#bb252d] transition-colors duration-300">{extractJobDescription(job.jobDescription)}</p>
                       </div>
                     </div>
                   </div>

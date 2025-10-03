@@ -1,7 +1,6 @@
 'use client';
 
 import PageHeader from "../../components/PageHeader";
-import EcosystemServicesSection from "../../components/EcosystemServicesSection";
 import EcosystemDetailSection from "../../components/EcosystemDetailSection";
 import KSBGroupSection from "../../components/KSBGroupSection";
 import { useLanguage } from "../../contexts/LanguageContext";

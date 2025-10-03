@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import PageHeader from "../../components/PageHeader";
-import BrandSection from "../../components/BrandSection";
 import { useLanguage } from "../../contexts/LanguageContext";
 
 // Define partner data structure
@@ -269,8 +268,8 @@ export default function PartnersPage() {
                             ${index === industryPartnersData.length - 1 ? 'rounded-br-[2rem]' : ''}
                             ${
                               isActive
-                                ? 'bg-[#c9184a] text-white shadow-lg scale-[1.02]'
-                                : 'hover:bg-[#c9184a] hover:text-white hover:scale-[1.01] hover:shadow-md'
+                                ? 'bg-[#bb252d] text-white shadow-lg scale-[1.02]'
+                                : 'hover:bg-[#bb252d] hover:text-white hover:scale-[1.01] hover:shadow-md'
                             }
                             border-b ${shouldHideBorder ? 'border-transparent' : 'border-gray-200'}
                             ${!isActive ? 'last:border-b-0' : ''}
@@ -324,15 +323,15 @@ export default function PartnersPage() {
                       <div className="absolute inset-0 bg-gradient-to-br from-red-50 via-transparent to-orange-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       
                       {/* Animated border */}
-                      <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-[#c9184a] via-orange-500 to-[#c9184a] opacity-0 group-hover:opacity-5 blur-sm transition-all duration-300"></div>
+                      <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-[#bb252d] via-orange-500 to-[#bb252d] opacity-0 group-hover:opacity-5 blur-sm transition-all duration-300"></div>
                       
                       <div className="relative z-10">
                         <div className="mb-4">
-                          <h3 className="text-xl font-bold text-gray-800 group-hover:text-[#c9184a] transition-colors duration-300 mb-2">
+                          <h3 className="text-xl font-bold text-gray-800 group-hover:text-[#bb252d] transition-colors duration-300 mb-2">
                             {partner.name}
                           </h3>
                           {/* Add a subtle badge */}
-                          <div className="inline-block px-3 py-1 bg-gradient-to-r from-red-100 to-orange-100 rounded-full text-xs font-medium text-[#c9184a] group-hover:from-red-200 group-hover:to-orange-200 transition-all duration-300">
+                          <div className="inline-block px-3 py-1 bg-gradient-to-r from-red-100 to-orange-100 rounded-full text-xs font-medium text-[#bb252d] group-hover:from-red-200 group-hover:to-orange-200 transition-all duration-300">
                             {partner.name.includes('2022') || partner.name.includes('2023') || partner.name.includes('2024') ? 'Doanh thu' : 
                              partner.name.includes('F&B') ? 'Thương hiệu' :
                              partner.name.includes('Mỹ phẩm') ? 'Làm đẹp' :
@@ -349,7 +348,7 @@ export default function PartnersPage() {
                           <div className="mt-4">
                             <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
                               <div 
-                                className="h-2 bg-gradient-to-r from-[#c9184a] to-orange-500 rounded-full transition-all duration-500 ease-out"
+                                className="h-2 bg-gradient-to-r from-[#bb252d] to-orange-500 rounded-full transition-all duration-500 ease-out"
                                 style={{
                                   width: partner.name.includes('2022') ? '60%' : 
                                          partner.name.includes('2023') ? '80%' : '100%'
@@ -360,8 +359,8 @@ export default function PartnersPage() {
                         )}
                         
                         {/* Floating particles effect */}
-                        <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-[#c9184a] to-orange-500 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-ping transition-opacity duration-300"></div>
-                        <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-gradient-to-r from-orange-500 to-[#c9184a] rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-pulse transition-opacity duration-300 delay-150"></div>
+                        <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-[#bb252d] to-orange-500 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-ping transition-opacity duration-300"></div>
+                        <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-gradient-to-r from-orange-500 to-[#bb252d] rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-pulse transition-opacity duration-300 delay-150"></div>
                       </div>
                     </div>
                   ))}
@@ -471,7 +470,7 @@ export default function PartnersPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-800 mb-4 group-hover:text-[#c9184a] transition-colors duration-300">{t('partners.global.title')}</h3>
+                  <h3 className="text-2xl font-bold text-gray-800 mb-4 group-hover:text-[#bb252d] transition-colors duration-300">{t('partners.global.title')}</h3>
                   <p className="text-gray-600 leading-relaxed">{t('partners.global.description')}</p>
                 </div>
               </div>
@@ -485,7 +484,7 @@ export default function PartnersPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
                     </svg>
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-800 mb-4 group-hover:text-[#c9184a] transition-colors duration-300">{t('partners.domestic.title')}</h3>
+                  <h3 className="text-2xl font-bold text-gray-800 mb-4 group-hover:text-[#bb252d] transition-colors duration-300">{t('partners.domestic.title')}</h3>
                   <p className="text-gray-600 leading-relaxed">{t('partners.domestic.description')}</p>
                 </div>
               </div>
@@ -499,7 +498,7 @@ export default function PartnersPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
                     </svg>
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-800 mb-4 group-hover:text-[#c9184a] transition-colors duration-300">{t('partners.franchise.title')}</h3>
+                  <h3 className="text-2xl font-bold text-gray-800 mb-4 group-hover:text-[#bb252d] transition-colors duration-300">{t('partners.franchise.title')}</h3>
                   <p className="text-gray-600 leading-relaxed">{t('partners.franchise.description')}</p>
                 </div>
               </div>
@@ -513,9 +512,9 @@ export default function PartnersPage() {
         <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
           <div 
             id="contact" 
-            className="qmenu_card icon_card group block bg-[#c9184a] border border-[#c9184a] rounded-[50px_0px_50px_0px] min-h-[400px] p-12 text-center shadow-lg transition-all duration-700 ease-out cursor-pointer relative overflow-hidden will-change-transform hover:-translate-y-2 hover:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.2),0_8px_30px_-5px_rgba(0,0,0,0.1)]" 
+            className="qmenu_card icon_card group block bg-white border border-[#bb252d] rounded-[50px_0px_50px_0px] min-h-[400px] p-12 text-center shadow-lg transition-all duration-700 ease-out cursor-pointer relative overflow-hidden will-change-transform hover:-translate-y-2 hover:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.2),0_8px_30px_-5px_rgba(0,0,0,0.1)]" 
             style={{
-              boxShadow: '0 10px 30px -5px rgba(201, 24, 72, 0.3), 0 4px 15px -2px rgba(201, 24, 72, 0.2)',
+              boxShadow: '0 10px 30px -5px rgba(187, 37, 45, 0.3), 0 4px 15px -2px rgba(187, 37, 45, 0.2)',
               transform: 'translateY(0) translateZ(0)',
               backfaceVisibility: 'hidden',
               WebkitFontSmoothing: 'antialiased'
@@ -529,46 +528,46 @@ export default function PartnersPage() {
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white bg-opacity-10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out pointer-events-none"></div>
             
             {/* Background decoration */}
-            <div className="absolute top-4 right-4 w-16 h-16 bg-white bg-opacity-10 rounded-full transition-all duration-700 ease-out group-hover:scale-110 group-hover:bg-white group-hover:bg-opacity-20"></div>
-            <div className="absolute bottom-4 left-4 w-12 h-12 bg-white bg-opacity-10 rounded-full transition-all duration-700 ease-out group-hover:scale-110 group-hover:bg-white group-hover:bg-opacity-20"></div>
+            <div className="absolute top-4 right-4 w-16 h-16 bg-[#bb252d] bg-opacity-10 rounded-full transition-all duration-700 ease-out group-hover:scale-110 group-hover:bg-[#bb252d] group-hover:bg-opacity-20"></div>
+            <div className="absolute bottom-4 left-4 w-12 h-12 bg-[#bb252d] bg-opacity-10 rounded-full transition-all duration-700 ease-out group-hover:scale-110 group-hover:bg-[#bb252d] group-hover:bg-opacity-20"></div>
             
             <div className="relative z-10 text-center">
               {/* Icon */}
               <div className="qmenu_icon w-full h-[60px] mb-3 flex items-center justify-center">
                 <div 
-                  className="w-10 h-10 rounded-full bg-gradient-to-br from-[#f0ffbe] to-[#e8f5e8] flex items-center justify-center transition-all duration-700 ease-out group-hover:scale-105 group-hover:rotate-6 will-change-transform"
+                  className="w-10 h-10 rounded-full bg-gradient-to-br from-[#bb252d]/10 to-[#bb252d]/20 flex items-center justify-center transition-all duration-700 ease-out group-hover:scale-105 group-hover:rotate-6 will-change-transform"
                   style={{
-                    boxShadow: '0 4px 15px rgba(11, 87, 57, 0.1)'
+                    boxShadow: '0 4px 15px rgba(187, 37, 45, 0.1)'
                   }}
                 >
-                  <svg className="w-6 h-6 text-[#0b5739] transition-all duration-500 ease-out group-hover:text-[#c9184a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-6 h-6 text-[#bb252d] transition-all duration-500 ease-out group-hover:text-[#bb252d]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                   </svg>
                 </div>
               </div>
 
               {/* Title */}
-              <h3 className="text-white text-3xl block text-center font-bold mb-6 transition-all duration-500 ease-out group-hover:text-white">
+              <h3 className="text-gray-800 text-3xl block text-center font-bold mb-6 transition-all duration-500 ease-out group-hover:text-gray-800">
                 {t('partners.contact.title')}
               </h3>
 
               {/* Contact Info */}
-              <div className="text-base text-white mb-6 group-hover:text-white transition-colors duration-500 ease-out">
+              <div className="text-base text-gray-700 mb-6 group-hover:text-gray-700 transition-colors duration-500 ease-out">
                 <div className="mb-4">
-                  <strong className="text-lg text-white">{t('partners.contact.department')}</strong>
+                  <strong className="text-lg text-gray-800">{t('partners.contact.department')}</strong>
                 </div>
                 <div className="space-y-3 text-left max-w-sm mx-auto text-sm">
                   <div className="flex items-start">
-                    <span className="mr-3 text-white">📍</span>
-                    <span className="text-white">{t('footer.address.detail')}</span>
+                    <span className="mr-3 text-gray-600">📍</span>
+                    <span className="text-gray-700">{t('footer.address.detail')}</span>
                   </div>
                   <div className="flex items-center">
-                    <span className="mr-3 text-white">📞</span>
-                    <span className="text-white">Hotline: 19001181</span>
+                    <span className="mr-3 text-gray-600">📞</span>
+                    <span className="text-gray-700">{t('footer.phone.detail')}</span>
                   </div>
                   <div className="flex items-center">
-                    <span className="mr-3 text-white">📧</span>
-                    <span className="text-white">Email: info@ksbgroup.vn</span>
+                    <span className="mr-3 text-gray-600">📧</span>
+                    <span className="text-gray-700">{t('footer.email.detail')}</span>
                   </div>
                 </div>
               </div>

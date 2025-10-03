@@ -5,6 +5,9 @@ interface OrganizationData {
   description: string
   url: string
   logo: string
+  foundingDate?: string
+  numberOfEmployees?: string
+  industry?: string[]
   address: {
     streetAddress: string
     addressLocality: string

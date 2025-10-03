@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import PageHeader from "../../components/PageHeader";
-import AboutContent from "../../components/AboutContent";
 import { useLanguage } from "../../contexts/LanguageContext";
 
 
@@ -40,7 +39,7 @@ export default function AboutPageClient() {
         </div>
 
         {/* Company Introduction Section */}
-        <div className="bg-white py-16" data-aos="fade-up">
+        <div className="bg-gray-50 py-16" data-aos="fade-up">
           <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               {/* Company Image with Shadow Effect - Left Side */}
@@ -63,10 +62,6 @@ export default function AboutPageClient() {
               
               {/* Text Content - Right Side */}
               <div className="space-y-8 order-1 lg:order-2">
-                <h2 className="text-4xl md:text-5xl font-bold text-muted-foreground leading-tight" data-aos="fade-up" data-aos-delay="100">
-                  {t('about.company.title')}
-                </h2>
-                
                 <p className="text-base text-muted-foreground leading-relaxed" data-aos="fade-up" data-aos-delay="200">
                   {t('about.company.content1')}
                 </p>
@@ -84,8 +79,6 @@ export default function AboutPageClient() {
         </div>
 
 
-        {/* About Content Section */}
-        <AboutContent />
 
       </div>
     </div>

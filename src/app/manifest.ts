@@ -2,9 +2,9 @@ import { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'KSB Group - Tập đoàn KSB',
+    name: 'KSB Group - Tập đoàn KSB | Hệ sinh thái kinh doanh đa ngành',
     short_name: 'KSB Group',
-    description: 'Tập đoàn KSB tự hào kiến tạo nên một nền tảng vững mạnh với hệ sinh thái kinh doanh bền vững',
+    description: 'KSB Group - Tập đoàn kinh doanh đa ngành với các lĩnh vực: Hóa - Mỹ phẩm (Biofresh), Sản xuất & Phân phối thực phẩm, Thực phẩm đông lạnh',
     start_url: '/',
     display: 'standalone',
     background_color: '#ffffff',

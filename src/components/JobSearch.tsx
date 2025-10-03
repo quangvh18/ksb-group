@@ -36,13 +36,13 @@ const JobSearch = ({ onSearch, loading = false }: JobSearchProps) => {
   return (
     <div className="relative mb-12">
       {/* Background decoration */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#c9184a]/5 to-[#e5989b]/10 rounded-[3rem_0rem_3rem_0rem] transform translate-x-2 translate-y-2"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-[#bb252d]/5 to-[#e5989b]/10 rounded-[3rem_0rem_3rem_0rem] transform translate-x-2 translate-y-2"></div>
       
       {/* Main search container */}
       <div className="relative bg-white rounded-[3rem_0rem_3rem_0rem] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_16px_-4px_rgba(0,0,0,0.1)] hover:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.25),0_8px_24px_-4px_rgba(0,0,0,0.15)] transition-all duration-500 ease-out overflow-hidden">
         
         {/* Header section */}
-        <div className="bg-[#c9184a] px-8 py-6">
+        <div className="bg-[#bb252d] px-8 py-6">
           <div className="flex items-center space-x-3">
             <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
               <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -67,7 +67,7 @@ const JobSearch = ({ onSearch, loading = false }: JobSearchProps) => {
               {/* Position Name Search */}
               <div className="space-y-2">
                 <label htmlFor="positionName" className="flex items-center space-x-2 text-sm font-semibold text-gray-700">
-                  <div className="w-2 h-2 bg-[#c9184a] rounded-full"></div>
+                  <div className="w-2 h-2 bg-[#bb252d] rounded-full"></div>
                   <span>{t('jobs.search.position')}</span>
                 </label>
                 <div className="relative">
@@ -128,7 +128,7 @@ const JobSearch = ({ onSearch, loading = false }: JobSearchProps) => {
               <button
                 type="submit"
                 disabled={loading}
-                className="flex-1 group relative overflow-hidden px-8 py-4 bg-[#c9184a] hover:bg-[#a0153a] text-white font-bold rounded-2xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl"
+                className="flex-1 group relative overflow-hidden px-8 py-4 bg-[#bb252d] hover:bg-[#a0153a] text-white font-bold rounded-2xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl"
               >
                 <div className="absolute inset-0 bg-white/10 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out"></div>
                 <div className="relative flex items-center justify-center space-x-3">
@@ -152,7 +152,7 @@ const JobSearch = ({ onSearch, loading = false }: JobSearchProps) => {
                 type="button"
                 onClick={handleReset}
                 disabled={loading}
-                className="px-8 py-4 border-2 border-gray-200 hover:border-[#c9184a] hover:bg-[#c9184a]/5 text-gray-700 hover:text-[#c9184a] font-semibold rounded-2xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-[1.02] active:scale-[0.98] group"
+                className="px-8 py-4 border-2 border-gray-200 hover:border-[#c9184a] hover:bg-[#bb252d]/5 text-gray-700 hover:text-[#bb252d] font-semibold rounded-2xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-[1.02] active:scale-[0.98] group"
               >
                 <div className="flex items-center justify-center space-x-3">
                   <svg className="w-5 h-5 group-hover:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">

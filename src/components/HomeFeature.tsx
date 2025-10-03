@@ -30,7 +30,7 @@ export default function HomeFeature() {
               {t('features.description')}
             </p>
             <Link href="/about" className="inline-block">
-              <span className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-[#c9184a] hover:bg-[#a0153a] text-white font-semibold shadow transition-colors duration-300">
+              <span className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-[#bb252d] hover:bg-[#a0153a] text-white font-semibold shadow transition-colors duration-300">
                 {t('common.learnMore')}
               </span>
             </Link>

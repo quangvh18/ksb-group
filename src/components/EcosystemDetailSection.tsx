@@ -1,182 +1,266 @@
 'use client';
 
 import { useState } from 'react';
-import ScrollAnimation from './ScrollAnimation';
+import Image from 'next/image';
 import { useLanguage } from '../contexts/LanguageContext';
 
-type DetailSection = {
-  id: string;
-  title: string;
-  description: string;
-  companies: Array<{
-    title: string;
-    description: string;
-  }>;
-};
+const EcosystemDetailSection = () => {
+  const { t } = useLanguage();
+  const [activeTab, setActiveTab] = useState('cosmetics');
 
-export default function EcosystemDetailSection() {
-  const { t, language } = useLanguage();
-  const [activeSection, setActiveSection] = useState<string>('cosmetics');
-
-  const sections: DetailSection[] = [
-    {
-      id: 'cosmetics',
-      title: t('ecosystem.services.cosmetics.title'),
-      description: t('ecosystem.services.cosmetics.description'),
-      companies: [
-        {
-          title: t('ecosystem.services.cosmetics.biofresh.title'),
-          description: t('ecosystem.services.cosmetics.biofresh.desc'),
-        },
-        {
-          title: t('ecosystem.services.cosmetics.products.title'),
-          description: t('ecosystem.services.cosmetics.products.desc'),
-        },
-      ],
-    },
-    {
-      id: 'food',
-      title: t('ecosystem.services.food.title'),
-      description: t('ecosystem.services.food.description'),
-      companies: [
-        {
-          title: t('ecosystem.services.food.ttp.title'),
-          description: t('ecosystem.services.food.ttp.desc'),
-        },
-        {
-          title: t('ecosystem.services.food.ecobin.title'),
-          description: t('ecosystem.services.food.ecobin.desc'),
-        },
-        {
-          title: t('ecosystem.services.food.bma.title'),
-          description: t('ecosystem.services.food.bma.desc'),
-        },
-        {
-          title: t('ecosystem.services.food.kangnam.title'),
-          description: t('ecosystem.services.food.kangnam.desc'),
-        },
-      ],
-    },
-    {
-      id: 'frozen',
-      title: t('ecosystem.services.frozen.title'),
-      description: t('ecosystem.services.frozen.description'),
-      companies: [
-        {
-          title: t('ecosystem.services.frozen.summary'),
-          description: t('ecosystem.services.frozen.details'),
-        },
-      ],
-    },
+  const tabs = [
+    { id: 'cosmetics', label: t('ecosystem.services.cosmetics.title') },
+    { id: 'food', label: t('ecosystem.services.food.title') },
+    { id: 'frozen', label: t('ecosystem.services.frozen.title') }
   ];
 
-  const currentSection = sections.find(section => section.id === activeSection);
-
-  return (
-    <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-gradient-to-br from-gray-50 to-gray-100">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <ScrollAnimation animation="slide-up" delay={0}>
-            <div className="mb-8 sm:mb-12 md:mb-16 lg:mb-20">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-muted-foreground mb-3 sm:mb-4 md:mb-6 text-center leading-tight">
-                {t('ecosystem.services.title')}
-              </h2>
-              <p className="text-sm sm:text-base md:text-lg text-muted-foreground text-center max-w-4xl mx-auto leading-relaxed">
-                {t('ecosystem.services.description')}
-              </p>
-            </div>
-          </ScrollAnimation>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
-            {/* Navigation */}
-            <ScrollAnimation animation="slide-up" delay={100} className="lg:col-span-1 order-2 lg:order-1">
-              <div className="bg-white rounded-[2rem_0rem_2rem_0rem] sm:rounded-[3rem_0rem_3rem_0rem] lg:rounded-[4rem_0rem_4rem_0rem] shadow-xl p-4 sm:p-6 lg:p-8 lg:sticky lg:top-8 border border-gray-100 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#c9184a]/20 to-[#a0153a]/20 rounded-full -translate-y-16 translate-x-16 opacity-20"></div>
-                <div className="relative z-10">
-                  <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-4 sm:mb-6 lg:mb-8 flex items-center">
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-[#c9184a] to-[#a0153a] rounded-xl flex items-center justify-center mr-2 sm:mr-3">
-                      <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-                      </svg>
-                    </div>
-                    {t('ecosystem.detail.navigation.title')}
-                  </h3>
-                  <nav className="space-y-2 sm:space-y-3 lg:space-y-4">
-                    {sections.map((section) => (
-                      <button
-                        key={section.id}
-                        onClick={() => setActiveSection(section.id)}
-                        className={`w-full text-left px-3 sm:px-4 lg:px-6 py-3 sm:py-4 rounded-[0.5rem_0rem_0.5rem_0rem] sm:rounded-[1rem_0rem_1rem_0rem] transition-all duration-300 transform hover:scale-105 touch-manipulation ${
-                          activeSection === section.id
-                            ? 'bg-gradient-to-r from-[#c9184a]/10 to-[#a0153a]/10 text-[#c9184a] border-l-4 border-[#c9184a] shadow-md'
-                            : 'text-gray-600 hover:bg-gray-50 hover:text-gray-800 hover:shadow-sm'
-                        }`}
-                      >
-                        <div className="font-medium text-sm sm:text-base">{section.title}</div>
-                      </button>
-                    ))}
-                  </nav>
+  const renderContent = () => {
+    switch (activeTab) {
+      case 'cosmetics':
+        return (
+          <div className="space-y-8">
+            {/* Main Description */}
+            <div className="bg-white rounded-[3rem_0rem_3rem_0rem] p-8 shadow-lg border border-[#bb252d]/20" style={{boxShadow: '0 10px 25px -5px rgba(156, 163, 175, 0.2), 0 4px 6px -2px rgba(156, 163, 175, 0.1)'}}>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-800 mb-4">{t('ecosystem.services.cosmetics.subtitle')}</h3>
+                  <p className="text-base text-gray-700 leading-relaxed">{t('ecosystem.services.cosmetics.description')}</p>
+                </div>
+                <div className="relative">
+                  <div className="absolute top-0 left-0 w-full h-full bg-gray-300 rounded-[3rem_0rem_3rem_0rem] transform translate-x-8 translate-y-8 z-0"></div>
+                  <Image 
+                    src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=60" 
+                    alt="Biofresh Cosmetics"
+                    width={600}
+                    height={400}
+                    className="w-full h-auto rounded-[3rem_0rem_3rem_0rem] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_16px_-4px_rgba(0,0,0,0.1)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] cursor-pointer relative z-10"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#f4acb7]/10 to-transparent rounded-[3rem_0rem_3rem_0rem] z-20"></div>
                 </div>
               </div>
-            </ScrollAnimation>
+            </div>
 
-            {/* Content */}
-            <ScrollAnimation animation="slide-up" delay={200} className="lg:col-span-2 order-1 lg:order-2">
-              {currentSection && (
-                <div className="space-y-4 sm:space-y-6 lg:space-y-8">
-                  {/* Main Card */}
-                  <div className="bg-white rounded-[2rem_0rem_2rem_0rem] sm:rounded-[3rem_0rem_3rem_0rem] lg:rounded-[4rem_0rem_4rem_0rem] shadow-xl p-4 sm:p-6 lg:p-8 border border-gray-100 overflow-hidden relative">
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#c9184a]/20 to-[#a0153a]/20 rounded-full -translate-y-16 translate-x-16 opacity-20"></div>
-                    <div className="relative z-10">
-                      <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-800 mb-4 sm:mb-6 flex items-center">
-                        <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-[#c9184a] to-[#a0153a] rounded-xl flex items-center justify-center mr-3 sm:mr-4">
-                          <svg className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                          </svg>
-                        </div>
-                        {currentSection.title}
-                      </h3>
-                      <p className="text-gray-600 text-sm sm:text-base lg:text-lg leading-relaxed mb-6 sm:mb-8 p-4 sm:p-6 bg-gray-50 rounded-[0.5rem_0rem_0.5rem_0rem] sm:rounded-[1rem_0rem_1rem_0rem] border-l-4 border-[#c9184a]">
-                        {currentSection.description}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Company Cards */}
-                  <div className="grid gap-4 sm:gap-6">
-                    {currentSection.companies.map((company, index) => (
-                      <div 
-                        key={index} 
-                        className="bg-white rounded-[1rem_0rem_1rem_0rem] sm:rounded-[2rem_0rem_2rem_0rem] shadow-lg p-4 sm:p-6 border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden"
-                      >
-                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#c9184a] to-[#a0153a]"></div>
-                        <div className="flex items-start space-x-3 sm:space-x-4">
-                          <div className="flex-shrink-0">
-                            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#c9184a] to-[#a0153a] rounded-[0.25rem_0rem_0.25rem_0rem] sm:rounded-[0.5rem_0rem_0.5rem_0rem] flex items-center justify-center">
-                              <span className="text-white font-bold text-sm sm:text-lg">{index + 1}</span>
-                            </div>
-                          </div>
-                          <div className="flex-1">
-                            <h4 className="text-lg sm:text-xl font-semibold text-gray-800 mb-2 sm:mb-3 flex items-center">
-                              {company.title}
-                              <svg className="w-4 h-4 sm:w-5 sm:h-5 ml-2 text-[#c9184a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                              </svg>
-                            </h4>
-                            <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-                              {company.description}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+            {/* Biofresh Section */}
+            <div className="bg-white rounded-[0rem_3rem_0rem_3rem] p-8 shadow-lg border border-[#bb252d]/20" style={{boxShadow: '0 10px 25px -5px rgba(156, 163, 175, 0.2), 0 4px 6px -2px rgba(156, 163, 175, 0.1)'}}>
+              <h4 className="text-xl font-bold text-gray-800 mb-4">{t('ecosystem.services.cosmetics.biofresh.title')}</h4>
+              <p className="text-base text-gray-700 leading-relaxed mb-6">{t('ecosystem.services.cosmetics.biofresh.description')}</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="relative">
+                  <Image 
+                    src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60" 
+                    alt="Biofresh Store"
+                    width={400}
+                    height={300}
+                    className="w-full h-auto rounded-2xl shadow-lg"
+                  />
                 </div>
-              )}
-            </ScrollAnimation>
+                <div className="relative">
+                  <Image 
+                    src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60" 
+                    alt="Biofresh Products"
+                    width={400}
+                    height={300}
+                    className="w-full h-auto rounded-2xl shadow-lg"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Products Section */}
+            <div className="bg-white rounded-[3rem_0rem_3rem_0rem] p-8 shadow-lg border border-[#bb252d]/20" style={{boxShadow: '0 10px 25px -5px rgba(156, 163, 175, 0.2), 0 4px 6px -2px rgba(156, 163, 175, 0.1)'}}>
+              <h4 className="text-xl font-bold text-gray-800 mb-4">{t('ecosystem.services.cosmetics.products.title')}</h4>
+              <p className="text-base text-gray-700 leading-relaxed mb-6">{t('ecosystem.services.cosmetics.products.description')}</p>
+              <div className="relative">
+                <Image 
+                  src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=60" 
+                  alt="Rose of Bulgaria Products"
+                  width={800}
+                  height={400}
+                  className="w-full h-auto rounded-2xl shadow-lg"
+                />
+              </div>
+            </div>
+
           </div>
+        );
+
+      case 'food':
+        return (
+          <div className="space-y-8">
+            {/* Main Description */}
+            <div className="bg-white rounded-[3rem_0rem_3rem_0rem] p-8 shadow-lg border border-[#bb252d]/20" style={{boxShadow: '0 10px 25px -5px rgba(156, 163, 175, 0.2), 0 4px 6px -2px rgba(156, 163, 175, 0.1)'}}>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-800 mb-4">{t('ecosystem.services.food.subtitle')}</h3>
+                  <p className="text-base text-gray-700 leading-relaxed">{t('ecosystem.services.food.description')}</p>
+                </div>
+                <div className="relative">
+                  <div className="absolute top-0 left-0 w-full h-full bg-gray-300 rounded-[3rem_0rem_3rem_0rem] transform translate-x-8 translate-y-8 z-0"></div>
+                  <Image 
+                    src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=60" 
+                    alt="Food Production"
+                    width={600}
+                    height={400}
+                    className="w-full h-auto rounded-[3rem_0rem_3rem_0rem] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_16px_-4px_rgba(0,0,0,0.1)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] cursor-pointer relative z-10"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#f4acb7]/10 to-transparent rounded-[3rem_0rem_3rem_0rem] z-20"></div>
+                </div>
+              </div>
+            </div>
+
+            {/* Company Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* TTP */}
+              <div className="bg-white rounded-[0rem_3rem_0rem_3rem] p-6 shadow-lg border border-[#bb252d]/20" style={{boxShadow: '0 10px 25px -5px rgba(156, 163, 175, 0.2), 0 4px 6px -2px rgba(156, 163, 175, 0.1)'}}>
+                <h4 className="text-lg font-bold text-gray-800 mb-3">{t('ecosystem.services.food.ttp.title')}</h4>
+                <p className="text-sm text-gray-700 leading-relaxed">{t('ecosystem.services.food.ttp.description')}</p>
+                <div className="mt-4">
+                  <Image 
+                    src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" 
+                    alt="Choco Samjin Products"
+                    width={300}
+                    height={200}
+                    className="w-full h-auto rounded-xl shadow-md"
+                  />
+                </div>
+              </div>
+
+              {/* Ecobin */}
+              <div className="bg-white rounded-[3rem_0rem_3rem_0rem] p-6 shadow-lg border border-[#bb252d]/20" style={{boxShadow: '0 10px 25px -5px rgba(156, 163, 175, 0.2), 0 4px 6px -2px rgba(156, 163, 175, 0.1)'}}>
+                <h4 className="text-lg font-bold text-gray-800 mb-3">{t('ecosystem.services.food.ecobin.title')}</h4>
+                <p className="text-sm text-gray-700 leading-relaxed">{t('ecosystem.services.food.ecobin.description')}</p>
+                <div className="mt-4">
+                  <Image 
+                    src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" 
+                    alt="Ecobin Products"
+                    width={300}
+                    height={200}
+                    className="w-full h-auto rounded-xl shadow-md"
+                  />
+                </div>
+              </div>
+
+              {/* Bach Moc An */}
+              <div className="bg-white rounded-[0rem_3rem_0rem_3rem] p-6 shadow-lg border border-[#bb252d]/20" style={{boxShadow: '0 10px 25px -5px rgba(156, 163, 175, 0.2), 0 4px 6px -2px rgba(156, 163, 175, 0.1)'}}>
+                <h4 className="text-lg font-bold text-gray-800 mb-3">{t('ecosystem.services.food.bachmocan.title')}</h4>
+                <p className="text-sm text-gray-700 leading-relaxed">{t('ecosystem.services.food.bachmocan.description')}</p>
+                <div className="mt-4">
+                  <Image 
+                    src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" 
+                    alt="Bach Moc An Products"
+                    width={300}
+                    height={200}
+                    className="w-full h-auto rounded-xl shadow-md"
+                  />
+                </div>
+              </div>
+
+              {/* KangNam */}
+              <div className="bg-white rounded-[3rem_0rem_3rem_0rem] p-6 shadow-lg border border-[#bb252d]/20" style={{boxShadow: '0 10px 25px -5px rgba(156, 163, 175, 0.2), 0 4px 6px -2px rgba(156, 163, 175, 0.1)'}}>
+                <h4 className="text-lg font-bold text-gray-800 mb-3">{t('ecosystem.services.food.kangnam.title')}</h4>
+                <p className="text-sm text-gray-700 leading-relaxed">{t('ecosystem.services.food.kangnam.description')}</p>
+                <div className="mt-4">
+                  <Image 
+                    src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" 
+                    alt="KangNam Products"
+                    width={300}
+                    height={200}
+                    className="w-full h-auto rounded-xl shadow-md"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+
+      case 'frozen':
+        return (
+          <div className="space-y-8">
+            {/* Main Description */}
+            <div className="bg-white rounded-[3rem_0rem_3rem_0rem] p-8 shadow-lg border border-[#bb252d]/20" style={{boxShadow: '0 10px 25px -5px rgba(156, 163, 175, 0.2), 0 4px 6px -2px rgba(156, 163, 175, 0.1)'}}>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-800 mb-4">{t('ecosystem.services.frozen.subtitle')}</h3>
+                  <p className="text-base text-gray-700 leading-relaxed">{t('ecosystem.services.frozen.description')}</p>
+                </div>
+                <div className="relative">
+                  <div className="absolute top-0 left-0 w-full h-full bg-gray-300 rounded-[3rem_0rem_3rem_0rem] transform translate-x-8 translate-y-8 z-0"></div>
+                  <Image 
+                    src="https://images.unsplash.com/photo-1541417904950-b855846fe074?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=60" 
+                    alt="Arctic Shrimp"
+                    width={600}
+                    height={400}
+                    className="w-full h-auto rounded-[3rem_0rem_3rem_0rem] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_16px_-4px_rgba(0,0,0,0.1)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] cursor-pointer relative z-10"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#f4acb7]/10 to-transparent rounded-[3rem_0rem_3rem_0rem] z-20"></div>
+                </div>
+              </div>
+            </div>
+
+            {/* Quality Section */}
+            <div className="bg-white rounded-[0rem_3rem_0rem_3rem] p-8 shadow-lg border border-[#bb252d]/20" style={{boxShadow: '0 10px 25px -5px rgba(156, 163, 175, 0.2), 0 4px 6px -2px rgba(156, 163, 175, 0.1)'}}>
+              <h4 className="text-xl font-bold text-gray-800 mb-4">{t('ecosystem.services.quality.title')}</h4>
+              <p className="text-base text-gray-700 leading-relaxed mb-6">{t('ecosystem.services.frozen.quality')}</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="relative">
+                  <Image 
+                    src="https://images.unsplash.com/photo-1541417904950-b855846fe074?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" 
+                    alt="Arctic Shrimp Quality"
+                    width={400}
+                    height={300}
+                    className="w-full h-auto rounded-xl shadow-lg"
+                  />
+                </div>
+                <div className="relative">
+                  <Image 
+                    src="https://images.unsplash.com/photo-1541417904950-b855846fe074?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" 
+                    alt="Greenland Source"
+                    width={400}
+                    height={300}
+                    className="w-full h-auto rounded-xl shadow-lg"
+                  />
+                </div>
+              </div>
+            </div>
+
+          </div>
+        );
+
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <section className="py-16 bg-gray-50">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1400px]">
+        {/* Navigation Tabs */}
+        <div className="mb-12">
+          <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">{t('ecosystem.detail.navigation.title')}</h2>
+          <div className="flex flex-wrap justify-center gap-4">
+            {tabs.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                  activeTab === tab.id
+                    ? 'bg-[#bb252d] text-white shadow-lg transform scale-105'
+                    : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="transition-all duration-500">
+          {renderContent()}
         </div>
       </div>
     </section>
   );
-}
+};
+
+export default EcosystemDetailSection;

@@ -62,30 +62,35 @@ Website KSB Group đã được tối ưu SEO toàn diện với các tính năn
 ### Primary Keywords
 - KSB Group
 - tập đoàn KSB
-- hệ sinh thái kinh doanh
-- công ty Việt Nam
-- dịch vụ doanh nghiệp
+- hệ sinh thái kinh doanh đa ngành
+- Biofresh
+- mỹ phẩm thiên nhiên
+- thực phẩm nhập khẩu
 
 ### Secondary Keywords
-- tin tức KSB
-- tuyển dụng KSB
-- đối tác KSB
-- sustainability
-- business ecosystem
-- phát triển bền vững
+- tôm Bắc Cực
+- Thiên Thuận Phát
+- Ecobin
+- Bách Mộc An
+- KangNam
+- phân phối độc quyền
+- chất lượng quốc tế
 
 ### Long-tail Keywords
-- KSB Group tuyển dụng việc làm
-- KSB Group tin tức cập nhật
-- tập đoàn KSB hệ sinh thái kinh doanh
-- KSB Group đối tác chiến lược
+- KSB Group Biofresh mỹ phẩm thiên nhiên
+- KSB Group tôm Bắc Cực Greenland
+- KSB Group Thiên Thuận Phát Choco Samjin
+- KSB Group Ecobin kẹo cao cấp
+- KSB Group Bách Mộc An phân phối
+- KSB Group KangNam sữa yến mạch
 
 ## 🖼️ Tối ưu ảnh SEO
-- ✅ Sử dụng ảnh office.png cho tất cả Open Graph và Twitter Card
+- ✅ Sử dụng ảnh ksb.jpg cho tất cả Open Graph và Twitter Card
 - ✅ Ảnh được tối ưu kích thước 1200x630px cho social media
 - ✅ Alt text mô tả rõ ràng cho từng trang
 - ✅ Lazy loading cho tất cả ảnh
 - ✅ WebP và AVIF format support
+- ✅ Ảnh sản phẩm Biofresh, tôm Bắc Cực, các công ty thành viên
 
 ## 🛠️ Các component SEO đã tạo
 

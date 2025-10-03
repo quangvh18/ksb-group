@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 import { jobService, Job, JobsQueryParams } from '../services/jobService';
 
 interface UseJobsOptions extends JobsQueryParams {
@@ -21,7 +21,7 @@ export const useJobs = (options: UseJobsOptions = {}): UseJobsReturn => {
   const [loading, setLoading] = useState(false); // Changed to false - don't load on mount
   const [error, setError] = useState<string | null>(null);
   const [totalJobs, setTotalJobs] = useState(0);
-  const [hasSearched, setHasSearched] = useState(false); // Track if user has searched
+  const [, setHasSearched] = useState(false); // Track if user has searched
 
   // Fallback data when API is not available - memoized to prevent re-renders
   const fallbackJobs = useMemo((): Job[] => [

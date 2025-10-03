@@ -2,6 +2,7 @@
 
 import PageHeader from "../../../components/PageHeader";
 import OrgChart from "../../../components/OrgChart";
+import MissionVisionValues from "../../../components/MissionVisionValues";
 import { useLanguage } from "../../../contexts/LanguageContext";
 
 export default function OrganizationPage() {
@@ -21,6 +22,9 @@ export default function OrganizationPage() {
           description={t('about.organization.description')}
           breadcrumbItems={breadcrumbItems}
         />
+
+        {/* Mission, Values & Vision Section */}
+        <MissionVisionValues />
 
         {/* Organization Chart Section */}
         <OrgChart />

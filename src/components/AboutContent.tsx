@@ -10,13 +10,13 @@ const AboutContent = () => {
         <div className="mx-auto max-w-6xl">
           {/* Section Header */}
           <div className="mb-16 text-center" data-aos="fade-up">
-            <div className="mb-6 inline-flex items-center justify-center rounded-full bg-gradient-to-br from-[#c9184a]/10 to-orange-500/10 p-4" data-aos="zoom-in" data-aos-delay="200">
-              <Building2 className="h-10 w-10 text-[#c9184a]" />
+            <div className="mb-6 inline-flex items-center justify-center rounded-full bg-gradient-to-br from-[#bb252d]/10 to-orange-500/10 p-4" data-aos="zoom-in" data-aos-delay="200">
+              <Building2 className="h-10 w-10 text-[#bb252d]" />
             </div>
             <h2 className="mb-4 text-3xl font-bold text-gray-800 md:text-4xl lg:text-5xl" data-aos="fade-up" data-aos-delay="300">
               Giới Thiệu Tập Đoàn KSB
             </h2>
-            <div className="mx-auto h-1 w-24 bg-gradient-to-r from-transparent via-[#c9184a] to-transparent" data-aos="fade-up" data-aos-delay="400" />
+            <div className="mx-auto h-1 w-24 bg-gradient-to-r from-transparent via-[#bb252d] to-transparent" data-aos="fade-up" data-aos-delay="400" />
           </div>
 
           {/* Main Content Grid */}
@@ -62,9 +62,9 @@ const AboutContent = () => {
             {/* Card 3 - Commitment - Featured */}
             <div className="group relative lg:col-span-1" data-aos="fade-up" data-aos-delay="300">
               {/* Leaf shape background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#c9184a]/20 to-orange-500/30 rounded-[3rem_0rem_3rem_0rem] transform rotate-1 group-hover:rotate-0 transition-transform duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-[#bb252d]/20 to-orange-500/30 rounded-[3rem_0rem_3rem_0rem] transform rotate-1 group-hover:rotate-0 transition-transform duration-500"></div>
               
-              <div className="relative bg-gradient-to-br from-[#c9184a] to-orange-500 rounded-[3rem_0rem_3rem_0rem] p-8 shadow-lg group-hover:shadow-xl transition-all duration-500">
+              <div className="relative bg-gradient-to-br from-[#bb252d] to-orange-500 rounded-[3rem_0rem_3rem_0rem] p-8 shadow-lg group-hover:shadow-xl transition-all duration-500">
                 <div className="mb-6 flex items-center gap-4">
                   <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-white/20 backdrop-blur-sm">
                     <Award className="h-7 w-7 text-white" />
