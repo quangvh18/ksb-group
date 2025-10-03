@@ -12,6 +12,7 @@ export default function ContactPage() {
     { label: t('nav.contact'), isActive: true }
   ];
   const [selectedSubject, setSelectedSubject] = useState("");
+  const [selectedRequestTypeId, setSelectedRequestTypeId] = useState<number | undefined>(undefined);
   const [showOptions, setShowOptions] = useState(false);
   const [requestTypes, setRequestTypes] = useState<RequestType[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -49,7 +50,8 @@ export default function ContactPage() {
         fullName: formData.name,
         phone: formData.phone,
         email: formData.email,
-        content: formData.content
+        content: formData.content,
+        requestTypeId: selectedRequestTypeId
       };
 
       const messages = {
@@ -65,6 +67,7 @@ export default function ContactPage() {
         // Reset form
         setFormData({ name: '', phone: '', email: '', content: '' });
         setSelectedSubject('');
+        setSelectedRequestTypeId(undefined);
       } else {
         setMessage({ type: 'error', text: result.message });
       }
@@ -214,6 +217,7 @@ export default function ContactPage() {
                             className="px-4 py-4 hover:bg-red-50 cursor-pointer border-b border-gray-100 last:border-b-0 transition-colors duration-200 hover:text-[#c9184a] text-base"
                             onClick={() => {
                               setSelectedSubject(type.name);
+                              setSelectedRequestTypeId(type.id);
                               setShowOptions(false);
                             }}
                           >

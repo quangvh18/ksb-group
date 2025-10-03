@@ -2,10 +2,49 @@ import { newsService, transformNewsItem, fallbackNewsData, TransformedNewsItem }
 import dynamic from 'next/dynamic'
 import HomeFeature from '../components/HomeFeature'
 import NewsSection from '../components/NewsSection'
+import type { Metadata } from 'next'
 
 const Banner = dynamic(() => import('../components/Banner'))
 // const KSBGroupSection = dynamic(() => import('../components/KSBGroupSection'))
 const ServicesSection = dynamic(() => import('../components/ServicesSection'))
+
+export const metadata: Metadata = {
+  title: "Trang chủ",
+  description: "Khám phá KSB Group - Tập đoàn hàng đầu với hệ sinh thái kinh doanh bền vững. Dịch vụ chuyên nghiệp, tin tức cập nhật và cơ hội nghề nghiệp hấp dẫn.",
+  keywords: [
+    "KSB Group trang chủ",
+    "tập đoàn KSB",
+    "hệ sinh thái kinh doanh",
+    "dịch vụ doanh nghiệp",
+    "tin tức KSB",
+    "tuyển dụng KSB",
+    "công ty Việt Nam",
+    "sustainability",
+    "business ecosystem"
+  ],
+  openGraph: {
+    title: "KSB Group - Tập đoàn KSB | Hệ sinh thái kinh doanh bền vững",
+    description: "Khám phá KSB Group - Tập đoàn hàng đầu với hệ sinh thái kinh doanh bền vững. Dịch vụ chuyên nghiệp, tin tức cập nhật và cơ hội nghề nghiệp hấp dẫn.",
+    url: "https://ksbgroup.vn",
+    images: [
+      {
+        url: "/images/office.png",
+        width: 1200,
+        height: 630,
+        alt: "KSB Group - Trang chủ",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "KSB Group - Tập đoàn KSB | Hệ sinh thái kinh doanh bền vững",
+    description: "Khám phá KSB Group - Tập đoàn hàng đầu với hệ sinh thái kinh doanh bền vững.",
+    images: ["/images/office.png"],
+  },
+  alternates: {
+    canonical: "https://ksbgroup.vn",
+  },
+};
 
 
 // Function để fetch news data using service

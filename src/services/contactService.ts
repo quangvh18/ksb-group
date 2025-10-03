@@ -130,7 +130,8 @@ export async function submitContactRequest(
         fullName: data.fullName,
         phone: data.phone,
         email: data.email,
-        content: data.content
+        content: data.content,
+        requestTypeId: data.requestTypeId
       }
     }, {
       headers: {
