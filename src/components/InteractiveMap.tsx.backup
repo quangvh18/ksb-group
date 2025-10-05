@@ -1,0 +1,269 @@
+'use client';
+
+import Image from "next/image";
+import { useLanguage } from "../contexts/LanguageContext";
+import "../styles/map.css";
+
+export default function InteractiveMap() {
+  const { t } = useLanguage();
+
+  const locations = [
+    { name: "ĐÀ NẴNG", top: "53%", left: "74%", icon: "default" },
+    { name: "SA PA", top: "13%", left: "57.5%", icon: "default" },
+    { name: "QUẢNG NINH", top: "21%", left: "69.5%", icon: "default" },
+    { name: "HÀ NỘI", top: "24%", left: "64.5%", icon: "star" },
+    { name: "TÂY NINH", top: "76%", left: "66%", icon: "default" },
+    { name: "PHÚ QUỐC", top: "82%", left: "58.8%", icon: "default" },
+    { name: "THANH HÓA", top: "30%", left: "64.5%", icon: "default" },
+    { name: "HẢI PHÒNG", top: "22%", left: "68%", icon: "default" },
+    { name: "PHÚ THỌ", top: "21%", left: "61%", icon: "default" },
+    { name: "KHÁNH HÒA", top: "75%", left: "76%", icon: "default" },
+    { name: "VŨNG TÀU", top: "84%", left: "67%", icon: "default" },
+    { name: "BẮC NINH", top: "20%", left: "67%", icon: "default" },
+    { name: "QUẢNG TRỊ", top: "41%", left: "67%", icon: "default" }
+  ];
+
+  const islands = [
+    { name: "QĐ.Hoàng Sa", bottom: "38%", right: "7%" },
+    { name: "QĐ.Trường Sa", right: "5%", bottom: "10%" }
+  ];
+
+  const getIconSrc = (iconType: string) => {
+    switch (iconType) {
+      case "cabin":
+        return "https://sun-ecommerce-cdn.azureedge.net/ecommerce/service-sites/asset/SunGroup/map-icon/icon-cabin.svg";
+      case "star":
+        return "https://sun-ecommerce-cdn.azureedge.net/ecommerce/service-sites/asset/SunGroup/map-icon/icon-star.svg";
+      case "default":
+      default:
+        return "/images/icon-map.svg";
+    }
+  };
+
+  return (
+    <section className="py-16 bg-white">
+      <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-bold text-muted-foreground mb-4" data-aos="fade-up" data-aos-delay="100">
+            {t('map.title')}
+          </h2>
+          <p className="text-base text-muted-foreground leading-relaxed max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+            {t('map.description')}
+          </p>
+        </div>
+
+        <div className="map relative" data-aos="zoom-in" data-aos-delay="200">
+          <div className="--img relative">
+            <Image 
+              src="https://sungroup.com.vn/static/img/img-map.png" 
+              alt="Bản đồ Việt Nam" 
+              width={800} 
+              height={600}
+              className="w-full h-auto"
+            />
+            
+            {/* Location markers */}
+            <div className="marker absolute inset-0">
+              {locations.map((location, index) => (
+                <div
+                  key={location.name}
+                  className="--item absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group"
+                  style={{
+                    top: location.top,
+                    left: location.left
+                  }}
+                  data-icon={location.icon}
+                  data-aos="fade-up"
+                  data-aos-delay={300 + index * 100}
+                >
+                  <div className="relative">
+                    <Image
+                      src={getIconSrc(location.icon)}
+                      alt={location.name}
+                      width={24}
+                      height={24}
+                      className="w-6 h-6 transition-transform duration-300 group-hover:scale-125"
+                    />
+                    <span className="--name absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1 bg-black text-white text-xs rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                      {location.name}
+                    </span>
+                  </div>
+                </div>
+              ))}
+              {/* Island markers */}
+              {islands.map((island, index) => (
+                <div
+                  key={island.name}
+                  className="--item island absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group"
+                  style={{
+                    bottom: island.bottom,
+                    right: island.right
+                  }}
+                  data-aos="fade-up"
+                  data-aos-delay={300 + (locations.length + index) * 100}
+                >
+                  <span className="--name px-3 py-1 bg-blue-600 text-white text-xs rounded-md opacity-100 whitespace-nowrap">
+                    {island.name}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* Animated lines from Hanoi to other cities */}
+            <div className="line absolute inset-0 pointer-events-none">
+              <svg width="100%" height="100%" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute top-0 left-0">
+                {/* Hanoi to Hai Phong (22%, 68%) */}
+                <path 
+                  d="M 64.5 24 L 68 22" 
+                  stroke="url(#gradient1)" 
+                  strokeWidth="0.2" 
+                  strokeDasharray="0.3 0.3"
+                  className="animate-dash"
+                />
+                {/* Hanoi to Quang Ninh (21%, 69.5%) */}
+                <path 
+                  d="M 64.5 24 L 69.5 21" 
+                  stroke="url(#gradient2)" 
+                  strokeWidth="0.2" 
+                  strokeDasharray="0.3 0.3"
+                  className="animate-dash"
+                />
+                {/* Hanoi to Sa Pa (13%, 57.5%) */}
+                <path 
+                  d="M 64.5 24 L 57.5 13" 
+                  stroke="url(#gradient3)" 
+                  strokeWidth="0.2" 
+                  strokeDasharray="0.3 0.3"
+                  className="animate-dash"
+                />
+                {/* Hanoi to Bac Ninh (20%, 67%) */}
+                <path 
+                  d="M 64.5 24 L 67 20" 
+                  stroke="url(#gradient4)" 
+                  strokeWidth="0.2" 
+                  strokeDasharray="0.3 0.3"
+                  className="animate-dash"
+                />
+                {/* Hanoi to Phu Tho (21%, 61%) */}
+                <path 
+                  d="M 64.5 24 L 61 21" 
+                  stroke="url(#gradient5)" 
+                  strokeWidth="0.2" 
+                  strokeDasharray="0.3 0.3"
+                  className="animate-dash"
+                />
+                {/* Hanoi to Thanh Hoa (30%, 64.5%) */}
+                <path 
+                  d="M 64.5 24 L 64.5 30" 
+                  stroke="url(#gradient6)" 
+                  strokeWidth="0.2" 
+                  strokeDasharray="0.3 0.3"
+                  className="animate-dash"
+                />
+                {/* Hanoi to Quang Tri (41%, 67%) */}
+                <path 
+                  d="M 64.5 24 L 67 41" 
+                  stroke="url(#gradient7)" 
+                  strokeWidth="0.2" 
+                  strokeDasharray="0.3 0.3"
+                  className="animate-dash"
+                />
+                {/* Hanoi to Da Nang (53%, 74%) */}
+                <path 
+                  d="M 64.5 24 L 74 53" 
+                  stroke="url(#gradient8)" 
+                  strokeWidth="0.2" 
+                  strokeDasharray="0.3 0.3"
+                  className="animate-dash"
+                />
+                {/* Hanoi to Khanh Hoa (75%, 76%) */}
+                <path 
+                  d="M 64.5 24 L 76 75" 
+                  stroke="url(#gradient9)" 
+                  strokeWidth="0.2" 
+                  strokeDasharray="0.3 0.3"
+                  className="animate-dash"
+                />
+                {/* Hanoi to Tay Ninh (76%, 66%) */}
+                <path 
+                  d="M 64.5 24 L 66 76" 
+                  stroke="url(#gradient10)" 
+                  strokeWidth="0.2" 
+                  strokeDasharray="0.3 0.3"
+                  className="animate-dash"
+                />
+                {/* Hanoi to Vung Tau (84%, 67%) */}
+                <path 
+                  d="M 64.5 24 L 67 84" 
+                  stroke="url(#gradient11)" 
+                  strokeWidth="0.2" 
+                  strokeDasharray="0.3 0.3"
+                  className="animate-dash"
+                />
+                {/* Hanoi to Phu Quoc (82%, 58.8%) */}
+                <path 
+                  d="M 64.5 24 L 58.8 82" 
+                  stroke="url(#gradient12)" 
+                  strokeWidth="0.2" 
+                  strokeDasharray="0.3 0.3"
+                  className="animate-dash"
+                />
+                
+                <defs>
+                  <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#FFD600" />
+                    <stop offset="100%" stopColor="#FF8A00" />
+                  </linearGradient>
+                  <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#FFD600" />
+                    <stop offset="100%" stopColor="#FF8A00" />
+                  </linearGradient>
+                  <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#FFD600" />
+                    <stop offset="100%" stopColor="#FF8A00" />
+                  </linearGradient>
+                  <linearGradient id="gradient4" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#FFD600" />
+                    <stop offset="100%" stopColor="#FF8A00" />
+                  </linearGradient>
+                  <linearGradient id="gradient5" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#FFD600" />
+                    <stop offset="100%" stopColor="#FF8A00" />
+                  </linearGradient>
+                  <linearGradient id="gradient6" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#FFD600" />
+                    <stop offset="100%" stopColor="#FF8A00" />
+                  </linearGradient>
+                  <linearGradient id="gradient7" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#FFD600" />
+                    <stop offset="100%" stopColor="#FF8A00" />
+                  </linearGradient>
+                  <linearGradient id="gradient8" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#FFD600" />
+                    <stop offset="100%" stopColor="#FF8A00" />
+                  </linearGradient>
+                  <linearGradient id="gradient9" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#FFD600" />
+                    <stop offset="100%" stopColor="#FF8A00" />
+                  </linearGradient>
+                  <linearGradient id="gradient10" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#FFD600" />
+                    <stop offset="100%" stopColor="#FF8A00" />
+                  </linearGradient>
+                  <linearGradient id="gradient11" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#FFD600" />
+                    <stop offset="100%" stopColor="#FF8A00" />
+                  </linearGradient>
+                  <linearGradient id="gradient12" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#FFD600" />
+                    <stop offset="100%" stopColor="#FF8A00" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

@@ -2,8 +2,8 @@ import { newsService, transformNewsItem, fallbackNewsData, TransformedNewsItem }
 import dynamic from 'next/dynamic'
 import HomeFeature from '../components/HomeFeature'
 import NewsSection from '../components/NewsSection'
-import AboutFootprint from '../components/AboutFootprint'
 import StrategicPartners from '../components/StrategicPartners'
+import InteractiveMap from '../components/InteractiveMap'
 import type { Metadata } from 'next'
 
 const Banner = dynamic(() => import('../components/Banner'))
@@ -76,8 +76,8 @@ export default async function Home() {
         <StrategicPartners />
         {/* News & Community Section - replaced with new components */}
         <NewsSection />
-        {/* About Footprint Section */}
-        <AboutFootprint />
+        {/* Interactive Map Section - replaced AboutFootprint */}
+        <InteractiveMap />
 
         
         {/* Brand Section moved to separate component; not rendered here */}

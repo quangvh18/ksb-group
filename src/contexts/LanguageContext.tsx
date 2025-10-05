@@ -263,6 +263,10 @@ const translations = {
     'partners.food.title': 'Sản xuất - phân phối thực phẩm',
     'partners.food.desc': 'Choco Samjin, Ecobin, Bách Mộc An, KangNam - Mô hình đa ngành tối ưu nguồn lực, chủ động chuỗi cung ứng',
     
+    // Map Section
+    'map.title': 'Dấu ấn',
+    'map.description': 'Hệ thống phân phối toàn quốc. Với mạng lưới phân phối phủ khắp cả nước, KSB GROUP tự hào mang đến sản phẩm chất lượng cao đến tay người tiêu dùng Việt Nam qua nhiều kênh: MT, GT, Showroom, Chuyên biệt và B2B.',
+    
     // Ecosystem Page
     'ecosystem.title': 'Hệ sinh thái',
     'ecosystem.description': 'Khám phá hệ sinh thái đa dạng của KSB Group với các thương hiệu, dịch vụ và giải pháp toàn diện',
@@ -659,6 +663,10 @@ const translations = {
     'partners.cosmetics.desc': 'Biofresh and premium imported cosmetic lines from Europe, meeting modern beauty needs',
     'partners.food.title': 'Food Production - Distribution',
     'partners.food.desc': 'Choco Samjin, Ecobin, Bach Moc An, KangNam - Multi-industry model optimizing resources, proactive supply chain',
+    
+    // Map Section
+    'map.title': 'Footprint',
+    'map.description': 'Nationwide Distribution System. With a nationwide distribution network, KSB GROUP is proud to bring high-quality products to Vietnamese consumers through multiple channels: MT, GT, Showroom, Specialty and B2B.',
     
     // Ecosystem Page
     'ecosystem.title': 'Ecosystem',
