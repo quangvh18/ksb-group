@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic'
 import HomeFeature from '../components/HomeFeature'
 import NewsSection from '../components/NewsSection'
 import AboutFootprint from '../components/AboutFootprint'
+import StrategicPartners from '../components/StrategicPartners'
 import type { Metadata } from 'next'
 
 const Banner = dynamic(() => import('../components/Banner'))
@@ -71,6 +72,8 @@ export default async function Home() {
         {/* KSB Group Summary Section */}
         {/* <KSBGroupSection /> */}
         <ServicesSection />
+        {/* Strategic Partners Section */}
+        <StrategicPartners />
         {/* News & Community Section - replaced with new components */}
         <NewsSection />
         {/* About Footprint Section */}

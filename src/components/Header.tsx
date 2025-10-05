@@ -69,7 +69,7 @@ export default function Header() {
                        {t('nav.about')}
                      </Link>
                      <Link 
-                       href="/about/organization" 
+                       href="/about#organization-section" 
                        className="block px-5 py-3 text-lg text-gray-800 hover:bg-[#bb252d] hover:text-white transition-all duration-200 last:rounded-b-lg"
                      >
                        {t('about.organization.title')}
@@ -235,7 +235,7 @@ export default function Header() {
                         {t('nav.about')}
                       </Link>
                       <Link 
-                        href="/about/organization" 
+                        href="/about#organization-section" 
                         className="block px-5 py-3 text-lg text-white/80 hover:bg-[#c9184a] hover:text-white transition-all duration-200 last:rounded-b-lg"
                         onClick={closeMenu}
                       >

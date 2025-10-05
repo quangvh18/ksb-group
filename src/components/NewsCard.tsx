@@ -17,13 +17,13 @@ const NewsCard = ({ title, image, link = '#', featured = false, leafDirection = 
     ? 'rounded-[0rem_3rem_0rem_3rem]'
     : 'rounded-[3rem_0rem_3rem_0rem]'
   const baseCardClass = fullHeight
-    ? `bg-white ${leafClass} overflow-hidden group cursor-pointer shadow-lg border border-gray-200 transition-all duration-300 relative h-full flex flex-col hover:shadow-xl`
-    : `bg-white ${leafClass} overflow-hidden group cursor-pointer shadow-lg border border-gray-200 transition-all duration-300 relative h-full flex flex-col hover:shadow-xl`
+    ? `bg-white ${leafClass} overflow-hidden group cursor-pointer shadow-lg border border-gray-200 transition-all duration-300 relative h-full flex flex-col hover:shadow-xl news-card-hover`
+    : `bg-white ${leafClass} overflow-hidden group cursor-pointer shadow-lg border border-gray-200 transition-all duration-300 relative h-full flex flex-col hover:shadow-xl news-card-hover`
   const imageWrapperClass = 'flex-1 overflow-hidden'
 
   if (featured) {
     return (
-      <Link href={link} className={`block relative h-full ${leafClass} overflow-hidden group cursor-pointer bg-white shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300`}>
+      <Link href={link} className={`block relative h-full ${leafClass} overflow-hidden group cursor-pointer bg-white shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 news-card-hover`}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={image}
@@ -33,10 +33,10 @@ const NewsCard = ({ title, image, link = '#', featured = false, leafDirection = 
         <div className={`absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/70 via-black/40 to-transparent ${leafClass}`} />
 
         <div className="relative h-full p-6 md:p-8 flex flex-col justify-end">
-          <h3 className="text-white text-xl md:text-2xl font-semibold mb-6 leading-relaxed group-hover:text-[#bb252d] transition-colors duration-300">
+          <h3 className="text-white text-xl md:text-2xl font-semibold mb-6 leading-relaxed">
             {title}
           </h3>
-          <span className="inline-flex items-center gap-2 text-white group-hover:text-[#bb252d] transition-all duration-300 text-sm font-medium">
+          <span className="inline-flex items-center gap-2 text-white text-sm font-medium">
             Xem thêm
             <ArrowRight className="w-4 h-4" />
           </span>
@@ -57,10 +57,10 @@ const NewsCard = ({ title, image, link = '#', featured = false, leafDirection = 
       </div>
 
       <div className="p-4 md:p-5">
-        <h3 className="text-foreground group-hover:text-[#bb252d] text-base font-medium mb-4 leading-relaxed line-clamp-2 min-h-[3.5rem] flex items-center transition-colors duration-300">
+        <h3 className="text-gray-800 text-base font-medium mb-4 leading-relaxed line-clamp-2 min-h-[3.5rem] flex items-center">
           {title}
         </h3>
-        <span className="inline-flex items-center gap-2 text-success group-hover:text-[#bb252d] transition-all duration-300 text-sm font-medium">
+        <span className="inline-flex items-center gap-2 text-[#bb252d] text-sm font-medium news-link">
           Xem thêm
           <ArrowRight className="w-4 h-4" />
         </span>
