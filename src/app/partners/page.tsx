@@ -385,65 +385,53 @@ export default function PartnersPage() {
           </div>
 
           {/* Brand Logos */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="400">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-8" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="400">
             <div className="item text-center" data-aos="flip-up" data-aos-duration="800" data-aos-delay="100">
               <a href="#" className="block hover:scale-105 transition-transform duration-300">
-                <Image src="https://thienthuanphat.vn/Data/images/default/2-01.webp" alt="Thương hiệu 1" width={160} height={160} className="w-40 h-40 mx-auto object-contain" />
-                <div className="name text-base font-medium text-gray-700 mt-3">Thương hiệu 1</div>
+                <Image src="/images/parters/crown.webp" alt="Crown" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
+                <div className="name text-base font-medium text-gray-700 mt-3">Crown</div>
               </a>
             </div>
             <div className="item text-center" data-aos="flip-up" data-aos-duration="800" data-aos-delay="200">
               <a href="#" className="block hover:scale-105 transition-transform duration-300">
-                <Image src="https://thienthuanphat.vn/Data/images/default/4.webp" alt="Thương hiệu 2" width={160} height={160} className="w-40 h-40 mx-auto object-contain" />
-                <div className="name text-base font-medium text-gray-700 mt-3">Thương hiệu 2</div>
+                <Image src="/images/parters/dongnam-medics.png" alt="Dongnam Medics" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
+                <div className="name text-base font-medium text-gray-700 mt-3">Dongnam Medics</div>
               </a>
             </div>
             <div className="item text-center" data-aos="flip-up" data-aos-duration="800" data-aos-delay="300">
               <a href="#" className="block hover:scale-105 transition-transform duration-300">
-                <Image src="https://thienthuanphat.vn/Data/images/default/5-01.webp" alt="Thương hiệu 3" width={160} height={160} className="w-40 h-40 mx-auto object-contain" />
-                <div className="name text-base font-medium text-gray-700 mt-3">Thương hiệu 3</div>
+                <Image src="/images/parters/lotte.png" alt="Lotte" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
+                <div className="name text-base font-medium text-gray-700 mt-3">Lotte</div>
               </a>
             </div>
             <div className="item text-center" data-aos="flip-up" data-aos-duration="800" data-aos-delay="400">
               <a href="#" className="block hover:scale-105 transition-transform duration-300">
-                <Image src="https://thienthuanphat.vn/Data/images/default/6-01.webp" alt="Thương hiệu 4" width={160} height={160} className="w-40 h-40 mx-auto object-contain" />
-                <div className="name text-base font-medium text-gray-700 mt-3">Thương hiệu 4</div>
+                <Image src="/images/parters/melland.webp" alt="Melland" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
+                <div className="name text-base font-medium text-gray-700 mt-3">Melland</div>
               </a>
             </div>
             <div className="item text-center" data-aos="flip-up" data-aos-duration="800" data-aos-delay="500">
               <a href="#" className="block hover:scale-105 transition-transform duration-300">
-                <Image src="https://thienthuanphat.vn/Data/images/default/7-01.webp" alt="Thương hiệu 5" width={160} height={160} className="w-40 h-40 mx-auto object-contain" />
-                <div className="name text-base font-medium text-gray-700 mt-3">Thương hiệu 5</div>
+                <Image src="/images/parters/queen-bin.png" alt="Queen Bin" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
+                <div className="name text-base font-medium text-gray-700 mt-3">Queen Bin</div>
               </a>
             </div>
             <div className="item text-center" data-aos="flip-up" data-aos-duration="800" data-aos-delay="600">
               <a href="#" className="block hover:scale-105 transition-transform duration-300">
-                <Image src="https://thienthuanphat.vn/Data/images/default/8.webp" alt="Thương hiệu 6" width={160} height={160} className="w-40 h-40 mx-auto object-contain" />
-                <div className="name text-base font-medium text-gray-700 mt-3">Thương hiệu 6</div>
+                <Image src="/images/parters/sahmyhook-food.png" alt="Sahmyhook Food" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
+                <div className="name text-base font-medium text-gray-700 mt-3">Sahmyhook Food</div>
               </a>
             </div>
             <div className="item text-center" data-aos="flip-up" data-aos-duration="800" data-aos-delay="700">
               <a href="#" className="block hover:scale-105 transition-transform duration-300">
-                <Image src="https://thienthuanphat.vn/Data/images/default/9-011.webp" alt="Thương hiệu 7" width={160} height={160} className="w-40 h-40 mx-auto object-contain" />
-                <div className="name text-base font-medium text-gray-700 mt-3">Thương hiệu 7</div>
+                <Image src="/images/parters/samjin-corporation.png" alt="Samjin Corporation" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
+                <div className="name text-base font-medium text-gray-700 mt-3">Samjin Corporation</div>
               </a>
             </div>
             <div className="item text-center" data-aos="flip-up" data-aos-duration="800" data-aos-delay="800">
               <a href="#" className="block hover:scale-105 transition-transform duration-300">
-                <Image src="https://thienthuanphat.vn/Data/images/default/dongnam1.webp" alt="Thương hiệu 8" width={160} height={160} className="w-40 h-40 mx-auto object-contain" />
-                <div className="name text-base font-medium text-gray-700 mt-3">Thương hiệu 8</div>
-              </a>
-            </div>
-            <div className="item text-center" data-aos="flip-up" data-aos-duration="800" data-aos-delay="900">
-              <a href="#" className="block hover:scale-105 transition-transform duration-300">
-                <Image src="https://thienthuanphat.vn/Data/images/default/9-01.webp" alt="Thương hiệu 9" width={160} height={160} className="w-40 h-40 mx-auto object-contain" />
-                <div className="name text-base font-medium text-gray-700 mt-3">Thương hiệu 9</div>
-              </a>
-            </div>
-            <div className="item text-center" data-aos="flip-up" data-aos-duration="800" data-aos-delay="1000">
-              <a href="#" className="block hover:scale-105 transition-transform duration-300">
-                <Image src="https://thienthuanphat.vn/Data/images/default/1-01.webp" alt="Thương hiệu 10" width={160} height={160} className="w-40 h-40 mx-auto object-contain" />
-                <div className="name text-base font-medium text-gray-700 mt-3">Thương hiệu 10</div>
+                <Image src="/images/parters/taewoong-food.png" alt="Taewoong Food" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
+                <div className="name text-base font-medium text-gray-700 mt-3">Taewoong Food</div>
               </a>
             </div>
           </div>
