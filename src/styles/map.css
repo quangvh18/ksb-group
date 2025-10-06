@@ -84,15 +84,6 @@ body[data-aos-duration="1200"] [data-aos] {
   transform: translateX(-50%) translateY(-0.5rem);
 }
 
-/* Hiện tên mặc định cho các địa danh đặc biệt */
-.map .--item[data-name="HA NOI"] .--name,
-.map .--item[data-name="HAI DUONG"] .--name,
-.map .--item[data-name="DA NANG"] .--name,
-.map .--item[data-name="PHU QUOC"] .--name,
-.map .--item[data-name="VUNG TAU"] .--name,
-.map .--item[data-name="KHANH HOA"] .--name {
-  opacity: 1 !important;
-}
 
 /* Vị trí đặc biệt cho Hải Dương */
 .map .--item[data-name="HAI DUONG"] .--name {
@@ -110,6 +101,11 @@ body[data-aos-duration="1200"] [data-aos] {
 
 .map .--item.island:hover {
   transform: scale(1.1);
+}
+
+/* Đảm bảo tên quần đảo luôn hiển thị */
+.map .--item.island .--name {
+  opacity: 1 !important;
 }
 
 .map .line {
@@ -139,6 +135,15 @@ body[data-aos-duration="1200"] [data-aos] {
   }
 }
 
+@keyframes slowMove {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -25;
+  }
+}
+
 @keyframes lineDraw {
   0% {
     stroke-dasharray: 0 100;
@@ -149,26 +154,27 @@ body[data-aos-duration="1200"] [data-aos] {
 }
 
 .map .line svg path {
-  animation: dash 6s linear infinite;
+  stroke-dasharray: 1 0.5;
+  animation: slowMove 8s linear infinite;
 }
 
 .map .line svg path.animate-dash {
-  stroke-dasharray: 0.4 0.4;
-  animation: dash 6s linear infinite;
+  stroke-dasharray: 0.8 0.3;
+  animation: slowMove 8s linear infinite;
 }
 
 /* Staggered animation for different lines */
 .map .line svg path:nth-child(1) { animation-delay: 0s; }
-.map .line svg path:nth-child(2) { animation-delay: 0.2s; }
-.map .line svg path:nth-child(3) { animation-delay: 0.4s; }
-.map .line svg path:nth-child(4) { animation-delay: 0.6s; }
-.map .line svg path:nth-child(5) { animation-delay: 0.8s; }
-.map .line svg path:nth-child(6) { animation-delay: 1s; }
-.map .line svg path:nth-child(7) { animation-delay: 1.2s; }
-.map .line svg path:nth-child(8) { animation-delay: 1.4s; }
-.map .line svg path:nth-child(9) { animation-delay: 1.6s; }
-.map .line svg path:nth-child(10) { animation-delay: 1.8s; }
-.map .line svg path:nth-child(11) { animation-delay: 2s; }
+.map .line svg path:nth-child(2) { animation-delay: 0.5s; }
+.map .line svg path:nth-child(3) { animation-delay: 1s; }
+.map .line svg path:nth-child(4) { animation-delay: 1.5s; }
+.map .line svg path:nth-child(5) { animation-delay: 2s; }
+.map .line svg path:nth-child(6) { animation-delay: 2.5s; }
+.map .line svg path:nth-child(7) { animation-delay: 3s; }
+.map .line svg path:nth-child(8) { animation-delay: 3.5s; }
+.map .line svg path:nth-child(9) { animation-delay: 4s; }
+.map .line svg path:nth-child(10) { animation-delay: 4.5s; }
+.map .line svg path:nth-child(11) { animation-delay: 5s; }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
@@ -212,6 +218,7 @@ body[data-aos-duration="1200"] [data-aos] {
 .map .--item:hover img {
   filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
 }
+
 
 /* Special styling for different icon types */
 .map .--item[data-icon="star"] img {

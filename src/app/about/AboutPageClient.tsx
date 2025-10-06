@@ -116,12 +116,13 @@ export default function AboutPageClient() {
           </div>
         </div>
 
-        {/* Organization Section */}
-        <div id="organization-section">
-          {/* Mission, Values & Vision Section */}
+        {/* Mission, Values & Vision Section */}
+        <div id="mission-values-vision-section">
           <MissionVisionValues />
+        </div>
 
-          {/* Organization Chart Section */}
+        {/* Organization Chart Section */}
+        <div id="organization-section">
           <OrgChart />
         </div>
       </div>

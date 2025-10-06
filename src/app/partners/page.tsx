@@ -572,21 +572,9 @@ export default function PartnersPage() {
                 </div>
               </div>
               <a href="mailto:info@ksbgroup.vn" 
-                   className="email-button inline-flex items-center text-base font-bold px-5 py-2.5 rounded-xl transition-all duration-500 ease-out transform group relative overflow-hidden will-change-transform hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(217,37,31,0.35)]"
-                   style={{
-                     background: 'linear-gradient(135deg, rgba(217, 37, 31, 1) 0%, rgba(233, 128, 30, 1) 100%)',
-                     color: 'white',
-                     boxShadow: '0 10px 25px rgba(217, 37, 31, 0.3)',
-                     transform: 'translateY(0) translateZ(0)'
-                   }}
+                   className="inline-flex items-center text-base font-bold px-5 py-2.5 rounded-xl bg-[#bb252d] hover:bg-[#a0153a] text-white font-semibold shadow transition-colors duration-300"
                 >
-                  <span className="relative z-10 flex items-center">
-                    <svg className="w-4 h-4 mr-1.5 transition-transform duration-500 ease-out group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                    </svg>
-                    {t('partners.contact.button')}
-                  </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white bg-opacity-20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out pointer-events-none"></div>
+                  {t('partners.contact.button')}
               </a>
             </div>
           </div>

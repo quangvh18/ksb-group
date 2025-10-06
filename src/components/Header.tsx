@@ -90,12 +90,6 @@ export default function Header() {
                  {isEcosystemHovered && (
                    <div className="absolute top-full left-0 bg-white shadow-lg rounded-b-lg min-w-[200px] z-[1000]">
                      <Link 
-                       href="/ecosystem" 
-                       className="block px-5 py-3 text-lg text-gray-800 hover:bg-[#bb252d] hover:text-white transition-all duration-200 border-b border-gray-100"
-                     >
-                       {t('nav.ecosystem')}
-                     </Link>
-                     <Link 
                        href="/ecosystem/cosmetics" 
                        className="block px-5 py-3 text-lg text-gray-800 hover:bg-[#bb252d] hover:text-white transition-all duration-200 border-b border-gray-100"
                      >
@@ -262,13 +256,6 @@ export default function Header() {
                   
                   {isEcosystemMobileOpen && (
                     <div className="ml-4 space-y-0 bg-white/10 rounded-b-lg overflow-hidden">
-                      <Link 
-                        href="/ecosystem" 
-                        className="block px-5 py-3 text-lg text-white/80 hover:bg-[#bb252d] hover:text-white transition-all duration-200"
-                        onClick={closeMenu}
-                      >
-                        {t('nav.ecosystem')}
-                      </Link>
                       <Link 
                         href="/ecosystem/cosmetics" 
                         className="block px-5 py-3 text-lg text-white/80 hover:bg-[#bb252d] hover:text-white transition-all duration-200"

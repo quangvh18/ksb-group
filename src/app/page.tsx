@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic'
 import HomeFeature from '../components/HomeFeature'
 import NewsSection from '../components/NewsSection'
 import StrategicPartners from '../components/StrategicPartners'
-import InteractiveMap from '../components/InteractiveMap'
+import StatsWithMap from '../components/StatsWithMap'
 import type { Metadata } from 'next'
 
 const Banner = dynamic(() => import('../components/Banner'))
@@ -76,8 +76,8 @@ export default async function Home() {
         <StrategicPartners />
         {/* News & Community Section - replaced with new components */}
         <NewsSection />
-        {/* Interactive Map Section - replaced AboutFootprint */}
-        <InteractiveMap />
+        {/* Stats with Map Section - replaced AboutFootprint */}
+        <StatsWithMap />
 
         
         {/* Brand Section moved to separate component; not rendered here */}

@@ -6,8 +6,8 @@ import { useLanguage } from '../contexts/LanguageContext';
 export default function KSBGroupSection() {
   const { t } = useLanguage();
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [, setShowLeftArrow] = useState(true);
-  const [, setShowRightArrow] = useState(true);
+  const [showLeftArrow, setShowLeftArrow] = useState(false);
+  const [showRightArrow, setShowRightArrow] = useState(true);
   const [isMouseDown, setIsMouseDown] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeftPos, setScrollLeftPos] = useState(0);
@@ -64,11 +64,83 @@ export default function KSBGroupSection() {
   const updateScrollState = () => {
     if (scrollContainerRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
-      setShowLeftArrow(scrollLeft > 0);
-      setShowRightArrow(scrollLeft < scrollWidth - clientWidth - 10);
+      const isAtStart = scrollLeft <= 5; // Cho phép một chút tolerance
+      const isAtEnd = scrollLeft >= scrollWidth - clientWidth - 5;
+      
+      setShowLeftArrow(!isAtStart);
+      setShowRightArrow(!isAtEnd);
       
       // Lưu vị trí scroll khi user scroll thủ công
       savedScrollPosition.current = scrollLeft;
+    }
+  };
+
+  // Xử lý scroll left với animation mượt hơn
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      const scrollAmount = 320; // Tăng scroll amount để mượt hơn
+      
+      // Sử dụng requestAnimationFrame cho animation mượt
+      const startScroll = container.scrollLeft;
+      const targetScroll = Math.max(0, startScroll - scrollAmount);
+      const duration = 400; // Tăng thời gian animation
+      const startTime = performance.now();
+      
+      const animateScroll = (currentTime: number) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Easing function cho chuyển động mượt
+        const easeOutCubic = 1 - Math.pow(1 - progress, 3);
+        const currentScroll = startScroll + (targetScroll - startScroll) * easeOutCubic;
+        
+        container.scrollLeft = currentScroll;
+        
+        if (progress < 1) {
+          requestAnimationFrame(animateScroll);
+        } else {
+          // Cập nhật trạng thái khi hoàn thành
+          updateScrollState();
+        }
+      };
+      
+      requestAnimationFrame(animateScroll);
+    }
+  };
+
+  // Xử lý scroll right với animation mượt hơn
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      const scrollAmount = 320; // Tăng scroll amount để mượt hơn
+      
+      // Sử dụng requestAnimationFrame cho animation mượt
+      const startScroll = container.scrollLeft;
+      const maxScroll = container.scrollWidth - container.clientWidth;
+      const targetScroll = Math.min(maxScroll, startScroll + scrollAmount);
+      const duration = 400; // Tăng thời gian animation
+      const startTime = performance.now();
+      
+      const animateScroll = (currentTime: number) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Easing function cho chuyển động mượt
+        const easeOutCubic = 1 - Math.pow(1 - progress, 3);
+        const currentScroll = startScroll + (targetScroll - startScroll) * easeOutCubic;
+        
+        container.scrollLeft = currentScroll;
+        
+        if (progress < 1) {
+          requestAnimationFrame(animateScroll);
+        } else {
+          // Cập nhật trạng thái khi hoàn thành
+          updateScrollState();
+        }
+      };
+      
+      requestAnimationFrame(animateScroll);
     }
   };
 
@@ -78,9 +150,19 @@ export default function KSBGroupSection() {
 
     updateScrollState();
     container.addEventListener('scroll', updateScrollState);
+    
+    // Thêm listener cho scroll end để cập nhật arrows
+    const handleScrollEnd = () => {
+      setTimeout(() => {
+        updateScrollState();
+      }, 50);
+    };
+    
+    container.addEventListener('scrollend', handleScrollEnd);
 
     return () => {
       container.removeEventListener('scroll', updateScrollState);
+      container.removeEventListener('scrollend', handleScrollEnd);
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
         animationRef.current = null;
@@ -114,6 +196,42 @@ export default function KSBGroupSection() {
         </div>
 
         <div className="relative">
+          {/* Left Arrow */}
+          {showLeftArrow && (
+            <button
+              onClick={scrollLeft}
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white shadow-lg hover:shadow-xl rounded-full p-3 transition-all duration-300 group active:scale-95 hover:scale-105"
+              aria-label="Scroll left"
+            >
+              <svg 
+                className="w-6 h-6 text-gray-700 group-hover:text-[#bb252d] transition-all duration-300 group-active:scale-90" 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+          )}
+
+          {/* Right Arrow */}
+          {showRightArrow && (
+            <button
+              onClick={scrollRight}
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white shadow-lg hover:shadow-xl rounded-full p-3 transition-all duration-300 group active:scale-95 hover:scale-105"
+              aria-label="Scroll right"
+            >
+              <svg 
+                className="w-6 h-6 text-gray-700 group-hover:text-[#bb252d] transition-all duration-300 group-active:scale-90" 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          )}
+
           <div
             className="overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing relative touch-pan-x"
             ref={scrollContainerRef}
@@ -126,8 +244,8 @@ export default function KSBGroupSection() {
               scrollbarWidth: 'none',
               msOverflowStyle: 'none',
               WebkitOverflowScrolling: 'touch',
-              willChange: 'transform',
-              scrollBehavior: 'smooth'
+              willChange: 'scroll-position',
+              scrollBehavior: 'auto' // Tắt smooth scroll mặc định để dùng custom animation
             }}
           >
 
