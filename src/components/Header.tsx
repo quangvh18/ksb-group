@@ -321,36 +321,6 @@ export default function Header() {
                 </div>
               </nav>
               
-              {/* Mobile Social Links */}
-              <div className="mt-6 pt-6 border-t border-white/20">
-                <div className="flex items-center justify-center space-x-4">
-                  <a 
-                    href="https://www.instagram.com/sahmyook_island/" 
-                    target="_blank" 
-                    className="p-3 bg-white rounded-full hover:bg-[#bb252d] transition-all duration-200"
-                  >
-                    <Image 
-                      src="/images/insta-icon.png" 
-                      alt="Instagram" 
-                      width={24}
-                      height={24}
-                      className="w-6 h-6" 
-                    />
-                  </a>
-                  <a 
-                    href="https://shopthienthuanphat.com/"
-                    className="p-3 bg-white rounded-full hover:bg-[#bb252d] transition-all duration-200"
-                  >
-                    <Image 
-                      src="https://thienthuanphat.vn/Data/images/banner-cn/logo/fa-ksb.webp" 
-                      alt="KSB Mall" 
-                      width={60}
-                      height={24}
-                      className="w-15 h-6" 
-                    />
-                  </a>
-                </div>
-              </div>
               </div>
             </div>
           </>
