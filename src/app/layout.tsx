@@ -64,10 +64,18 @@ export const metadata: Metadata = {
     description: 'KSB Group - Tập đoàn kinh doanh đa ngành với các lĩnh vực: Hóa - Mỹ phẩm (Biofresh), Sản xuất & Phân phối thực phẩm, Thực phẩm đông lạnh. Đối tác tin cậy, chất lượng quốc tế.',
     images: [
       {
-        url: '/images/ksb.jpg',
+        url: 'https://ksbgroup.vn/images/ksb.jpg',
         width: 1200,
         height: 630,
         alt: 'KSB Group - Tập đoàn KSB - Hệ sinh thái kinh doanh đa ngành',
+        type: 'image/jpeg',
+      },
+      {
+        url: 'https://ksbgroup.vn/images/logo-header.png',
+        width: 800,
+        height: 600,
+        alt: 'KSB Group Logo',
+        type: 'image/png',
       },
     ],
   },
@@ -75,8 +83,9 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'KSB Group - Tập đoàn KSB | Hệ sinh thái kinh doanh đa ngành',
     description: 'KSB Group - Tập đoàn kinh doanh đa ngành với các lĩnh vực: Hóa - Mỹ phẩm (Biofresh), Sản xuất & Phân phối thực phẩm, Thực phẩm đông lạnh.',
-    images: ['/images/ksb.jpg'],
+    images: ['https://ksbgroup.vn/images/ksb.jpg'],
     creator: '@ksbgroup',
+    site: '@ksbgroup',
   },
   robots: {
     index: true,
@@ -93,6 +102,22 @@ export const metadata: Metadata = {
     google: 'your-google-verification-code',
     yandex: 'your-yandex-verification-code',
     yahoo: 'your-yahoo-verification-code',
+  },
+  other: {
+    'og:image:width': '1200',
+    'og:image:height': '630',
+    'og:image:type': 'image/jpeg',
+    'og:image:secure_url': 'https://ksbgroup.vn/images/ksb.jpg',
+    'twitter:image:alt': 'KSB Group - Tập đoàn KSB - Hệ sinh thái kinh doanh đa ngành',
+    'twitter:domain': 'ksbgroup.vn',
+    'twitter:url': 'https://ksbgroup.vn',
+    'article:author': 'KSB Group',
+    'article:publisher': 'https://www.facebook.com/ksbgroup',
+    'business:contact_data:street_address': 'The Terra An Hồng - Tòa nhà Hồng, Hà Nội',
+    'business:contact_data:locality': 'Hà Nội',
+    'business:contact_data:country_name': 'Vietnam',
+    'business:contact_data:email': 'info@ksbgroup.vn',
+    'business:contact_data:phone_number': '+84-24-1234-5678',
   },
 };
 
