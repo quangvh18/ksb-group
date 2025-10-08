@@ -30,10 +30,18 @@ export const metadata: Metadata = {
     url: "https://ksbgroup.vn",
     images: [
       {
-        url: "/images/office.png",
+        url: "https://ksbgroup.vn/images/ksb.jpg",
         width: 1200,
         height: 630,
-        alt: "KSB Group - Trang chủ",
+        alt: "KSB Group - Tập đoàn KSB - Hệ sinh thái kinh doanh bền vững",
+        type: "image/jpeg",
+      },
+      {
+        url: "https://ksbgroup.vn/images/office.png",
+        width: 1200,
+        height: 630,
+        alt: "KSB Group Office - Tập đoàn KSB",
+        type: "image/png",
       },
     ],
   },
@@ -41,7 +49,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "KSB Group - Tập đoàn KSB | Hệ sinh thái kinh doanh bền vững",
     description: "Khám phá KSB Group - Tập đoàn hàng đầu với hệ sinh thái kinh doanh bền vững.",
-    images: ["/images/office.png"],
+    images: ["https://ksbgroup.vn/images/ksb.jpg"],
+    creator: "@ksbgroup",
+    site: "@ksbgroup",
   },
   alternates: {
     canonical: "https://ksbgroup.vn",

@@ -19,6 +19,7 @@ export const metadata: Metadata = {
     default: "KSB Group - Tập đoàn KSB | Hệ sinh thái kinh doanh đa ngành",
     template: "%s | KSB Group"
   },
+  applicationName: "KSB Group",
   description: "KSB Group - Tập đoàn kinh doanh đa ngành với các lĩnh vực: Hóa - Mỹ phẩm (Biofresh), Sản xuất & Phân phối thực phẩm, Thực phẩm đông lạnh. Đối tác tin cậy, chất lượng quốc tế, phục vụ thị trường Việt Nam.",
   keywords: [
     "KSB Group",
@@ -71,6 +72,13 @@ export const metadata: Metadata = {
         type: 'image/jpeg',
       },
       {
+        url: 'https://ksbgroup.vn/images/office.png',
+        width: 1200,
+        height: 630,
+        alt: 'KSB Group Office - Tập đoàn KSB',
+        type: 'image/png',
+      },
+      {
         url: 'https://ksbgroup.vn/images/logo-header.png',
         width: 800,
         height: 600,
@@ -118,6 +126,12 @@ export const metadata: Metadata = {
     'business:contact_data:country_name': 'Vietnam',
     'business:contact_data:email': 'info@ksbgroup.vn',
     'business:contact_data:phone_number': '+84-24-1234-5678',
+    'generator': 'KSB Group',
+    'author': 'KSB Group',
+    'copyright': 'KSB Group',
+    'robots': 'index, follow',
+    'googlebot': 'index, follow',
+    'bingbot': 'index, follow',
   },
 };
 
