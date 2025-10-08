@@ -78,15 +78,15 @@ export default function Careers() {
             {/* Company Image with Shadow Effect - Left Side */}
             <div className="relative order-2 lg:order-1" data-aos="fade-right" data-aos-delay="200">
               {/* Shadow div with same size and leaf style */}
-              <div className="absolute top-0 left-0 w-full h-full bg-gray-200 rounded-[3rem_0rem_3rem_0rem] transform translate-x-8 translate-y-8 z-0"></div>
+              <div className="absolute top-0 left-0 w-full h-[500px] bg-gray-200 rounded-[3rem_0rem_3rem_0rem] transform translate-x-8 translate-y-8 z-0"></div>
               
               {/* Company image with right and bottom offset */}
               <Image 
-                src="https://cjfoods.com.vn/storage/recruitment/cj-recruitment-banner-586x940-02.jpg" 
-                alt="KSB Group Recruitment"
+                src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                alt="KSB Group Team - Tham gia cùng chúng tôi"
                 width={600}
-                height={400}
-                className="w-full h-auto rounded-[3rem_0rem_3rem_0rem] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_16px_-4px_rgba(0,0,0,0.1)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] cursor-pointer relative z-10"
+                height={300}
+                className="w-full h-[500px] object-cover rounded-[3rem_0rem_3rem_0rem] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_16px_-4px_rgba(0,0,0,0.1)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] cursor-pointer relative z-10"
               />
               
               {/* Pink tint overlay */}
@@ -132,7 +132,7 @@ export default function Careers() {
                 <div className="absolute top-0 right-0 w-12 h-12 bg-white/20 rounded-bl-full"></div>
                 
                 <div className="text-center">
-                  <h2 className="text-4xl md:text-5xl font-bold text-[#bb252d] leading-tight mb-6 group-hover:text-[#8b1e24] transition-colors duration-300">
+                  <h2 className="text-4xl md:text-5xl font-bold text-muted-foreground leading-tight mb-6 group-hover:text-gray-800 transition-colors duration-300">
                     {t('careers.vision.title')}
                   </h2>
             
@@ -142,7 +142,7 @@ export default function Careers() {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
                     <div className="space-y-4">
-                      <h3 className="text-xl font-bold text-[#bb252d] group-hover:text-[#8b1e24] transition-colors duration-300">
+                      <h3 className="text-xl font-bold text-muted-foreground group-hover:text-gray-800 transition-colors duration-300">
                         {t('careers.vision.ecosystem.title')}
                       </h3>
                       <p className="text-sm text-gray-700 leading-relaxed">
@@ -151,7 +151,7 @@ export default function Careers() {
                     </div>
 
                     <div className="space-y-4">
-                      <h3 className="text-xl font-bold text-[#bb252d] group-hover:text-[#8b1e24] transition-colors duration-300">
+                      <h3 className="text-xl font-bold text-muted-foreground group-hover:text-gray-800 transition-colors duration-300">
                         {t('careers.vision.dreams.title')}
                       </h3>
                       <p className="text-sm text-gray-700 leading-relaxed">
@@ -170,7 +170,7 @@ export default function Careers() {
       <div className="bg-white py-16" data-aos="fade-up">
         <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
           <div className="text-center space-y-8">
-            <h2 className="text-4xl md:text-5xl font-bold text-black leading-tight" data-aos="fade-up" data-aos-delay="100">
+            <h2 className="text-4xl md:text-5xl font-bold text-muted-foreground leading-tight" data-aos="fade-up" data-aos-delay="100">
               {t('careers.culture.title')}
             </h2>
             

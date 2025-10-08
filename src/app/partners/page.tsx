@@ -418,8 +418,8 @@ export default function PartnersPage() {
             </div>
             <div className="item text-center" data-aos="flip-up" data-aos-duration="800" data-aos-delay="600">
               <a href="#" className="block hover:scale-105 transition-transform duration-300">
-                <Image src="/images/parters/sahmyhook-food.png" alt="Sahmyhook Food" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
-                <div className="name text-base font-medium text-gray-700 mt-3">Sahmyhook Food</div>
+                <Image src="/images/parters/sahmyhook-food.png" alt="Sahmyhook Foods" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
+                <div className="name text-base font-medium text-gray-700 mt-3">Sahmyhook Foods</div>
               </a>
             </div>
             <div className="item text-center" data-aos="flip-up" data-aos-duration="800" data-aos-delay="700">

@@ -213,7 +213,7 @@ export default function StatsWithMap() {
 
         {/* Statistics and Distribution Cards - Overlay left - Only on desktop */}
         <div className="hidden lg:block absolute top-0 left-0 w-1/2 h-full flex items-center z-10">
-          <div className="w-full px-8 py-8 overflow-visible">
+          <div className="w-full h-full px-8 py-8 overflow-visible flex flex-col justify-center">
             <div className="space-y-8">
               <div className="grid lg:grid-cols-2 gap-8 items-start">
                 {/* Statistics */}
