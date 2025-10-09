@@ -117,6 +117,53 @@ export default function Careers() {
         </div>
       </div>
 
+      {/* Company Vision Section */}
+      <div className="bg-white py-16" data-aos="fade-up">
+        <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
+          <div className="flex justify-center">
+            <div className="w-full max-w-4xl relative">
+              {/* Leaf shadow */}
+              <div className="absolute top-0 left-0 w-full h-full bg-gray-200 rounded-[3rem_0rem_3rem_0rem] transform translate-x-2 translate-y-2 z-0"></div>
+              
+              {/* Main card */}
+              <div className="bg-white rounded-[3rem_0rem_3rem_0rem] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_16px_-4px_rgba(0,0,0,0.1)] hover:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.25),0_8px_24px_-4px_rgba(0,0,0,0.15)] transition-all duration-300 cursor-pointer group relative z-10 overflow-hidden p-8" data-aos="zoom-in" data-aos-delay="100">
+                {/* Leaf shape decoration */}
+                <div className="absolute top-0 right-0 w-12 h-12 bg-white/20 rounded-bl-full"></div>
+                
+                <div className="text-center">
+                  <h2 className="text-4xl md:text-5xl font-bold text-muted-foreground leading-tight mb-6 group-hover:text-gray-800 transition-colors duration-300">
+                    {t('careers.vision.title')}
+                  </h2>
+            
+                  <p className="text-base text-muted-foreground leading-relaxed mb-8">
+                    {t('careers.vision.subtitle')}
+                  </p>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                    <div className="space-y-4">
+                      <h3 className="text-xl font-bold text-muted-foreground group-hover:text-gray-800 transition-colors duration-300">
+                        {t('careers.vision.ecosystem.title')}
+                      </h3>
+                      <p className="text-sm text-gray-700 leading-relaxed">
+                        {t('careers.vision.ecosystem.content')}
+                      </p>
+                    </div>
+
+                    <div className="space-y-4">
+                      <h3 className="text-xl font-bold text-muted-foreground group-hover:text-gray-800 transition-colors duration-300">
+                        {t('careers.vision.dreams.title')}
+                      </h3>
+                      <p className="text-sm text-gray-700 leading-relaxed">
+                        {t('careers.vision.dreams.content')}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Work Culture Section */}
       <div className="bg-white py-16" data-aos="fade-up">
@@ -237,54 +284,6 @@ export default function Careers() {
       <div id="job" data-aos="fade-up">
         <JobListings />
           </div>
-
-      {/* Company Vision Section */}
-      <div className="bg-white py-16" data-aos="fade-up">
-        <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
-          <div className="flex justify-center">
-            <div className="w-full max-w-4xl relative">
-              {/* Leaf shadow */}
-              <div className="absolute top-0 left-0 w-full h-full bg-gray-200 rounded-[3rem_0rem_3rem_0rem] transform translate-x-2 translate-y-2 z-0"></div>
-              
-              {/* Main card */}
-              <div className="bg-white rounded-[3rem_0rem_3rem_0rem] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_16px_-4px_rgba(0,0,0,0.1)] hover:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.25),0_8px_24px_-4px_rgba(0,0,0,0.15)] transition-all duration-300 cursor-pointer group relative z-10 overflow-hidden p-8" data-aos="zoom-in" data-aos-delay="100">
-                {/* Leaf shape decoration */}
-                <div className="absolute top-0 right-0 w-12 h-12 bg-white/20 rounded-bl-full"></div>
-                
-                <div className="text-center">
-                  <h2 className="text-4xl md:text-5xl font-bold text-muted-foreground leading-tight mb-6 group-hover:text-gray-800 transition-colors duration-300">
-                    {t('careers.vision.title')}
-                  </h2>
-            
-                  <p className="text-base text-muted-foreground leading-relaxed mb-8">
-                    {t('careers.vision.subtitle')}
-                  </p>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-                    <div className="space-y-4">
-                      <h3 className="text-xl font-bold text-muted-foreground group-hover:text-gray-800 transition-colors duration-300">
-                        {t('careers.vision.ecosystem.title')}
-                      </h3>
-                      <p className="text-sm text-gray-700 leading-relaxed">
-                        {t('careers.vision.ecosystem.content')}
-                      </p>
-                    </div>
-
-                    <div className="space-y-4">
-                      <h3 className="text-xl font-bold text-muted-foreground group-hover:text-gray-800 transition-colors duration-300">
-                        {t('careers.vision.dreams.title')}
-                      </h3>
-                      <p className="text-sm text-gray-700 leading-relaxed">
-                        {t('careers.vision.dreams.content')}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
       {/* Contact Section */}
       <div className="bg-white py-16" data-aos="fade-up">
