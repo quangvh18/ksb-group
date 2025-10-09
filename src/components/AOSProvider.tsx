@@ -24,6 +24,7 @@ export default function AOSProvider({ children }: { children: React.ReactNode })
       debounceDelay: 50,
       throttleDelay: 99,
     });
+    
   }, []);
 
   // Refresh AOS on route changes to re-bind animations

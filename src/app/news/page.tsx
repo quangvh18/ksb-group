@@ -73,6 +73,7 @@ export default function NewsPage() {
         title={t('news.title')}
         description={t('news.description')}
         breadcrumbItems={breadcrumbItems}
+        bannerImage="/images/news-page/banner.webp"
       />
       <main>
         <div className="bg-white py-16" data-aos="fade-up">

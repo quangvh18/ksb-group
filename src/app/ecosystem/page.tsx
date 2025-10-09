@@ -18,6 +18,7 @@ export default function EcosystemPage() {
         title={t('ecosystem.title')}
         description={t('ecosystem.description')}
         breadcrumbItems={breadcrumbItems}
+        bannerImage="/images/ecosystem-page/he-sinh-thai-banner.webp"
       />
       <main>
         <KSBGroupSection />

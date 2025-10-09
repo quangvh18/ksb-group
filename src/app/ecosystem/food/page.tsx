@@ -18,6 +18,7 @@ export default function FoodPage() {
         title={t('ecosystem.services.food.title')}
         description={t('ecosystem.services.food.subtitle')}
         breadcrumbItems={breadcrumbItems}
+        bannerImage="/images/ecosystem-page/he-sinh-thai-banner.webp"
       />
       <main>
         {/* Food Production Content */}

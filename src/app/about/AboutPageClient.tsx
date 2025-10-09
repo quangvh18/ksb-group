@@ -55,20 +55,21 @@ export default function AboutPageClient() {
           title={t('about.title')}
           description={t('about.description')}
           breadcrumbItems={breadcrumbItems}
+          bannerImage="/images/about-page/banner.webp"
         />
 
 
         {/* About Section */}
         <div id="about-section">
           {/* Vietnamese Introduction Section */}
-          <div className="bg-white py-16" data-aos="fade-up">
+          <div className="bg-white py-16" data-aos="fade">
             <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
               <div className="text-center space-y-8">
-                <h2 className="text-4xl md:text-5xl font-bold text-muted-foreground leading-tight" data-aos="fade-up" data-aos-delay="100">
+                <h2 className="text-4xl md:text-5xl font-bold text-muted-foreground leading-tight" data-aos="fade" data-aos-delay="100">
                   {t('about.intro.title')}
                 </h2>
                 
-                <p className="text-base text-muted-foreground leading-relaxed max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                <p className="text-base text-muted-foreground leading-relaxed max-w-4xl mx-auto" data-aos="fade" data-aos-delay="200">
                   {t('about.intro.content')}
                 </p>
               </div>
@@ -76,11 +77,11 @@ export default function AboutPageClient() {
           </div>
 
           {/* Company Introduction Section */}
-          <div className="bg-gray-50 py-16" data-aos="fade-up">
+          <div className="bg-gray-50 py-16" data-aos="fade">
             <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 {/* Company Image with Shadow Effect - Left Side */}
-                <div className="relative order-2 lg:order-1" data-aos="zoom-in" data-aos-delay="200">
+                <div className="relative order-2 lg:order-1" data-aos="fade" data-aos-delay="200">
                   {/* Shadow div with same size and leaf style */}
                   <div className="absolute top-0 left-0 w-full h-full bg-gray-300 rounded-[3rem_0rem_3rem_0rem] transform translate-x-8 translate-y-8 z-0"></div>
                   
@@ -99,15 +100,15 @@ export default function AboutPageClient() {
                 
                 {/* Text Content - Right Side */}
                 <div className="space-y-8 order-1 lg:order-2">
-                  <p className="text-base text-muted-foreground leading-relaxed" data-aos="fade-up" data-aos-delay="200">
+                  <p className="text-base text-muted-foreground leading-relaxed" data-aos="fade" data-aos-delay="200">
                     {t('about.company.content1')}
                   </p>
                   
-                  <p className="text-base text-muted-foreground leading-relaxed" data-aos="fade-up" data-aos-delay="300">
+                  <p className="text-base text-muted-foreground leading-relaxed" data-aos="fade" data-aos-delay="300">
                     {t('about.company.content2')}
                   </p>
                   
-                  <p className="text-base text-muted-foreground leading-relaxed" data-aos="fade-up" data-aos-delay="400">
+                  <p className="text-base text-muted-foreground leading-relaxed" data-aos="fade" data-aos-delay="400">
                     {t('about.company.content3')}
                   </p>
                 </div>

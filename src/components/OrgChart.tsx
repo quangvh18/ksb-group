@@ -207,26 +207,26 @@ const OrgChart = () => {
   }, [language]);
 
   return (
-    <section className="py-16 px-4 bg-gradient-to-br from-background to-muted/30" data-aos="fade-up">
+    <section className="py-16 px-4 bg-gradient-to-br from-background to-muted/30" data-aos="fade">
       <div className="container mx-auto max-w-7xl">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-muted-foreground" data-aos="fade-up" data-aos-delay="100">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-muted-foreground" data-aos="fade" data-aos-delay="100">
           {t('org.title')}
         </h2>
 
         <div className="flex flex-col items-center gap-6">
           {/* CEO Level */}
-          <div data-aos="zoom-in" data-aos-delay="200">
+          <div data-aos="fade" data-aos-delay="200">
             <OrgNodeCard node={orgData} isRoot />
           </div>
           
-          <div className="w-0.5 h-12 bg-org-line" data-aos="fade-up" data-aos-delay="300" />
+          <div className="w-0.5 h-12 bg-org-line" data-aos="fade" data-aos-delay="300" />
           
           {/* Horizontal line connecting all directors */}
-          <div className="relative w-full max-w-6xl" data-aos="fade-up" data-aos-delay="400">
+          <div className="relative w-full max-w-6xl" data-aos="fade" data-aos-delay="400">
             <div className="absolute top-0 left-0 right-0 h-0.5 bg-org-line" />
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 md:gap-6 pt-12">
               {orgData.children?.map((child, index) => (
-                <div key={`${child.id}-${language}`} className="flex flex-col items-center gap-4" data-aos="fade-up" data-aos-delay={500 + index * 100}>
+                <div key={`${child.id}-${language}`} className="flex flex-col items-center gap-4" data-aos="fade" data-aos-delay={500 + index * 100}>
                   <div className="w-0.5 h-12 bg-org-line -mt-12" />
                   <OrgNodeCard node={child} />
                   {child.children && child.children.length > 0 && (
@@ -234,7 +234,7 @@ const OrgChart = () => {
                       <div className="w-0.5 h-6 bg-org-line" />
                       <div className="flex flex-col gap-4">
                         {child.children.map((subChild, subIndex) => (
-                          <div key={`${subChild.id}-${language}`} className="flex flex-col items-center gap-4" data-aos="fade-up" data-aos-delay={600 + index * 100 + subIndex * 50}>
+                          <div key={`${subChild.id}-${language}`} className="flex flex-col items-center gap-4" data-aos="fade" data-aos-delay={600 + index * 100 + subIndex * 50}>
                             <OrgNodeCard node={subChild} />
                             {subChild.children && subChild.children.length > 0 && (
                               <>
@@ -255,12 +255,12 @@ const OrgChart = () => {
           </div>
 
           {/* Regional Offices */}
-          <div className="w-0.5 h-12 bg-org-line" data-aos="fade-up" data-aos-delay="1200" />
-          <div className="relative w-full max-w-4xl" data-aos="fade-up" data-aos-delay="1300">
+          <div className="w-0.5 h-12 bg-org-line" data-aos="fade" data-aos-delay="1200" />
+          <div className="relative w-full max-w-4xl" data-aos="fade" data-aos-delay="1300">
             <div className="absolute top-0 left-0 right-0 h-0.5 bg-org-line" />
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12">
               {officeData.map((office, index) => (
-                <div key={`${office.id}-${language}`} className="flex flex-col items-center gap-4" data-aos="fade-up" data-aos-delay={1400 + index * 200}>
+                <div key={`${office.id}-${language}`} className="flex flex-col items-center gap-4" data-aos="fade" data-aos-delay={1400 + index * 200}>
                   <div className="w-0.5 h-12 bg-org-line -mt-12" />
                   <OrgNodeCard node={office} />
                   {office.children && (

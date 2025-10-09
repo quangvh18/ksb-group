@@ -69,6 +69,7 @@ export default function Careers() {
         title={t('careers.title')}
         description={t('careers.description')}
         breadcrumbItems={breadcrumbItems}
+        bannerImage="/images/careers-page/banner.webp"
       />
       
       {/* Company Introduction Section */}

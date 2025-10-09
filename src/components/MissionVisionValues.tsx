@@ -13,20 +13,20 @@ const MissionVisionValues = () => {
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
           {/* Section Header */}
-          <div className="mb-16 text-center" data-aos="fade-up">
-            <div className="mb-6 inline-flex items-center justify-center rounded-full bg-gradient-to-br from-[#bb252d]/10 to-orange-500/10 p-4" data-aos="zoom-in" data-aos-delay="200">
+          <div className="mb-16 text-center" data-aos="fade">
+            <div className="mb-6 inline-flex items-center justify-center rounded-full bg-gradient-to-br from-[#bb252d]/10 to-orange-500/10 p-4" data-aos="fade" data-aos-delay="200">
               <Target className="h-10 w-10 text-[#bb252d]" />
             </div>
-            <h2 className="mb-4 text-3xl font-bold text-gray-800 md:text-4xl lg:text-5xl" data-aos="fade-up" data-aos-delay="300">
+            <h2 className="mb-4 text-3xl font-bold text-gray-800 md:text-4xl lg:text-5xl" data-aos="fade" data-aos-delay="300">
               {t('about.mission_values_vision.title')}
             </h2>
-            <div className="mx-auto h-1 w-24 bg-gradient-to-r from-transparent via-[#bb252d] to-transparent" data-aos="fade-up" data-aos-delay="400" />
+            <div className="mx-auto h-1 w-24 bg-gradient-to-r from-transparent via-[#bb252d] to-transparent" data-aos="fade" data-aos-delay="400" />
           </div>
 
           {/* Main Content Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Card 1 - Mission */}
-            <div className="group relative" data-aos="fade-up" data-aos-delay="100">
+            <div className="group relative" data-aos="fade" data-aos-delay="100">
               {/* Leaf shape background */}
               <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-300 rounded-[3rem_0rem_3rem_0rem] transform rotate-1 group-hover:rotate-0 transition-transform duration-500"></div>
               
@@ -44,7 +44,7 @@ const MissionVisionValues = () => {
             </div>
 
             {/* Card 2 - Values */}
-            <div className="group relative" data-aos="fade-up" data-aos-delay="200">
+            <div className="group relative" data-aos="fade" data-aos-delay="200">
               {/* Leaf shape background */}
               <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-300 rounded-[0rem_3rem_0rem_3rem] transform -rotate-2 group-hover:rotate-0 transition-transform duration-500"></div>
               
@@ -62,7 +62,7 @@ const MissionVisionValues = () => {
             </div>
 
             {/* Card 3 - Vision */}
-            <div className="group relative" data-aos="fade-up" data-aos-delay="300">
+            <div className="group relative" data-aos="fade" data-aos-delay="300">
               {/* Leaf shape background */}
               <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-300 rounded-[3rem_0rem_3rem_0rem] transform rotate-2 group-hover:rotate-0 transition-transform duration-500"></div>
               

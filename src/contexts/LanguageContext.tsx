@@ -297,6 +297,18 @@ const translations = {
     'news.category.industry': 'Tin ngành',
     'news.category.events': 'Sự kiện',
     
+    // Statistics Section
+    'stats.employees': 'Nhân sự',
+    'stats.coverage': 'Phủ kín',
+    'stats.million': 'triệu',
+    'stats.population': 'dân',
+    'stats.distribution.title': 'HỆ THỐNG PHÂN PHỐI KSB',
+    'stats.distribution.mt': 'MT',
+    'stats.distribution.gt': 'GT',
+    'stats.distribution.showroom': 'SHOWROOM',
+    'stats.distribution.specialty': 'CHUYÊN BIỆT',
+    'stats.distribution.b2b': 'B2B',
+    
     // Job Listings
     'jobs.title': 'Vị trí đang tuyển dụng',
     'jobs.subtitle': 'Tìm kiếm cơ hội nghề nghiệp phù hợp với bạn',
@@ -697,6 +709,18 @@ const translations = {
     'news.category.company': 'Company News',
     'news.category.industry': 'Industry News',
     'news.category.events': 'Events',
+    
+    // Statistics Section
+    'stats.employees': 'Personnel',
+    'stats.coverage': 'Coverage',
+    'stats.million': 'million',
+    'stats.population': 'people',
+    'stats.distribution.title': 'KSB DISTRIBUTION SYSTEM',
+    'stats.distribution.mt': 'MT',
+    'stats.distribution.gt': 'GT',
+    'stats.distribution.showroom': 'SHOWROOM',
+    'stats.distribution.specialty': 'SPECIALTY',
+    'stats.distribution.b2b': 'B2B',
     
     // Job Listings
     'jobs.title': 'Open Positions',

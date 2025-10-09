@@ -172,6 +172,7 @@ export default function PartnersPage() {
         title={t('partners.title')}
         description={t('partners.intro.description')}
         breadcrumbItems={breadcrumbItems}
+        bannerImage="/images/partners-page/banner.webp"
       />
       
       {/* Company Introduction Section */}
@@ -185,7 +186,7 @@ export default function PartnersPage() {
               
               {/* Company image with right and bottom offset */}
               <Image 
-                src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1600&auto=format&fit=crop" 
+                src="/images/partner-page/partner.webp" 
                 alt="KSB Group Partners"
                 width={600}
                 height={400}
@@ -226,7 +227,7 @@ export default function PartnersPage() {
           <div className="relative flex-1 w-full overflow-hidden min-h-[600px] rounded-[3rem_0rem_3rem_0rem] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_16px_-4px_rgba(0,0,0,0.1)]">
             {/* Background image with light overlay */}
             <Image
-              src="https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=1926&auto=format&fit=crop"
+              src="/images/partner-page/partner-2.webp"
               alt="Business handshake background"
               fill
               className="absolute inset-0 w-full h-full object-cover rounded-[3rem_0rem_3rem_0rem]"
@@ -394,13 +395,13 @@ export default function PartnersPage() {
             </div>
             <div className="item text-center" data-aos="flip-up" data-aos-duration="800" data-aos-delay="200">
               <a href="#" className="block hover:scale-105 transition-transform duration-300">
-                <Image src="/images/parters/dongnam-medics.png" alt="Dongnam Medics" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
+                <Image src="/images/parters/dongnam-medics.webp" alt="Dongnam Medics" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
                 <div className="name text-base font-medium text-gray-700 mt-3">Dongnam Medics</div>
               </a>
             </div>
             <div className="item text-center" data-aos="flip-up" data-aos-duration="800" data-aos-delay="300">
               <a href="#" className="block hover:scale-105 transition-transform duration-300">
-                <Image src="/images/parters/lotte.png" alt="Lotte" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
+                <Image src="/images/parters/lotte.webp" alt="Lotte" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
                 <div className="name text-base font-medium text-gray-700 mt-3">Lotte</div>
               </a>
             </div>
@@ -412,25 +413,25 @@ export default function PartnersPage() {
             </div>
             <div className="item text-center" data-aos="flip-up" data-aos-duration="800" data-aos-delay="500">
               <a href="#" className="block hover:scale-105 transition-transform duration-300">
-                <Image src="/images/parters/queen-bin.png" alt="Queen Bin" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
+                <Image src="/images/parters/queen-bin.webp" alt="Queen Bin" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
                 <div className="name text-base font-medium text-gray-700 mt-3">Queen Bin</div>
               </a>
             </div>
             <div className="item text-center" data-aos="flip-up" data-aos-duration="800" data-aos-delay="600">
               <a href="#" className="block hover:scale-105 transition-transform duration-300">
-                <Image src="/images/parters/sahmyhook-food.png" alt="Sahmyhook Foods" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
+                <Image src="/images/parters/sahmyhook-food.webp" alt="Sahmyhook Foods" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
                 <div className="name text-base font-medium text-gray-700 mt-3">Sahmyhook Foods</div>
               </a>
             </div>
             <div className="item text-center" data-aos="flip-up" data-aos-duration="800" data-aos-delay="700">
               <a href="#" className="block hover:scale-105 transition-transform duration-300">
-                <Image src="/images/parters/samjin-corporation.png" alt="Samjin Corporation" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
+                <Image src="/images/parters/samjin-corporation.webp" alt="Samjin Corporation" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
                 <div className="name text-base font-medium text-gray-700 mt-3">Samjin Corporation</div>
               </a>
             </div>
             <div className="item text-center" data-aos="flip-up" data-aos-duration="800" data-aos-delay="800">
               <a href="#" className="block hover:scale-105 transition-transform duration-300">
-                <Image src="/images/parters/taewoong-food.png" alt="Taewoong Food" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
+                <Image src="/images/parters/taewoong-food.webp" alt="Taewoong Food" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
                 <div className="name text-base font-medium text-gray-700 mt-3">Taewoong Food</div>
               </a>
             </div>

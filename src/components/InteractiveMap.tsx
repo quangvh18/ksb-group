@@ -53,7 +53,7 @@ export default function InteractiveMap() {
         <div className="map relative" data-aos="zoom-in" data-aos-delay="200">
           <div className="--img relative">
             <Image 
-              src="https://sungroup.com.vn/static/img/img-map.png" 
+              src="/images/home-page/img-map.webp" 
               alt="Vietnam Map" 
               width={800} 
               height={600}

@@ -18,6 +18,7 @@ export default function FrozenPage() {
         title={t('ecosystem.services.frozen.title')}
         description={t('ecosystem.services.frozen.subtitle')}
         breadcrumbItems={breadcrumbItems}
+        bannerImage="/images/ecosystem-page/he-sinh-thai-banner.webp"
       />
       <main>
         {/* Frozen Food Content */}

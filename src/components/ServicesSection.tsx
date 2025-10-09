@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState, useMemo } from 'react';
+import Image from 'next/image';
 import ScrollAnimation from './ScrollAnimation';
 import { useLanguage } from '../contexts/LanguageContext';
 
@@ -32,7 +33,7 @@ export default function ServicesSection() {
         t('services.cosmetics.bullet2'),
         t('services.cosmetics.bullet3'),
       ],
-      image: 'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?q=80&w=1600&auto=format&fit=crop',
+      image: '/images/home-page/my-pham.webp',
     },
     {
       title: t('services.candy.title'),
@@ -42,7 +43,7 @@ export default function ServicesSection() {
         t('services.candy.bullet2'),
         t('services.candy.bullet3'),
       ],
-      image: 'https://images.unsplash.com/photo-1726160183083-de85fe0879d4?q=80&w=1600&auto=format&fit=crop',
+      image: '/images/home-page/keo.webp',
     },
     {
       title: t('services.import.title'),
@@ -52,7 +53,7 @@ export default function ServicesSection() {
         t('services.import.bullet2'),
         t('services.import.bullet3'),
       ],
-      image: 'https://images.unsplash.com/photo-1510626176961-4b57d4fbad03?q=80&w=1600&auto=format&fit=crop',
+      image: '/images/home-page/my-pham.webp',
     },
   ], [t]);
 
@@ -210,13 +211,11 @@ export default function ServicesSection() {
                     </div>
                   )}
                   {SERVICES.map((s, i) => (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      key={`${s.image}-${language}`}
+                    <Image
+                      key={`${s.title}-${i}-${language}`}
                       alt={s.title}
-                      loading="lazy"
-                      decoding="async"
-                      className={`object-cover w-full h-full transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] z-10 ${i === currentImageIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-[1.02]'
+                      fill
+                      className={`object-cover transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] z-10 ${i === currentImageIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-[1.02]'
                         } group-hover:scale-[1.04]`}
                       src={s.image}
                       style={{ position: 'absolute', inset: 0, color: 'transparent' }}

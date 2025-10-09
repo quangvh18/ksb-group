@@ -8,15 +8,16 @@ interface PageHeaderProps {
     href?: string;
     isActive?: boolean;
   }>;
+  bannerImage?: string;
 }
 
-export default function PageHeader({ title, description, breadcrumbItems }: PageHeaderProps) {
+export default function PageHeader({ title, description, breadcrumbItems, bannerImage }: PageHeaderProps) {
   return (
     <>
       {/* Banner Section */}
       <div className="sub_page_head relative w-full overflow-hidden">
         <Image 
-          src="https://www.sahmyook.co.kr/theme/syfood/img/intro/intro_bg_01.png" 
+          src={bannerImage || "https://www.sahmyook.co.kr/theme/syfood/img/intro/intro_bg_01.png"} 
           alt="Banner"
           width={1200}
           height={400}
@@ -24,6 +25,8 @@ export default function PageHeader({ title, description, breadcrumbItems }: Page
           style={{ display: 'block' }}
           priority={true}
         />
+        {/* Dark overlay for better text visibility */}
+        <div className="absolute inset-0 bg-black/40"></div>
         <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-3 sm:px-4 md:px-8 lg:px-12 overflow-hidden" style={{
           zIndex: 10
         }}>

@@ -28,13 +28,13 @@ export default function StrategicPartners() {
           </div>
           <div className="item text-center flex flex-col items-center justify-center" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
             <a href="#" className="block hover:scale-105 transition-transform duration-300 flex flex-col items-center justify-center">
-              <Image src="/images/parters/dongnam-medics.png" alt="Dongnam Medics" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
+              <Image src="/images/parters/dongnam-medics.webp" alt="Dongnam Medics" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
               <div className="name text-base font-medium text-gray-700 mt-3">Dongnam Medics</div>
             </a>
           </div>
           <div className="item text-center flex flex-col items-center justify-center" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300">
             <a href="#" className="block hover:scale-105 transition-transform duration-300 flex flex-col items-center justify-center">
-              <Image src="/images/parters/lotte.png" alt="Lotte" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
+              <Image src="/images/parters/lotte.webp" alt="Lotte" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
               <div className="name text-base font-medium text-gray-700 mt-3">Lotte</div>
             </a>
           </div>
@@ -46,25 +46,25 @@ export default function StrategicPartners() {
           </div>
           <div className="item text-center flex flex-col items-center justify-center" data-aos="fade-up" data-aos-duration="600" data-aos-delay="500">
             <a href="#" className="block hover:scale-105 transition-transform duration-300 flex flex-col items-center justify-center">
-              <Image src="/images/parters/queen-bin.png" alt="Queen Bin" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
+              <Image src="/images/parters/queen-bin.webp" alt="Queen Bin" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
               <div className="name text-base font-medium text-gray-700 mt-3">Queen Bin</div>
             </a>
           </div>
           <div className="item text-center flex flex-col items-center justify-center" data-aos="fade-up" data-aos-duration="600" data-aos-delay="600">
             <a href="#" className="block hover:scale-105 transition-transform duration-300 flex flex-col items-center justify-center">
-              <Image src="/images/parters/sahmyhook-food.png" alt="Sahmyhook Foods" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
+              <Image src="/images/parters/sahmyhook-food.webp" alt="Sahmyhook Foods" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
               <div className="name text-base font-medium text-gray-700 mt-3">Sahmyhook Foods</div>
             </a>
           </div>
           <div className="item text-center flex flex-col items-center justify-center" data-aos="fade-up" data-aos-duration="600" data-aos-delay="700">
             <a href="#" className="block hover:scale-105 transition-transform duration-300 flex flex-col items-center justify-center">
-              <Image src="/images/parters/samjin-corporation.png" alt="Samjin Corporation" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
+              <Image src="/images/parters/samjin-corporation.webp" alt="Samjin Corporation" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
               <div className="name text-base font-medium text-gray-700 mt-3">Samjin Corporation</div>
             </a>
           </div>
           <div className="item text-center flex flex-col items-center justify-center" data-aos="fade-up" data-aos-duration="600" data-aos-delay="800">
             <a href="#" className="block hover:scale-105 transition-transform duration-300 flex flex-col items-center justify-center">
-              <Image src="/images/parters/taewoong-food.png" alt="Taewoong Food" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
+              <Image src="/images/parters/taewoong-food.webp" alt="Taewoong Food" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
               <div className="name text-base font-medium text-gray-700 mt-3">Taewoong Food</div>
             </a>
           </div>

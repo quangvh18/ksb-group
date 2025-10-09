@@ -253,7 +253,7 @@ export default function KSBGroupSection() {
               {/* F&B Card */}
               <div className="relative bg-white rounded-[2rem_0.5rem_2rem_0.5rem] sm:rounded-[3rem_0.75rem_3rem_0.75rem] lg:rounded-[3.5rem_0.75rem_3.5rem_0.75rem] shadow-[0_3px_10px_-6px_rgba(0,0,0,0.15),0_1px_4px_-2px_rgba(0,0,0,0.08)] w-[280px] sm:w-[300px] lg:w-[320px] flex-shrink-0 overflow-hidden group snap-start hover:shadow-[0_10px_24px_-12px_rgba(0,0,0,0.2),0_6px_16px_-8px_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.06)] transition-all duration-700 ease-out" data-aos="zoom-in" data-aos-delay="100">
                 <div
-                  className="h-[24rem] sm:h-[26rem] lg:h-[28rem] bg-cover bg-center bg-no-repeat bg-[url('https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=60')]"
+                  className="h-[24rem] sm:h-[26rem] lg:h-[28rem] bg-cover bg-center bg-no-repeat bg-[url('/images/about-page/fb.webp')]"
                 >
                   <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-transparent"></div>
                   <div className="absolute top-4 sm:top-6 left-4 sm:left-6 right-4 sm:right-6">
@@ -268,7 +268,7 @@ export default function KSBGroupSection() {
               {/* Hóa - Mỹ phẩm Card */}
               <div className="relative bg-white rounded-[0.5rem_2rem_0.5rem_2rem] sm:rounded-[0.75rem_3rem_0.75rem_3rem] lg:rounded-[0.75rem_3.5rem_0.75rem_3.5rem] shadow-[0_3px_10px_-6px_rgba(0,0,0,0.15),0_1px_4px_-2px_rgba(0,0,0,0.08)] w-[280px] sm:w-[300px] lg:w-[320px] flex-shrink-0 overflow-hidden group snap-start hover:shadow-[0_10px_24px_-12px_rgba(0,0,0,0.2),0_6px_16px_-8px_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.06)] transition-all duration-700 ease-out" data-aos="zoom-in" data-aos-delay="200">
                 <div
-                  className="h-[24rem] sm:h-[26rem] lg:h-[28rem] bg-cover bg-center bg-no-repeat bg-[url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=60')]"
+                  className="h-[24rem] sm:h-[26rem] lg:h-[28rem] bg-cover bg-center bg-no-repeat bg-[url('/images/about-page/my-pham.webp')]"
                 >
                   <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-transparent"></div>
                   <div className="absolute top-4 sm:top-6 left-4 sm:left-6 right-4 sm:right-6">
@@ -283,7 +283,7 @@ export default function KSBGroupSection() {
               {/* Sản xuất - Phân phối Card */}
               <div className="relative bg-white rounded-[3.5rem_0.75rem_3.5rem_0.75rem] shadow-[0_3px_10px_-6px_rgba(0,0,0,0.15),0_1px_4px_-2px_rgba(0,0,0,0.08)] w-[300px] flex-shrink-0 overflow-hidden group snap-start hover:shadow-[0_10px_24px_-12px_rgba(0,0,0,0.2),0_6px_16px_-8px_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.06)] transition-all duration-700 ease-out" data-aos="zoom-in" data-aos-delay="300">
                 <div
-                  className="h-[28rem] bg-cover bg-center bg-no-repeat bg-[url('https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=60')]"
+                  className="h-[28rem] bg-cover bg-center bg-no-repeat bg-[url('/images/about-page/thuc-pham.webp')]"
                 >
                   <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-transparent"></div>
                   <div className="absolute top-6 left-6">
@@ -298,7 +298,7 @@ export default function KSBGroupSection() {
               {/* Hàng tiêu dùng Card */}
               <div className="relative bg-white rounded-[0.75rem_3.5rem_0.75rem_3.5rem] shadow-[0_3px_10px_-6px_rgba(0,0,0,0.15),0_1px_4px_-2px_rgba(0,0,0,0.08)] w-[300px] flex-shrink-0 overflow-hidden group snap-start hover:shadow-[0_10px_24px_-12px_rgba(0,0,0,0.2),0_6px_16px_-8px_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.06)] transition-all duration-700 ease-out" data-aos="zoom-in" data-aos-delay="400">
                 <div
-                  className="h-[28rem] bg-cover bg-center bg-no-repeat bg-[url('https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=60')]"
+                  className="h-[28rem] bg-cover bg-center bg-no-repeat bg-[url('/images/about-page/tieu-dung.webp')]"
                 >
                   <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-transparent"></div>
                   <div className="absolute top-6 left-6">
@@ -314,7 +314,7 @@ export default function KSBGroupSection() {
               {/* Công nghệ & Đổi mới Card */}
               <div className="relative bg-white rounded-[0.75rem_3.5rem_0.75rem_3.5rem] shadow-[0_3px_10px_-6px_rgba(0,0,0,0.15),0_1px_4px_-2px_rgba(0,0,0,0.08)] w-[300px] flex-shrink-0 overflow-hidden group snap-start hover:shadow-[0_10px_24px_-12px_rgba(0,0,0,0.2),0_6px_16px_-8px_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.06)] transition-all duration-700 ease-out" data-aos="zoom-in" data-aos-delay="600">
                 <div
-                  className="h-[28rem] bg-cover bg-center bg-no-repeat bg-[url('https://images.unsplash.com/photo-1542751110-97427bbecf20?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=60')]"
+                  className="h-[28rem] bg-cover bg-center bg-no-repeat bg-[url('/images/about-page/tech.webp')]"
                 >
                   <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-transparent"></div>
                   <div className="absolute top-6 left-6">

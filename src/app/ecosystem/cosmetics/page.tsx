@@ -18,6 +18,7 @@ export default function CosmeticsPage() {
         title={t('ecosystem.services.cosmetics.title')}
         description={t('ecosystem.services.cosmetics.subtitle')}
         breadcrumbItems={breadcrumbItems}
+        bannerImage="/images/ecosystem-page/he-sinh-thai-banner.webp"
       />
       <main>
         {/* Cosmetics Content */}

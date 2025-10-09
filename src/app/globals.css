@@ -196,6 +196,15 @@ html, body {
     max-width: 100vw;
 }
 
+/* Simple fix for extra scrollbars */
+html {
+    overflow-x: hidden;
+}
+
+body {
+    overflow-x: hidden;
+}
+
 /* Fix transform elements that cause overflow */
 @media (max-width: 768px) {
     .translate-x-8 {

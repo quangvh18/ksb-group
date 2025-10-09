@@ -56,7 +56,7 @@ export default function StatsWithMap() {
         <div className="w-full map relative" data-aos="zoom-in" data-aos-delay="200">
           <div className="--img relative w-full">
             <Image 
-              src="https://sungroup.com.vn/static/img/img-map.png" 
+              src="/images/home-page/img-map.webp" 
               alt="Vietnam Map" 
               width={1200} 
               height={800}
@@ -225,10 +225,10 @@ export default function StatsWithMap() {
                     </div>
                     <div className="space-y-1">
                       <p className="text-3xl lg:text-4xl font-bold text-muted-foreground">
-                        Nhân sự
+                        {t('stats.employees')}
                       </p>
                       <p className="text-xl text-muted-foreground/70">
-                        Phủ kín
+                        {t('stats.coverage')}
                       </p>
                     </div>
                   </div>
@@ -239,10 +239,10 @@ export default function StatsWithMap() {
                       100
                     </span>
                     <span className="text-4xl lg:text-5xl font-bold text-[#bb252d]">
-                      triệu
+                      {t('stats.million')}
                     </span>
                     <span className="text-3xl lg:text-4xl font-bold text-muted-foreground whitespace-nowrap">
-                      dân
+                      {t('stats.population')}
                     </span>
                   </div>
                 </div>
@@ -250,14 +250,14 @@ export default function StatsWithMap() {
                 {/* Distribution Cards */}
                 <div className="space-y-4">
                   <h3 className="text-2xl font-bold text-muted-foreground mb-4">
-                    HỆ THỐNG PHÂN PHỐI KSB
+                    {t('stats.distribution.title')}
                   </h3>
                   {[
-                    { id: "mt", label: "MT" },
-                    { id: "gt", label: "GT" },
-                    { id: "showroom", label: "SHOWROOM" },
-                    { id: "chuyen-biet", label: "CHUYÊN BIỆT" },
-                    { id: "b2b", label: "B2B" },
+                    { id: "mt", label: t('stats.distribution.mt') },
+                    { id: "gt", label: t('stats.distribution.gt') },
+                    { id: "showroom", label: t('stats.distribution.showroom') },
+                    { id: "chuyen-biet", label: t('stats.distribution.specialty') },
+                    { id: "b2b", label: t('stats.distribution.b2b') },
                   ].map((item) => (
                     <div
                       key={item.id}
