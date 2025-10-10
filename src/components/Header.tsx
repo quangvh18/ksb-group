@@ -32,12 +32,12 @@ export default function Header() {
            <div className="flex items-center h-[60px] sm:h-[70px] px-0">
              <Link href="/" className="flex items-center">
                <Image 
-                 src="https://thienthuanphat.vn/Data/images/banner-cn/logo/fa-ksb.webp" 
+                 src="/images/logo.png" 
                  alt="KSB Group Logo" 
-                 width={120}
-                 height={40}
+                 width={160}
+                 height={53}
                  priority={true}
-                 className="h-8 sm:h-10 w-auto" 
+                 className="h-10 sm:h-12 w-auto" 
                />
              </Link>
            </div>

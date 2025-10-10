@@ -56,7 +56,7 @@ const translations = {
     
     // Services
     'services.title': 'Các lĩnh vực hoạt động',
-    'services.description': 'Hóa - mỹ phẩm; Sản xuất kẹo; Nhập khẩu & phân phối thực phẩm, hàng tiêu dùng',
+    'services.description': 'Thực phẩm và Hóa mỹ phẩm',
     'services.cosmetics.title': 'Hóa - Mỹ phẩm',
     'services.cosmetics.summary': 'Phát triển và phân phối các thương hiệu mỹ phẩm thiên nhiên cao cấp từ châu Âu.',
     'services.cosmetics.bullet1': 'Biofresh – thương hiệu mỹ phẩm thiên nhiên đến từ Bulgaria với dấu ấn khác biệt trên thị trường Việt Nam.',
