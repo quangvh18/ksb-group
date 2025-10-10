@@ -47,7 +47,7 @@ const EcosystemDetailSection = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="relative">
                   <Image 
-                    src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60" 
+                    src="/images/ecosystem-page/biofest.webp" 
                     alt="Biofresh Store"
                     width={400}
                     height={300}
@@ -56,7 +56,7 @@ const EcosystemDetailSection = () => {
                 </div>
                 <div className="relative">
                   <Image 
-                    src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60" 
+                    src="/images/ecosystem-page/biofest2.webp" 
                     alt="Biofresh Products"
                     width={400}
                     height={300}
@@ -68,16 +68,22 @@ const EcosystemDetailSection = () => {
 
             {/* Products Section */}
             <div className="bg-white rounded-[3rem_0rem_3rem_0rem] p-8 shadow-lg border border-[#bb252d]/20" style={{boxShadow: '0 10px 25px -5px rgba(156, 163, 175, 0.2), 0 4px 6px -2px rgba(156, 163, 175, 0.1)'}}>
-              <h4 className="text-xl font-bold text-gray-800 mb-4">{t('ecosystem.services.cosmetics.products.title')}</h4>
-              <p className="text-base text-gray-700 leading-relaxed mb-6">{t('ecosystem.services.cosmetics.products.description')}</p>
-              <div className="relative">
-                <Image 
-                  src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=60" 
-                  alt="Rose of Bulgaria Products"
-                  width={800}
-                  height={400}
-                  className="w-full h-auto rounded-2xl shadow-lg"
-                />
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div>
+                  <h4 className="text-xl font-bold text-gray-800 mb-4">{t('ecosystem.services.cosmetics.products.title')}</h4>
+                  <p className="text-base text-gray-700 leading-relaxed">{t('ecosystem.services.cosmetics.products.description')}</p>
+                </div>
+                <div className="relative">
+                  <div className="absolute top-0 left-0 w-full h-full bg-gray-300 rounded-2xl transform translate-x-8 translate-y-8 z-0"></div>
+                  <Image 
+                    src="/images/ecosystem-page/biofest2.webp" 
+                    alt="Rose of Bulgaria Products"
+                    width={600}
+                    height={400}
+                    className="w-full h-auto rounded-2xl shadow-lg relative z-10"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#f4acb7]/10 to-transparent rounded-2xl z-20"></div>
+                </div>
               </div>
             </div>
 
@@ -116,7 +122,7 @@ const EcosystemDetailSection = () => {
                 <p className="text-sm text-gray-700 leading-relaxed">{t('ecosystem.services.food.ttp.description')}</p>
                 <div className="mt-4">
                   <Image 
-                    src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" 
+                    src="/images/ecosystem-page/21.webp" 
                     alt="Choco Samjin Products"
                     width={300}
                     height={200}
@@ -131,7 +137,7 @@ const EcosystemDetailSection = () => {
                 <p className="text-sm text-gray-700 leading-relaxed">{t('ecosystem.services.food.ecobin.description')}</p>
                 <div className="mt-4">
                   <Image 
-                    src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" 
+                    src="/images/ecosystem-page/22.webp" 
                     alt="Ecobin Products"
                     width={300}
                     height={200}
@@ -146,7 +152,7 @@ const EcosystemDetailSection = () => {
                 <p className="text-sm text-gray-700 leading-relaxed">{t('ecosystem.services.food.bachmocan.description')}</p>
                 <div className="mt-4">
                   <Image 
-                    src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" 
+                    src="/images/ecosystem-page/23.webp" 
                     alt="Bach Moc An Products"
                     width={300}
                     height={200}
@@ -161,7 +167,7 @@ const EcosystemDetailSection = () => {
                 <p className="text-sm text-gray-700 leading-relaxed">{t('ecosystem.services.food.kangnam.description')}</p>
                 <div className="mt-4">
                   <Image 
-                    src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" 
+                    src="/images/ecosystem-page/24.webp" 
                     alt="KangNam Products"
                     width={300}
                     height={200}
@@ -204,7 +210,7 @@ const EcosystemDetailSection = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="relative">
                   <Image 
-                    src="https://images.unsplash.com/photo-1541417904950-b855846fe074?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" 
+                    src="/images/ecosystem-page/31.webp" 
                     alt="Arctic Shrimp Quality"
                     width={400}
                     height={300}
@@ -213,7 +219,7 @@ const EcosystemDetailSection = () => {
                 </div>
                 <div className="relative">
                   <Image 
-                    src="https://images.unsplash.com/photo-1541417904950-b855846fe074?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" 
+                    src="/images/ecosystem-page/32.webp" 
                     alt="Greenland Source"
                     width={400}
                     height={300}

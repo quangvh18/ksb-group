@@ -51,14 +51,14 @@ export default function FrozenPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="relative">
                     <img 
-                      src="https://images.unsplash.com/photo-1541417904950-b855846fe074?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" 
+                      src="/images/ecosystem-page/31.webp" 
                       alt="Arctic Shrimp Quality"
                       className="w-full h-auto rounded-xl shadow-lg"
                     />
                   </div>
                   <div className="relative">
                     <img 
-                      src="https://images.unsplash.com/photo-1541417904950-b855846fe074?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" 
+                      src="/images/ecosystem-page/32.webp" 
                       alt="Greenland Source"
                       className="w-full h-auto rounded-xl shadow-lg"
                     />

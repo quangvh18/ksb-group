@@ -52,7 +52,7 @@ export default function FoodPage() {
                   <p className="text-sm text-gray-700 leading-relaxed">{t('ecosystem.services.food.ttp.description')}</p>
                   <div className="mt-4">
                     <img 
-                      src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" 
+                      src="/images/ecosystem-page/21.webp" 
                       alt="Choco Samjin Products"
                       className="w-full h-auto rounded-xl shadow-md"
                     />
@@ -65,7 +65,7 @@ export default function FoodPage() {
                   <p className="text-sm text-gray-700 leading-relaxed">{t('ecosystem.services.food.ecobin.description')}</p>
                   <div className="mt-4">
                     <img 
-                      src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" 
+                      src="/images/ecosystem-page/23.webp" 
                       alt="Ecobin Products"
                       className="w-full h-auto rounded-xl shadow-md"
                     />
@@ -78,7 +78,7 @@ export default function FoodPage() {
                   <p className="text-sm text-gray-700 leading-relaxed">{t('ecosystem.services.food.bachmocan.description')}</p>
                   <div className="mt-4">
                     <img 
-                      src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" 
+                      src="/images/ecosystem-page/23.webp" 
                       alt="Bach Moc An Products"
                       className="w-full h-auto rounded-xl shadow-md"
                     />
@@ -91,7 +91,7 @@ export default function FoodPage() {
                   <p className="text-sm text-gray-700 leading-relaxed">{t('ecosystem.services.food.kangnam.description')}</p>
                   <div className="mt-4">
                     <img 
-                      src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" 
+                      src="/images/ecosystem-page/24.webp" 
                       alt="KangNam Products"
                       className="w-full h-auto rounded-xl shadow-md"
                     />

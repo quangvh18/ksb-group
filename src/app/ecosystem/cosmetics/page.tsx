@@ -51,14 +51,14 @@ export default function CosmeticsPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="relative">
                     <img 
-                      src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60" 
+                      src="/images/ecosystem-page/biofest.webp" 
                       alt="Biofresh Store"
                       className="w-full h-auto rounded-2xl shadow-lg"
                     />
                   </div>
                   <div className="relative">
                     <img 
-                      src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60" 
+                      src="/images/ecosystem-page/biofest2.webp" 
                       alt="Biofresh Products"
                       className="w-full h-auto rounded-2xl shadow-lg"
                     />
@@ -72,7 +72,7 @@ export default function CosmeticsPage() {
                 <p className="text-base text-gray-700 leading-relaxed mb-6">{t('ecosystem.services.cosmetics.products.description')}</p>
                 <div className="relative">
                   <img 
-                    src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=60" 
+                    src="/images/ecosystem-page/biofest2.webp" 
                     alt="Rose of Bulgaria Products"
                     className="w-full h-auto rounded-2xl shadow-lg"
                   />
