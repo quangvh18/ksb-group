@@ -55,7 +55,7 @@ const translations = {
     'features.trust.desc': 'Xây dựng niềm tin với khách hàng và đối tác qua nhiều năm',
     
     // Services
-    'services.title': 'Dịch vụ của chúng tôi',
+    'services.title': 'Các lĩnh vực hoạt động',
     'services.description': 'Hóa - mỹ phẩm; Sản xuất kẹo; Nhập khẩu & phân phối thực phẩm, hàng tiêu dùng',
     'services.cosmetics.title': 'Hóa - Mỹ phẩm',
     'services.cosmetics.summary': 'Phát triển và phân phối các thương hiệu mỹ phẩm thiên nhiên cao cấp từ châu Âu.',
