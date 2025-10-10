@@ -172,7 +172,7 @@ export default function PartnersPage() {
         title={t('partners.title')}
         description={t('partners.intro.description')}
         breadcrumbItems={breadcrumbItems}
-        bannerImage="/images/partners-page/banner.webp"
+        bannerImage="/images/careers-page/banner.webp"
       />
       
       {/* Company Introduction Section */}

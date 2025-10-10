@@ -53,7 +53,7 @@ export default function ServicesSection() {
         t('services.import.bullet2'),
         t('services.import.bullet3'),
       ],
-      image: '/images/home-page/my-pham.webp',
+      image: '/images/home-page/nhap-khau.jpg',
     },
   ], [t]);
 
