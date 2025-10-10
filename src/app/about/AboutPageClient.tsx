@@ -55,7 +55,7 @@ export default function AboutPageClient() {
           title={t('about.title')}
           description={t('about.description')}
           breadcrumbItems={breadcrumbItems}
-          bannerImage="/images/about-page/banner.webp"
+          bannerImage="/images/careers-page/banner.png"
         />
 
 

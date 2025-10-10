@@ -101,7 +101,7 @@ export default function ContactPage() {
         title={t('contact.title')}
         description={t('contact.description')}
         breadcrumbItems={breadcrumbItems}
-        bannerImage="/images/contact-page/banner.webp"
+        bannerImage="/images/careers-page/banner.png"
       />
       <main>
         {/* Contact Information Section */}
