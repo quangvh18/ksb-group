@@ -87,7 +87,7 @@ export default function AboutPageClient() {
                   
                   {/* Company image with right and bottom offset */}
                   <Image 
-                    src="https://www.sahmyook.co.kr/theme/syfood/img/intro/intro_01.jpg" 
+                    src="/images/about-page/about.webp" 
                     alt="KSB Group Factory"
                     width={600}
                     height={400}

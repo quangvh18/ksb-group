@@ -83,7 +83,7 @@ export default function Careers() {
               
               {/* Company image with right and bottom offset */}
               <Image 
-                src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                src="/images/careers-page/tuyen-dung.webp" 
                 alt="KSB Group Team - Tham gia cùng chúng tôi"
                 width={600}
                 height={300}

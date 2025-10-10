@@ -14,7 +14,7 @@ export default function HomeFeature() {
             <div className="absolute top-0 left-0 w-full h-full bg-[#f0f0f0] rounded-[3rem_0rem_3rem_0rem] translate-x-6 translate-y-6 z-0"></div>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1600&auto=format&fit=crop"
+              src="/images/home-page/home.webp"
               alt="KSB Feature"
               className="relative z-10 w-full h-auto rounded-[3rem_0rem_3rem_0rem] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_16px_-4px_rgba(0,0,0,0.1)]"
               loading="lazy"
