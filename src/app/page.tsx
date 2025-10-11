@@ -6,6 +6,9 @@ import StrategicPartners from '../components/StrategicPartners'
 import StatsWithMap from '../components/StatsWithMap'
 import type { Metadata } from 'next'
 
+// Disable caching for this page to ensure fresh data
+export const revalidate = 0
+
 const Banner = dynamic(() => import('../components/Banner'))
 // const KSBGroupSection = dynamic(() => import('../components/KSBGroupSection'))
 const ServicesSection = dynamic(() => import('../components/ServicesSection'))
@@ -73,7 +76,7 @@ async function getNewsData(): Promise<TransformedNewsItem[]> {
 
 export default async function Home() {
   // Fetch news data from API using service
-  await getNewsData();
+  const newsData = await getNewsData();
   return (
     <div>
       <Banner />
@@ -85,7 +88,7 @@ export default async function Home() {
         {/* Strategic Partners Section */}
         <StrategicPartners />
         {/* News & Community Section - replaced with new components */}
-        <NewsSection />
+        <NewsSection initialNews={newsData} />
         {/* Stats with Map Section - replaced AboutFootprint */}
         <StatsWithMap />
 
