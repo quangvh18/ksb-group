@@ -78,7 +78,7 @@ export default function NewsDetailClient({ slug }: NewsDetailClientProps) {
       {/* Simple Page Header */}
       <div className="sub_page_head relative w-full overflow-hidden">
         <Image 
-          src="https://www.sahmyook.co.kr/theme/syfood/img/intro/intro_bg_01.png" 
+          src="/images/careers-page/banner.png" 
           alt="Banner"
           width={1200}
           height={400}
