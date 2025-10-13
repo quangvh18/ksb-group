@@ -103,7 +103,7 @@ const EcosystemDetailSection = () => {
                 <div className="relative">
                   <div className="absolute top-0 left-0 w-full h-full bg-gray-300 rounded-[3rem_0rem_3rem_0rem] transform translate-x-8 translate-y-8 z-0"></div>
                   <Image 
-                    src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=60" 
+                    src="/images/ecosystem-page/sua-hat.webp" 
                     alt="Food Production"
                     width={600}
                     height={400}
