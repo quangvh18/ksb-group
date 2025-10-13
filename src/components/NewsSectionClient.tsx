@@ -62,9 +62,22 @@ export default function NewsSectionClient({ initialNews, totalCount }: NewsSecti
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6" data-aos="fade-up" data-aos-delay="150">
-        {/* Left column - regular cards */}
-        <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 lg:gap-6">
+        {/* Featured card - top full width */}
+        <div className="w-full h-[400px] md:h-[500px]" data-aos="zoom-in" data-aos-delay="150">
+          {featured && (
+            <NewsCard
+              title={featured.title}
+              image={featured.image}
+              link={`/news/${createSlug(featured.title)}`}
+              featured
+              leafDirection="left"
+            />
+          )}
+        </div>
+
+        {/* Regular cards - bottom row with 2 columns */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
           {regular.map((news, index) => (
             <div key={`${news.title}-${index}`} data-aos="zoom-in" data-aos-delay={200 + index * 100}>
               <NewsCard
@@ -75,19 +88,6 @@ export default function NewsSectionClient({ initialNews, totalCount }: NewsSecti
               />
             </div>
           ))}
-        </div>
-
-        {/* Right column - featured card */}
-        <div className="min-h-[400px] lg:min-h-[600px]" data-aos="zoom-in" data-aos-delay="250">
-          {featured && (
-            <NewsCard
-              title={featured.title}
-              image={featured.image}
-              link={`/news/${createSlug(featured.title)}`}
-              featured
-              leafDirection="left"
-            />
-          )}
         </div>
       </div>
 

@@ -85,7 +85,6 @@ export class NewsService {
           },
           headers: {
             'Content-Type': 'application/json',
-            'Cache-Control': 'no-cache',
             ...(this.apiKey && { 'Authorization': `Bearer ${this.apiKey}` })
           },
           timeout: 10000, // 10 seconds timeout
@@ -114,7 +113,6 @@ export class NewsService {
           },
           headers: {
             'Content-Type': 'application/json',
-            'Cache-Control': 'no-cache',
             ...(this.apiKey && { 'Authorization': `Bearer ${this.apiKey}` })
           },
           timeout: 10000, // 10 seconds timeout
