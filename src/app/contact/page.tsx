@@ -159,6 +159,9 @@ export default function ContactPage() {
                           <p className="text-sm text-gray-600 leading-relaxed">
                             {t('footer.phone.detail')}
                           </p>
+                          <p className="text-sm text-gray-600 leading-relaxed">
+                            {t('footer.phone.zalo')}
+                          </p>
                         </div>
 
                         {/* Email Section */}

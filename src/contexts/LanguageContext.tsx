@@ -32,6 +32,7 @@ const translations = {
     'footer.factory.detail': 'Cụm công nghiệp Long Xuyên, thành phố Hải Phòng',
     'footer.phone': 'Điện thoại',
     'footer.phone.detail': 'Hotline: 19001181',
+    'footer.phone.zalo': 'Zalo: 0911009665',
     'footer.email': 'Email & Website',
     'footer.email.detail': 'Email: info@ksbgroup.vn',
     'footer.email.general': 'Email chung: info@ksbgroup.vn',
