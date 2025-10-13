@@ -65,7 +65,7 @@ export default function FoodPage() {
                   <p className="text-sm text-gray-700 leading-relaxed">{t('ecosystem.services.food.ecobin.description')}</p>
                   <div className="mt-4">
                     <img 
-                      src="/images/ecosystem-page/23.webp" 
+                      src="/images/ecosystem-page/22.webp" 
                       alt="Ecobin Products"
                       className="w-full h-auto rounded-xl shadow-md"
                     />
