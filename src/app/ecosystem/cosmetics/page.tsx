@@ -58,7 +58,7 @@ export default function CosmeticsPage() {
                   </div>
                   <div className="relative">
                     <img 
-                      src="/images/ecosystem-page/biofest2.webp" 
+                      src="/images/ecosystem-page/biofest4.webp" 
                       alt="Biofresh Products"
                       className="w-full h-auto rounded-2xl shadow-lg"
                     />

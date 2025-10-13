@@ -29,7 +29,7 @@ const EcosystemDetailSection = () => {
                 <div className="relative">
                   <div className="absolute top-0 left-0 w-full h-full bg-gray-300 rounded-[3rem_0rem_3rem_0rem] transform translate-x-8 translate-y-8 z-0"></div>
                   <Image 
-                    src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=60" 
+                    src="/images/ecosystem-page/biofest3.webp" 
                     alt="Biofresh Cosmetics"
                     width={600}
                     height={400}
@@ -56,7 +56,7 @@ const EcosystemDetailSection = () => {
                 </div>
                 <div className="relative">
                   <Image 
-                    src="/images/ecosystem-page/biofest2.webp" 
+                    src="/images/ecosystem-page/biofest4.webp" 
                     alt="Biofresh Products"
                     width={400}
                     height={300}
