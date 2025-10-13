@@ -152,7 +152,7 @@ const EcosystemDetailSection = () => {
                 <p className="text-sm text-gray-700 leading-relaxed">{t('ecosystem.services.food.bachmocan.description')}</p>
                 <div className="mt-4">
                   <Image 
-                    src="/images/ecosystem-page/23.webp" 
+                    src="/images/ecosystem-page/bach-moc-an.webp" 
                     alt="Bach Moc An Products"
                     width={300}
                     height={200}
