@@ -7,6 +7,7 @@ import AOSProvider from "../components/AOSProvider";
 import { LanguageProvider } from "../contexts/LanguageContext";
 import StructuredData from "../components/StructuredData";
 import PerformanceOptimizer from "../components/PerformanceOptimizer";
+import ZaloButton from "../components/ZaloButton";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -203,6 +204,7 @@ export default function RootLayout({
             <Header />
             {children}
             <Footer />
+            <ZaloButton />
           </AOSProvider>
         </LanguageProvider>
       </body>

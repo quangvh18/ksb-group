@@ -220,3 +220,89 @@ body {
         width: 100% !important;
     }
 }
+
+/* Zalo button animations */
+@keyframes zalo-float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes zalo-ripple {
+    0% {
+        transform: scale(1);
+        opacity: 0.75;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+@keyframes zalo-ripple-delay {
+    0% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1.7);
+        opacity: 0;
+    }
+}
+
+@keyframes zalo-shake {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: rotate(-5deg);
+    }
+    20%, 40%, 60%, 80% {
+        transform: rotate(5deg);
+    }
+}
+
+@keyframes zalo-glow {
+    0%, 100% {
+        box-shadow: 0 0 15px rgba(0, 104, 255, 0.5),
+                    0 0 30px rgba(0, 104, 255, 0.3),
+                    0 0 45px rgba(0, 104, 255, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(0, 104, 255, 0.7),
+                    0 0 40px rgba(0, 104, 255, 0.5),
+                    0 0 60px rgba(0, 104, 255, 0.3);
+    }
+}
+
+.animate-zalo-float {
+    animation: zalo-float 3s ease-in-out infinite;
+}
+
+.animate-zalo-ripple {
+    animation: zalo-ripple 2s ease-out infinite;
+}
+
+.animate-zalo-ripple-delay {
+    animation: zalo-ripple-delay 2s ease-out infinite 1s;
+}
+
+.animate-zalo-shake {
+    animation: zalo-shake 3s ease-in-out infinite 5s;
+}
+
+.animate-zalo-glow {
+    animation: zalo-glow 2s ease-in-out infinite;
+}
+
+/* Zalo button wrapper */
+.zalo-button-wrapper {
+    filter: drop-shadow(0 4px 12px rgba(0, 104, 255, 0.4));
+}
+
+.zalo-button-wrapper:hover {
+    filter: drop-shadow(0 6px 20px rgba(0, 104, 255, 0.6));
+}
