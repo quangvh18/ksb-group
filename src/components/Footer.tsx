@@ -38,15 +38,18 @@ export default function Footer() {
             </p>
           </div>
           
-          {/* Phone Section */}
-          <div className="w-1/2 sm:w-1/2 md:w-1/2 lg:w-1/6 mb-6 sm:mb-8 md:mb-0 order-2 sm:order-2 md:order-2 lg:order-3 px-2 md:px-3">
-            <dl>
-              <dt className="font-bold text-xs sm:text-sm md:text-sm mb-2 sm:mb-3">{t('footer.phone')}</dt>
-              <dd className="text-xs sm:text-sm md:text-sm">
-                <a href="tel:19001181" className="hover:underline hover:text-blue-600 block mb-1">{t('footer.phone.detail')}</a>
-              </dd>
-            </dl>
-          </div>
+            {/* Phone Section */}
+            <div className="w-1/2 sm:w-1/2 md:w-1/2 lg:w-1/6 mb-6 sm:mb-8 md:mb-0 order-2 sm:order-2 md:order-2 lg:order-3 px-2 md:px-3">
+              <dl>
+                <dt className="font-bold text-xs sm:text-sm md:text-sm mb-2 sm:mb-3">{t('footer.phone')}</dt>
+                <dd className="text-xs sm:text-sm md:text-sm">
+                  <a href="tel:19001181" className="hover:underline hover:text-blue-600 block mb-1">{t('footer.phone.detail')}</a>
+                </dd>
+                <dd className="text-xs sm:text-sm md:text-sm">
+                  <a href="https://zalo.me/0911009665" className="hover:underline hover:text-blue-600 block mb-1">{t('footer.phone.zalo')}</a>
+                </dd>
+              </dl>
+            </div>
           
           {/* Email & Website Section */}
           <div className="w-1/2 sm:w-1/2 md:w-1/2 lg:w-1/6 mb-6 sm:mb-8 md:mb-0 order-2 sm:order-2 md:order-2 lg:order-4 px-2 md:px-3">
