@@ -8,6 +8,8 @@ import { LanguageProvider } from "../contexts/LanguageContext";
 import StructuredData from "../components/StructuredData";
 import PerformanceOptimizer from "../components/PerformanceOptimizer";
 import ZaloButton from "../components/ZaloButton";
+import GoogleAnalytics from "../components/GoogleAnalytics";
+import AnalyticsProvider from "../components/AnalyticsProvider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -108,7 +110,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: 'your-google-verification-code',
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || 'your-google-verification-code',
     yandex: 'your-yandex-verification-code',
     yahoo: 'your-yahoo-verification-code',
   },
@@ -166,46 +168,49 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/images/logo-header.png" />
         <link rel="manifest" href="/manifest.json" />
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || ''} />
       </head>
       <body
         className={`${inter.variable} antialiased`}
       >
         <LanguageProvider>
-          <AOSProvider>
-            <StructuredData 
-              type="organization" 
-              data={{
-                name: "KSB Group",
-                description: "Tập đoàn KSB - Hệ sinh thái kinh doanh đa ngành với các lĩnh vực: Hóa - Mỹ phẩm (Biofresh), Sản xuất & Phân phối thực phẩm, Thực phẩm đông lạnh. Đối tác tin cậy, chất lượng quốc tế, phục vụ thị trường Việt Nam.",
-                url: "https://ksbgroup.vn",
-                logo: "https://ksbgroup.vn/images/logo-header.png",
-                foundingDate: "2020",
-                numberOfEmployees: "100-500",
-                industry: ["Hóa - Mỹ phẩm", "Thực phẩm", "Phân phối", "Nhập khẩu"],
-                address: {
-                  streetAddress: "The Terra An Hồng - Tòa nhà Hồng, Hà Nội",
-                  addressLocality: "Hà Nội",
-                  addressCountry: "VN"
-                },
-                contactPoint: {
-                  telephone: "+84-24-1234-5678",
-                  contactType: "customer service",
-                  email: "info@ksbgroup.vn"
-                },
-                sameAs: [
-                  "https://www.facebook.com/ksbgroup",
-                  "https://www.linkedin.com/company/ksb-group",
-                  "https://twitter.com/ksbgroup"
-                ]
-              }}
-            />
-            <StructuredData type="website" />
-            <PerformanceOptimizer />
-            <Header />
-            {children}
-            <Footer />
-            <ZaloButton />
-          </AOSProvider>
+          <AnalyticsProvider>
+            <AOSProvider>
+              <StructuredData 
+                type="organization" 
+                data={{
+                  name: "KSB Group",
+                  description: "Tập đoàn KSB - Hệ sinh thái kinh doanh đa ngành với các lĩnh vực: Hóa - Mỹ phẩm (Biofresh), Sản xuất & Phân phối thực phẩm, Thực phẩm đông lạnh. Đối tác tin cậy, chất lượng quốc tế, phục vụ thị trường Việt Nam.",
+                  url: "https://ksbgroup.vn",
+                  logo: "https://ksbgroup.vn/images/logo-header.png",
+                  foundingDate: "2020",
+                  numberOfEmployees: "100-500",
+                  industry: ["Hóa - Mỹ phẩm", "Thực phẩm", "Phân phối", "Nhập khẩu"],
+                  address: {
+                    streetAddress: "The Terra An Hồng - Tòa nhà Hồng, Hà Nội",
+                    addressLocality: "Hà Nội",
+                    addressCountry: "VN"
+                  },
+                  contactPoint: {
+                    telephone: "+84-24-1234-5678",
+                    contactType: "customer service",
+                    email: "info@ksbgroup.vn"
+                  },
+                  sameAs: [
+                    "https://www.facebook.com/ksbgroup",
+                    "https://www.linkedin.com/company/ksb-group",
+                    "https://twitter.com/ksbgroup"
+                  ]
+                }}
+              />
+              <StructuredData type="website" />
+              <PerformanceOptimizer />
+              <Header />
+              {children}
+              <Footer />
+              <ZaloButton />
+            </AOSProvider>
+          </AnalyticsProvider>
         </LanguageProvider>
       </body>
     </html>

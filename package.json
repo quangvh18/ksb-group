@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "setup:analytics": "node scripts/setup-analytics.js"
   },
   "dependencies": {
     "@types/aos": "^3.0.7",

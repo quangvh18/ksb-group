@@ -61,7 +61,7 @@ export default function InteractiveMap() {
             />
             
             <div className="marker absolute inset-0">
-              {locations.map((location, index) => (
+              {locations.map((location) => (
                 <div
                   key={location.name}
                   className="--item absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group"
@@ -86,7 +86,7 @@ export default function InteractiveMap() {
                   </div>
                 </div>
               ))}
-              {islands.map((island, index) => (
+              {islands.map((island) => (
                 <div
                   key={island.name}
                   className="--item island absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group"
