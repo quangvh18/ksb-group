@@ -19,11 +19,22 @@ export default function Banner() {
     window.addEventListener('resize', checkMobile);
 
     // Detect network connection speed
-    const connection = (navigator as any).connection || (navigator as any).mozConnection || (navigator as any).webkitConnection;
+    interface NetworkInformation {
+      effectiveType?: string;
+      saveData?: boolean;
+    }
+    
+    const nav = navigator as typeof navigator & {
+      connection?: NetworkInformation;
+      mozConnection?: NetworkInformation;
+      webkitConnection?: NetworkInformation;
+    };
+    
+    const connection = nav.connection || nav.mozConnection || nav.webkitConnection;
     if (connection) {
       const slowConnectionTypes = ['slow-2g', '2g', '3g'];
       setIsSlowConnection(
-        slowConnectionTypes.includes(connection.effectiveType) || 
+        slowConnectionTypes.includes(connection.effectiveType || '') || 
         connection.saveData === true
       );
     }
@@ -43,14 +54,15 @@ export default function Banner() {
       }
     );
 
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
+    const currentContainer = containerRef.current;
+    if (currentContainer) {
+      observer.observe(currentContainer);
     }
 
     return () => {
       window.removeEventListener('resize', checkMobile);
-      if (containerRef.current) {
-        observer.unobserve(containerRef.current);
+      if (currentContainer) {
+        observer.unobserve(currentContainer);
       }
     };
   }, [shouldLoadVideo]);
