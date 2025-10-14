@@ -1,40 +1,120 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function Banner() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isSlowConnection, setIsSlowConnection] = useState(false);
 
   useEffect(() => {
-    const video = videoRef.current;
-    if (video) {
+    // Detect mobile device
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    // Detect network connection speed
+    const connection = (navigator as any).connection || (navigator as any).mozConnection || (navigator as any).webkitConnection;
+    if (connection) {
+      const slowConnectionTypes = ['slow-2g', '2g', '3g'];
+      setIsSlowConnection(
+        slowConnectionTypes.includes(connection.effectiveType) || 
+        connection.saveData === true
+      );
+    }
+
+    // Intersection Observer for lazy loading
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !shouldLoadVideo) {
+            setShouldLoadVideo(true);
+          }
+        });
+      },
+      { 
+        rootMargin: '100px',
+        threshold: 0.1 
+      }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
+  }, [shouldLoadVideo]);
+
+  useEffect(() => {
+    if (shouldLoadVideo && videoRef.current) {
+      const video = videoRef.current;
+      
+      // Load video
       video.load();
       
-      video.play().catch(() => {
-      });
-    } else {
+      // Auto play when ready
+      const handleCanPlay = () => {
+        video.play().catch(() => {
+          // Auto-play was prevented
+        });
+      };
+
+      video.addEventListener('canplay', handleCanPlay);
+
+      return () => {
+        video.removeEventListener('canplay', handleCanPlay);
+      };
     }
-  }, []);
+  }, [shouldLoadVideo]);
+
+  // Determine preload strategy
+  const getPreloadStrategy = () => {
+    if (isSlowConnection) return 'none';
+    if (isMobile) return 'metadata';
+    return 'metadata'; // Changed from 'auto' to save bandwidth
+  };
 
   return (
-    <section className="relative w-full h-screen overflow-hidden bg-gray-900">
-      <video 
-        ref={videoRef}
-        className="absolute inset-0 w-full h-full object-cover z-0"
-        autoPlay 
-        muted 
-        loop 
-        playsInline
-        preload="auto"
-        controls={false}
-        style={{ zIndex: 0 }}
-        onError={(e) => {
-          console.error('Video failed to load:', e);
-        }}
-      >
-        <source src="/videos/homepage-video.mp4" type="video/mp4" />
-      </video>
-      
+    <section 
+      ref={containerRef}
+      className="relative w-full h-screen overflow-hidden bg-gray-900"
+    >
+      {shouldLoadVideo ? (
+        <video 
+          ref={videoRef}
+          className="absolute inset-0 w-full h-full object-cover z-0"
+          muted 
+          loop 
+          playsInline
+          preload={getPreloadStrategy()}
+          controls={false}
+          poster="/images/home-page/home.webp"
+          style={{ zIndex: 0 }}
+          onError={(e) => {
+            console.error('Video failed to load:', e);
+          }}
+        >
+          <source src="/videos/homepage-video.mp4" type="video/mp4" />
+        </video>
+      ) : (
+        <div 
+          className="absolute inset-0 w-full h-full bg-cover bg-center z-0"
+          style={{ 
+            backgroundImage: 'url(/images/home-page/home.webp)',
+            zIndex: 0 
+          }}
+        />
+      )}
     </section>
   );
 }
