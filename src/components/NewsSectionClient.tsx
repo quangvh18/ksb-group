@@ -48,7 +48,7 @@ export default function NewsSectionClient({ initialNews, totalCount }: NewsSecti
     }
   };
 
-  const regular = newsData.slice(0, 4); // Lấy 4 bài tin tức
+  const regular = newsData.slice(0, 2); // Lấy 2 bài tin tức
 
   return (
     <section className="max-w-7xl mx-auto px-6 pt-12 md:pt-16 pb-24 md:pb-28">
@@ -61,7 +61,7 @@ export default function NewsSectionClient({ initialNews, totalCount }: NewsSecti
         </p>
       </div>
 
-      {/* Grid layout với 4 tin tức */}
+      {/* Grid layout với 2 tin tức */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
         {regular.map((news, index) => (
           <div key={`${news.title}-${index}`} data-aos="zoom-in" data-aos-delay={150 + index * 100}>
