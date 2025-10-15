@@ -61,12 +61,12 @@ const translations = {
     'services.cosmetics.title': 'Hóa - Mỹ phẩm',
     'services.cosmetics.summary': 'Phát triển và phân phối các thương hiệu mỹ phẩm thiên nhiên cao cấp từ châu Âu.',
     'services.cosmetics.bullet1': 'Biofresh – thương hiệu mỹ phẩm thiên nhiên đến từ Bulgaria với dấu ấn khác biệt trên thị trường Việt Nam.',
-    'services.cosmetics.bullet2': 'Sản phẩm chăm sóc da, chăm sóc cá nhân từ nguyên liệu thiên nhiên, an toàn và hiệu quả.',
+    'services.cosmetics.bullet2': 'Sản phẩm chăm sóc da, với chiết xuất từ tinh chất hoa hồng tại Bulgaria, đảm bảo độ an toàn lành tính cho mọi loại da.',
     'services.cosmetics.bullet3': 'Phân phối đa kênh: hệ thống bán lẻ, siêu thị và thương mại điện tử.',
     'services.candy.title': 'Sản xuất kẹo',
     'services.candy.summary': 'Sản xuất và phát triển các dòng kẹo chất lượng cao với công nghệ hiện đại.',
     'services.candy.bullet1': 'Sản xuất kẹo với công nghệ tiên tiến, đảm bảo chất lượng và an toàn thực phẩm.',
-    'services.candy.bullet2': 'Đa dạng sản phẩm: kẹo cứng, kẹo mềm, kẹo dẻo với nhiều hương vị độc đáo.',
+    'services.candy.bullet2': 'Đa dạng sản phẩm: kẹo quế, kẹo gừng, kẹo sâm, ...',
     'services.candy.bullet3': 'Kiểm soát chất lượng nghiêm ngặt từ nguyên liệu đầu vào đến sản phẩm hoàn thiện.',
     'services.import.title': 'Nhập khẩu & phân phối thực phẩm, hàng tiêu dùng',
     'services.import.summary': 'Nhập khẩu và phân phối thực phẩm, hàng tiêu dùng chất lượng cao từ các thương hiệu quốc tế.',
@@ -190,7 +190,7 @@ const translations = {
     
     // Vision Section
     'careers.vision.title': 'Tầm nhìn về con người',
-    'careers.vision.subtitle': 'Tại KSB GROUP, chúng tôi tin rằng con người là tài sản giá trị nhất. Với các giá trị cốt lõi "Tử tế – Sáng tạo – Nhiệt huyết – Ước mơ lớn", chúng tôi xây dựng một môi trường làm việc truyền cảm hứng.',
+    'careers.vision.subtitle': 'Đối với KSB, con người là trung tâm của mọi chiến lược phát triển – nơi mỗi cá nhân được tôn trọng, phát huy năng lực và cùng nhau tạo nên giá trị bền vững.',
     'careers.vision.ecosystem.title': 'Kiến tạo hệ sinh thái',
     'careers.vision.ecosystem.content': 'Chúng tôi xây dựng một môi trường làm việc truyền cảm hứng, nơi mỗi cá nhân đều có cơ hội phát triển tối đa năng lực, đồng thời tạo ra những giá trị tích cực và bền vững cho xã hội.',
     'careers.vision.dreams.title': 'Chắp cánh ước mơ lớn',
@@ -262,7 +262,7 @@ const translations = {
     'partners.cosmetics.title': 'Mỹ phẩm & chăm sóc cá nhân',
     'partners.cosmetics.desc': 'Biofresh và các dòng mỹ phẩm nhập khẩu cao cấp từ châu Âu, đáp ứng nhu cầu làm đẹp hiện đại',
     'partners.food.title': 'Sản xuất - phân phối thực phẩm',
-    'partners.food.desc': 'Choco Samjin, Ecobin, Bách Mộc An, KangNam - Mô hình đa ngành tối ưu nguồn lực, chủ động chuỗi cung ứng',
+    'partners.food.desc': 'Phân phối bánh kẹo từ nhiều nước trên thế giới - Mô hình đa ngành tối ưu nguồn lực, chủ động chuỗi cung ứng',
     
     // Map Section
     'map.title': 'Dấu ấn',
@@ -386,9 +386,9 @@ const translations = {
     'ksbgroup.cosmetics.title': 'MỸ PHẨM',
     'ksbgroup.cosmetics.desc': 'Biofresh và các dòng mỹ phẩm nhập khẩu cao cấp từ châu Âu, đáp ứng nhu cầu làm đẹp hiện đại',
     'ksbgroup.food.title': 'THỰC PHẨM',
-    'ksbgroup.food.desc': 'Choco Samjin, Ecobin, Bách Mộc An, KangNam - Mô hình đa ngành tối ưu nguồn lực, chủ động chuỗi cung ứng',
+    'ksbgroup.food.desc': 'Phân phối bánh kẹo từ nhiều nước trên thế giới - Mô hình đa ngành tối ưu nguồn lực, chủ động chuỗi cung ứng',
     'ksbgroup.consumer.title': 'TIÊU DÙNG',
-    'ksbgroup.consumer.desc': 'Hàng tiêu dùng nhập khẩu: Choco Samjin, Boring Oat Milk. Trải nghiệm khác biệt cho người tiêu dùng Việt.',
+    'ksbgroup.consumer.desc': 'Hàng tiêu dùng nhập khẩu với những sản phẩm dầu gội sữa tắm Organic, mang đến trải nghiệm khác biệt cho người tiêu dùng Việt.',
     
     // Ecosystem Detail Section
     'ecosystem.detail.navigation.title': 'Lĩnh vực hoạt động',
@@ -398,7 +398,7 @@ const translations = {
     'ecosystem.services.cosmetics.subtitle': 'Tinh túy từ thiên nhiên, công nghệ từ thế giới',
     'ecosystem.services.cosmetics.description': 'KSB GROUP phát triển lĩnh vực Hóa – Mỹ phẩm với định hướng mang đến các sản phẩm chăm sóc sắc đẹp và cá nhân có chất lượng cao, nguồn gốc rõ ràng và phù hợp với thị hiếu người tiêu dùng Việt.',
     'ecosystem.services.cosmetics.biofresh.title': 'Biofresh – Thương hiệu mỹ phẩm thiên nhiên',
-    'ecosystem.services.cosmetics.biofresh.description': 'Nổi bật trong mảng này là hệ thống cửa hàng Biofresh – thương hiệu mỹ phẩm thiên nhiên đến từ Bulgaria với hơn 20 năm danh tiếng tại thị trường châu Âu. KSB là đơn vị nhập khẩu và phân phối độc quyền Biofresh tại Việt Nam, đồng thời vận hành 3 cửa hàng chính thức tại Hà Nội.',
+    'ecosystem.services.cosmetics.biofresh.description': 'Nổi bật trong mảng này là hệ thống cửa hàng Biofresh – thương hiệu mỹ phẩm thiên nhiên đến từ Bulgaria với hơn 20 năm danh tiếng tại thị trường châu Âu. KSB là đơn vị nhập khẩu và phân phối độc quyền Biofresh tại Việt Nam, đồng thời vận hành 4 cửa hàng chính thức tại Hà Nội và Hải Phòng.',
     'ecosystem.services.cosmetics.products.title': 'Dòng sản phẩm chủ lực',
     'ecosystem.services.cosmetics.products.description': 'Các dòng sản phẩm chủ lực như dòng Rose of Bulgaria sử dụng nước hoa hồng tinh khiết từ hoa Rosa Damascena, chiết xuất tự nhiên, không chứa paraben, silicones, dầu khoáng hay chất bảo quản độc hại, phù hợp cho mọi loại da, kể cả làn da nhạy cảm nhất.',
     'ecosystem.services.cosmetics.goal': 'Không ngừng mở rộng danh mục sản phẩm và nâng cao tiêu chuẩn phục vụ, KSB GROUP hướng đến mục tiêu trở thành cầu nối uy tín giữa người tiêu dùng Việt và những dòng mỹ phẩm an toàn – hiệu quả – dẫn đầu xu hướng từ khắp nơi trên thế giới.',
