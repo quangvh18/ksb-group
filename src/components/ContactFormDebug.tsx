@@ -30,12 +30,21 @@ export default function ContactFormDebug() {
       return;
     }
 
+    // Find the selected request type to get documentId
+    const selectedRequestType = requestTypes.find(type => type.id === selectedType);
+    
     const contactData: ContactRequestData = {
       fullName: formData.name,
       phone: formData.phone,
       email: formData.email,
       content: formData.content,
-      requestTypeId: selectedType
+      request_type: {
+        connect: [{
+          id: selectedType,
+          documentId: selectedRequestType?.documentId || '',
+          isTemporary: true
+        }]
+      }
     };
 
     try {

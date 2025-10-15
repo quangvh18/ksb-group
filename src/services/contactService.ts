@@ -18,7 +18,13 @@ export interface ContactRequestData {
   phone: string;
   email: string;
   content: string;
-  requestTypeId?: number;
+  request_type?: {
+    connect: Array<{
+      id: number;
+      documentId: string;
+      isTemporary: boolean;
+    }>;
+  };
 }
 
 export interface ContactRequestResponse {
@@ -30,7 +36,6 @@ export interface ContactRequestResponse {
 // Get request types from API
 export async function getRequestTypes(): Promise<RequestType[]> {
   try {
-    console.log('Fetching request types from API...');
     
     // Use GET method (POST requires data payload)
     const response = await fetch(`${API_BASE_URL}/request-types`, {
@@ -42,21 +47,17 @@ export async function getRequestTypes(): Promise<RequestType[]> {
       },
     });
 
-    console.log('API Response status:', response.status);
-    console.log('API Response ok:', response.ok);
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
     const data = await response.json();
-    console.log('API Response data:', data);
     return data.data || [];
   } catch (error: unknown) {
     console.error('Error fetching request types:', error);
     
     // Return fallback data if API fails
-    console.log('Using fallback data for request types');
     return [
       { 
         id: 1, 
@@ -125,14 +126,6 @@ export async function submitContactRequest(
       };
     }
 
-    // Log the data being sent for debugging
-    console.log('Sending contact request with data:', {
-      fullName: data.fullName,
-      phone: data.phone,
-      email: data.email,
-      content: data.content,
-      requestTypeId: data.requestTypeId
-    });
 
     const response = await axios.post(`${API_BASE_URL}/contact-requests`, {
       data: {
@@ -140,7 +133,7 @@ export async function submitContactRequest(
         phone: data.phone,
         email: data.email,
         content: data.content,
-        requestTypeId: data.requestTypeId
+        request_type: data.request_type
       }
     }, {
       headers: {

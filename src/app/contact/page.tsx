@@ -28,9 +28,7 @@ export default function ContactPage() {
   useEffect(() => {
     const loadRequestTypes = async () => {
       try {
-        console.log('Loading request types...');
         const types = await getRequestTypes();
-        console.log('Loaded request types:', types);
         setRequestTypes(types);
       } catch (error) {
         console.error('Error loading request types:', error);
@@ -53,16 +51,23 @@ export default function ContactPage() {
     }
 
     try {
+      // Find the selected request type to get documentId
+      const selectedRequestType = requestTypes.find(type => type.id === selectedRequestTypeId);
+      
       const contactData: ContactRequestData = {
         fullName: formData.name,
         phone: formData.phone,
         email: formData.email,
         content: formData.content,
-        requestTypeId: selectedRequestTypeId
+        request_type: {
+          connect: [{
+            id: selectedRequestTypeId,
+            documentId: selectedRequestType?.documentId || '',
+            isTemporary: true
+          }]
+        }
       };
 
-      // Debug log to check data being sent
-      console.log('Contact data being sent:', contactData);
 
       const messages = {
         contentLimitError: t('contact.form.content.limit'),
