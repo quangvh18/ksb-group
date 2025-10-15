@@ -48,8 +48,7 @@ export default function NewsSectionClient({ initialNews, totalCount }: NewsSecti
     }
   };
 
-  const featured = newsData[0];
-  const regular = newsData.slice(1, 3); // Chỉ lấy 2 bài nhỏ
+  const regular = newsData.slice(0, 4); // Lấy 4 bài tin tức
 
   return (
     <section className="max-w-7xl mx-auto px-6 pt-12 md:pt-16 pb-24 md:pb-28">
@@ -62,33 +61,18 @@ export default function NewsSectionClient({ initialNews, totalCount }: NewsSecti
         </p>
       </div>
 
-      <div className="flex flex-col gap-4 lg:gap-6">
-        {/* Featured card - top full width */}
-        <div className="w-full h-[400px] md:h-[500px]" data-aos="zoom-in" data-aos-delay="150">
-          {featured && (
+      {/* Grid layout với 4 tin tức */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
+        {regular.map((news, index) => (
+          <div key={`${news.title}-${index}`} data-aos="zoom-in" data-aos-delay={150 + index * 100}>
             <NewsCard
-              title={featured.title}
-              image={featured.image}
-              link={`/news/${createSlug(featured.title)}`}
-              featured
-              leafDirection="left"
+              title={news.title}
+              image={news.image}
+              link={`/news/${createSlug(news.title)}`}
+              leafDirection={index % 2 === 0 ? 'left' : 'right'}
             />
-          )}
-        </div>
-
-        {/* Regular cards - bottom row with 2 columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
-          {regular.map((news, index) => (
-            <div key={`${news.title}-${index}`} data-aos="zoom-in" data-aos-delay={200 + index * 100}>
-              <NewsCard
-                title={news.title}
-                image={news.image}
-                link={`/news/${createSlug(news.title)}`}
-                leafDirection={index % 2 === 0 ? 'left' : 'right'}
-              />
-            </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
 
       {/* Load More Button */}

@@ -65,12 +65,12 @@ export const metadata: Metadata = {
 // Function để fetch news data using service
 async function getNewsData(): Promise<TransformedNewsItem[]> {
   try {
-    const newsData = await newsService.getNews(1, 3); // Chỉ lấy 3 bài tin tức cho trang chủ
+    const newsData = await newsService.getNews(1, 4); // Lấy 4 bài tin tức cho trang chủ
     return newsData.map(transformNewsItem);
   } catch (error) {
     console.error('Error fetching news data:', error);
     // Return fallback data if API fails
-    return fallbackNewsData.slice(0, 3); // Chỉ lấy 3 bài đầu
+    return fallbackNewsData.slice(0, 4); // Lấy 4 bài đầu
   }
 }
 
