@@ -23,7 +23,7 @@ const translations = {
     'nav.careers': 'Tuyển dụng',
     'nav.partners': 'Đối tác',
     'nav.contact': 'Liên hệ',
-    
+
     // Footer
     'footer.company': 'CÔNG TY CỔ PHẦN TẬP ĐOÀN KSB',
     'footer.address': 'Địa chỉ',
@@ -39,12 +39,12 @@ const translations = {
     'contact.email.title': 'Email',
     'footer.website.detail': 'Website: www.ksbgroup.vn',
     'footer.copyright': 'KSB Group. Tất cả quyền được bảo lưu',
-    
+
     // Homepage - Banner
     'banner.title': 'KSB Group',
     'banner.subtitle': 'Dẫn đầu xu hướng, kiến tạo tương lai',
     'banner.description': 'Hệ sinh thái đa ngành với các lĩnh vực hoạt động chủ lực: Hóa - Mỹ phẩm, Sản xuất kẹo, Nhập khẩu & phân phối thực phẩm, hàng tiêu dùng.',
-    
+
     // Homepage - Features
     'features.title': 'KSB Group – Hệ sinh thái kinh doanh đa ngành, vươn tầm dẫn đầu',
     'features.description': 'Xuất phát từ nền tảng vững trãi của Công ty TNHH XNK Thiên Thuận Phát, KSB Group đã không ngừng mở rộng và phát triển trong suốt hơn một thập kỷ qua. Chúng tôi tự hào sở hữu hệ sinh thái đa ngành gồm F&B, hóa - mỹ phẩm, sản xuất – phân phối thực phẩm và hàng tiêu dùng nhập khẩu, với mạng lưới hoạt động phủ rộng trên toàn quốc.',
@@ -54,7 +54,7 @@ const translations = {
     'features.innovation.desc': 'Không ngừng nghiên cứu và phát triển công nghệ tiên tiến',
     'features.trust.title': 'Đáng tin cậy',
     'features.trust.desc': 'Xây dựng niềm tin với khách hàng và đối tác qua nhiều năm',
-    
+
     // Services
     'services.title': 'Các lĩnh vực hoạt động',
     'services.description': 'Thực phẩm và Hóa mỹ phẩm',
@@ -73,9 +73,9 @@ const translations = {
     'services.import.bullet1': 'Nhập khẩu độc quyền các thương hiệu quốc tế như Choco Samjin (Hàn Quốc), sữa yến mạch Boring (New Zealand).',
     'services.import.bullet2': 'Phân phối đa dạng hàng tiêu dùng: thực phẩm, đồ uống, sản phẩm chăm sóc sức khỏe.',
     'services.import.bullet3': 'Hệ thống phân phối rộng khắp toàn quốc, đảm bảo nguồn gốc xuất xứ và chất lượng.',
-    
+
     // News
-    
+
     // About Page
     'about.title': 'Về chúng tôi',
     'about.description': 'Tập đoàn KSB tự hào kiến tạo nên một nền tảng vững mạnh với hệ sinh thái kinh doanh bền vững.',
@@ -87,13 +87,13 @@ const translations = {
     'about.vision.title': 'Tầm nhìn',
     'about.vision.subtitle': 'Tập đoàn đa quốc gia hàng đầu trong lĩnh vực sản xuất và phân phối',
     'about.vision.content': 'Trở thành tập đoàn đa quốc gia hàng đầu trong lĩnh vực sản xuất và phân phối các sản phẩm xanh, kết hợp nhập khẩu tinh hoa thế giới và xuất khẩu sản phẩm lành mạnh, góp phần nâng cao giá trị kinh tế và sức khỏe cho nhân loại.',
-    
+
     // About Us - Footprint
     'about.footprint.title': 'Dấu ấn',
     'about.footprint.subtitle': 'Hệ thống phân phối toàn quốc',
     'about.footprint.description': 'Với mạng lưới phân phối phủ khắp cả nước, KSB GROUP tự hào mang đến sản phẩm chất lượng cao đến tay người tiêu dùng Việt Nam qua nhiều kênh: MT, GT, Showroom, Chuyên biệt và B2B.',
     'about.footprint.image.alt': 'Hệ thống phân phối KSB trên toàn quốc',
-    
+
     // About Us - Mission, Values, Vision Section
     'about.mission_values_vision.title': 'Giá trị cốt lõi – Tầm nhìn – Sứ mệnh',
     'about.mission.title': 'Sứ mệnh',
@@ -104,12 +104,12 @@ const translations = {
     'about.values.content': 'KSB GROUP phát triển dựa trên 3 giá trị cốt lõi: Kỉ luật, sáng tạo, bứt phá. Chúng tôi đề cao tính kỷ luật để đảm bảo sự chuyên nghiệp và hiệu quả; nuôi dưỡng tinh thần sáng tạo để không ngừng đổi mới, thích ứng với thị trường; và khát khao bứt phá để vươn xa, chinh phục những cột mốc lớn hơn mỗi ngày.',
     'about.ecosystem.title': 'Hệ sinh thái',
     'about.ecosystem.subtitle': 'Đa dạng lĩnh vực hoạt động',
-    'about.ecosystem.content': 'KSB GROUP hoạt động đa dạng trong các lĩnh vực: Hóa - Mỹ phẩm, Xuất nhập khẩu thực phẩm & hàng tiêu dùng, và Thực phẩm đông lạnh. Với hệ thống chi nhánh và cơ sở vật chất chiến lược trải dài, chúng tôi kiến tạo nên những chuỗi giá trị vượt trội.',
-    
+    'about.ecosystem.content': 'KSB GROUP hoạt động đa dạng trong các lĩnh vực: Hóa - Mỹ phẩm, Sản xuất & Phân phối thực phẩm. Với hệ thống chi nhánh và cơ sở vật chất chiến lược trải dài, chúng tôi kiến tạo nên những chuỗi giá trị vượt trội.',
+
     // About Organization Page
     'about.organization.title': 'Sơ đồ tổ chức',
     'about.organization.description': 'Khám phá cơ cấu tổ chức và hệ thống quản lý của KSB Group - một tập đoàn với cấu trúc vững mạnh và chuyên nghiệp.',
-    
+
     // Organization Chart
     'org.title': 'Sơ đồ tổ chức',
     'org.ceo': 'TỔNG GIÁM ĐỐC',
@@ -137,14 +137,14 @@ const translations = {
     'org.npp': 'NPP',
     // Additional org chart items
     'org.north.region': 'VP. BẮC',
-    'org.central.region': 'VP. TRUNG', 
+    'org.central.region': 'VP. TRUNG',
     'org.south.region': 'VP. NAM',
     'org.hr.dept': 'P. NHÂN SỰ',
     'org.technical.dept': 'P. KỸ THUẬT',
     'org.accounting.dept': 'P. KẾ TOÁN',
     'org.warehouse.dept': 'KHO',
     'org.general.dept': 'P. TỔNG HỢP',
-    
+
     // Contact Page
     'contact.title': 'Liên hệ',
     'contact.description': 'Liên hệ với chúng tôi để được tư vấn và hỗ trợ',
@@ -165,7 +165,7 @@ const translations = {
     'contact.error': 'Có lỗi xảy ra. Vui lòng thử lại sau.',
     'contact.form.character.count': 'ký tự',
     'contact.form.content.limit': 'Nội dung không được vượt quá 255 ký tự',
-    
+
     // Careers Page
     'careers.title': 'Tuyển dụng',
     'careers.description': 'Tham gia đội ngũ KSB Group - Nơi phát triển sự nghiệp của bạn',
@@ -187,7 +187,7 @@ const translations = {
     'careers.culture.development.desc': 'Cơ hội học hỏi và phát triển kỹ năng không ngừng',
     'careers.culture.balance': 'Cân bằng cuộc sống',
     'careers.culture.balance.desc': 'Môi trường làm việc linh hoạt, quan tâm đến sức khỏe nhân viên',
-    
+
     // Vision Section
     'careers.vision.title': 'Tầm nhìn về con người',
     'careers.vision.subtitle': 'Đối với KSB, con người là trung tâm của mọi chiến lược phát triển – nơi mỗi cá nhân được tôn trọng, phát huy năng lực và cùng nhau tạo nên giá trị bền vững.',
@@ -195,7 +195,7 @@ const translations = {
     'careers.vision.ecosystem.content': 'Chúng tôi xây dựng một môi trường làm việc truyền cảm hứng, nơi mỗi cá nhân đều có cơ hội phát triển tối đa năng lực, đồng thời tạo ra những giá trị tích cực và bền vững cho xã hội.',
     'careers.vision.dreams.title': 'Chắp cánh ước mơ lớn',
     'careers.vision.dreams.content': 'Chúng tôi trân trọng sự đa dạng trong đội ngũ, đề cao tinh thần chủ động và tinh thần doanh chủ, để cùng nhau hiện thực hóa mục tiêu đưa các tinh hoa toàn cầu đến gần hơn với người tiêu dùng Việt.',
-    
+
     // Core Values Cards
     'careers.values.shareholders.title': 'Với Cổ đông',
     'careers.values.shareholders.subtitle': 'Minh bạch và bền vững',
@@ -213,7 +213,7 @@ const translations = {
     'careers.positions.subtitle': 'Tìm kiếm cơ hội phù hợp với kỹ năng và đam mê của bạn',
     'careers.contact.subtitle': 'Phòng nhân sự công ty',
     'careers.viewJobs': 'XEM TUYỂN DỤNG',
-    
+
     // Partners Page
     'partners.title': 'Đối tác',
     'partners.description': 'Những đối tác chiến lược của KSB Group trên toàn thế giới',
@@ -243,11 +243,11 @@ const translations = {
     'careers.contact.address': 'Tầng 4, căn V10-A01, KĐT Terra An Hưng Phố Nguyễn Thanh Bình, Phường Dương Nội, TP Hà Nội, Việt Nam',
     'careers.contact.phone': '(028) 3828 2581',
     'careers.contact.email': 'hr@ksbgroup.vn',
-    
+
     // Partners Interactive Details
     'partners.revenue2022': 'Doanh thu 2022',
     'partners.revenue2022.desc': '604 tỷ VNĐ - Nền tảng vững chắc, khởi đầu cho hành trình phát triển bền vững',
-    'partners.revenue2023': 'Doanh thu 2023', 
+    'partners.revenue2023': 'Doanh thu 2023',
     'partners.revenue2023.desc': '710 tỷ VNĐ (+17,5%) - Tăng trưởng ấn tượng, khẳng định vị thế trong thị trường',
     'partners.revenue2024': 'Doanh thu 2024',
     'partners.revenue2024.desc': '850 tỷ VNĐ (+19,7%) - Duy trì tốc độ phát triển mạnh mẽ qua từng năm',
@@ -263,11 +263,11 @@ const translations = {
     'partners.cosmetics.desc': 'Biofresh và các dòng mỹ phẩm nhập khẩu cao cấp từ châu Âu, đáp ứng nhu cầu làm đẹp hiện đại',
     'partners.food.title': 'Sản xuất - phân phối thực phẩm',
     'partners.food.desc': 'Phân phối bánh kẹo từ nhiều nước trên thế giới - Mô hình đa ngành tối ưu nguồn lực, chủ động chuỗi cung ứng',
-    
+
     // Map Section
     'map.title': 'Dấu ấn',
     'map.description': 'Hệ thống phân phối toàn quốc. Với mạng lưới phân phối phủ khắp cả nước, KSB GROUP tự hào mang đến sản phẩm chất lượng cao đến tay người tiêu dùng Việt Nam qua nhiều kênh: MT, GT, Showroom, Chuyên biệt và B2B.',
-    
+
     // Ecosystem Page
     'ecosystem.title': 'Hệ sinh thái',
     'ecosystem.description': 'Khám phá hệ sinh thái đa dạng của KSB Group với các thương hiệu, dịch vụ và giải pháp toàn diện',
@@ -276,13 +276,13 @@ const translations = {
     'ecosystem.services.subtitle': 'Các dịch vụ chuyên nghiệp và giải pháp toàn diện',
     'ecosystem.solutions.title': 'Giải pháp',
     'ecosystem.solutions.subtitle': 'Giải pháp tối ưu cho từng ngành nghề và lĩnh vực',
-    
+
     // News Page
     'news.title': 'Tin tức',
     'news.description': 'Cập nhật tin tức mới nhất về KSB Group và ngành thực phẩm',
     'news.latest': 'Tin tức mới nhất',
     'news.readMore': 'Đọc thêm',
-    
+
     // News Detail Page
     'news.detail.title': 'Tin tức',
     'news.detail.breadcrumb.home': 'Trang chủ',
@@ -297,7 +297,7 @@ const translations = {
     'news.category.company': 'Tin công ty',
     'news.category.industry': 'Tin ngành',
     'news.category.events': 'Sự kiện',
-    
+
     // Statistics Section
     'stats.employees': 'Nhân sự',
     'stats.coverage': 'Phủ kín',
@@ -309,7 +309,7 @@ const translations = {
     'stats.distribution.showroom': 'SHOWROOM',
     'stats.distribution.specialty': 'CHUYÊN BIỆT',
     'stats.distribution.b2b': 'B2B',
-    
+
     // Job Listings
     'jobs.title': 'Vị trí đang tuyển dụng',
     'jobs.subtitle': 'Tìm kiếm cơ hội nghề nghiệp phù hợp với bạn',
@@ -333,12 +333,12 @@ const translations = {
     'jobs.noJobs': 'Không có vị trí nào phù hợp',
     'jobs.loading': 'Đang tải...',
     'jobs.error': 'Có lỗi xảy ra khi tải dữ liệu',
-    
+
     // Job Card Labels
     'jobs.card.position': 'Vị trí',
     'jobs.card.workArea': 'Khu vực làm việc',
     'jobs.card.description': 'Mô tả công việc',
-    
+
     // Common
     'common.loading': 'Đang tải...',
     'common.error': 'Có lỗi xảy ra',
@@ -349,12 +349,12 @@ const translations = {
     'common.confirm': 'Xác nhận',
     'common.yes': 'Có',
     'common.no': 'Không',
-    
+
     // Common
     'common.readMore': 'Đọc thêm',
     'common.viewAll': 'Xem tất cả',
     'common.learnMore': 'Tìm hiểu thêm',
-    
+
     // Page Metadata
     'meta.home.title': 'KSB Group - Dẫn đầu xu hướng, kiến tạo tương lai',
     'meta.home.description': 'Hệ sinh thái đa ngành với các lĩnh vực hoạt động chủ lực: Hóa - Mỹ phẩm, Sản xuất kẹo, Nhập khẩu & phân phối thực phẩm, hàng tiêu dùng.',
@@ -372,27 +372,27 @@ const translations = {
     'meta.ecosystem.description': 'Khám phá hệ sinh thái đa dạng của KSB Group với các thương hiệu, dịch vụ và giải pháp toàn diện',
     'common.contact': 'Liên hệ',
     'language.switch': 'Chuyển sang tiếng Anh',
-    
+
     // Ecosystem Services
     'ecosystem.services.title': 'Hệ sinh thái KSB Group',
     'ecosystem.services.description': 'Khám phá các lĩnh vực hoạt động đa dạng của chúng tôi',
-    
-    
+
+
     // KSB Group Section
     'ksbgroup.title': 'Hệ sinh thái đa ngành',
     'ksbgroup.subtitle': 'Dẫn đầu xu hướng, kiến tạo tương lai',
-    'ksbgroup.fnb.title': 'F&B',
-    'ksbgroup.fnb.desc': 'Bonchon, Trung Nguyên Legend Cafe - Thương hiệu F&B hàng đầu, tạo trải nghiệm ẩm thực đẳng cấp',
+    'ksbgroup.fnb.title': 'SẢN XUẤT KẸO',
+    'ksbgroup.fnb.desc': 'Chuyên nghiên cứu và sản xuất các loại kẹo cứng chất lượng cao với nhà máy đạt chuẩn ISO 22000',
     'ksbgroup.cosmetics.title': 'MỸ PHẨM',
     'ksbgroup.cosmetics.desc': 'Biofresh và các dòng mỹ phẩm nhập khẩu cao cấp từ châu Âu, đáp ứng nhu cầu làm đẹp hiện đại',
     'ksbgroup.food.title': 'THỰC PHẨM',
     'ksbgroup.food.desc': 'Phân phối bánh kẹo từ nhiều nước trên thế giới - Mô hình đa ngành tối ưu nguồn lực, chủ động chuỗi cung ứng',
     'ksbgroup.consumer.title': 'TIÊU DÙNG',
     'ksbgroup.consumer.desc': 'Hàng tiêu dùng nhập khẩu với những sản phẩm dầu gội sữa tắm Organic, mang đến trải nghiệm khác biệt cho người tiêu dùng Việt.',
-    
+
     // Ecosystem Detail Section
     'ecosystem.detail.navigation.title': 'Lĩnh vực hoạt động',
-    
+
     // Ecosystem Services - Cosmetics
     'ecosystem.services.cosmetics.title': 'Hệ thống Hóa – Mỹ phẩm',
     'ecosystem.services.cosmetics.subtitle': 'Tinh túy từ thiên nhiên, công nghệ từ thế giới',
@@ -402,7 +402,7 @@ const translations = {
     'ecosystem.services.cosmetics.products.title': 'Dòng sản phẩm chủ lực',
     'ecosystem.services.cosmetics.products.description': 'Các dòng sản phẩm chủ lực như dòng Rose of Bulgaria sử dụng nước hoa hồng tinh khiết từ hoa Rosa Damascena, chiết xuất tự nhiên, không chứa paraben, silicones, dầu khoáng hay chất bảo quản độc hại, phù hợp cho mọi loại da, kể cả làn da nhạy cảm nhất.',
     'ecosystem.services.cosmetics.goal': 'Không ngừng mở rộng danh mục sản phẩm và nâng cao tiêu chuẩn phục vụ, KSB GROUP hướng đến mục tiêu trở thành cầu nối uy tín giữa người tiêu dùng Việt và những dòng mỹ phẩm an toàn – hiệu quả – dẫn đầu xu hướng từ khắp nơi trên thế giới.',
-    
+
     // Ecosystem Services - Food Production
     'ecosystem.services.food.title': 'Sản xuất & phân phối thực phẩm',
     'ecosystem.services.food.subtitle': 'Sản xuất & nhập khẩu, phân phối thực phẩm và hàng tiêu dùng chất lượng cao',
@@ -415,15 +415,7 @@ const translations = {
     'ecosystem.services.food.bachmocan.description': 'Đơn vị nhập khẩu và phân phối đa dạng các sản phẩm thực phẩm, tiêu dùng và hóa – mỹ phẩm từ nhiều quốc gia. Bách Mộc An sở hữu hệ thống phân phối với hơn 85 nhà phân phối trên toàn quốc, phục vụ cả kênh truyền thống lẫn hiện đại.',
     'ecosystem.services.food.kangnam.title': 'Công ty TNHH Tập Đoàn Đầu Tư KangNam',
     'ecosystem.services.food.kangnam.description': 'Đại diện nhập khẩu và phân phối độc quyền dòng sữa yến mạch cao cấp Boring từ New Zealand – một sản phẩm được ưa chuộng tại các thị trường phát triển nhờ độ lành tính và giá trị dinh dưỡng thực vật.',
-    
-    // Ecosystem Services - Frozen Food
-    'ecosystem.services.frozen.title': 'Thực phẩm đông lạnh',
-    'ecosystem.services.frozen.subtitle': 'KSB Group ra mắt Dự án Tôm Bắc Cực Thượng Hạng: Khẳng định vị thế trong phân khúc thực phẩm cao cấp',
-    'ecosystem.services.frozen.description': 'Chúng tôi trân trọng thông báo về một cột mốc quan trọng trong chiến lược phát triển của Tập đoàn: chính thức ra mắt dự án Tôm Bắc Cực Thượng Hạng. Đây là bước đi chiến lược nhằm đa dạng hóa danh mục sản phẩm, đồng thời khẳng định vị thế và tầm nhìn của KSB Group trong lĩnh vực nhập khẩu và phân phối thực phẩm cao cấp.',
-    'ecosystem.services.frozen.quality': 'Dự án Tôm Bắc Cực Thượng Hạng là minh chứng cho cam kết của chúng tôi về chất lượng vượt trội. Sản phẩm được nhập khẩu trực tiếp từ Greenland, vùng biển nổi tiếng với nguồn tôm đánh bắt hoang dã. Với hương vị độc đáo và chất lượng tự nhiên, sản phẩm hứa hẹn sẽ mang đến một trải nghiệm ẩm thực đẳng cấp cho người tiêu dùng Việt Nam.',
-    'ecosystem.services.quality.title': 'Chất lượng vượt trội',
-    'ecosystem.services.frozen.vision': 'Chúng tôi tin rằng với dự án này, KSB Group sẽ không chỉ đáp ứng nhu cầu ngày càng cao của thị trường, mà còn tạo ra những giá trị mới, bền vững cho cộng đồng.',
-    
+
     // KSB Group - Technology
     'ksbgroup.technology.title': 'CÔNG NGHỆ',
     'ksbgroup.technology.desc': 'Ứng dụng công nghệ, mở rộng hệ sinh thái. Nâng tầm trải nghiệm, dẫn dắt chuyển đổi số.',
@@ -437,7 +429,7 @@ const translations = {
     'nav.careers': 'Careers',
     'nav.partners': 'Partners',
     'nav.contact': 'Contact',
-    
+
     // Footer
     'footer.company': 'KSB GROUP JOINT STOCK COMPANY',
     'footer.address': 'Address',
@@ -452,12 +444,12 @@ const translations = {
     'contact.email.title': 'Email',
     'footer.website.detail': 'Website: www.ksbgroup.vn',
     'footer.copyright': 'KSB Group. All rights reserved',
-    
+
     // Homepage - Banner
     'banner.title': 'KSB Group',
     'banner.subtitle': 'Leading Trends, Building the Future',
     'banner.description': 'Multi-industry ecosystem with core business areas: Chemicals - Cosmetics, Candy Manufacturing, Import & Distribution of Food and Consumer Goods.',
-    
+
     // Homepage - Features
     'features.title': 'KSB Group – Multi-industry Business Ecosystem, Aspiring to Lead',
     'features.description': 'Starting from the solid foundation of Thien Thuan Phat Import-Export Co., Ltd., KSB Group has continuously expanded and developed over more than a decade. We proudly own a multi-industry ecosystem including F&B, chemicals - cosmetics, food production - distribution and imported consumer goods, with an operational network covering the entire country.',
@@ -467,7 +459,7 @@ const translations = {
     'features.innovation.desc': 'Continuously researching and developing advanced technologies',
     'features.trust.title': 'Trustworthy',
     'features.trust.desc': 'Building trust with customers and partners over many years',
-    
+
     // Services
     'services.title': 'Our Services',
     'services.description': 'Chemicals - Cosmetics; Candy Manufacturing; Import & Distribution of Food, Consumer Goods',
@@ -486,9 +478,9 @@ const translations = {
     'services.import.bullet1': 'Exclusive import of international brands like Choco Samjin (Korea), Boring oat milk (New Zealand).',
     'services.import.bullet2': 'Distributing diverse consumer goods: food, beverages, health care products.',
     'services.import.bullet3': 'Nationwide distribution system, ensuring origin and quality.',
-    
+
     // News (moved to News Page section)
-    
+
     // About Page
     'about.title': 'About Us',
     'about.description': 'KSB Group proudly creates a solid foundation with a sustainable business ecosystem.',
@@ -500,13 +492,13 @@ const translations = {
     'about.vision.title': 'Vision',
     'about.vision.subtitle': 'Leading multinational corporation in production and distribution',
     'about.vision.content': 'To become a leading multinational corporation in the field of production and distribution of green products, combining world-class imports and healthy product exports, contributing to enhancing economic value and health for humanity.',
-    
+
     // About Us - Footprint
     'about.footprint.title': 'Footprint',
     'about.footprint.subtitle': 'Nationwide Distribution System',
     'about.footprint.description': 'With a distribution network covering the entire country, KSB GROUP is proud to bring high-quality products to Vietnamese consumers through multiple channels: MT, GT, Showroom, Specialty and B2B.',
     'about.footprint.image.alt': 'KSB Distribution System Nationwide',
-    
+
     // About Us - Mission, Values, Vision Section
     'about.mission_values_vision.title': 'Core Values – Vision – Mission',
     'about.mission.title': 'Mission',
@@ -517,12 +509,12 @@ const translations = {
     'about.values.content': 'KSB GROUP develops based on 3 core values: Discipline, creativity, breakthrough. We uphold discipline to ensure professionalism and efficiency; nurture creativity to continuously innovate and adapt to the market; and aspire to breakthrough to reach far, conquering bigger milestones every day.',
     'about.ecosystem.title': 'Ecosystem',
     'about.ecosystem.subtitle': 'Diverse business activities',
-    'about.ecosystem.content': 'KSB GROUP operates diversely in various fields: Chemicals - Cosmetics, Food & Consumer Goods Import & Export, and Frozen Food. With a strategic system of branches and facilities spread across, we create superior value chains.',
-    
+    'about.ecosystem.content': 'KSB GROUP operates diversely in various fields: Chemicals - Cosmetics, Food Production & Distribution. With a strategic system of branches and facilities spread across, we create superior value chains.',
+
     // About Organization Page
     'about.organization.title': 'Organization Chart',
     'about.organization.description': 'Discover the organizational structure and management system of KSB Group - a corporation with a strong and professional structure.',
-    
+
     // Organization Chart
     'org.title': 'Organization Chart',
     'org.ceo': 'CHIEF EXECUTIVE OFFICER',
@@ -557,7 +549,7 @@ const translations = {
     'org.accounting.dept': 'ACCOUNTING DEPT',
     'org.warehouse.dept': 'WAREHOUSE',
     'org.general.dept': 'GENERAL DEPT',
-    
+
     // Contact Page
     'contact.title': 'Contact',
     'contact.description': 'Contact us for consultation and support',
@@ -578,7 +570,7 @@ const translations = {
     'contact.error': 'An error occurred. Please try again later.',
     'contact.form.character.count': 'characters',
     'contact.form.content.limit': 'Content must not exceed 255 characters',
-    
+
     // Careers Page
     'careers.title': 'Careers',
     'careers.description': 'Join KSB Group team - Where your career develops',
@@ -600,7 +592,7 @@ const translations = {
     'careers.culture.development.desc': 'Opportunities for continuous learning and skill development',
     'careers.culture.balance': 'Work-Life Balance',
     'careers.culture.balance.desc': 'Flexible work environment, caring for employee health',
-    
+
     // Vision Section
     'careers.vision.title': 'Our Vision for People',
     'careers.vision.subtitle': 'At KSB GROUP, we believe that people are our most valuable asset. With our core values "Kindness - Creativity - Passion - Big Dreams", we build an inspiring work environment.',
@@ -608,7 +600,7 @@ const translations = {
     'careers.vision.ecosystem.content': 'We create an inspiring work environment where every individual has the opportunity to maximize their potential, while generating positive and sustainable values for society.',
     'careers.vision.dreams.title': 'Empowering Big Dreams',
     'careers.vision.dreams.content': 'We value diversity in our team, promote proactive spirit and entrepreneurship, to together realize the goal of bringing global excellence closer to Vietnamese consumers.',
-    
+
     // Core Values Cards
     'careers.values.shareholders.title': 'To Shareholders',
     'careers.values.shareholders.subtitle': 'Transparent and sustainable',
@@ -626,7 +618,7 @@ const translations = {
     'careers.positions.subtitle': 'Find opportunities that match your skills and passion',
     'careers.contact.subtitle': 'Human Resources Department',
     'careers.viewJobs': 'VIEW JOBS',
-    
+
     // Partners Page
     'partners.title': 'Partners',
     'partners.description': 'KSB Group strategic partners worldwide',
@@ -656,7 +648,7 @@ const translations = {
     'careers.contact.address': 'Floor 4, V10-A01, Terra An Hung New Urban Area, Nguyen Thanh Binh Street, Duong Noi Ward, Hanoi, Vietnam',
     'careers.contact.phone': '(028) 3828 2581',
     'careers.contact.email': 'hr@ksbgroup.vn',
-    
+
     // Partners Interactive Details
     'partners.revenue2022': 'Revenue 2022',
     'partners.revenue2022.desc': '604 billion VND - Solid foundation, starting the sustainable development journey',
@@ -676,11 +668,11 @@ const translations = {
     'partners.cosmetics.desc': 'Biofresh and premium imported cosmetic lines from Europe, meeting modern beauty needs',
     'partners.food.title': 'Food Production - Distribution',
     'partners.food.desc': 'Choco Samjin, Ecobin, Bach Moc An, KangNam - Multi-industry model optimizing resources, proactive supply chain',
-    
+
     // Map Section
     'map.title': 'Footprint',
     'map.description': 'Nationwide Distribution System. With a nationwide distribution network, KSB GROUP is proud to bring high-quality products to Vietnamese consumers through multiple channels: MT, GT, Showroom, Specialty and B2B.',
-    
+
     // Ecosystem Page
     'ecosystem.title': 'Ecosystem',
     'ecosystem.description': 'Explore KSB Group diverse ecosystem with comprehensive brands, services and solutions',
@@ -689,13 +681,13 @@ const translations = {
     'ecosystem.services.subtitle': 'Professional services and comprehensive solutions',
     'ecosystem.solutions.title': 'Solutions',
     'ecosystem.solutions.subtitle': 'Optimal solutions for every industry and field',
-    
+
     // News Page
     'news.title': 'News',
     'news.description': 'Latest updates about KSB Group and food industry',
     'news.latest': 'Latest News',
     'news.readMore': 'Read More',
-    
+
     // News Detail Page
     'news.detail.title': 'News',
     'news.detail.breadcrumb.home': 'Home',
@@ -710,7 +702,7 @@ const translations = {
     'news.category.company': 'Company News',
     'news.category.industry': 'Industry News',
     'news.category.events': 'Events',
-    
+
     // Statistics Section
     'stats.employees': 'Personnel',
     'stats.coverage': 'Coverage',
@@ -722,7 +714,7 @@ const translations = {
     'stats.distribution.showroom': 'SHOWROOM',
     'stats.distribution.specialty': 'SPECIALTY',
     'stats.distribution.b2b': 'B2B',
-    
+
     // Job Listings
     'jobs.title': 'Open Positions',
     'jobs.subtitle': 'Find career opportunities that match you',
@@ -746,12 +738,12 @@ const translations = {
     'jobs.noJobs': 'No matching positions found',
     'jobs.loading': 'Loading...',
     'jobs.error': 'Error loading data',
-    
+
     // Job Card Labels
     'jobs.card.position': 'Position',
     'jobs.card.workArea': 'Work Area',
     'jobs.card.description': 'Job Description',
-    
+
     // Common
     'common.loading': 'Loading...',
     'common.error': 'An error occurred',
@@ -762,12 +754,12 @@ const translations = {
     'common.confirm': 'Confirm',
     'common.yes': 'Yes',
     'common.no': 'No',
-    
+
     // Common
     'common.readMore': 'Read more',
     'common.viewAll': 'View all',
     'common.learnMore': 'Learn more',
-    
+
     // Page Metadata
     'meta.home.title': 'KSB Group - Leading Trends, Building the Future',
     'meta.home.description': 'Multi-industry ecosystem with core business areas: Chemicals - Cosmetics, Candy Manufacturing, Import & Distribution of Food and Consumer Goods.',
@@ -785,31 +777,31 @@ const translations = {
     'meta.ecosystem.description': 'Explore KSB Group diverse ecosystem with comprehensive brands, services and solutions',
     'common.contact': 'Contact',
     'language.switch': 'Switch to Vietnamese',
-    
+
     // Ecosystem Services
     'ecosystem.services.title': 'KSB Group Ecosystem',
     'ecosystem.services.description': 'Explore our diverse business areas',
-    
-    
+
+
     // KSB Group Section
     'ksbgroup.title': 'Multi-industry Ecosystem',
     'ksbgroup.subtitle': 'Leading Trends, Building the Future',
-    'ksbgroup.fnb.title': 'F&B',
-    'ksbgroup.fnb.desc': 'Bonchon, Trung Nguyen Legend Cafe - Leading F&B brands, creating premium culinary experiences',
+    'ksbgroup.fnb.title': 'CANDY PRODUCTION',
+    'ksbgroup.fnb.desc': 'Specializing in research and production of high-quality hard candies with ISO 22000 standard factory',
     'ksbgroup.cosmetics.title': 'COSMETICS',
     'ksbgroup.cosmetics.desc': 'Biofresh and premium imported cosmetics from Europe, meeting modern beauty needs',
     'ksbgroup.food.title': 'FOOD',
     'ksbgroup.food.desc': 'Choco Samjin, Ecobin, Bach Moc An, KangNam - Multi-industry model optimizing resources, proactive supply chain',
     'ksbgroup.consumer.title': 'CONSUMER',
     'ksbgroup.consumer.desc': 'Imported consumer goods: Choco Samjin, Boring Oat Milk. Unique experience for Vietnamese consumers.',
-    
+
     // KSB Group - Technology
     'ksbgroup.technology.title': 'TECHNOLOGY',
     'ksbgroup.technology.desc': 'Applying technology, expanding the ecosystem. Elevating the experience, leading digital transformation.',
-    
+
     // Ecosystem Detail Section
     'ecosystem.detail.navigation.title': 'Business Areas',
-    
+
     // Ecosystem Services - Cosmetics
     'ecosystem.services.cosmetics.title': 'Chemicals - Cosmetics System',
     'ecosystem.services.cosmetics.subtitle': 'Nature\'s essence, global technology',
@@ -819,7 +811,7 @@ const translations = {
     'ecosystem.services.cosmetics.products.title': 'Main Product Lines',
     'ecosystem.services.cosmetics.products.description': 'Main product lines such as the Rose of Bulgaria line use pure rose water from Rosa Damascena flowers, natural extracts, free of parabens, silicones, mineral oils or harmful preservatives, suitable for all skin types, including the most sensitive skin.',
     'ecosystem.services.cosmetics.goal': 'Continuously expanding product portfolio and improving service standards, KSB GROUP aims to become a trusted bridge between Vietnamese consumers and safe - effective - trend-leading cosmetics from around the world.',
-    
+
     // Ecosystem Services - Food Production
     'ecosystem.services.food.title': 'Food Production & Distribution',
     'ecosystem.services.food.subtitle': 'Manufacturing & Importing, Distribution of High-Quality Food and Consumer Goods',
@@ -832,14 +824,8 @@ const translations = {
     'ecosystem.services.food.bachmocan.description': 'Importer and distributor of diverse food, consumer and chemical - cosmetic products from many countries. Bach Moc An owns a distribution system with more than 85 distributors nationwide, serving both traditional and modern channels.',
     'ecosystem.services.food.kangnam.title': 'KangNam Investment Group Co., Ltd.',
     'ecosystem.services.food.kangnam.description': 'Exclusive importer and distributor of the premium Boring oat milk line from New Zealand - a product favored in developed markets thanks to its mildness and plant nutritional value.',
-    
-    // Ecosystem Services - Frozen Food
-    'ecosystem.services.frozen.title': 'Frozen Food',
-    'ecosystem.services.frozen.subtitle': 'KSB Group launches Premium Arctic Shrimp Project: Affirming position in premium food segment',
-    'ecosystem.services.frozen.description': 'We are pleased to announce an important milestone in the Group\'s development strategy: officially launching the Premium Arctic Shrimp Project. This is a strategic move to diversify the product portfolio, while affirming the position and vision of KSB Group in the field of importing and distributing premium food.',
-    'ecosystem.services.frozen.quality': 'The Premium Arctic Shrimp Project is proof of our commitment to superior quality. Products are imported directly from Greenland, a sea area famous for its wild-caught shrimp source. With unique flavor and natural quality, the product promises to bring a premium culinary experience to Vietnamese consumers.',
-    'ecosystem.services.quality.title': 'Superior Quality',
-    'ecosystem.services.frozen.vision': 'We believe that with this project, KSB Group will not only meet the increasing needs of the market, but also create new, sustainable values for the community.',
+
+
   }
 };
 

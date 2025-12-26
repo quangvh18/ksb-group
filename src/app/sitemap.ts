@@ -3,7 +3,7 @@ import { newsService, transformNewsItem, fallbackNewsData } from '../services/ne
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://ksbgroup.vn'
-  
+
   // Static pages
   const staticPages = [
     {
@@ -60,8 +60,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let newsPages: MetadataRoute.Sitemap = []
   try {
     const newsData = await newsService.getNews(1, 100) // Get more news for sitemap
+
+    if (!newsData || newsData.length === 0) {
+      throw new Error('No news data received from service');
+    }
+
     const transformedNews = newsData.map(transformNewsItem)
-    
+
     newsPages = transformedNews.map((news) => {
       const slug = news.title
         .toLowerCase()
@@ -72,7 +77,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         .replace(/[^a-z0-9\s-]/g, "")
         .replace(/\s+/g, "-")
         .trim()
-      
+
       // Parse date safely
       let lastModified = new Date()
       try {
@@ -83,7 +88,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       } catch {
         console.warn('Invalid date for news item:', news.date)
       }
-      
+
       return {
         url: `${baseUrl}/news/${slug}`,
         lastModified: lastModified,
@@ -104,7 +109,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         .replace(/[^a-z0-9\s-]/g, "")
         .replace(/\s+/g, "-")
         .trim()
-      
+
       // Parse date safely for fallback data
       let lastModified = new Date()
       try {
@@ -115,7 +120,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       } catch {
         console.warn('Invalid date for fallback news item:', news.date)
       }
-      
+
       return {
         url: `${baseUrl}/news/${slug}`,
         lastModified: lastModified,

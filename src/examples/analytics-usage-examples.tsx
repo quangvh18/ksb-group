@@ -16,7 +16,7 @@ export function ContactButton() {
   const handleClick = () => {
     // Track button click với location context
     gtag.trackButtonClick('Contact Us', 'Homepage Header');
-    
+
     // Sau đó thực hiện action
     window.location.href = '/contact';
   };
@@ -39,17 +39,17 @@ export function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     try {
       // Track form submission
       gtag.trackFormSubmit('Contact Form - Homepage');
-      
+
       // Submit form logic here
       const response = await fetch('/api/contact', {
         method: 'POST',
         body: JSON.stringify(formData)
       });
-      
+
       if (response.ok) {
         // Track successful submission
         gtag.event({
@@ -81,7 +81,7 @@ export function DownloadBrochure() {
   const handleDownload = (fileName: string) => {
     // Track download event
     gtag.trackDownload(fileName);
-    
+
     // Trigger download
     const link = document.createElement('a');
     link.href = `/downloads/${fileName}`;
@@ -105,9 +105,9 @@ export function PartnerLink({ url, name }: { url: string; name: string }) {
   };
 
   return (
-    <a 
-      href={url} 
-      target="_blank" 
+    <a
+      href={url}
+      target="_blank"
       rel="noopener noreferrer"
       onClick={handleClick}
     >
@@ -158,11 +158,11 @@ export function SearchBar() {
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (searchTerm.trim()) {
       // Track search query
       gtag.trackSearch(searchTerm);
-      
+
       // Perform search
       window.location.href = `/search?q=${encodeURIComponent(searchTerm)}`;
     }
@@ -194,7 +194,7 @@ export function ScrollDepthTracker() {
 
     // Track at 25%, 50%, 75%, 100%
     const milestones = [25, 50, 75, 100];
-    
+
     milestones.forEach(milestone => {
       if (scrollPercentage >= milestone && !trackedDepths.includes(milestone)) {
         gtag.trackScrollDepth(milestone);
@@ -332,7 +332,6 @@ export function TabComponent() {
     <div>
       <button onClick={() => handleTabClick('Thực phẩm')}>Thực phẩm</button>
       <button onClick={() => handleTabClick('Mỹ phẩm')}>Mỹ phẩm</button>
-      <button onClick={() => handleTabClick('Thực phẩm đông lạnh')}>Thực phẩm đông lạnh</button>
     </div>
   );
 }
@@ -360,7 +359,7 @@ export function LanguageSwitcher() {
       category: 'settings',
       label: language
     });
-    
+
     // Change language logic
     localStorage.setItem('language', language);
   };

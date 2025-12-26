@@ -7,7 +7,8 @@ import StatsWithMap from '../components/StatsWithMap'
 import type { Metadata } from 'next'
 
 // Disable caching for this page to ensure fresh data
-export const revalidate = 0
+// Revalidate this page every hour to ensure fresh data while maintaining performance
+export const revalidate = 3600
 
 const Banner = dynamic(() => import('../components/Banner'))
 // const KSBGroupSection = dynamic(() => import('../components/KSBGroupSection'))
@@ -66,6 +67,13 @@ export const metadata: Metadata = {
 async function getNewsData(): Promise<TransformedNewsItem[]> {
   try {
     const newsData = await newsService.getNews(1, 2); // Lấy 2 bài tin tức cho trang chủ
+
+    // If newsData is empty (due to error or no data), use fallback
+    if (!newsData || newsData.length === 0) {
+      console.log('No news data received, using fallback');
+      return fallbackNewsData.slice(0, 2);
+    }
+
     return newsData.map(transformNewsItem);
   } catch (error) {
     console.error('Error fetching news data:', error);
@@ -92,7 +100,7 @@ export default async function Home() {
         {/* Stats with Map Section - replaced AboutFootprint */}
         <StatsWithMap />
 
-        
+
         {/* Brand Section moved to separate component; not rendered here */}
       </main>
     </div>

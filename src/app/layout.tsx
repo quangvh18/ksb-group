@@ -23,15 +23,14 @@ export const metadata: Metadata = {
     template: "%s | KSB Group"
   },
   applicationName: "KSB Group",
-  description: "KSB Group - Tập đoàn kinh doanh đa ngành với các lĩnh vực: Hóa - Mỹ phẩm (Biofresh), Sản xuất & Phân phối thực phẩm, Thực phẩm đông lạnh. Đối tác tin cậy, chất lượng quốc tế, phục vụ thị trường Việt Nam.",
+  description: "KSB Group - Tập đoàn kinh doanh đa ngành với các lĩnh vực: Hóa - Mỹ phẩm (Biofresh), Sản xuất & Phân phối thực phẩm. Đối tác tin cậy, chất lượng quốc tế, phục vụ thị trường Việt Nam.",
   keywords: [
     "KSB Group",
-    "tập đoàn KSB", 
+    "tập đoàn KSB",
     "hệ sinh thái kinh doanh",
     "Biofresh",
     "mỹ phẩm thiên nhiên",
     "thực phẩm nhập khẩu",
-    "tôm Bắc Cực",
     "công ty Việt Nam",
     "đối tác kinh doanh",
     "phân phối độc quyền",
@@ -65,7 +64,7 @@ export const metadata: Metadata = {
     url: 'https://ksbgroup.vn',
     siteName: 'KSB Group',
     title: 'KSB Group - Tập đoàn KSB | Hệ sinh thái kinh doanh đa ngành',
-    description: 'KSB Group - Tập đoàn kinh doanh đa ngành với các lĩnh vực: Hóa - Mỹ phẩm (Biofresh), Sản xuất & Phân phối thực phẩm, Thực phẩm đông lạnh. Đối tác tin cậy, chất lượng quốc tế.',
+    description: 'KSB Group - Tập đoàn kinh doanh đa ngành với các lĩnh vực: Hóa - Mỹ phẩm (Biofresh), Sản xuất & Phân phối thực phẩm. Đối tác tin cậy, chất lượng quốc tế.',
     images: [
       {
         url: 'https://ksbgroup.vn/images/ksb.jpg',
@@ -93,7 +92,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'KSB Group - Tập đoàn KSB | Hệ sinh thái kinh doanh đa ngành',
-    description: 'KSB Group - Tập đoàn kinh doanh đa ngành với các lĩnh vực: Hóa - Mỹ phẩm (Biofresh), Sản xuất & Phân phối thực phẩm, Thực phẩm đông lạnh.',
+    description: 'KSB Group - Tập đoàn kinh doanh đa ngành với các lĩnh vực: Hóa - Mỹ phẩm (Biofresh), Sản xuất & Phân phối thực phẩm.',
     images: ['https://ksbgroup.vn/images/ksb.jpg'],
     creator: '@ksbgroup',
     site: '@ksbgroup',
@@ -140,11 +139,11 @@ export const metadata: Metadata = {
     'og:locale': 'vi_VN',
     'og:url': 'https://ksbgroup.vn',
     'og:title': 'KSB Group - Tập đoàn KSB | Hệ sinh thái kinh doanh đa ngành',
-    'og:description': 'KSB Group - Tập đoàn kinh doanh đa ngành với các lĩnh vực: Hóa - Mỹ phẩm (Biofresh), Sản xuất & Phân phối thực phẩm, Thực phẩm đông lạnh.',
+    'og:description': 'KSB Group - Tập đoàn kinh doanh đa ngành với các lĩnh vực: Hóa - Mỹ phẩm (Biofresh), Sản xuất & Phân phối thực phẩm.',
     'og:image': 'https://ksbgroup.vn/images/ksb.jpg',
     'twitter:card': 'summary_large_image',
     'twitter:title': 'KSB Group - Tập đoàn KSB | Hệ sinh thái kinh doanh đa ngành',
-    'twitter:description': 'KSB Group - Tập đoàn kinh doanh đa ngành với các lĩnh vực: Hóa - Mỹ phẩm (Biofresh), Sản xuất & Phân phối thực phẩm, Thực phẩm đông lạnh.',
+    'twitter:description': 'KSB Group - Tập đoàn kinh doanh đa ngành với các lĩnh vực: Hóa - Mỹ phẩm (Biofresh), Sản xuất & Phân phối thực phẩm.',
     'twitter:image': 'https://ksbgroup.vn/images/ksb.jpg',
   },
 };
@@ -176,11 +175,11 @@ export default function RootLayout({
         <LanguageProvider>
           <AnalyticsProvider>
             <AOSProvider>
-              <StructuredData 
-                type="organization" 
+              <StructuredData
+                type="organization"
                 data={{
                   name: "KSB Group",
-                  description: "Tập đoàn KSB - Hệ sinh thái kinh doanh đa ngành với các lĩnh vực: Hóa - Mỹ phẩm (Biofresh), Sản xuất & Phân phối thực phẩm, Thực phẩm đông lạnh. Đối tác tin cậy, chất lượng quốc tế, phục vụ thị trường Việt Nam.",
+                  description: "Tập đoàn KSB - Hệ sinh thái kinh doanh đa ngành với các lĩnh vực: Hóa - Mỹ phẩm (Biofresh), Sản xuất & Phân phối thực phẩm. Đối tác tin cậy, chất lượng quốc tế, phục vụ thị trường Việt Nam.",
                   url: "https://ksbgroup.vn",
                   logo: "https://ksbgroup.vn/images/logo-header.png",
                   foundingDate: "2020",

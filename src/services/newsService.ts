@@ -87,14 +87,14 @@ export class NewsService {
             'Content-Type': 'application/json',
             ...(this.apiKey && { 'Authorization': `Bearer ${this.apiKey}` })
           },
-          timeout: 10000, // 10 seconds timeout
+          timeout: 5000, // 5 seconds timeout
         }
       );
 
       return response.data.data;
     } catch (error) {
       console.error('Error fetching news:', error);
-      throw new Error('Failed to fetch news data');
+      return [];
     }
   }
 
@@ -115,7 +115,7 @@ export class NewsService {
             'Content-Type': 'application/json',
             ...(this.apiKey && { 'Authorization': `Bearer ${this.apiKey}` })
           },
-          timeout: 10000, // 10 seconds timeout
+          timeout: 5000, // 5 seconds timeout
         }
       );
 
@@ -125,7 +125,7 @@ export class NewsService {
       };
     } catch (error) {
       console.error('Error fetching news with metadata:', error);
-      throw new Error('Failed to fetch news data');
+      return { data: [], total: 0 };
     }
   }
 
@@ -142,7 +142,7 @@ export class NewsService {
             'Content-Type': 'application/json',
             ...(this.apiKey && { 'Authorization': `Bearer ${this.apiKey}` })
           },
-          timeout: 10000,
+          timeout: 5000,
         }
       );
 
@@ -177,7 +177,7 @@ export class NewsService {
       return response.data.data;
     } catch (error) {
       console.error(`Error fetching news for category ${categoryName}:`, error);
-      throw new Error(`Failed to fetch news for category ${categoryName}`);
+      return [];
     }
   }
 
@@ -206,7 +206,7 @@ export class NewsService {
       return response.data.data;
     } catch (error) {
       console.error(`Error searching news with query "${query}":`, error);
-      throw new Error(`Failed to search news with query "${query}"`);
+      return [];
     }
   }
 }
@@ -233,10 +233,10 @@ export const transformNewsItem = (news: NewsItem): TransformedNewsItem => {
   const getImageUrl = () => {
     if (news.featuredImage) {
       // Try different formats in order of preference
-      return news.featuredImage.formats?.medium?.url || 
-             news.featuredImage.formats?.small?.url || 
-             news.featuredImage.formats?.large?.url || 
-             news.featuredImage.url;
+      return news.featuredImage.formats?.medium?.url ||
+        news.featuredImage.formats?.small?.url ||
+        news.featuredImage.formats?.large?.url ||
+        news.featuredImage.url;
     }
     return "/images/news-1.jpg";
   };
@@ -269,13 +269,13 @@ export const transformNewsItem = (news: NewsItem): TransformedNewsItem => {
     title: news.title || "Tiêu đề không có",
     description: getDescription(),
     image: fullImageUrl,
-    date: news.publishedAt ? 
-      new Date(news.publishedAt).toLocaleDateString('vi-VN', { 
-        month: '2-digit', 
-        day: '2-digit' 
+    date: news.publishedAt ?
+      new Date(news.publishedAt).toLocaleDateString('vi-VN', {
+        month: '2-digit',
+        day: '2-digit'
       }) : "01-01",
     category: "Tin tức", // Default category since not provided in new structure
-    fullDate: news.publishedAt ? 
+    fullDate: news.publishedAt ?
       new Date(news.publishedAt).toLocaleDateString('vi-VN') : "01/01/2024",
     content: news.content || [],
     altText: news.featuredImage?.alternativeText || news.title || "News image"
@@ -297,7 +297,7 @@ export const fallbackNewsData: TransformedNewsItem[] = [
   },
   {
     id: 2,
-    image: "/images/news-2.jpg", 
+    image: "/images/news-2.jpg",
     title: "Samyuk Foods đã tổ chức sự kiện kỷ niệm ngày ra mắt sản phẩm Sữa đậu nành",
     date: "09-11",
     description: "Sự kiện kỷ niệm đánh dấu một cột mốc quan trọng trong lịch sử phát triển của Samyuk Foods với dòng sản phẩm sữa đậu nành.",
@@ -310,7 +310,7 @@ export const fallbackNewsData: TransformedNewsItem[] = [
     id: 3,
     image: "/images/news-3.jpg",
     title: "Samyuk Foods đứng đầu hạng mục sữa đậu nành tại Hàn Quốc, Trung Quốc và Việt Nam",
-    date: "08-28", 
+    date: "08-28",
     description: "Với chất lượng vượt trội và hương vị độc đáo, Samyuk Foods đã khẳng định vị thế dẫn đầu trong ngành sữa đậu nành.",
     category: "Tin tức",
     fullDate: "28/08/2024",
