@@ -43,7 +43,7 @@ export default function ServicesSection() {
         t('services.candy.bullet2'),
         t('services.candy.bullet3'),
       ],
-      image: '/images/home-page/keo.webp',
+      image: '/images/home-page/keo.webp?v=2',
     },
     {
       title: t('services.import.title'),
