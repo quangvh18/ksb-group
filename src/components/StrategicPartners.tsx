@@ -22,8 +22,8 @@ export default function StrategicPartners() {
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-8 items-center justify-center" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
           <div className="item text-center flex flex-col items-center justify-center" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
             <a href="#" className="block hover:scale-105 transition-transform duration-300 flex flex-col items-center justify-center">
-              <Image src="/images/parters/crown.webp" alt="Crown" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
-              <div className="name text-base font-medium text-gray-700 mt-3">Crown</div>
+              <Image src="/images/parters/apart.webp" alt="Apart" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
+              <div className="name text-base font-medium text-gray-700 mt-3">Apart</div>
             </a>
           </div>
           <div className="item text-center flex flex-col items-center justify-center" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
@@ -34,32 +34,32 @@ export default function StrategicPartners() {
           </div>
           <div className="item text-center flex flex-col items-center justify-center" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300">
             <a href="#" className="block hover:scale-105 transition-transform duration-300 flex flex-col items-center justify-center">
-              <Image src="/images/parters/lotte.webp" alt="Lotte" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
-              <div className="name text-base font-medium text-gray-700 mt-3">Lotte</div>
+              <Image src="/images/parters/fucsia.webp" alt="Tulipán Negro" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
+              <div className="name text-base font-medium text-gray-700 mt-3">Tulipán Negro</div>
             </a>
           </div>
           <div className="item text-center flex flex-col items-center justify-center" data-aos="fade-up" data-aos-duration="600" data-aos-delay="400">
-            <a href="#" className="block hover:scale-105 transition-transform duration-300 flex flex-col items-center justify-center">
-              <Image src="/images/parters/melland.webp" alt="Melland" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
-              <div className="name text-base font-medium text-gray-700 mt-3">Melland</div>
-            </a>
-          </div>
-          <div className="item text-center flex flex-col items-center justify-center" data-aos="fade-up" data-aos-duration="600" data-aos-delay="500">
             <a href="#" className="block hover:scale-105 transition-transform duration-300 flex flex-col items-center justify-center">
               <Image src="/images/parters/queen-bin.webp" alt="Queen Bin" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
               <div className="name text-base font-medium text-gray-700 mt-3">Queen Bin</div>
             </a>
           </div>
-          <div className="item text-center flex flex-col items-center justify-center" data-aos="fade-up" data-aos-duration="600" data-aos-delay="600">
+          <div className="item text-center flex flex-col items-center justify-center" data-aos="fade-up" data-aos-duration="600" data-aos-delay="500">
             <a href="#" className="block hover:scale-105 transition-transform duration-300 flex flex-col items-center justify-center">
               <Image src="/images/parters/sahmyhook-food.webp" alt="Sahmyhook Foods" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
               <div className="name text-base font-medium text-gray-700 mt-3">Sahmyhook Foods</div>
             </a>
           </div>
-          <div className="item text-center flex flex-col items-center justify-center" data-aos="fade-up" data-aos-duration="600" data-aos-delay="700">
+          <div className="item text-center flex flex-col items-center justify-center" data-aos="fade-up" data-aos-duration="600" data-aos-delay="600">
             <a href="#" className="block hover:scale-105 transition-transform duration-300 flex flex-col items-center justify-center">
               <Image src="/images/parters/samjin-corporation.webp" alt="Samjin Corporation" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
               <div className="name text-base font-medium text-gray-700 mt-3">Samjin Corporation</div>
+            </a>
+          </div>
+          <div className="item text-center flex flex-col items-center justify-center" data-aos="fade-up" data-aos-duration="600" data-aos-delay="700">
+            <a href="#" className="block hover:scale-105 transition-transform duration-300 flex flex-col items-center justify-center">
+              <Image src="/images/parters/seoul_food.webp" alt="Seoul Food" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
+              <div className="name text-base font-medium text-gray-700 mt-3">Seoul Food</div>
             </a>
           </div>
           <div className="item text-center flex flex-col items-center justify-center" data-aos="fade-up" data-aos-duration="600" data-aos-delay="800">

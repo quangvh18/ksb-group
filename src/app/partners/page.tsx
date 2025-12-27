@@ -21,7 +21,7 @@ interface IndustryPartners {
 
 export default function PartnersPage() {
   const { t } = useLanguage();
-  
+
   const breadcrumbItems = [
     { label: t('nav.home'), href: "/" },
     { label: t('nav.partners'), isActive: true }
@@ -83,9 +83,8 @@ export default function PartnersPage() {
 
   // Function to render professional icons
   const renderIcon = (iconType: string, isActive: boolean) => {
-    const iconClass = `w-6 h-6 transition-all duration-300 ${
-      isActive ? 'text-white' : 'text-gray-600 group-hover:text-white'
-    }`;
+    const iconClass = `w-6 h-6 transition-all duration-300 ${isActive ? 'text-white' : 'text-gray-600 group-hover:text-white'
+      }`;
 
     switch (iconType) {
       case 'growth':
@@ -135,9 +134,9 @@ export default function PartnersPage() {
           const timeElapsed = currentTime - start;
           const progress = Math.min(timeElapsed / duration, 1);
           const ease = easeInOutCubic(progress);
-          
+
           window.scrollTo(0, startPosition + distance * ease);
-          
+
           if (timeElapsed < duration) {
             requestAnimationFrame(animation);
           }
@@ -161,20 +160,20 @@ export default function PartnersPage() {
 
     return () => {
       applyLinks.forEach(link => {
-        link.removeEventListener('click', () => {});
+        link.removeEventListener('click', () => { });
       });
     };
   }, []);
 
   return (
     <div>
-      <PageHeader 
+      <PageHeader
         title={t('partners.title')}
         description={t('partners.intro.description')}
         breadcrumbItems={breadcrumbItems}
         bannerImage="/images/careers-page/banner.png"
       />
-      
+
       {/* Company Introduction Section */}
       <div className="bg-white py-16" data-aos="fade-up">
         <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
@@ -183,26 +182,26 @@ export default function PartnersPage() {
             <div className="relative order-2 lg:order-1" data-aos="zoom-in" data-aos-delay="200">
               {/* Shadow div with same size and leaf style */}
               <div className="absolute top-0 left-0 w-full h-full bg-gray-200 rounded-[3rem_0rem_3rem_0rem] transform translate-x-8 translate-y-8 z-0"></div>
-              
+
               {/* Company image with right and bottom offset */}
-              <Image 
-                src="/images/partner-page/partner.webp" 
+              <Image
+                src="/images/partner-page/partner.webp"
                 alt="KSB Group Partners"
                 width={600}
                 height={400}
                 className="w-full h-auto rounded-[3rem_0rem_3rem_0rem] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),0_4px_16px_-4px_rgba(0,0,0,0.1)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] cursor-pointer relative z-10"
               />
-              
+
               {/* Pink tint overlay */}
               <div className="absolute inset-0 bg-opacity-10 to-transparent rounded-[3rem_0rem_3rem_0rem] z-20"></div>
             </div>
-            
+
             {/* Text Content - Right Side */}
             <div className="space-y-8 order-1 lg:order-2">
               <h2 className="text-4xl md:text-5xl font-bold text-muted-foreground leading-tight" data-aos="fade-up" data-aos-delay="100">
                 {t('partners.intro.title')}
               </h2>
-              
+
               <p className="text-base text-muted-foreground leading-relaxed" data-aos="fade-up" data-aos-delay="150">
                 {t('partners.intro.description')}
               </p>
@@ -267,10 +266,9 @@ export default function PartnersPage() {
                           className={`group flex items-center h-16 md:h-[80px] gap-[20px] p-4 cursor-pointer transition-all duration-500 ease-out relative transform-gpu will-change-transform
                             ${index === 0 ? 'rounded-tl-[2rem]' : ''}
                             ${index === industryPartnersData.length - 1 ? 'rounded-br-[2rem]' : ''}
-                            ${
-                              isActive
-                                ? 'bg-[#bb252d] text-white shadow-lg scale-[1.02]'
-                                : 'hover:bg-[#bb252d] hover:text-white hover:scale-[1.01] hover:shadow-md'
+                            ${isActive
+                              ? 'bg-[#bb252d] text-white shadow-lg scale-[1.02]'
+                              : 'hover:bg-[#bb252d] hover:text-white hover:scale-[1.01] hover:shadow-md'
                             }
                             border-b ${shouldHideBorder ? 'border-transparent' : 'border-gray-200'}
                             ${!isActive ? 'last:border-b-0' : ''}
@@ -296,9 +294,8 @@ export default function PartnersPage() {
               {/* Cột danh sách đối tác */}
               <div className="w-full md:w-[60%] lg:w-[65%] flex items-center justify-center p-4">
                 <div
-                  className={`flex flex-wrap gap-3 md:gap-4 justify-center items-center transition-all duration-700 ease-out ${
-                    isFading ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'
-                  }`}
+                  className={`flex flex-wrap gap-3 md:gap-4 justify-center items-center transition-all duration-700 ease-out ${isFading ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'
+                    }`}
                 >
                   {partners.map((partner, index) => (
                     <div
@@ -322,10 +319,10 @@ export default function PartnersPage() {
                     >
                       {/* Decorative background gradient */}
                       <div className="absolute inset-0 bg-gradient-to-br from-red-50 via-transparent to-orange-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      
+
                       {/* Animated border */}
                       <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-[#bb252d] via-orange-500 to-[#bb252d] opacity-0 group-hover:opacity-5 blur-sm transition-all duration-300"></div>
-                      
+
                       <div className="relative z-10">
                         <div className="mb-4">
                           <h3 className="text-xl font-bold text-gray-800 group-hover:text-[#bb252d] transition-colors duration-300 mb-2">
@@ -333,32 +330,32 @@ export default function PartnersPage() {
                           </h3>
                           {/* Add a subtle badge */}
                           <div className="inline-block px-3 py-1 bg-gradient-to-r from-red-100 to-orange-100 rounded-full text-xs font-medium text-[#bb252d] group-hover:from-red-200 group-hover:to-orange-200 transition-all duration-300">
-                            {partner.name.includes('2022') || partner.name.includes('2023') || partner.name.includes('2024') ? 'Doanh thu' : 
-                             partner.name.includes('F&B') ? 'Thương hiệu' :
-                             partner.name.includes('Mỹ phẩm') ? 'Làm đẹp' :
-                             partner.name.includes('Sản xuất') ? 'Sản xuất' : 'Hệ thống'}
+                            {partner.name.includes('2022') || partner.name.includes('2023') || partner.name.includes('2024') ? 'Doanh thu' :
+                              partner.name.includes('F&B') ? 'Thương hiệu' :
+                                partner.name.includes('Mỹ phẩm') ? 'Làm đẹp' :
+                                  partner.name.includes('Sản xuất') ? 'Sản xuất' : 'Hệ thống'}
                           </div>
                         </div>
 
                         <p className="text-sm text-gray-700 leading-relaxed group-hover:text-gray-800 transition-colors duration-300">
                           {partner.description}
                         </p>
-                        
+
                         {/* Animated progress bar for growth items */}
                         {(partner.name.includes('2022') || partner.name.includes('2023') || partner.name.includes('2024')) && (
                           <div className="mt-4">
                             <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
-                              <div 
+                              <div
                                 className="h-2 bg-gradient-to-r from-[#bb252d] to-orange-500 rounded-full transition-all duration-500 ease-out"
                                 style={{
-                                  width: partner.name.includes('2022') ? '60%' : 
-                                         partner.name.includes('2023') ? '80%' : '100%'
+                                  width: partner.name.includes('2022') ? '60%' :
+                                    partner.name.includes('2023') ? '80%' : '100%'
                                 }}
                               ></div>
-                              </div>
                             </div>
+                          </div>
                         )}
-                        
+
                         {/* Floating particles effect */}
                         <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-[#bb252d] to-orange-500 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-ping transition-opacity duration-300"></div>
                         <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-gradient-to-r from-orange-500 to-[#bb252d] rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-pulse transition-opacity duration-300 delay-150"></div>
@@ -389,8 +386,8 @@ export default function PartnersPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-8" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="400">
             <div className="item text-center" data-aos="flip-up" data-aos-duration="800" data-aos-delay="100">
               <a href="#" className="block hover:scale-105 transition-transform duration-300">
-                <Image src="/images/parters/crown.webp" alt="Crown" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
-                <div className="name text-base font-medium text-gray-700 mt-3">Crown</div>
+                <Image src="/images/parters/apart.webp" alt="Apart" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
+                <div className="name text-base font-medium text-gray-700 mt-3">Apart</div>
               </a>
             </div>
             <div className="item text-center" data-aos="flip-up" data-aos-duration="800" data-aos-delay="200">
@@ -401,32 +398,32 @@ export default function PartnersPage() {
             </div>
             <div className="item text-center" data-aos="flip-up" data-aos-duration="800" data-aos-delay="300">
               <a href="#" className="block hover:scale-105 transition-transform duration-300">
-                <Image src="/images/parters/lotte.webp" alt="Lotte" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
-                <div className="name text-base font-medium text-gray-700 mt-3">Lotte</div>
+                <Image src="/images/parters/fucsia.webp" alt="Tulipán Negro" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
+                <div className="name text-base font-medium text-gray-700 mt-3">Tulipán Negro</div>
               </a>
             </div>
             <div className="item text-center" data-aos="flip-up" data-aos-duration="800" data-aos-delay="400">
-              <a href="#" className="block hover:scale-105 transition-transform duration-300">
-                <Image src="/images/parters/melland.webp" alt="Melland" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
-                <div className="name text-base font-medium text-gray-700 mt-3">Melland</div>
-              </a>
-            </div>
-            <div className="item text-center" data-aos="flip-up" data-aos-duration="800" data-aos-delay="500">
               <a href="#" className="block hover:scale-105 transition-transform duration-300">
                 <Image src="/images/parters/queen-bin.webp" alt="Queen Bin" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
                 <div className="name text-base font-medium text-gray-700 mt-3">Queen Bin</div>
               </a>
             </div>
-            <div className="item text-center" data-aos="flip-up" data-aos-duration="800" data-aos-delay="600">
+            <div className="item text-center" data-aos="flip-up" data-aos-duration="800" data-aos-delay="500">
               <a href="#" className="block hover:scale-105 transition-transform duration-300">
                 <Image src="/images/parters/sahmyhook-food.webp" alt="Sahmyhook Foods" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
                 <div className="name text-base font-medium text-gray-700 mt-3">Sahmyhook Foods</div>
               </a>
             </div>
-            <div className="item text-center" data-aos="flip-up" data-aos-duration="800" data-aos-delay="700">
+            <div className="item text-center" data-aos="flip-up" data-aos-duration="800" data-aos-delay="600">
               <a href="#" className="block hover:scale-105 transition-transform duration-300">
                 <Image src="/images/parters/samjin-corporation.webp" alt="Samjin Corporation" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
                 <div className="name text-base font-medium text-gray-700 mt-3">Samjin Corporation</div>
+              </a>
+            </div>
+            <div className="item text-center" data-aos="flip-up" data-aos-duration="800" data-aos-delay="700">
+              <a href="#" className="block hover:scale-105 transition-transform duration-300">
+                <Image src="/images/parters/seoul_food.webp" alt="Seoul Food" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
+                <div className="name text-base font-medium text-gray-700 mt-3">Seoul Food</div>
               </a>
             </div>
             <div className="item text-center" data-aos="flip-up" data-aos-duration="800" data-aos-delay="800">
@@ -499,31 +496,31 @@ export default function PartnersPage() {
       {/* Contact Section */}
       <div className="bg-white py-16" data-aos="fade-up">
         <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
-          <div 
-            id="contact" 
-            className="qmenu_card icon_card group block bg-white border border-[#bb252d] rounded-[50px_0px_50px_0px] min-h-[400px] p-12 text-center shadow-lg transition-all duration-700 ease-out cursor-pointer relative overflow-hidden will-change-transform hover:-translate-y-2 hover:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.2),0_8px_30px_-5px_rgba(0,0,0,0.1)]" 
+          <div
+            id="contact"
+            className="qmenu_card icon_card group block bg-white border border-[#bb252d] rounded-[50px_0px_50px_0px] min-h-[400px] p-12 text-center shadow-lg transition-all duration-700 ease-out cursor-pointer relative overflow-hidden will-change-transform hover:-translate-y-2 hover:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.2),0_8px_30px_-5px_rgba(0,0,0,0.1)]"
             style={{
               boxShadow: '0 10px 30px -5px rgba(187, 37, 45, 0.3), 0 4px 15px -2px rgba(187, 37, 45, 0.2)',
               transform: 'translateY(0) translateZ(0)',
               backfaceVisibility: 'hidden',
               WebkitFontSmoothing: 'antialiased'
             }}
-            data-aos="fade-up" 
-            data-aos-duration="1000" 
+            data-aos="fade-up"
+            data-aos-duration="1000"
             data-aos-delay="600"
           >
-            
+
             {/* Single shimmer effect */}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white bg-opacity-10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out pointer-events-none"></div>
-            
+
             {/* Background decoration */}
             <div className="absolute top-4 right-4 w-16 h-16 bg-[#bb252d] bg-opacity-10 rounded-full transition-all duration-700 ease-out group-hover:scale-110 group-hover:bg-[#bb252d] group-hover:bg-opacity-20"></div>
             <div className="absolute bottom-4 left-4 w-12 h-12 bg-[#bb252d] bg-opacity-10 rounded-full transition-all duration-700 ease-out group-hover:scale-110 group-hover:bg-[#bb252d] group-hover:bg-opacity-20"></div>
-            
+
             <div className="relative z-10 text-center">
               {/* Icon */}
               <div className="qmenu_icon w-full h-[60px] mb-3 flex items-center justify-center">
-                <div 
+                <div
                   className="w-10 h-10 rounded-full bg-gradient-to-br from-[#bb252d]/10 to-[#bb252d]/20 flex items-center justify-center transition-all duration-700 ease-out group-hover:scale-105 group-hover:rotate-6 will-change-transform"
                   style={{
                     boxShadow: '0 4px 15px rgba(187, 37, 45, 0.1)'
@@ -560,10 +557,10 @@ export default function PartnersPage() {
                   </div>
                 </div>
               </div>
-              <a href="mailto:info@ksbgroup.vn" 
-                   className="inline-flex items-center text-base font-bold px-5 py-2.5 rounded-xl bg-[#bb252d] hover:bg-[#a0153a] text-white font-semibold shadow transition-colors duration-300"
-                >
-                  {t('partners.contact.button')}
+              <a href="mailto:info@ksbgroup.vn"
+                className="inline-flex items-center text-base font-bold px-5 py-2.5 rounded-xl bg-[#bb252d] hover:bg-[#a0153a] text-white font-semibold shadow transition-colors duration-300"
+              >
+                {t('partners.contact.button')}
               </a>
             </div>
           </div>
