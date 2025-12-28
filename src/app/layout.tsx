@@ -7,7 +7,7 @@ import AOSProvider from "../components/AOSProvider";
 import { LanguageProvider } from "../contexts/LanguageContext";
 import StructuredData from "../components/StructuredData";
 import PerformanceOptimizer from "../components/PerformanceOptimizer";
-import ZaloButton from "../components/ZaloButton";
+import FloatingContactButtons from "../components/FloatingContactButtons";
 import GoogleAnalytics from "../components/GoogleAnalytics";
 import AnalyticsProvider from "../components/AnalyticsProvider";
 
@@ -207,7 +207,7 @@ export default function RootLayout({
               <Header />
               {children}
               <Footer />
-              <ZaloButton />
+              <FloatingContactButtons />
             </AOSProvider>
           </AnalyticsProvider>
         </LanguageProvider>
