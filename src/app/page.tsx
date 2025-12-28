@@ -66,19 +66,36 @@ export const metadata: Metadata = {
 // Function để fetch news data using service
 async function getNewsData(): Promise<TransformedNewsItem[]> {
   try {
-    const newsData = await newsService.getNews(1, 2); // Lấy 2 bài tin tức cho trang chủ
+    // Lấy tất cả bài viết
+    const newsData = await newsService.getNews(1, 100);
 
-    // If newsData is empty (due to error or no data), use fallback
-    if (!newsData || newsData.length === 0) {
-      console.log('No news data received, using fallback');
+    // Danh sách slug của 2 bài viết cần hiển thị
+    const featuredSlugs = [
+      'ksb-group-don-doan-dai-su-new-zealand-den-tham-va-lam-viec-tai-van-phong-ha-noi',
+      'ksb-group-ky-bien-ban-ghi-nho-de-dua-san-pham-sua-yen-mach-cao-cap-new-zealand-vao-viet-nam'
+    ];
+
+    // Lọc ra 2 bài viết theo slug
+    const featuredNews = newsData.filter(news =>
+      featuredSlugs.includes(news.slug)
+    );
+
+    // Sắp xếp theo thứ tự trong featuredSlugs
+    const sortedNews = featuredSlugs
+      .map(slug => featuredNews.find(news => news.slug === slug))
+      .filter(news => news !== undefined);
+
+    // If featuredNews is empty (due to error or no data), use fallback
+    if (!sortedNews || sortedNews.length === 0) {
+      console.log('No featured news data found, using fallback');
       return fallbackNewsData.slice(0, 2);
     }
 
-    return newsData.map(transformNewsItem);
+    return sortedNews.map(transformNewsItem);
   } catch (error) {
     console.error('Error fetching news data:', error);
     // Return fallback data if API fails
-    return fallbackNewsData.slice(0, 2); // Lấy 2 bài đầu
+    return fallbackNewsData.slice(0, 2);
   }
 }
 
