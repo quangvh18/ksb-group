@@ -12,20 +12,13 @@ interface NewsDetailPageProps {
 // Generate metadata for SEO
 export async function generateMetadata({ params }: NewsDetailPageProps): Promise<Metadata> {
   try {
+    const { slug } = await params;
+
     // Get all news to find the one with matching slug
     const newsData = await newsService.getNews(1, 100);
     const news = newsData.find(item => {
-      // Convert title to slug for comparison
-      const titleSlug = item.title
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .replace(/đ/g, "d")
-        .replace(/Đ/g, "D")
-        .replace(/[^a-z0-9\s-]/g, "")
-        .replace(/\s+/g, "-")
-        .trim();
-      return titleSlug === params.slug;
+      // Use the slug field from API instead of generating from title
+      return item.slug === slug;
     });
 
     if (!news) {
@@ -71,5 +64,6 @@ export async function generateMetadata({ params }: NewsDetailPageProps): Promise
 }
 
 export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
-  return <NewsDetailClient slug={params.slug} />;
+  const { slug } = await params;
+  return <NewsDetailClient slug={slug} />;
 }

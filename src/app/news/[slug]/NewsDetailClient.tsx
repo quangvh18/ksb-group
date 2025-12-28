@@ -22,17 +22,8 @@ export default function NewsDetailClient({ slug }: NewsDetailClientProps) {
     try {
       const newsData = await newsService.getNews(1, 100);
       const news = newsData.find(item => {
-        // Convert title to slug for comparison
-        const titleSlug = item.title
-          .toLowerCase()
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "")
-          .replace(/đ/g, "d")
-          .replace(/Đ/g, "D")
-          .replace(/[^a-z0-9\s-]/g, "")
-          .replace(/\s+/g, "-")
-          .trim();
-        return titleSlug === slug;
+        // Use the slug field from API instead of generating from title
+        return item.slug === slug;
       });
 
       if (!news) {
@@ -61,7 +52,7 @@ export default function NewsDetailClient({ slug }: NewsDetailClientProps) {
         setLoading(false);
       }
     }
-    
+
     fetchNews();
   }, [slug]);
 
@@ -77,8 +68,8 @@ export default function NewsDetailClient({ slug }: NewsDetailClientProps) {
     <div>
       {/* Simple Page Header */}
       <div className="sub_page_head relative w-full overflow-hidden">
-        <Image 
-          src="/images/careers-page/banner.png" 
+        <Image
+          src="/images/careers-page/banner.png"
           alt="Banner"
           width={1200}
           height={400}
@@ -90,9 +81,9 @@ export default function NewsDetailClient({ slug }: NewsDetailClientProps) {
           zIndex: 10
         }}>
           <div className="w-full max-w-[95%] sm:max-w-[90%] md:max-w-[85%] lg:max-w-[80%] mx-auto">
-            <h2 
-              id="subpage_title" 
-              className="text-white text-sm xs:text-base sm:text-xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-1.5 sm:mb-2 md:mb-3 lg:mb-5 leading-tight break-words hyphens-auto" 
+            <h2
+              id="subpage_title"
+              className="text-white text-sm xs:text-base sm:text-xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-1.5 sm:mb-2 md:mb-3 lg:mb-5 leading-tight break-words hyphens-auto"
               style={{
                 color: '#ffffff',
                 textShadow: '2px 2px 6px rgba(0,0,0,0.9)',
@@ -115,29 +106,29 @@ export default function NewsDetailClient({ slug }: NewsDetailClientProps) {
         <div className="w-full container mx-auto px-2 md:px-5 max-w-[1300px] flex items-stretch">
           <nav className="flex items-stretch flex-wrap space-x-1 sm:space-x-2 text-xs sm:text-sm md:text-base w-full" aria-label="Breadcrumb">
             <div className="flex items-stretch">
-              <Link 
-                href="/" 
+              <Link
+                href="/"
                 className="flex items-center text-white px-2 sm:px-3 py-2 sm:py-2.5 rounded transition-all duration-200 cursor-pointer hover:bg-white/20 hover:text-white"
               >
                 <svg className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-1.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+                  <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
                 </svg>
                 <span className="font-medium whitespace-nowrap">{t('news.detail.breadcrumb.home')}</span>
               </Link>
             </div>
-            
+
             <div className="flex items-stretch">
               <div className="flex items-center mr-1 sm:mr-2">
                 <svg className="w-3 h-3 sm:w-4 sm:h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
                 </svg>
               </div>
-              <Link 
-                href="/news" 
+              <Link
+                href="/news"
                 className="flex items-center text-white px-2 sm:px-3 py-2 sm:py-2.5 rounded transition-all duration-200 cursor-pointer hover:bg-white/20 hover:text-white"
               >
                 <svg className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-1.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd"/>
+                  <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
                 </svg>
                 <span className="font-medium whitespace-nowrap">{t('news.detail.breadcrumb.news')}</span>
               </Link>
@@ -145,26 +136,26 @@ export default function NewsDetailClient({ slug }: NewsDetailClientProps) {
           </nav>
         </div>
       </div>
-      
+
       <main>
         <article className="bg-white py-16">
           <div className="container mx-auto px-2 md:px-5 max-w-4xl">
             {/* Article Header */}
             <header className="mb-12 text-center">
-              
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight text-justify">
-              {news.title}
-            </h1>
-            
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed text-justify mb-6">
-              {news.description}
-            </p>
-            
-            <div className="flex items-center justify-end mb-8 max-w-3xl mx-auto">
-              <span className="text-gray-600 text-sm font-medium">
-                {news.fullDate}
-              </span>
-            </div>
+
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight text-justify">
+                {news.title}
+              </h1>
+
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed text-justify mb-6">
+                {news.description}
+              </p>
+
+              <div className="flex items-center justify-end mb-8 max-w-3xl mx-auto">
+                <span className="text-gray-600 text-sm font-medium">
+                  {news.fullDate}
+                </span>
+              </div>
             </header>
 
             {/* Featured Image */}
@@ -185,10 +176,10 @@ export default function NewsDetailClient({ slug }: NewsDetailClientProps) {
 
             {/* Article Content */}
             <div className="prose prose-lg max-w-none">
-              <div 
+              <div
                 className="news-content"
-                dangerouslySetInnerHTML={{ 
-                  __html: renderContent(news.content) 
+                dangerouslySetInnerHTML={{
+                  __html: renderContent(news.content)
                 }}
               />
             </div>
@@ -199,7 +190,7 @@ export default function NewsDetailClient({ slug }: NewsDetailClientProps) {
                 <div className="text-sm text-gray-500">
                   <p>{t('news.detail.publishedDate')}: {news.fullDate}</p>
                 </div>
-                
+
                 <div className="flex items-center gap-4">
                   <Link
                     href="/news"
