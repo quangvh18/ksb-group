@@ -149,9 +149,9 @@ export default function Header() {
             <LanguageToggle />
 
             <div className="bg-white h-[60px] py-[10px] px-[30px] rounded-b-[10px] shadow-[0px_3px_10px_0px_rgba(0,105,52,0.35)] flex items-center justify-center">
-              <a href="https://shopthienthuanphat.com/" className="block">
+              <Link href="/products" className="block">
                 <span className="text-[#bb252d] font-bold text-lg tracking-wide">KSB MALL</span>
-              </a>
+              </Link>
             </div>
           </div>
         </nav>
@@ -299,13 +299,13 @@ export default function Header() {
 
                   {/* Mobile KSB MALL Link */}
                   <div className="mt-4 pt-4 border-t border-white/20">
-                    <a
-                      href="https://shopthienthuanphat.com/"
+                    <Link
+                      href="/products"
                       className="block w-full px-4 py-4 bg-white/10 hover:bg-[#bb252d] transition-all duration-200 rounded-lg text-center"
                       onClick={closeMenu}
                     >
                       <span className="text-white font-bold text-lg tracking-wide">KSB MALL</span>
-                    </a>
+                    </Link>
                   </div>
                 </nav>
 
