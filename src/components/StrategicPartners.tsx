@@ -34,7 +34,7 @@ export default function StrategicPartners() {
           </div>
           <div className="item text-center flex flex-col items-center justify-center" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300">
             <a href="#" className="block hover:scale-105 transition-transform duration-300 flex flex-col items-center justify-center">
-              <Image src="/images/parters/fucsia.webp" alt="Tulipán Negro" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
+              <Image src="/images/parters/fucsia.png" alt="Tulipán Negro" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
               <div className="name text-base font-medium text-gray-700 mt-3">Tulipán Negro</div>
             </a>
           </div>
@@ -58,7 +58,7 @@ export default function StrategicPartners() {
           </div>
           <div className="item text-center flex flex-col items-center justify-center" data-aos="fade-up" data-aos-duration="600" data-aos-delay="700">
             <a href="#" className="block hover:scale-105 transition-transform duration-300 flex flex-col items-center justify-center">
-              <Image src="/images/parters/seoul_food.webp" alt="Seoul Food" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
+              <Image src="/images/parters/seoul_food.png" alt="Seoul Food" width={160} height={160} className="w-32 h-32 mx-auto object-contain" />
               <div className="name text-base font-medium text-gray-700 mt-3">Seoul Food</div>
             </a>
           </div>
