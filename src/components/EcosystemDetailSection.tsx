@@ -56,7 +56,7 @@ const EcosystemDetailSection = () => {
                 </div>
                 <div className="relative">
                   <Image
-                    src="/images/ecosystem-page/biofest4.webp"
+                    src="/images/ecosystem-page/biofest_new.webp"
                     alt="Biofresh Products"
                     width={400}
                     height={300}
