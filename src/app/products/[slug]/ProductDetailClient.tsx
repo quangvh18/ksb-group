@@ -113,7 +113,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                                             key={index}
                                             onClick={() => setSelectedImage(index)}
                                             className={`relative flex-shrink-0 w-24 h-24 rounded-2xl overflow-hidden border-2 transition-all duration-300 ${selectedImage === index
-                                                ? 'border-[#c9184a] shadow-md scale-105'
+                                                ? 'border-[#bb252d] shadow-md scale-105'
                                                 : 'border-gray-100 hover:border-gray-300'
                                                 }`}
                                         >
@@ -142,7 +142,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                                             <span className="text-sm font-medium text-gray-500 uppercase tracking-wider">Danh mục:</span>
                                             <Link
                                                 href={`/products?category=${product.category.slug}`}
-                                                className="text-sm font-bold text-[#c9184a] hover:text-[#a0153a] transition-colors"
+                                                className="text-sm font-bold text-[#bb252d] hover:text-[#a0153a] transition-colors"
                                             >
                                                 {product.category.name}
                                             </Link>
@@ -159,8 +159,8 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                             </div>
 
                             {product.summary && (
-                                <div className="bg-gray-50 rounded-3xl p-8 border-l-4 border-[#c9184a] relative overflow-hidden">
-                                    <div className="absolute top-0 right-0 w-24 h-24 bg-[#c9184a] opacity-[0.03] rounded-bl-full"></div>
+                                <div className="bg-gray-50 rounded-3xl p-8 border-l-4 border-[#bb252d] relative overflow-hidden">
+                                    <div className="absolute top-0 right-0 w-24 h-24 bg-[#bb252d] opacity-[0.03] rounded-bl-full"></div>
                                     <p className="text-gray-700 leading-relaxed text-lg text-justify italic">
                                         "{product.summary}"
                                     </p>
@@ -178,7 +178,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                             <div className="pt-6">
                                 <Link
                                     href="/contact"
-                                    className="inline-flex items-center justify-center gap-3 bg-[#c9184a] text-white py-5 px-10 rounded-full hover:bg-[#a0153a] transition-all duration-300 font-bold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 active:scale-95 group"
+                                    className="inline-flex items-center justify-center gap-3 bg-[#bb252d] text-white py-5 px-10 rounded-full hover:bg-[#a0153a] transition-all duration-300 font-bold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 active:scale-95 group"
                                 >
                                     <svg className="w-6 h-6 transition-transform group-hover:rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -196,25 +196,25 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                             <button
                                 onClick={() => setActiveTab('info')}
                                 className={`px-8 py-4 font-bold text-lg transition-all relative ${activeTab === 'info'
-                                    ? 'text-[#c9184a]'
+                                    ? 'text-[#bb252d]'
                                     : 'text-gray-400 hover:text-gray-600'
                                     }`}
                             >
                                 Thông tin sản phẩm
                                 {activeTab === 'info' && (
-                                    <span className="absolute bottom-0 left-0 w-full h-1 bg-[#c9184a] rounded-t-full"></span>
+                                    <span className="absolute bottom-0 left-0 w-full h-1 bg-[#bb252d] rounded-t-full"></span>
                                 )}
                             </button>
                             <button
                                 onClick={() => setActiveTab('description')}
                                 className={`px-8 py-4 font-bold text-lg transition-all relative ${activeTab === 'description'
-                                    ? 'text-[#c9184a]'
+                                    ? 'text-[#bb252d]'
                                     : 'text-gray-400 hover:text-gray-600'
                                     }`}
                             >
                                 Mô tả chi tiết
                                 {activeTab === 'description' && (
-                                    <span className="absolute bottom-0 left-0 w-full h-1 bg-[#c9184a] rounded-t-full"></span>
+                                    <span className="absolute bottom-0 left-0 w-full h-1 bg-[#bb252d] rounded-t-full"></span>
                                 )}
                             </button>
                         </div>
@@ -232,7 +232,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                                         ].map((item, idx) => item.value && (
                                             <div key={idx} className="bg-gray-50 p-6 rounded-2xl border border-transparent hover:border-gray-200 transition-all hover:bg-white hover:shadow-sm group">
                                                 <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2">{item.label}</span>
-                                                <p className="font-bold text-gray-800 text-lg group-hover:text-[#c9184a] transition-colors">{item.value}</p>
+                                                <p className="font-bold text-gray-800 text-lg group-hover:text-[#bb252d] transition-colors">{item.value}</p>
                                             </div>
                                         ))}
                                     </div>
@@ -260,7 +260,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                     <div className="mt-12 pt-8 border-t border-gray-200">
                         <Link
                             href="/products"
-                            className="inline-flex items-center text-[#c9184a] font-medium hover:text-[#a0153a] transition-colors duration-300"
+                            className="inline-flex items-center text-[#bb252d] font-medium hover:text-[#a0153a] transition-colors duration-300"
                         >
                             <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />

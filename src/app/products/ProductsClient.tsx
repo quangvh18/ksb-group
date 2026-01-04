@@ -133,57 +133,172 @@ export default function ProductsClient({
                 <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
                     <div className="flex flex-col lg:flex-row gap-8">
                         {/* Sidebar - Filters */}
-                        <aside className="lg:w-64 flex-shrink-0">
-                            <div className="bg-white rounded-lg shadow-md p-6 sticky top-20 max-h-[calc(100vh-6rem)] overflow-y-auto">
-                                <h3 className="text-xl font-bold text-gray-900 mb-4 pb-3 border-b border-gray-200 sticky top-0 bg-white z-10">
-                                    Danh mục sản phẩm
-                                </h3>
+                        <aside className="lg:w-72 flex-shrink-0">
+                            <div className="bg-white rounded-2xl shadow-lg p-6 sticky top-20 max-h-[calc(100vh-6rem)] overflow-y-auto border border-gray-100">
+                                {/* Header */}
+                                <div className="flex items-center gap-3 mb-6 pb-4 border-b border-gray-100">
+                                    <div className="w-10 h-10 bg-gradient-to-br from-[#bb252d] to-[#a0153a] rounded-xl flex items-center justify-center shadow-lg">
+                                        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h3 className="text-lg font-bold text-gray-900">Danh mục</h3>
+                                        <p className="text-xs text-gray-500">Lọc theo loại sản phẩm</p>
+                                    </div>
+                                </div>
 
-                                <div className="space-y-2">
-                                    {/* All Products */}
-                                    <label className="flex items-center space-x-3 cursor-pointer group p-2 rounded-lg hover:bg-gray-50 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]">
-                                        <div className="relative">
-                                            <input
-                                                type="checkbox"
-                                                checked={selectedCategory === ''}
-                                                onChange={() => setSelectedCategory('')}
-                                                className="w-4 h-4 text-[#c9184a] border-gray-300 rounded focus:ring-[#c9184a] transition-all duration-200"
-                                            />
-                                            {selectedCategory === '' && (
-                                                <span className="absolute inset-0 rounded animate-ping bg-[#c9184a] opacity-20"></span>
-                                            )}
+                                <div className="space-y-3">
+                                    {/* All Products Button */}
+                                    <button
+                                        onClick={() => setSelectedCategory('')}
+                                        className={`w-full flex items-center gap-3 p-4 rounded-xl transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] ${selectedCategory === ''
+                                            ? 'bg-gradient-to-r from-[#bb252d] to-[#a0153a] text-white shadow-lg shadow-[#bb252d]/30'
+                                            : 'bg-gray-50 hover:bg-gray-100 text-gray-700'
+                                            }`}
+                                    >
+                                        <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${selectedCategory === '' ? 'bg-white/20' : 'bg-white shadow-sm'
+                                            }`}>
+                                            <svg className={`w-4 h-4 ${selectedCategory === '' ? 'text-white' : 'text-[#bb252d]'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                                            </svg>
                                         </div>
-                                        <span className="text-gray-700 group-hover:text-[#c9184a] transition-all duration-300 font-medium">
-                                            Tất cả sản phẩm
-                                        </span>
-                                    </label>
+                                        <div className="flex-1 text-left">
+                                            <span className="font-semibold">Tất cả sản phẩm</span>
+                                        </div>
+                                        {selectedCategory === '' && (
+                                            <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                            </svg>
+                                        )}
+                                    </button>
 
-                                    {/* Category Filters */}
-                                    {categories.map((category, index) => (
-                                        <label
-                                            key={category.id}
-                                            className="flex items-center space-x-3 cursor-pointer group p-2 rounded-lg hover:bg-gray-50 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]"
-                                            style={{
-                                                animation: `slideIn 0.3s ease-out ${index * 0.05}s both`
-                                            }}
-                                        >
-                                            <div className="relative">
-                                                <input
-                                                    type="checkbox"
-                                                    checked={selectedCategory === category.slug}
-                                                    onChange={() => handleCategoryChange(category.slug)}
-                                                    className="w-4 h-4 text-[#c9184a] border-gray-300 rounded focus:ring-[#c9184a] transition-all duration-200"
-                                                />
-                                                {selectedCategory === category.slug && (
-                                                    <span className="absolute inset-0 rounded animate-ping bg-[#c9184a] opacity-20"></span>
+                                    {/* Parent Categories with Children */}
+                                    {categories.filter(cat => !cat.parent).map((parentCategory, index) => {
+                                        const childCategories = categories.filter(cat => cat.parent?.id === parentCategory.id);
+                                        const isParentSelected = selectedCategory === parentCategory.slug;
+                                        const hasSelectedChild = childCategories.some(child => selectedCategory === child.slug);
+
+                                        return (
+                                            <div
+                                                key={parentCategory.id}
+                                                className="space-y-2"
+                                                style={{ animation: `slideIn 0.3s ease-out ${index * 0.05}s both` }}
+                                            >
+                                                {/* Parent Category Button */}
+                                                <button
+                                                    onClick={() => handleCategoryChange(parentCategory.slug)}
+                                                    className={`w-full flex items-center gap-3 p-4 rounded-xl transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] ${isParentSelected
+                                                        ? 'bg-gradient-to-r from-[#bb252d] to-[#a0153a] text-white shadow-lg shadow-[#bb252d]/30'
+                                                        : hasSelectedChild
+                                                            ? 'bg-[#bb252d]/10 text-[#bb252d] border-2 border-[#bb252d]/20'
+                                                            : 'bg-gray-50 hover:bg-gray-100 text-gray-700'
+                                                        }`}
+                                                >
+                                                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${isParentSelected ? 'bg-white/20' : 'bg-white shadow-sm'
+                                                        }`}>
+                                                        <svg className={`w-4 h-4 ${isParentSelected ? 'text-white' : 'text-[#bb252d]'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+                                                        </svg>
+                                                    </div>
+                                                    <div className="flex-1 text-left">
+                                                        <span className="font-bold">{parentCategory.name}</span>
+                                                        {childCategories.length > 0 && (
+                                                            <span className={`ml-2 text-xs px-2 py-0.5 rounded-full ${isParentSelected ? 'bg-white/20' : 'bg-gray-200 text-gray-600'
+                                                                }`}>
+                                                                {childCategories.length}
+                                                            </span>
+                                                        )}
+                                                    </div>
+                                                    {isParentSelected && (
+                                                        <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                                        </svg>
+                                                    )}
+                                                </button>
+
+                                                {/* Child Categories - One per line */}
+                                                {childCategories.length > 0 && (
+                                                    <div className="ml-4 pl-4 border-l-2 border-[#bb252d]/20 flex flex-col gap-1.5">
+                                                        {childCategories.map((childCategory, childIndex) => (
+                                                            <button
+                                                                key={childCategory.id}
+                                                                onClick={() => handleCategoryChange(childCategory.slug)}
+                                                                className={`w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 transform hover:translate-x-1 active:scale-[0.98] ${selectedCategory === childCategory.slug
+                                                                    ? 'bg-[#bb252d] text-white shadow-md shadow-[#bb252d]/30'
+                                                                    : 'bg-gray-50 hover:bg-gray-100 text-gray-700'
+                                                                    }`}
+                                                                style={{ animation: `slideIn 0.3s ease-out ${(index * 0.05) + (childIndex * 0.03)}s both` }}
+                                                            >
+                                                                <svg className={`w-4 h-4 flex-shrink-0 ${selectedCategory === childCategory.slug ? 'text-white' : 'text-[#bb252d]/70'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                                                                </svg>
+                                                                <span className="flex-1 text-left">{childCategory.name}</span>
+                                                                {selectedCategory === childCategory.slug && (
+                                                                    <svg className="w-4 h-4 text-white flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                                                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                                                    </svg>
+                                                                )}
+                                                            </button>
+                                                        ))}
+                                                    </div>
                                                 )}
                                             </div>
-                                            <span className="text-gray-700 group-hover:text-[#c9184a] transition-all duration-300 font-medium">
-                                                {category.name}
-                                            </span>
-                                        </label>
+                                        );
+                                    })}
+
+                                    {/* Standalone categories (no parent structure) */}
+                                    {categories.filter(cat => !cat.parent).length === 0 && categories.map((category, index) => (
+                                        <button
+                                            key={category.id}
+                                            onClick={() => handleCategoryChange(category.slug)}
+                                            className={`w-full flex items-center gap-3 p-4 rounded-xl transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] ${selectedCategory === category.slug
+                                                ? 'bg-gradient-to-r from-[#bb252d] to-[#a0153a] text-white shadow-lg shadow-[#bb252d]/30'
+                                                : 'bg-gray-50 hover:bg-gray-100 text-gray-700'
+                                                }`}
+                                            style={{ animation: `slideIn 0.3s ease-out ${index * 0.05}s both` }}
+                                        >
+                                            <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${selectedCategory === category.slug ? 'bg-white/20' : 'bg-white shadow-sm'
+                                                }`}>
+                                                <svg className={`w-4 h-4 ${selectedCategory === category.slug ? 'text-white' : 'text-[#bb252d]'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                                                </svg>
+                                            </div>
+                                            <span className="font-semibold">{category.name}</span>
+                                            {selectedCategory === category.slug && (
+                                                <svg className="w-5 h-5 text-white ml-auto" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                                </svg>
+                                            )}
+                                        </button>
                                     ))}
                                 </div>
+
+                                {/* Selected Filter Badge */}
+                                {selectedCategory && (
+                                    <div className="mt-6 pt-4 border-t border-gray-100">
+                                        <div className="flex items-center justify-between">
+                                            <span className="text-xs text-gray-500 uppercase tracking-wider">Đang lọc:</span>
+                                            <button
+                                                onClick={() => setSelectedCategory('')}
+                                                className="text-xs text-[#bb252d] hover:underline font-medium"
+                                            >
+                                                Xóa bộ lọc
+                                            </button>
+                                        </div>
+                                        <div className="mt-2 inline-flex items-center gap-2 px-3 py-1.5 bg-[#bb252d]/10 text-[#bb252d] rounded-full text-sm font-medium">
+                                            <span>{categories.find(c => c.slug === selectedCategory)?.name || selectedCategory}</span>
+                                            <button
+                                                onClick={() => setSelectedCategory('')}
+                                                className="hover:bg-[#bb252d]/20 rounded-full p-0.5"
+                                            >
+                                                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                )}
                             </div>
                         </aside>
 
@@ -197,10 +312,10 @@ export default function ProductsClient({
                                         value={searchQuery}
                                         onChange={(e) => setSearchQuery(e.target.value)}
                                         placeholder="Tìm kiếm sản phẩm..."
-                                        className="w-full px-4 py-3 pl-12 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#c9184a] focus:border-transparent transition-all duration-300 hover:border-[#c9184a]"
+                                        className="w-full px-4 py-3 pl-12 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#bb252d] focus:border-transparent transition-all duration-300 hover:border-[#bb252d]"
                                     />
                                     <svg
-                                        className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-[#c9184a] transition-colors duration-300"
+                                        className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-[#bb252d] transition-colors duration-300"
                                         fill="none"
                                         stroke="currentColor"
                                         viewBox="0 0 24 24"
@@ -212,7 +327,7 @@ export default function ProductsClient({
 
                             {/* Results Count */}
                             <div className="mb-6 text-gray-600 flex items-center gap-2">
-                                <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#c9184a] text-white text-sm font-medium">
+                                <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#bb252d] text-white text-sm font-medium">
                                     {products.length}
                                 </span>
                                 <span>/ {total} sản phẩm</span>
@@ -254,7 +369,7 @@ export default function ProductsClient({
                                                 }}
                                             >
                                                 {/* Decorative corner like news page */}
-                                                <div className={`absolute ${cornerPosition} w-16 h-16 bg-[#c9184a] opacity-[0.03] ${cornerClass}`}></div>
+                                                <div className={`absolute ${cornerPosition} w-16 h-16 bg-[#bb252d] opacity-[0.03] ${cornerClass}`}></div>
 
                                                 <div className="relative h-64 overflow-hidden bg-gray-50">
                                                     <Image
@@ -268,7 +383,7 @@ export default function ProductsClient({
 
                                                 <div className="p-6 bg-white flex flex-col justify-between flex-grow">
                                                     <div>
-                                                        <h3 className="text-lg font-bold text-[#c9184a] mb-2 line-clamp-2 transition-all duration-500 group-hover:scale-[1.01]">
+                                                        <h3 className="text-lg font-bold text-[#bb252d] mb-2 line-clamp-2 transition-all duration-500 group-hover:scale-[1.01]">
                                                             {product.name}
                                                         </h3>
                                                         {product.summary && (
@@ -278,7 +393,7 @@ export default function ProductsClient({
                                                         )}
                                                     </div>
 
-                                                    <div className="flex items-center text-[#c9184a] font-semibold text-sm transition-all duration-500 group-hover:translate-x-1">
+                                                    <div className="flex items-center text-[#bb252d] font-semibold text-sm transition-all duration-500 group-hover:translate-x-1">
                                                         Xem chi tiết
                                                         <svg className="w-4 h-4 ml-2 transition-transform duration-500 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
@@ -324,7 +439,7 @@ export default function ProductsClient({
                                                     key={pageNum}
                                                     onClick={() => setCurrentPage(pageNum)}
                                                     className={`px-4 py-2 rounded-lg transition-all duration-300 transform hover:scale-110 active:scale-95 ${currentPage === pageNum
-                                                        ? 'bg-[#c9184a] text-white shadow-lg'
+                                                        ? 'bg-[#bb252d] text-white shadow-lg'
                                                         : 'border border-gray-300 hover:bg-gray-50'
                                                         }`}
                                                 >

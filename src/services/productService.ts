@@ -10,6 +10,16 @@ export interface Category {
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
+    parent?: {
+        id: number;
+        documentId: string;
+        name: string;
+        slug: string;
+        description?: string;
+        createdAt: string;
+        updatedAt: string;
+        publishedAt: string;
+    } | null;
 }
 
 // Interface cho Product
@@ -76,7 +86,7 @@ export class ProductService {
         this.apiKey = apiKey;
     }
 
-    // Get all categories
+    // Get all categories for products (not for news)
     async getCategories(): Promise<Category[]> {
         try {
             const response: AxiosResponse<CategoryApiResponse> = await axios.get(
@@ -84,7 +94,9 @@ export class ProductService {
                 {
                     params: {
                         'populate': '*',
+                        'pagination[page]': 1,
                         'pagination[pageSize]': 100,
+                        'filters[news][id][$notNull]': false,
                         'sort': 'name:asc',
                         '_t': Date.now()
                     },
@@ -165,15 +177,80 @@ export class ProductService {
         }
     }
 
-    // Get single product by slug
-    async getProductBySlug(slug: string): Promise<Product | null> {
+    // Get single product by slug or documentId
+    async getProductBySlug(slugOrDocumentId: string): Promise<Product | null> {
+        try {
+            // First, try to find by documentId (if it looks like a documentId - alphanumeric without hyphens at the start)
+            const isDocumentId = /^[a-z0-9]{20,}$/i.test(slugOrDocumentId);
+
+            const params: any = {
+                'populate': '*',
+                '_t': Date.now()
+            };
+
+            if (isDocumentId) {
+                params['filters[documentId][$eq]'] = slugOrDocumentId;
+            } else {
+                params['filters[slug][$eq]'] = slugOrDocumentId;
+            }
+
+            const response: AxiosResponse<ProductApiResponse> = await axios.get(
+                `${this.baseURL}/products`,
+                {
+                    params,
+                    headers: {
+                        'Content-Type': 'application/json',
+                        ...(this.apiKey && { 'Authorization': `Bearer ${this.apiKey}` })
+                    },
+                    timeout: 5000,
+                }
+            );
+
+            if (response.data.data[0]) {
+                return response.data.data[0];
+            }
+
+            // If not found by documentId, try by slug as fallback
+            if (isDocumentId) {
+                const slugResponse: AxiosResponse<ProductApiResponse> = await axios.get(
+                    `${this.baseURL}/products`,
+                    {
+                        params: {
+                            'populate': '*',
+                            'filters[slug][$eq]': slugOrDocumentId,
+                            '_t': Date.now()
+                        },
+                        headers: {
+                            'Content-Type': 'application/json',
+                            ...(this.apiKey && { 'Authorization': `Bearer ${this.apiKey}` })
+                        },
+                        timeout: 5000,
+                    }
+                );
+
+                if (slugResponse.data.data[0]) {
+                    return slugResponse.data.data[0];
+                }
+            }
+
+            // Fallback to local data
+            return fallbackProducts.find(p => p.slug === slugOrDocumentId || p.documentId === slugOrDocumentId) || null;
+        } catch (error) {
+            console.error(`Error fetching product with slug/documentId ${slugOrDocumentId}:`, error);
+            // Fallback to local data
+            return fallbackProducts.find(p => p.slug === slugOrDocumentId || p.documentId === slugOrDocumentId) || null;
+        }
+    }
+
+    // Get single product by documentId directly
+    async getProductByDocumentId(documentId: string): Promise<Product | null> {
         try {
             const response: AxiosResponse<ProductApiResponse> = await axios.get(
                 `${this.baseURL}/products`,
                 {
                     params: {
                         'populate': '*',
-                        'filters[slug][$eq]': slug,
+                        'filters[documentId][$eq]': documentId,
                         '_t': Date.now()
                     },
                     headers: {
@@ -189,11 +266,11 @@ export class ProductService {
             }
 
             // Fallback to local data
-            return fallbackProducts.find(p => p.slug === slug) || null;
+            return fallbackProducts.find(p => p.documentId === documentId) || null;
         } catch (error) {
-            console.error(`Error fetching product with slug ${slug}:`, error);
+            console.error(`Error fetching product with documentId ${documentId}:`, error);
             // Fallback to local data
-            return fallbackProducts.find(p => p.slug === slug) || null;
+            return fallbackProducts.find(p => p.documentId === documentId) || null;
         }
     }
 }
@@ -223,44 +300,95 @@ export const getProductImage = (product: Product): string => {
 // Fallback Categories Data
 export const fallbackCategories: Category[] = [
     {
-        id: 1,
-        documentId: 'cat-1',
-        name: 'Sữa hạt',
-        slug: 'sua-hat',
-        description: 'Các loại sữa hạt dinh dưỡng',
-        createdAt: '2024-01-01T00:00:00.000Z',
-        updatedAt: '2024-01-01T00:00:00.000Z',
-        publishedAt: '2024-01-01T00:00:00.000Z'
+        id: 14,
+        documentId: 'gjrj8vsno2ph17nup6ig92xb',
+        name: 'Thực phẩm',
+        slug: 'thuc-pham',
+        description: 'Thực phẩm',
+        createdAt: '2025-12-20T08:46:40.108Z',
+        updatedAt: '2025-12-20T08:46:40.108Z',
+        publishedAt: '2025-12-20T08:46:40.145Z',
+        parent: null
     },
     {
-        id: 2,
-        documentId: 'cat-2',
-        name: 'Kẹo sâm',
-        slug: 'keo-sam',
-        description: 'Kẹo sâm Hàn Quốc cao cấp',
-        createdAt: '2024-01-01T00:00:00.000Z',
-        updatedAt: '2024-01-01T00:00:00.000Z',
-        publishedAt: '2024-01-01T00:00:00.000Z'
+        id: 25,
+        documentId: 'nc27tywk5y4vtwlfi996unv3',
+        name: 'Sữa',
+        slug: 'sua',
+        description: undefined,
+        createdAt: '2025-12-30T04:32:05.348Z',
+        updatedAt: '2025-12-30T04:32:05.348Z',
+        publishedAt: '2025-12-30T04:32:05.379Z',
+        parent: {
+            id: 14,
+            documentId: 'gjrj8vsno2ph17nup6ig92xb',
+            name: 'Thực phẩm',
+            slug: 'thuc-pham',
+            description: 'Thực phẩm',
+            createdAt: '2025-12-20T08:46:40.108Z',
+            updatedAt: '2025-12-20T08:46:40.108Z',
+            publishedAt: '2025-12-20T08:46:40.145Z'
+        }
     },
     {
-        id: 3,
-        documentId: 'cat-3',
-        name: 'Bánh kẹo',
-        slug: 'banh-keo',
-        description: 'Bánh kẹo nhập khẩu',
-        createdAt: '2024-01-01T00:00:00.000Z',
-        updatedAt: '2024-01-01T00:00:00.000Z',
-        publishedAt: '2024-01-01T00:00:00.000Z'
+        id: 29,
+        documentId: 'o76brh0xfnslixy50jdcezz8',
+        name: 'Kẹo',
+        slug: 'keo',
+        description: undefined,
+        createdAt: '2025-12-30T04:33:55.359Z',
+        updatedAt: '2025-12-30T04:33:55.359Z',
+        publishedAt: '2025-12-30T04:33:55.392Z',
+        parent: {
+            id: 14,
+            documentId: 'gjrj8vsno2ph17nup6ig92xb',
+            name: 'Thực phẩm',
+            slug: 'thuc-pham',
+            description: 'Thực phẩm',
+            createdAt: '2025-12-20T08:46:40.108Z',
+            updatedAt: '2025-12-20T08:46:40.108Z',
+            publishedAt: '2025-12-20T08:46:40.145Z'
+        }
     },
     {
-        id: 4,
-        documentId: 'cat-4',
+        id: 34,
+        documentId: 'gxa5qb8q05qg1whl6xllwyvs',
+        name: 'Món ăn vặt',
+        slug: 'mon-an-vat',
+        description: undefined,
+        createdAt: '2025-12-30T04:33:33.014Z',
+        updatedAt: '2025-12-30T05:06:16.111Z',
+        publishedAt: '2025-12-30T05:06:16.139Z',
+        parent: {
+            id: 14,
+            documentId: 'gjrj8vsno2ph17nup6ig92xb',
+            name: 'Thực phẩm',
+            slug: 'thuc-pham',
+            description: 'Thực phẩm',
+            createdAt: '2025-12-20T08:46:40.108Z',
+            updatedAt: '2025-12-20T08:46:40.108Z',
+            publishedAt: '2025-12-20T08:46:40.145Z'
+        }
+    },
+    {
+        id: 35,
+        documentId: 'otexhiypyba12fyl73betdgt',
         name: 'Thực phẩm chức năng',
         slug: 'thuc-pham-chuc-nang',
-        description: 'Thực phẩm bổ sung sức khỏe',
-        createdAt: '2024-01-01T00:00:00.000Z',
-        updatedAt: '2024-01-01T00:00:00.000Z',
-        publishedAt: '2024-01-01T00:00:00.000Z'
+        description: undefined,
+        createdAt: '2025-12-30T04:34:39.277Z',
+        updatedAt: '2025-12-30T05:08:23.604Z',
+        publishedAt: '2025-12-30T05:08:23.632Z',
+        parent: {
+            id: 14,
+            documentId: 'gjrj8vsno2ph17nup6ig92xb',
+            name: 'Thực phẩm',
+            slug: 'thuc-pham',
+            description: 'Thực phẩm',
+            createdAt: '2025-12-20T08:46:40.108Z',
+            updatedAt: '2025-12-20T08:46:40.108Z',
+            publishedAt: '2025-12-20T08:46:40.145Z'
+        }
     }
 ];
 
