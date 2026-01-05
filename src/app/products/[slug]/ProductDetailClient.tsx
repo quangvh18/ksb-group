@@ -238,14 +238,49 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                                 </div>
                             )}
 
-                            <div className="bg-gray-50 rounded-3xl p-8 border-l-4 border-[#bb252d] relative overflow-hidden">
-                                <div className="absolute top-0 right-0 w-24 h-24 bg-[#bb252d] opacity-[0.03] rounded-bl-full"></div>
-                                <p className="text-gray-700 leading-relaxed text-lg text-justify italic">
-                                    "{product.summary && product.summary.length > 50
-                                        ? product.summary
-                                        : `${product.summary ? product.summary + '. ' : ''}Sản phẩm ${product.name} được sản xuất trên dây chuyền công nghệ hiện đại, đảm bảo tiêu chuẩn vệ sinh an toàn thực phẩm. Với hương vị thơm ngon đặc trưng và chất lượng hảo hạng, đây chắc chắn là sự lựa chọn tuyệt vời, mang lại trải nghiệm thú vị cho bạn và gia đình.`}"
-                                </p>
-                            </div>
+                            {(() => {
+                                const getDescriptionSummary = () => {
+                                    if (Array.isArray(product.description)) {
+                                        // Find first paragraph with substantial text
+                                        const p = product.description.find(b =>
+                                            b.type === 'paragraph' &&
+                                            b.children?.some((c: any) => c.text && c.text.length > 20)
+                                        );
+                                        // If no substantial paragraph, take just the first one
+                                        const targetBlock = p || product.description.find(b => b.type === 'paragraph');
+
+                                        if (targetBlock?.children) {
+                                            return targetBlock.children.map((c: any) => c.text).join('');
+                                        }
+                                    }
+                                    return null;
+                                };
+
+                                let summaryText = product.summary;
+                                const descriptionText = getDescriptionSummary();
+
+                                // If summary is missing OR too short (likely just a title) and we have a better description
+                                if (!summaryText || (summaryText.length < 100 && descriptionText && descriptionText.length > summaryText.length)) {
+                                    summaryText = descriptionText;
+                                }
+
+                                if (!summaryText) return null;
+
+                                // Truncate if too long (max 300 chars)
+                                const maxLength = 300;
+                                if (summaryText.length > maxLength) {
+                                    summaryText = summaryText.substring(0, maxLength) + '...';
+                                }
+
+                                return (
+                                    <div className="bg-gray-50 rounded-3xl p-8 border-l-4 border-[#bb252d] relative overflow-hidden">
+                                        <div className="absolute top-0 right-0 w-24 h-24 bg-[#bb252d] opacity-[0.03] rounded-bl-full"></div>
+                                        <p className="text-gray-700 leading-relaxed text-lg text-justify italic">
+                                            "{summaryText}"
+                                        </p>
+                                    </div>
+                                );
+                            })()}
 
                             {product.skuName && (
                                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-full">
