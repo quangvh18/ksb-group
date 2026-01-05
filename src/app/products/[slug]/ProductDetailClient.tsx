@@ -1,10 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Product, getProductImage, getFullImageUrl } from '../../../services/productService';
+import { ProductVariant } from '../../../services/productVariantService';
 
+// Product already includes variants now
 interface ProductDetailClientProps {
     product: Product;
 }
@@ -12,12 +14,31 @@ interface ProductDetailClientProps {
 export default function ProductDetailClient({ product }: ProductDetailClientProps) {
     const [selectedImage, setSelectedImage] = useState(0);
     const [activeTab, setActiveTab] = useState<'info' | 'description'>('info');
+    const [activeVariantId, setActiveVariantId] = useState<number | null>(null);
 
-    // Get all images (main + gallery)
-    const allImages = [
+    useEffect(() => {
+        if (product.product_variants && product.product_variants.length > 0) {
+            // Find default variant or take first one
+            const defaultVariant = product.product_variants.find(v => v.isDefault) || product.product_variants[0];
+            setActiveVariantId(defaultVariant.id);
+        }
+    }, [product]);
+
+    const activeVariant = product.product_variants?.find(v => v.id === activeVariantId);
+
+    // Get images based on selection
+    const variantImages = activeVariant?.variant_images?.map(vi => vi.thumbNail).filter(Boolean) || [];
+    const defaultImages = [
         product.image,
         ...(product.gallery || [])
     ].filter(Boolean);
+
+    const allImages = variantImages.length > 0 ? variantImages : defaultImages;
+
+    // Reset selected image index when variant changes
+    useEffect(() => {
+        setSelectedImage(0);
+    }, [activeVariantId]);
 
     return (
         <div>
@@ -96,9 +117,13 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                             {/* Main Image */}
                             <div className="relative h-96 lg:h-[550px] bg-gray-50 rounded-[2rem] overflow-hidden shadow-xl border border-gray-100 group">
                                 <Image
-                                    src={allImages[selectedImage] ? getFullImageUrl(allImages[selectedImage].url) : getProductImage(product)}
+                                    src={
+                                        (allImages[selectedImage] && getFullImageUrl(allImages[selectedImage].url))
+                                        || getProductImage(product)
+                                    }
                                     alt={product.name}
                                     fill
+                                    unoptimized
                                     className="object-cover transition-transform duration-700 group-hover:scale-110"
                                     priority
                                 />
@@ -108,7 +133,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                             {/* Thumbnail Gallery */}
                             {allImages.length > 1 && (
                                 <div className="flex gap-4 overflow-x-auto pb-4 custom-scrollbar">
-                                    {allImages.map((image, index) => (
+                                    {allImages.map((image: any, index: number) => (
                                         <button
                                             key={index}
                                             onClick={() => setSelectedImage(index)}
@@ -121,6 +146,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                                                 src={getFullImageUrl(image.url)}
                                                 alt={`${product.name} - ${index + 1}`}
                                                 fill
+                                                unoptimized
                                                 className="object-cover"
                                             />
                                         </button>
@@ -157,6 +183,32 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                                     )}
                                 </div>
                             </div>
+
+                            {/* Variant Selector */}
+                            {product.product_variants && product.product_variants.length > 0 && (
+                                <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100">
+                                    <span className="text-sm font-bold text-gray-700 uppercase tracking-wider block mb-4">Các loại hương vị:</span>
+                                    <div className="flex flex-wrap gap-3">
+                                        {product.product_variants.map((variant) => (
+                                            <button
+                                                key={variant.id}
+                                                onClick={() => setActiveVariantId(variant.id)}
+                                                className={`px-4 py-2 rounded-xl border-2 transition-all duration-200 font-bold ${activeVariantId === variant.id
+                                                    ? 'border-[#bb252d] bg-[#bb252d] text-white shadow-lg shadow-red-200'
+                                                    : 'border-gray-200 bg-white text-gray-600 hover:border-[#bb252d] hover:text-[#bb252d]'
+                                                    }`}
+                                            >
+                                                {variant.variantName}
+                                            </button>
+                                        ))}
+                                    </div>
+                                    {activeVariant && (
+                                        <div className="mt-4 text-sm text-gray-500 animate-fadeIn">
+                                            Đang chọn: <span className="font-bold text-gray-800">{activeVariant.variantName}</span>
+                                        </div>
+                                    )}
+                                </div>
+                            )}
 
                             {product.summary && (
                                 <div className="bg-gray-50 rounded-3xl p-8 border-l-4 border-[#bb252d] relative overflow-hidden">
@@ -228,8 +280,10 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                                             { label: 'Tên sản phẩm', value: product.name },
                                             { label: 'Thương hiệu', value: product.brandName },
                                             { label: 'Mã sản phẩm', value: product.skuName },
-                                            { label: 'Danh mục', value: product.category?.name }
-                                        ].map((item, idx) => item.value && (
+                                            { label: 'Danh mục', value: product.category?.name },
+                                            // Add Variant info if selected
+                                            activeVariant ? { label: 'Phiên bản', value: activeVariant.variantName } : null
+                                        ].map((item, idx) => item && item.value && (
                                             <div key={idx} className="bg-gray-50 p-6 rounded-2xl border border-transparent hover:border-gray-200 transition-all hover:bg-white hover:shadow-sm group">
                                                 <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2">{item.label}</span>
                                                 <p className="font-bold text-gray-800 text-lg group-hover:text-[#bb252d] transition-colors">{item.value}</p>

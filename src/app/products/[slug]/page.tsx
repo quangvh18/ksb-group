@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { productService } from "../../../services/productService";
+import { getProductVariantsValue } from "../../../services/productVariantService";
 import ProductDetailClient from "./ProductDetailClient";
 import { notFound } from "next/navigation";
 
@@ -50,6 +51,20 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
 
     if (!product) {
         notFound();
+    }
+
+    // Fetch variants and merge if available
+    if (product.documentId) {
+        try {
+            const variantData = await getProductVariantsValue(product.documentId);
+            if (variantData && variantData.product_variants) {
+                // Merge variants into the product object
+                Object.assign(product, { product_variants: variantData.product_variants });
+            }
+        } catch (error) {
+            console.error('Error fetching variants:', error);
+            // Continue with basic product data if variants fail
+        }
     }
 
     return <ProductDetailClient product={product} />;

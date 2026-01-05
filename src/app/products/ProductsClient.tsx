@@ -376,6 +376,7 @@ export default function ProductsClient({
                                                         src={getProductImage(product)}
                                                         alt={product.image?.alternativeText || product.name}
                                                         fill
+                                                        unoptimized
                                                         className="object-cover transition-all duration-700 ease-out group-hover:scale-110 group-hover:rotate-2"
                                                     />
                                                     <div className="absolute inset-0 bg-gradient-to-t from-black/[0.05] via-transparent to-transparent"></div>
