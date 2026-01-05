@@ -24,21 +24,48 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
         }
     }, [product]);
 
-    const activeVariant = product.product_variants?.find(v => v.id === activeVariantId);
-
-    // Get images based on selection
-    const variantImages = activeVariant?.variant_images?.map(vi => vi.thumbNail).filter(Boolean) || [];
-    const defaultImages = [
-        product.image,
-        ...(product.gallery || [])
+    // Unified Image List Construction
+    const allImages = [
+        // 1. Main Product Image (if any)
+        ...(product.image ? [{ ...product.image, variantId: null, isMain: true }] : []),
+        // 2. Product Gallery (if any)
+        ...(product.gallery?.map(img => ({ ...img, variantId: null, isMain: false })) || []),
+        // 3. All Variant Images
+        ...(product.product_variants?.flatMap(v =>
+            v.variant_images?.map(vi => ({
+                ...vi.thumbNail,
+                variantId: v.id,
+                isMain: false
+            })) || []
+        ) || [])
     ].filter(Boolean);
 
-    const allImages = variantImages.length > 0 ? variantImages : defaultImages;
-
-    // Reset selected image index when variant changes
+    // Effect: Switch selected image when Active Variant changes (e.g. via Buttons)
     useEffect(() => {
-        setSelectedImage(0);
+        if (!activeVariantId) return;
+
+        // Find index of the first image belonging to this variant
+        const firstVariantImageIndex = allImages.findIndex((img: any) => img.variantId === activeVariantId);
+
+        if (firstVariantImageIndex !== -1) {
+            setSelectedImage(firstVariantImageIndex);
+        } else {
+            // If variant has no specific images, maybe keep current or reset? 
+            // Let's keep current behavior roughly, or reset to 0 if out of bounds
+        }
     }, [activeVariantId]);
+
+    const handleThumbnailClick = (index: number) => {
+        setSelectedImage(index);
+        const image = allImages[index] as any;
+        if (image.variantId && image.variantId !== activeVariantId) {
+            setActiveVariantId(image.variantId);
+        }
+    };
+
+    // Derived state for display
+    const currentImage = allImages[selectedImage];
+    const activeVariant = product.product_variants?.find(v => v.id === activeVariantId);
 
     return (
         <div>
@@ -115,10 +142,11 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                         {/* Image Gallery */}
                         <div className="space-y-6" data-aos="fade-right">
                             {/* Main Image */}
+                            {/* Main Image */}
                             <div className="relative h-96 lg:h-[550px] bg-gray-50 rounded-[2rem] overflow-hidden shadow-xl border border-gray-100 group">
                                 <Image
                                     src={
-                                        (allImages[selectedImage] && getFullImageUrl(allImages[selectedImage].url))
+                                        (currentImage && getFullImageUrl((currentImage as any).url))
                                         || getProductImage(product)
                                     }
                                     alt={product.name}
@@ -131,15 +159,15 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                             </div>
 
                             {/* Thumbnail Gallery */}
-                            {allImages.length > 1 && (
-                                <div className="flex gap-4 overflow-x-auto pb-4 custom-scrollbar">
+                            {allImages.length > 0 && (
+                                <div className="flex gap-4 overflow-x-auto p-4 custom-scrollbar">
                                     {allImages.map((image: any, index: number) => (
                                         <button
                                             key={index}
-                                            onClick={() => setSelectedImage(index)}
+                                            onClick={() => handleThumbnailClick(index)}
                                             className={`relative flex-shrink-0 w-24 h-24 rounded-2xl overflow-hidden border-2 transition-all duration-300 ${selectedImage === index
                                                 ? 'border-[#bb252d] shadow-md scale-105'
-                                                : 'border-gray-100 hover:border-gray-300'
+                                                : 'border-gray-200 hover:border-gray-300'
                                                 }`}
                                         >
                                             <Image
