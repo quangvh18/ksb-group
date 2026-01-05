@@ -130,7 +130,7 @@ export const getProductImage = (product: Product): string => {
 export const productService = {
     async getProducts(
         page = 1,
-        pageSize = 12,
+        pageSize = 20,
         categorySlug?: string,
         searchQuery?: string
     ): Promise<{ data: Product[]; total: number }> {
@@ -186,11 +186,31 @@ export const productService = {
         try {
             const response = await api.get<{ data: Category[] }>('/categories', {
                 params: {
-                    populate: '*', // Use wildcard, avoid requesting 'children' specifically if it doesn't exist
-                    'pagination[pageSize]': 100
+                    'populate[parent][fields][0]': 'id',
+                    'populate[products][fields][0]': 'id',
+                    'pagination[pageSize]': 250 // Get all categories
                 }
             });
-            return response.data.data;
+
+            const allCategories = response.data.data as (Category & { products?: any[] })[];
+
+            // Helper to check if a category has products directly or in any of its subcategories
+            const categoryHasProducts = (category: Category & { products?: any[] }): boolean => {
+                // Check if this category has products
+                if (category.products && category.products.length > 0) return true;
+
+                // Check if any child category has products
+                const children = allCategories.filter(c => c.parent?.id === category.id);
+                return children.some(child => categoryHasProducts(child));
+            };
+
+            // Filter the list to only include categories that have products or offspring with products
+            // and exclude specific categories requested by user (Events, Food News)
+            const excludedSlugs = ['su-kien', 'tin-tuc-nganh-thuc-pham', 'tin-tuc'];
+            return allCategories.filter(cat =>
+                categoryHasProducts(cat) &&
+                !excludedSlugs.includes(cat.slug)
+            );
         } catch (error) {
             console.error('Error fetching categories:', error);
             return [];

@@ -27,7 +27,7 @@ export default function ProductsClient({
     const [selectedCategory, setSelectedCategory] = useState<string>('');
     const [searchQuery, setSearchQuery] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
-    const pageSize = 12;
+    const pageSize = 20;
 
     // Fetch products when filters change
     useEffect(() => {

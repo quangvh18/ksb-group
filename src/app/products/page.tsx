@@ -7,13 +7,13 @@ export const metadata: Metadata = {
     description: "Khám phá danh sách sản phẩm chất lượng cao từ KSB Group. Tìm kiếm và lọc sản phẩm theo danh mục.",
 };
 
-export const revalidate = 3600; // Revalidate every hour
+export const revalidate = 0; // Disable cache for debugging
 
 export default async function ProductsPage() {
     // Fetch initial data
     const [categoriesData, productsData] = await Promise.all([
         productService.getCategories(),
-        productService.getProducts(1, 12)
+        productService.getProducts(1, 20)
     ]);
 
     return (
