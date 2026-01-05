@@ -859,8 +859,14 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 
 export function useLanguage() {
   const context = useContext(LanguageContext);
+  // Fallback to default if used outside provider (e.g. during some server renders or edge cases)
   if (context === undefined) {
-    throw new Error('useLanguage must be used within a LanguageProvider');
+    // Return a dummy context to avoid crash
+    return {
+      language: 'vi' as Language,
+      setLanguage: () => { },
+      t: (key: string) => key
+    };
   }
   return context;
 }
