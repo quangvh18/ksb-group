@@ -238,14 +238,14 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                                 </div>
                             )}
 
-                            {product.summary && (
-                                <div className="bg-gray-50 rounded-3xl p-8 border-l-4 border-[#bb252d] relative overflow-hidden">
-                                    <div className="absolute top-0 right-0 w-24 h-24 bg-[#bb252d] opacity-[0.03] rounded-bl-full"></div>
-                                    <p className="text-gray-700 leading-relaxed text-lg text-justify italic">
-                                        "{product.summary}"
-                                    </p>
-                                </div>
-                            )}
+                            <div className="bg-gray-50 rounded-3xl p-8 border-l-4 border-[#bb252d] relative overflow-hidden">
+                                <div className="absolute top-0 right-0 w-24 h-24 bg-[#bb252d] opacity-[0.03] rounded-bl-full"></div>
+                                <p className="text-gray-700 leading-relaxed text-lg text-justify italic">
+                                    "{product.summary && product.summary.length > 50
+                                        ? product.summary
+                                        : `${product.summary ? product.summary + '. ' : ''}Sản phẩm ${product.name} được sản xuất trên dây chuyền công nghệ hiện đại, đảm bảo tiêu chuẩn vệ sinh an toàn thực phẩm. Với hương vị thơm ngon đặc trưng và chất lượng hảo hạng, đây chắc chắn là sự lựa chọn tuyệt vời, mang lại trải nghiệm thú vị cho bạn và gia đình.`}"
+                                </p>
+                            </div>
 
                             {product.skuName && (
                                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-full">
