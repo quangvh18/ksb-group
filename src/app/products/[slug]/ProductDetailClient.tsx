@@ -324,6 +324,23 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                     </div>
                 </div>
             </main>
+
+            {/* Hidden Image Preloader */}
+            <div className="hidden">
+                {product.product_variants?.map(variant =>
+                    variant.variant_images?.map((img, idx) => (
+                        <Image
+                            key={`${variant.id}-${idx}`}
+                            src={getFullImageUrl(img.thumbNail.url)}
+                            alt="preloader"
+                            width={1}
+                            height={1}
+                            priority
+                            unoptimized
+                        />
+                    ))
+                )}
+            </div>
         </div>
     );
 }
