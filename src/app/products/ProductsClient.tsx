@@ -27,6 +27,7 @@ export default function ProductsClient({
     const [selectedCategory, setSelectedCategory] = useState<string>('');
     const [searchQuery, setSearchQuery] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
+    const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
     const pageSize = 20;
 
     // Fetch products when filters change
@@ -133,8 +134,8 @@ export default function ProductsClient({
                 <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
                     <div className="flex flex-col lg:flex-row gap-8">
                         {/* Sidebar - Filters */}
-                        <aside className="lg:w-72 flex-shrink-0">
-                            <div className="bg-white rounded-2xl shadow-lg p-6 sticky top-20 max-h-[calc(100vh-6rem)] overflow-y-auto border border-gray-100">
+                        <aside className="lg:w-80 flex-shrink-0">
+                            <div className="bg-white rounded-2xl shadow-lg p-5 sticky top-20 max-h-[calc(100vh-6rem)] overflow-y-auto scrollbar-hide border border-gray-100">
                                 {/* Header */}
                                 <div className="flex items-center gap-3 mb-6 pb-4 border-b border-gray-100">
                                     <div className="w-10 h-10 bg-gradient-to-br from-[#bb252d] to-[#a0153a] rounded-xl flex items-center justify-center shadow-lg">
@@ -178,6 +179,7 @@ export default function ProductsClient({
                                         const childCategories = categories.filter(cat => cat.parent?.id === parentCategory.id);
                                         const isParentSelected = selectedCategory === parentCategory.slug;
                                         const hasSelectedChild = childCategories.some(child => selectedCategory === child.slug);
+                                        const isExpanded = expandedCategory === parentCategory.slug || isParentSelected || hasSelectedChild;
 
                                         return (
                                             <div
@@ -187,7 +189,15 @@ export default function ProductsClient({
                                             >
                                                 {/* Parent Category Button */}
                                                 <button
-                                                    onClick={() => handleCategoryChange(parentCategory.slug)}
+                                                    onClick={() => {
+                                                        handleCategoryChange(parentCategory.slug);
+                                                        // Toggle expand khi click
+                                                        if (expandedCategory === parentCategory.slug) {
+                                                            setExpandedCategory(null);
+                                                        } else {
+                                                            setExpandedCategory(parentCategory.slug);
+                                                        }
+                                                    }}
                                                     className={`w-full flex items-center gap-3 p-4 rounded-xl transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] ${isParentSelected
                                                         ? 'bg-gradient-to-r from-[#bb252d] to-[#a0153a] text-white shadow-lg shadow-[#bb252d]/30'
                                                         : hasSelectedChild
@@ -201,15 +211,24 @@ export default function ProductsClient({
                                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
                                                         </svg>
                                                     </div>
-                                                    <div className="flex-1 text-left">
-                                                        <span className="font-bold">{parentCategory.name}</span>
-                                                        {childCategories.length > 0 && (
-                                                            <span className={`ml-2 text-xs px-2 py-0.5 rounded-full ${isParentSelected ? 'bg-white/20' : 'bg-gray-200 text-gray-600'
-                                                                }`}>
-                                                                {childCategories.length}
-                                                            </span>
-                                                        )}
+                                                    <div className="flex-1 text-left min-w-0">
+                                                        <span className="font-semibold text-sm leading-tight line-clamp-2" title={parentCategory.name}>{parentCategory.name}</span>
                                                     </div>
+                                                    {/* Arrow icon to indicate expandable */}
+                                                    {childCategories.length > 0 && (
+                                                        <svg
+                                                            className={`w-4 h-4 ${isParentSelected ? 'text-white' : 'text-gray-500'}`}
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            viewBox="0 0 24 24"
+                                                            style={{
+                                                                transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)',
+                                                                transition: 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                                                            }}
+                                                        >
+                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                                                        </svg>
+                                                    )}
                                                     {isParentSelected && (
                                                         <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
                                                             <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
@@ -217,32 +236,42 @@ export default function ProductsClient({
                                                     )}
                                                 </button>
 
-                                                {/* Child Categories - One per line */}
-                                                {childCategories.length > 0 && (
-                                                    <div className="ml-4 pl-4 border-l-2 border-[#bb252d]/20 flex flex-col gap-1.5">
-                                                        {childCategories.map((childCategory, childIndex) => (
-                                                            <button
-                                                                key={childCategory.id}
-                                                                onClick={() => handleCategoryChange(childCategory.slug)}
-                                                                className={`w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 transform hover:translate-x-1 active:scale-[0.98] ${selectedCategory === childCategory.slug
-                                                                    ? 'bg-[#bb252d] text-white shadow-md shadow-[#bb252d]/30'
-                                                                    : 'bg-gray-50 hover:bg-gray-100 text-gray-700'
-                                                                    }`}
-                                                                style={{ animation: `slideIn 0.3s ease-out ${(index * 0.05) + (childIndex * 0.03)}s both` }}
-                                                            >
-                                                                <svg className={`w-4 h-4 flex-shrink-0 ${selectedCategory === childCategory.slug ? 'text-white' : 'text-[#bb252d]/70'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                                                {/* Child Categories - Collapsible with smooth animation */}
+                                                <div
+                                                    className={`ml-4 pl-4 border-l-2 border-[#bb252d]/20 flex flex-col gap-1.5 overflow-hidden ${isExpanded && childCategories.length > 0
+                                                        ? 'max-h-[500px] opacity-100 py-1'
+                                                        : 'max-h-0 opacity-0 py-0'
+                                                        }`}
+                                                    style={{
+                                                        transition: 'max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease-out',
+                                                    }}
+                                                >
+                                                    {childCategories.map((childCategory, childIndex) => (
+                                                        <button
+                                                            key={childCategory.id}
+                                                            onClick={() => handleCategoryChange(childCategory.slug)}
+                                                            className={`w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 transform hover:translate-x-1 active:scale-[0.98] ${selectedCategory === childCategory.slug
+                                                                ? 'bg-[#bb252d] text-white shadow-md shadow-[#bb252d]/30'
+                                                                : 'bg-gray-50 hover:bg-gray-100 text-gray-700'
+                                                                }`}
+                                                            style={{
+                                                                transform: isExpanded ? 'translateX(0)' : 'translateX(-10px)',
+                                                                opacity: isExpanded ? 1 : 0,
+                                                                transition: `transform 0.35s cubic-bezier(0.4, 0, 0.2, 1) ${childIndex * 0.05}s, opacity 0.3s ease-out ${childIndex * 0.05}s`,
+                                                            }}
+                                                        >
+                                                            <svg className={`w-4 h-4 flex-shrink-0 ${selectedCategory === childCategory.slug ? 'text-white' : 'text-[#bb252d]/70'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                                                            </svg>
+                                                            <span className="flex-1 text-left text-xs leading-tight line-clamp-2" title={childCategory.name}>{childCategory.name}</span>
+                                                            {selectedCategory === childCategory.slug && (
+                                                                <svg className="w-4 h-4 text-white flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                                                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                                                                 </svg>
-                                                                <span className="flex-1 text-left">{childCategory.name}</span>
-                                                                {selectedCategory === childCategory.slug && (
-                                                                    <svg className="w-4 h-4 text-white flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                                                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                                                                    </svg>
-                                                                )}
-                                                            </button>
-                                                        ))}
-                                                    </div>
-                                                )}
+                                                            )}
+                                                        </button>
+                                                    ))}
+                                                </div>
                                             </div>
                                         );
                                     })}
