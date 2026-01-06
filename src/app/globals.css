@@ -399,3 +399,26 @@ main {
         transform: translateY(0);
     }
 }
+
+/* Shimmer loading animation */
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%) skewX(-20deg);
+    }
+
+    100% {
+        transform: translateX(200%) skewX(-20deg);
+    }
+}
+
+/* Enhanced pulse animation for skeleton */
+@keyframes skeletonPulse {
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}

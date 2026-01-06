@@ -70,8 +70,8 @@ export interface ProductVariant {
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
-    // New API structure: imageUrl directly on variant
-    imageUrl?: Thumbnail | null;
+    // New API structure: imageUrl directly on variant (array of images)
+    imageUrl?: Thumbnail[] | null;
     // Legacy structure: variant_images array (for backward compatibility)
     variant_images?: VariantImage[];
 }

@@ -33,13 +33,13 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
         ...(product.gallery?.map(img => ({ ...img, variantId: null, isMain: false })) || []),
         // 3. All Variant Images
         ...(product.product_variants?.flatMap(v => {
-            // New API: imageUrl directly on variant
-            if (v.imageUrl) {
-                return [{
-                    ...v.imageUrl,
+            // New API: imageUrl is an array of images on variant
+            if (v.imageUrl && v.imageUrl.length > 0) {
+                return v.imageUrl.map(img => ({
+                    ...img,
                     variantId: v.id,
                     isMain: false
-                }];
+                }));
             }
             // Legacy API: variant_images array
             if (v.variant_images && v.variant_images.length > 0) {
@@ -404,19 +404,19 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
             {/* Hidden Image Preloader */}
             <div className="hidden">
                 {product.product_variants?.map(variant => {
-                    // New API: imageUrl directly on variant
-                    if (variant.imageUrl) {
-                        return (
+                    // New API: imageUrl is an array of images on variant
+                    if (variant.imageUrl && variant.imageUrl.length > 0) {
+                        return variant.imageUrl.map((img, imgIdx) => (
                             <Image
-                                key={`${variant.id}-imageUrl`}
-                                src={getFullImageUrl(variant.imageUrl.url)}
+                                key={`${variant.id}-imageUrl-${imgIdx}`}
+                                src={getFullImageUrl(img.url)}
                                 alt="preloader"
                                 width={1}
                                 height={1}
                                 priority
                                 unoptimized
                             />
-                        );
+                        ));
                     }
                     // Legacy API: variant_images array
                     return variant.variant_images?.map((img, idx) => (

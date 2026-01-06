@@ -408,19 +408,79 @@ export default function ProductsClient({
                                 <span>/ {total} sản phẩm</span>
                             </div>
 
-                            {/* Loading State */}
+                            {/* Loading State with Premium Skeleton Animation */}
                             {loading && (
                                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                                    {[1, 2, 3, 4, 5, 6].map((i) => (
-                                        <div key={i} className="bg-white rounded-lg shadow-md overflow-hidden animate-pulse">
-                                            <div className="h-64 bg-gray-200"></div>
-                                            <div className="p-4">
-                                                <div className="h-6 bg-gray-200 rounded mb-2"></div>
-                                                <div className="h-4 bg-gray-200 rounded w-3/4 mb-4"></div>
-                                                <div className="h-10 bg-gray-200 rounded"></div>
+                                    {[1, 2, 3, 4, 5, 6].map((i) => {
+                                        const isLeftLeaf = i % 2 === 0;
+                                        const leafClass = isLeftLeaf ? "rounded-[3rem_0rem_3rem_0rem]" : "rounded-[0rem_3rem_0rem_3rem]";
+
+                                        return (
+                                            <div
+                                                key={i}
+                                                className={`bg-white ${leafClass} shadow-lg overflow-hidden relative`}
+                                                style={{
+                                                    animation: `fadeInUp 0.4s ease-out ${i * 0.08}s both`
+                                                }}
+                                            >
+                                                {/* Shimmer overlay */}
+                                                <div className="absolute inset-0 z-10">
+                                                    <div
+                                                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/60 to-transparent"
+                                                        style={{
+                                                            animation: 'shimmer 1.5s infinite',
+                                                            transform: 'skewX(-20deg)',
+                                                        }}
+                                                    />
+                                                </div>
+
+                                                {/* Image skeleton */}
+                                                <div className="relative h-64 bg-gradient-to-br from-gray-100 via-gray-200 to-gray-100 overflow-hidden">
+                                                    <div className="absolute inset-0 flex items-center justify-center">
+                                                        <div className="w-16 h-16 rounded-full bg-gray-200/80 flex items-center justify-center">
+                                                            <svg
+                                                                className="w-8 h-8 text-gray-300 animate-pulse"
+                                                                fill="none"
+                                                                stroke="currentColor"
+                                                                viewBox="0 0 24 24"
+                                                            >
+                                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                    {/* Decorative circles */}
+                                                    <div className="absolute -top-4 -right-4 w-20 h-20 bg-[#bb252d]/5 rounded-full animate-pulse" />
+                                                    <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-[#bb252d]/5 rounded-full animate-pulse" style={{ animationDelay: '0.3s' }} />
+                                                </div>
+
+                                                {/* Content skeleton */}
+                                                <div className="p-6 space-y-4">
+                                                    {/* Title skeleton */}
+                                                    <div className="space-y-2">
+                                                        <div className="h-5 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 rounded-lg w-4/5" style={{ animation: 'pulse 1.5s ease-in-out infinite' }} />
+                                                        <div className="h-5 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 rounded-lg w-3/5" style={{ animation: 'pulse 1.5s ease-in-out infinite', animationDelay: '0.1s' }} />
+                                                    </div>
+
+                                                    {/* Description skeleton */}
+                                                    <div className="space-y-2">
+                                                        <div className="h-3 bg-gradient-to-r from-gray-100 via-gray-200 to-gray-100 rounded-full w-full" style={{ animation: 'pulse 1.5s ease-in-out infinite', animationDelay: '0.2s' }} />
+                                                        <div className="h-3 bg-gradient-to-r from-gray-100 via-gray-200 to-gray-100 rounded-full w-4/5" style={{ animation: 'pulse 1.5s ease-in-out infinite', animationDelay: '0.3s' }} />
+                                                    </div>
+
+                                                    {/* Button skeleton */}
+                                                    <div className="flex items-center gap-2 pt-2">
+                                                        <div className="h-4 bg-gradient-to-r from-[#bb252d]/20 via-[#bb252d]/10 to-[#bb252d]/20 rounded-full w-24" style={{ animation: 'pulse 1.5s ease-in-out infinite', animationDelay: '0.4s' }} />
+                                                        <div className="w-4 h-4 rounded-full bg-[#bb252d]/10" style={{ animation: 'pulse 1.5s ease-in-out infinite', animationDelay: '0.5s' }} />
+                                                    </div>
+                                                </div>
+
+                                                {/* Loading indicator */}
+                                                <div className="absolute top-3 right-3">
+                                                    <div className="w-6 h-6 rounded-full border-2 border-[#bb252d]/20 border-t-[#bb252d] animate-spin" />
+                                                </div>
                                             </div>
-                                        </div>
-                                    ))}
+                                        );
+                                    })}
                                 </div>
                             )}
 

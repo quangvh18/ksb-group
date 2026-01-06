@@ -100,30 +100,14 @@ export const getFullImageUrl = (url?: string): string => {
 };
 
 export const getProductImage = (product: Product): string => {
-    // Check main image
-    if (product.image) {
-        if (product.image.formats?.medium?.url) return getFullImageUrl(product.image.formats.medium.url);
-        if (product.image.formats?.small?.url) return getFullImageUrl(product.image.formats.small.url);
-        if (product.image.formats?.thumbnail?.url) return getFullImageUrl(product.image.formats.thumbnail.url);
-        if (product.image.url) return getFullImageUrl(product.image.url);
-    }
-
-    // Fallback to gallery first image if main image missing
-    if (product.gallery && product.gallery.length > 0) {
-        const firstImage = product.gallery[0];
-        if (firstImage.formats?.medium?.url) return getFullImageUrl(firstImage.formats.medium.url);
-        if (firstImage.formats?.small?.url) return getFullImageUrl(firstImage.formats.small.url);
-        if (firstImage.formats?.thumbnail?.url) return getFullImageUrl(firstImage.formats.thumbnail.url);
-        if (firstImage.url) return getFullImageUrl(firstImage.url);
-    }
-
-    // Fallback to first variant image if available
+    // Priority 1: First variant image (most specific to product listing)
     if (product.product_variants && product.product_variants.length > 0) {
         const firstVariant = product.product_variants.find(v => v.isDefault) || product.product_variants[0];
 
-        // New API: imageUrl directly on variant
-        if (firstVariant.imageUrl) {
-            const varImage = firstVariant.imageUrl;
+        // New API: imageUrl is an array of images on variant
+        if (firstVariant.imageUrl && firstVariant.imageUrl.length > 0) {
+            const varImage = firstVariant.imageUrl[0]; // Get first image from array
+            // Priority: medium > small > thumbnail
             if (varImage.formats?.medium?.url) return getFullImageUrl(varImage.formats.medium.url);
             if (varImage.formats?.small?.url) return getFullImageUrl(varImage.formats.small.url);
             if (varImage.formats?.thumbnail?.url) return getFullImageUrl(varImage.formats.thumbnail.url);
@@ -138,6 +122,23 @@ export const getProductImage = (product: Product): string => {
             if (firstVarImage?.formats?.thumbnail?.url) return getFullImageUrl(firstVarImage.formats.thumbnail.url);
             if (firstVarImage?.url) return getFullImageUrl(firstVarImage.url);
         }
+    }
+
+    // Priority 2: Main product image
+    if (product.image) {
+        if (product.image.formats?.medium?.url) return getFullImageUrl(product.image.formats.medium.url);
+        if (product.image.formats?.small?.url) return getFullImageUrl(product.image.formats.small.url);
+        if (product.image.formats?.thumbnail?.url) return getFullImageUrl(product.image.formats.thumbnail.url);
+        if (product.image.url) return getFullImageUrl(product.image.url);
+    }
+
+    // Priority 3: Gallery first image
+    if (product.gallery && product.gallery.length > 0) {
+        const firstImage = product.gallery[0];
+        if (firstImage.formats?.medium?.url) return getFullImageUrl(firstImage.formats.medium.url);
+        if (firstImage.formats?.small?.url) return getFullImageUrl(firstImage.formats.small.url);
+        if (firstImage.formats?.thumbnail?.url) return getFullImageUrl(firstImage.formats.thumbnail.url);
+        if (firstImage.url) return getFullImageUrl(firstImage.url);
     }
 
     return '/images/placeholder.jpg';
@@ -230,7 +231,7 @@ export const productService = {
             const excludedSlugs = ['su-kien', 'tin-tuc-nganh-thuc-pham', 'tin-tuc'];
 
             // Build a set of ALL IDs that appear as children in any category
-            // These IDs should NOT be shown at top level
+            // These IDs should NOT be shown at top level (they are sub-categories)
             const childIds = new Set<number>();
             allCategories.forEach(cat => {
                 if (cat.children && cat.children.length > 0) {
