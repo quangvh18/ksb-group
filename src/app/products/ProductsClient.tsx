@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useLanguage } from '../../contexts/LanguageContext';
@@ -10,25 +11,58 @@ interface ProductsClientProps {
     initialCategories: Category[];
     initialProducts: Product[];
     initialTotal: number;
+    initialCategory?: string;
 }
 
 export default function ProductsClient({
     initialCategories,
     initialProducts,
-    initialTotal
+    initialTotal,
+    initialCategory = ''
 }: ProductsClientProps) {
     const { t } = useLanguage();
+    const searchParams = useSearchParams();
+    const categoryFromUrl = searchParams.get('category') || initialCategory;
+
     const [products, setProducts] = useState<Product[]>(initialProducts);
     const [categories] = useState<Category[]>(initialCategories);
     const [total, setTotal] = useState(initialTotal);
     const [loading, setLoading] = useState(false);
 
     // Filter states
-    const [selectedCategory, setSelectedCategory] = useState<string>('');
+    const [selectedCategory, setSelectedCategory] = useState<string>(categoryFromUrl);
     const [searchQuery, setSearchQuery] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
     const pageSize = 20;
+
+    // Update selected category when URL changes
+    useEffect(() => {
+        if (categoryFromUrl) {
+            setSelectedCategory(categoryFromUrl);
+            // Find and expand parent category if needed
+            for (const parentCategory of categories) {
+                if (parentCategory.slug === categoryFromUrl) {
+                    setExpandedCategory(parentCategory.slug);
+                    break;
+                }
+                const childCategories = parentCategory.children || [];
+                for (const child of childCategories) {
+                    if (child.slug === categoryFromUrl) {
+                        setExpandedCategory(parentCategory.slug);
+                        break;
+                    }
+                    const grandChildren = child.children || [];
+                    for (const grandChild of grandChildren) {
+                        if (grandChild.slug === categoryFromUrl) {
+                            setExpandedCategory(parentCategory.slug);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }, [categoryFromUrl, categories]);
 
     // Fetch products when filters change
     useEffect(() => {
