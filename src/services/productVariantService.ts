@@ -70,7 +70,10 @@ export interface ProductVariant {
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
-    variant_images: VariantImage[];
+    // New API structure: imageUrl directly on variant
+    imageUrl?: Thumbnail | null;
+    // Legacy structure: variant_images array (for backward compatibility)
+    variant_images?: VariantImage[];
 }
 
 export interface DescriptionChild {
@@ -119,24 +122,9 @@ export interface ProductDetailResponse {
 export const getProductVariantsValue = async (documentId: string): Promise<ProductDetail | null> => {
     try {
         const params = {
-            filters: {
-                documentId: {
-                    $eq: documentId
-                }
-            },
-            populate: {
-                0: 'product_variants',
-                product_variants: {
-                    populate: {
-                        0: 'variant_images',
-                        variant_images: {
-                            populate: {
-                                0: 'thumbNail'
-                            }
-                        }
-                    }
-                }
-            }
+            'filters[documentId][$eq]': documentId,
+            'populate[0]': 'product_variants',
+            'populate[product_variants][populate][0]': 'imageUrl'
         };
 
         const response = await api.get<ProductDetailResponse>('/products', { params });

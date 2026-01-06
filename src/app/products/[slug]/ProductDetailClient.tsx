@@ -25,19 +25,32 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
     }, [product]);
 
     // Unified Image List Construction
+    // Support both new API (imageUrl) and legacy (variant_images.thumbNail)
     const allImages = [
         // 1. Main Product Image (if any)
         ...(product.image ? [{ ...product.image, variantId: null, isMain: true }] : []),
         // 2. Product Gallery (if any)
         ...(product.gallery?.map(img => ({ ...img, variantId: null, isMain: false })) || []),
         // 3. All Variant Images
-        ...(product.product_variants?.flatMap(v =>
-            v.variant_images?.map(vi => ({
-                ...vi.thumbNail,
-                variantId: v.id,
-                isMain: false
-            })) || []
-        ) || [])
+        ...(product.product_variants?.flatMap(v => {
+            // New API: imageUrl directly on variant
+            if (v.imageUrl) {
+                return [{
+                    ...v.imageUrl,
+                    variantId: v.id,
+                    isMain: false
+                }];
+            }
+            // Legacy API: variant_images array
+            if (v.variant_images && v.variant_images.length > 0) {
+                return v.variant_images.map(vi => ({
+                    ...vi.thumbNail,
+                    variantId: v.id,
+                    isMain: false
+                }));
+            }
+            return [];
+        }) || [])
     ].filter(Boolean);
 
     // Effect: Switch selected image when Active Variant changes (e.g. via Buttons)
@@ -390,19 +403,34 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
 
             {/* Hidden Image Preloader */}
             <div className="hidden">
-                {product.product_variants?.map(variant =>
-                    variant.variant_images?.map((img, idx) => (
+                {product.product_variants?.map(variant => {
+                    // New API: imageUrl directly on variant
+                    if (variant.imageUrl) {
+                        return (
+                            <Image
+                                key={`${variant.id}-imageUrl`}
+                                src={getFullImageUrl(variant.imageUrl.url)}
+                                alt="preloader"
+                                width={1}
+                                height={1}
+                                priority
+                                unoptimized
+                            />
+                        );
+                    }
+                    // Legacy API: variant_images array
+                    return variant.variant_images?.map((img, idx) => (
                         <Image
                             key={`${variant.id}-${idx}`}
-                            src={getFullImageUrl(img.thumbNail.url)}
+                            src={getFullImageUrl(img.thumbNail?.url)}
                             alt="preloader"
                             width={1}
                             height={1}
                             priority
                             unoptimized
                         />
-                    ))
-                )}
+                    ));
+                })}
             </div>
         </div>
     );

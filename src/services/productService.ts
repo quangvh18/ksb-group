@@ -10,8 +10,15 @@ export interface Category {
     name: string;
     slug: string;
     description?: string;
+    order?: number | null;
+    showInMenu?: boolean | null;
+    createdAt?: string;
+    updatedAt?: string;
+    publishedAt?: string;
     parent?: Category | null;
     children?: Category[];
+    products?: { id: number }[];
+    news?: { id: number }[];
 }
 
 export interface ImageFormat {
@@ -113,6 +120,17 @@ export const getProductImage = (product: Product): string => {
     // Fallback to first variant image if available
     if (product.product_variants && product.product_variants.length > 0) {
         const firstVariant = product.product_variants.find(v => v.isDefault) || product.product_variants[0];
+
+        // New API: imageUrl directly on variant
+        if (firstVariant.imageUrl) {
+            const varImage = firstVariant.imageUrl;
+            if (varImage.formats?.medium?.url) return getFullImageUrl(varImage.formats.medium.url);
+            if (varImage.formats?.small?.url) return getFullImageUrl(varImage.formats.small.url);
+            if (varImage.formats?.thumbnail?.url) return getFullImageUrl(varImage.formats.thumbnail.url);
+            if (varImage.url) return getFullImageUrl(varImage.url);
+        }
+
+        // Legacy API: variant_images array
         if (firstVariant.variant_images && firstVariant.variant_images.length > 0) {
             const firstVarImage = firstVariant.variant_images[0].thumbNail;
             if (firstVarImage?.formats?.medium?.url) return getFullImageUrl(firstVarImage.formats.medium.url);
@@ -138,7 +156,8 @@ export const productService = {
             const params: any = {
                 'pagination[page]': page,
                 'pagination[pageSize]': pageSize,
-                'populate[0]': 'product_variants.variant_images.thumbNail',
+                'populate[0]': 'product_variants',
+                'populate[product_variants][populate][0]': 'imageUrl',
                 'populate[1]': 'category',
                 sort: ['createdAt:desc'],
             };
@@ -166,7 +185,8 @@ export const productService = {
         try {
             const params = {
                 'filters[slug][$eq]': slug,
-                'populate[0]': 'product_variants.variant_images.thumbNail',
+                'populate[0]': 'product_variants',
+                'populate[product_variants][populate][0]': 'imageUrl',
                 'populate[1]': 'category',
             };
 
@@ -186,31 +206,71 @@ export const productService = {
         try {
             const response = await api.get<{ data: Category[] }>('/categories', {
                 params: {
-                    'populate[parent][fields][0]': 'id',
-                    'populate[products][fields][0]': 'id',
-                    'pagination[pageSize]': 250 // Get all categories
+                    // Populate parent info
+                    'populate[0]': 'parent',
+                    // Filter to exclude news categories
+                    'filters[news][id][$notNull]': 'false',
+                    // Populate children (level 2)
+                    'populate[children][fields][0]': 'id',
+                    'populate[children][fields][1]': 'name',
+                    'populate[children][fields][2]': 'slug',
+                    // Populate children's children (level 3)
+                    'populate[children][populate][children][fields][0]': 'id',
+                    'populate[children][populate][children][fields][1]': 'name',
+                    'populate[children][populate][children][fields][2]': 'slug',
+                    'pagination[pageSize]': 250, // Get all categories
+                    'sort[0]': 'order:asc',
+                    'sort[1]': 'name:asc'
                 }
             });
 
-            const allCategories = response.data.data as (Category & { products?: any[] })[];
+            const allCategories = response.data.data;
 
-            // Helper to check if a category has products directly or in any of its subcategories
-            const categoryHasProducts = (category: Category & { products?: any[] }): boolean => {
-                // Check if this category has products
-                if (category.products && category.products.length > 0) return true;
-
-                // Check if any child category has products
-                const children = allCategories.filter(c => c.parent?.id === category.id);
-                return children.some(child => categoryHasProducts(child));
-            };
-
-            // Filter the list to only include categories that have products or offspring with products
-            // and exclude specific categories requested by user (Events, Food News)
+            // Excluded slugs (news-related categories)
             const excludedSlugs = ['su-kien', 'tin-tuc-nganh-thuc-pham', 'tin-tuc'];
-            return allCategories.filter(cat =>
-                categoryHasProducts(cat) &&
-                !excludedSlugs.includes(cat.slug)
-            );
+
+            // Build a set of ALL IDs that appear as children in any category
+            // These IDs should NOT be shown at top level
+            const childIds = new Set<number>();
+            allCategories.forEach(cat => {
+                if (cat.children && cat.children.length > 0) {
+                    cat.children.forEach(child => {
+                        childIds.add(child.id);
+                        // Also collect grandchildren IDs
+                        if (child.children && child.children.length > 0) {
+                            child.children.forEach(grandChild => {
+                                childIds.add(grandChild.id);
+                            });
+                        }
+                    });
+                }
+            });
+
+            // Filter to get only TRUE top-level parent categories:
+            // 1. Not in childIds set (not a child of any other category)
+            // 2. Not in excluded slugs
+            // 3. Has children (to show in menu with sub-items)
+            return allCategories
+                .filter(cat => !childIds.has(cat.id)) // Only get TRUE parent categories (not a child of any other)
+                .filter(cat => !excludedSlugs.includes(cat.slug))
+                .filter(cat => cat.children && cat.children.length > 0) // Only categories with children
+                .map(cat => {
+                    // Filter excluded slugs from children
+                    if (cat.children && cat.children.length > 0) {
+                        cat.children = cat.children
+                            .filter(child => !excludedSlugs.includes(child.slug))
+                            .map(child => {
+                                // Also filter grandchildren if they exist
+                                if (child.children && child.children.length > 0) {
+                                    child.children = child.children.filter(
+                                        grandChild => !excludedSlugs.includes(grandChild.slug)
+                                    );
+                                }
+                                return child;
+                            });
+                    }
+                    return cat;
+                });
         } catch (error) {
             console.error('Error fetching categories:', error);
             return [];
