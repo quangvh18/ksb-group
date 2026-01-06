@@ -150,7 +150,7 @@ export const productService = {
     async getProducts(
         page = 1,
         pageSize = 20,
-        categorySlug?: string,
+        categorySlug?: string | string[],
         searchQuery?: string
     ): Promise<{ data: Product[]; total: number }> {
         try {
@@ -164,7 +164,11 @@ export const productService = {
             };
 
             if (categorySlug) {
-                params['filters[category][slug][$eq]'] = categorySlug;
+                if (Array.isArray(categorySlug)) {
+                    params['filters[category][slug][$in]'] = categorySlug;
+                } else {
+                    params['filters[category][slug][$eq]'] = categorySlug;
+                }
             }
 
             if (searchQuery) {

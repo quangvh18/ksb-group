@@ -64,15 +64,49 @@ export default function ProductsClient({
         }
     }, [categoryFromUrl, categories]);
 
+    // Helper function to get all child category slugs recursively
+    const getAllCategorySlugs = (slug: string, categoryList: Category[]): string[] => {
+        const slugs: string[] = [slug];
+
+        const findAndCollect = (currentSlug: string, list: Category[]): boolean => {
+            for (const cat of list) {
+                if (cat.slug === currentSlug) {
+                    // Found the category, now collect all its descendants
+                    const collectDescendants = (c: Category) => {
+                        if (c.children && c.children.length > 0) {
+                            c.children.forEach(child => {
+                                slugs.push(child.slug);
+                                collectDescendants(child);
+                            });
+                        }
+                    };
+                    collectDescendants(cat);
+                    return true;
+                }
+                if (cat.children && cat.children.length > 0) {
+                    if (findAndCollect(currentSlug, cat.children)) return true;
+                }
+            }
+            return false;
+        };
+
+        findAndCollect(slug, categoryList);
+        return Array.from(new Set(slugs)); // Ensure unique slugs
+    };
+
     // Fetch products when filters change
     useEffect(() => {
         const fetchProducts = async () => {
             setLoading(true);
             try {
+                const categorySlugs = selectedCategory
+                    ? getAllCategorySlugs(selectedCategory, categories)
+                    : undefined;
+
                 const result = await productService.getProducts(
                     currentPage,
                     pageSize,
-                    selectedCategory || undefined,
+                    categorySlugs,
                     searchQuery || undefined
                 );
                 setProducts(result.data);
@@ -85,7 +119,7 @@ export default function ProductsClient({
         };
 
         fetchProducts();
-    }, [selectedCategory, searchQuery, currentPage]);
+    }, [selectedCategory, searchQuery, currentPage, categories]);
 
     const handleCategoryChange = (categorySlug: string) => {
         setSelectedCategory(categorySlug === selectedCategory ? '' : categorySlug);

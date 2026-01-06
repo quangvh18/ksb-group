@@ -228,7 +228,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                             {/* Variant Selector */}
                             {product.product_variants && product.product_variants.length > 0 && (
                                 <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100">
-                                    <span className="text-sm font-bold text-gray-700 uppercase tracking-wider block mb-4">Các loại hương vị:</span>
+                                    <span className="text-sm font-bold text-gray-700 uppercase tracking-wider block mb-4">Các loại sản phẩm:</span>
                                     <div className="flex flex-wrap gap-3">
                                         {product.product_variants.map((variant) => (
                                             <button
