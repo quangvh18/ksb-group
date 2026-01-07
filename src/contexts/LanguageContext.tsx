@@ -23,6 +23,7 @@ const translations = {
     'nav.careers': 'Tuyển dụng',
     'nav.partners': 'Đối tác',
     'nav.contact': 'Liên hệ',
+    'nav.products': 'Sản phẩm',
 
     // Footer
     'footer.company': 'CÔNG TY CỔ PHẦN TẬP ĐOÀN KSB',
@@ -277,6 +278,37 @@ const translations = {
     'ecosystem.solutions.title': 'Giải pháp',
     'ecosystem.solutions.subtitle': 'Giải pháp tối ưu cho từng ngành nghề và lĩnh vực',
 
+    // Product Listing Page
+    'product.title': 'Sản phẩm',
+    'product.category.title': 'Danh mục',
+    'product.category.filter': 'Lọc theo loại sản phẩm',
+    'product.all': 'Tất cả sản phẩm',
+    'product.filtering': 'Đang lọc:',
+    'product.clearFilter': 'Xóa bộ lọc',
+    'product.search.placeholder': 'Tìm kiếm sản phẩm...',
+    'product.results': 'sản phẩm',
+    'product.viewDetail': 'Xem chi tiết',
+    'product.noResults': 'Không tìm thấy sản phẩm',
+    'product.noResults.desc': 'Thử thay đổi bộ lọc hoặc từ khóa tìm kiếm',
+    'product.pagination.prev': 'Trước',
+    'product.pagination.next': 'Sau',
+
+    // Product Detail Page
+    'product.detail.title': 'Chi tiết sản phẩm',
+    'product.detail.category': 'Danh mục:',
+    'product.detail.brand': 'Thương hiệu:',
+    'product.detail.variants': 'Các loại sản phẩm:',
+    'product.detail.selecting': 'Đang chọn:',
+    'product.detail.sku': 'Mã SP:',
+    'product.detail.contact': 'Liên hệ đặt hàng ngay',
+    'product.detail.info': 'Thông tin sản phẩm',
+    'product.detail.description': 'Mô tả chi tiết',
+    'product.detail.name': 'Tên sản phẩm',
+    'product.detail.version': 'Phiên bản',
+    'product.detail.noDescription': 'Chưa có mô tả chi tiết cho sản phẩm này.',
+    'product.detail.backTo': 'Quay lại',
+    'product.detail.backToList': 'Quay lại danh sách sản phẩm',
+
     // News Page
     'news.title': 'Tin tức',
     'news.description': 'Cập nhật tin tức mới nhất về KSB Group và ngành thực phẩm',
@@ -368,8 +400,9 @@ const translations = {
     'meta.partners.description': 'Những đối tác chiến lược của KSB Group trên toàn thế giới',
     'meta.contact.title': 'Liên hệ - KSB Group',
     'meta.contact.description': 'Liên hệ với KSB Group để được tư vấn và hỗ trợ tốt nhất',
-    'meta.ecosystem.title': 'Hệ sinh thái - KSB Group',
     'meta.ecosystem.description': 'Khám phá hệ sinh thái đa dạng của KSB Group với các thương hiệu, dịch vụ và giải pháp toàn diện',
+    'meta.products.title': 'Sản phẩm - KSB Group',
+    'meta.products.description': 'Khám phá danh sách sản phẩm chất lượng cao từ KSB Group. Tìm kiếm và lọc sản phẩm theo danh mục.',
     'common.contact': 'Liên hệ',
     'language.switch': 'Chuyển sang tiếng Anh',
 
@@ -429,6 +462,7 @@ const translations = {
     'nav.careers': 'Careers',
     'nav.partners': 'Partners',
     'nav.contact': 'Contact',
+    'nav.products': 'Products',
 
     // Footer
     'footer.company': 'KSB GROUP JOINT STOCK COMPANY',
@@ -682,6 +716,37 @@ const translations = {
     'ecosystem.solutions.title': 'Solutions',
     'ecosystem.solutions.subtitle': 'Optimal solutions for every industry and field',
 
+    // Product Listing Page
+    'product.title': 'Products',
+    'product.category.title': 'Categories',
+    'product.category.filter': 'Filter by product type',
+    'product.all': 'All Products',
+    'product.filtering': 'Filtering:',
+    'product.clearFilter': 'Clear Filter',
+    'product.search.placeholder': 'Search products...',
+    'product.results': 'products',
+    'product.viewDetail': 'View Details',
+    'product.noResults': 'No products found',
+    'product.noResults.desc': 'Try changing filters or search terms',
+    'product.pagination.prev': 'Previous',
+    'product.pagination.next': 'Next',
+
+    // Product Detail Page
+    'product.detail.title': 'Product Details',
+    'product.detail.category': 'Category:',
+    'product.detail.brand': 'Brand:',
+    'product.detail.variants': 'Product Types:',
+    'product.detail.selecting': 'Selecting:',
+    'product.detail.sku': 'Product Code:',
+    'product.detail.contact': 'Contact to Order Now',
+    'product.detail.info': 'Product Information',
+    'product.detail.description': 'Detailed Description',
+    'product.detail.name': 'Product Name',
+    'product.detail.version': 'Version',
+    'product.detail.noDescription': 'No detailed description for this product.',
+    'product.detail.backTo': 'Back to',
+    'product.detail.backToList': 'Back to Product List',
+
     // News Page
     'news.title': 'News',
     'news.description': 'Latest updates about KSB Group and food industry',
@@ -773,8 +838,9 @@ const translations = {
     'meta.partners.description': 'KSB Group strategic partners worldwide',
     'meta.contact.title': 'Contact - KSB Group',
     'meta.contact.description': 'Contact KSB Group for the best consultation and support',
-    'meta.ecosystem.title': 'Ecosystem - KSB Group',
     'meta.ecosystem.description': 'Explore KSB Group diverse ecosystem with comprehensive brands, services and solutions',
+    'meta.products.title': 'Products - KSB Group',
+    'meta.products.description': 'Explore our high-quality product list. Search and filter products by category.',
     'common.contact': 'Contact',
     'language.switch': 'Switch to Vietnamese',
 

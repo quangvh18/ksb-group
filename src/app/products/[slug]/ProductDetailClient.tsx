@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Product, getProductImage, getFullImageUrl } from '../../../services/productService';
 import { ProductVariant } from '../../../services/productVariantService';
+import { useLanguage } from '../../../contexts/LanguageContext';
 
 // Product already includes variants now
 interface ProductDetailClientProps {
@@ -12,6 +13,7 @@ interface ProductDetailClientProps {
 }
 
 export default function ProductDetailClient({ product }: ProductDetailClientProps) {
+    const { t } = useLanguage();
     const [selectedImage, setSelectedImage] = useState(0);
     const [activeTab, setActiveTab] = useState<'info' | 'description'>('info');
     const [activeVariantId, setActiveVariantId] = useState<number | null>(null);
@@ -106,7 +108,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                                 overflowWrap: 'break-word'
                             }}
                         >
-                            Chi tiết sản phẩm
+                            {t('product.detail.title')}
                         </h2>
                     </div>
                 </div>
@@ -126,7 +128,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                                 <svg className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-1.5" fill="currentColor" viewBox="0 0 20 20">
                                     <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
                                 </svg>
-                                <span className="font-medium whitespace-nowrap">Trang chủ</span>
+                                <span className="font-medium whitespace-nowrap">{t('nav.home')}</span>
                             </Link>
                         </div>
 
@@ -140,7 +142,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                                 href="/products"
                                 className="flex items-center text-white px-2 sm:px-3 py-2 sm:py-2.5 rounded transition-all duration-200 cursor-pointer hover:bg-white/20 hover:text-white"
                             >
-                                <span className="font-medium whitespace-nowrap">Sản phẩm</span>
+                                <span className="font-medium whitespace-nowrap">{t('product.title')}</span>
                             </Link>
                         </div>
 
@@ -222,7 +224,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                                 <div className="flex flex-wrap gap-6 items-center">
                                     {product.category && (
                                         <div className="flex items-center gap-2">
-                                            <span className="text-sm font-medium text-gray-500 uppercase tracking-wider">Danh mục:</span>
+                                            <span className="text-sm font-medium text-gray-500 uppercase tracking-wider">{t('product.detail.category')}</span>
                                             <Link
                                                 href={`/products?category=${product.category.slug}`}
                                                 className="text-sm font-bold text-[#bb252d] hover:text-[#a0153a] transition-colors"
@@ -234,7 +236,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
 
                                     {product.brandName && (
                                         <div className="flex items-center gap-2">
-                                            <span className="text-sm font-medium text-gray-500 uppercase tracking-wider">Thương hiệu:</span>
+                                            <span className="text-sm font-medium text-gray-500 uppercase tracking-wider">{t('product.detail.brand')}</span>
                                             <span className="text-sm font-bold text-gray-900">{product.brandName}</span>
                                         </div>
                                     )}
@@ -244,7 +246,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                             {/* Variant Selector */}
                             {product.product_variants && product.product_variants.length > 0 && (
                                 <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100">
-                                    <span className="text-sm font-bold text-gray-700 uppercase tracking-wider block mb-4">Các loại sản phẩm:</span>
+                                    <span className="text-sm font-bold text-gray-700 uppercase tracking-wider block mb-4">{t('product.detail.variants')}</span>
                                     <div className="flex flex-wrap gap-3">
                                         {product.product_variants.map((variant) => (
                                             <button
@@ -261,7 +263,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                                     </div>
                                     {activeVariant && (
                                         <div className="mt-4 text-sm text-gray-500 animate-fadeIn">
-                                            Đang chọn: <span className="font-bold text-gray-800">{activeVariant.variantName}</span>
+                                            {t('product.detail.selecting')} <span className="font-bold text-gray-800">{activeVariant.variantName}</span>
                                         </div>
                                     )}
                                 </div>
@@ -313,7 +315,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
 
                             {product.skuName && (
                                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-full">
-                                    <span className="text-xs font-bold text-gray-500 uppercase tracking-widest">Mã SP:</span>
+                                    <span className="text-xs font-bold text-gray-500 uppercase tracking-widest">{t('product.detail.sku')}</span>
                                     <span className="text-sm font-mono font-bold text-gray-700">{product.skuName}</span>
                                 </div>
                             )}
@@ -327,7 +329,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                                     <svg className="w-6 h-6 transition-transform group-hover:rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                     </svg>
-                                    Liên hệ đặt hàng ngay
+                                    {t('product.detail.contact')}
                                 </Link>
                             </div>
                         </div>
@@ -344,7 +346,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                                     : 'text-gray-400 hover:text-gray-600'
                                     }`}
                             >
-                                Thông tin sản phẩm
+                                {t('product.detail.info')}
                                 {activeTab === 'info' && (
                                     <span className="absolute bottom-0 left-0 w-full h-1 bg-[#bb252d] rounded-t-full"></span>
                                 )}
@@ -356,7 +358,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                                     : 'text-gray-400 hover:text-gray-600'
                                     }`}
                             >
-                                Mô tả chi tiết
+                                {t('product.detail.description')}
                                 {activeTab === 'description' && (
                                     <span className="absolute bottom-0 left-0 w-full h-1 bg-[#bb252d] rounded-t-full"></span>
                                 )}
@@ -369,12 +371,12 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                                 <div className="space-y-6">
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         {[
-                                            { label: 'Tên sản phẩm', value: product.name },
-                                            { label: 'Thương hiệu', value: product.brandName },
-                                            { label: 'Mã sản phẩm', value: product.skuName },
-                                            { label: 'Danh mục', value: product.category?.name },
+                                            { label: t('product.detail.name'), value: product.name },
+                                            { label: t('product.detail.brand'), value: product.brandName },
+                                            { label: t('product.detail.sku'), value: product.skuName },
+                                            { label: t('product.detail.category'), value: product.category?.name },
                                             // Add Variant info if selected
-                                            activeVariant ? { label: 'Phiên bản', value: activeVariant.variantName } : null
+                                            activeVariant ? { label: t('product.detail.version'), value: activeVariant.variantName } : null
                                         ].map((item, idx) => item && item.value && (
                                             <div key={idx} className="bg-gray-50 p-6 rounded-2xl border border-transparent hover:border-gray-200 transition-all hover:bg-white hover:shadow-sm group">
                                                 <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2">{item.label}</span>
@@ -394,7 +396,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                                         />
                                     ) : (
                                         <div className="text-center py-12 bg-gray-50 rounded-3xl border-2 border-dashed border-gray-200">
-                                            <p className="text-gray-400 font-medium">Chưa có mô tả chi tiết cho sản phẩm này.</p>
+                                            <p className="text-gray-400 font-medium">{t('product.detail.noDescription')}</p>
                                         </div>
                                     )}
                                 </div>
@@ -411,7 +413,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                             <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                             </svg>
-                            {product.category ? `Quay lại ${product.category.name}` : 'Quay lại danh sách sản phẩm'}
+                            {product.category ? `${t('product.detail.backTo')} ${product.category.name}` : t('product.detail.backToList')}
                         </Link>
                     </div>
                 </div>

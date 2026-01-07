@@ -208,7 +208,7 @@ export default function ProductsClient({
                                 overflowWrap: 'break-word'
                             }}
                         >
-                            Sản phẩm
+                            {t('product.title')}
                         </h2>
                     </div>
                 </div>
@@ -228,7 +228,7 @@ export default function ProductsClient({
                                 <svg className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-1.5" fill="currentColor" viewBox="0 0 20 20">
                                     <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
                                 </svg>
-                                <span className="font-medium whitespace-nowrap">Trang chủ</span>
+                                <span className="font-medium whitespace-nowrap">{t('nav.home')}</span>
                             </Link>
                         </div>
 
@@ -243,11 +243,11 @@ export default function ProductsClient({
                                     onClick={() => handleCategoryChange('')}
                                     className="flex items-center text-white px-2 sm:px-3 py-2 sm:py-2.5 rounded transition-all duration-200 cursor-pointer hover:bg-white/20 hover:text-white"
                                 >
-                                    <span className="font-medium whitespace-nowrap">Sản phẩm</span>
+                                    <span className="font-medium whitespace-nowrap">{t('product.title')}</span>
                                 </button>
                             ) : (
                                 <span className="flex items-center text-white px-2 sm:px-3 py-2 sm:py-2.5 font-medium whitespace-nowrap">
-                                    Sản phẩm
+                                    {t('product.title')}
                                 </span>
                             )}
                         </div>
@@ -292,8 +292,8 @@ export default function ProductsClient({
                                         </svg>
                                     </div>
                                     <div>
-                                        <h3 className="text-lg font-bold text-gray-900">Danh mục</h3>
-                                        <p className="text-xs text-gray-500">Lọc theo loại sản phẩm</p>
+                                        <h3 className="text-lg font-bold text-gray-900">{t('product.category.title')}</h3>
+                                        <p className="text-xs text-gray-500">{t('product.category.filter')}</p>
                                     </div>
                                 </div>
 
@@ -313,7 +313,7 @@ export default function ProductsClient({
                                             </svg>
                                         </div>
                                         <div className="flex-1 text-left">
-                                            <span className="font-semibold">Tất cả sản phẩm</span>
+                                            <span className="font-semibold">{t('product.all')}</span>
                                         </div>
                                         {selectedCategory === '' && (
                                             <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -501,12 +501,12 @@ export default function ProductsClient({
                                 {selectedCategory && (
                                     <div className="mt-6 pt-4 border-t border-gray-100">
                                         <div className="flex items-center justify-between">
-                                            <span className="text-xs text-gray-500 uppercase tracking-wider">Đang lọc:</span>
+                                            <span className="text-xs text-gray-500 uppercase tracking-wider">{t('product.filtering')}</span>
                                             <button
                                                 onClick={() => handleCategoryChange('')}
                                                 className="text-xs text-[#bb252d] hover:underline font-medium"
                                             >
-                                                Xóa bộ lọc
+                                                {t('product.clearFilter')}
                                             </button>
                                         </div>
                                         <div className="mt-2 inline-flex items-center gap-2 px-3 py-1.5 bg-[#bb252d]/10 text-[#bb252d] rounded-full text-sm font-medium">
@@ -534,7 +534,7 @@ export default function ProductsClient({
                                         type="text"
                                         value={searchQuery}
                                         onChange={(e) => setSearchQuery(e.target.value)}
-                                        placeholder="Tìm kiếm sản phẩm..."
+                                        placeholder={t('product.search.placeholder')}
                                         className="w-full px-4 py-3 pl-12 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#bb252d] focus:border-transparent transition-all duration-300 hover:border-[#bb252d]"
                                     />
                                     <svg
@@ -553,7 +553,7 @@ export default function ProductsClient({
                                 <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#bb252d] text-white text-sm font-medium">
                                     {products.length}
                                 </span>
-                                <span>/ {total} sản phẩm</span>
+                                <span>/ {total} {t('product.results')}</span>
                             </div>
 
                             {/* Loading State with Premium Skeleton Animation */}
@@ -678,7 +678,7 @@ export default function ProductsClient({
                                                     </div>
 
                                                     <div className="flex items-center text-[#bb252d] font-semibold text-sm transition-all duration-500 group-hover:translate-x-1">
-                                                        Xem chi tiết
+                                                        {t('product.viewDetail')}
                                                         <svg className="w-4 h-4 ml-2 transition-transform duration-500 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                                                         </svg>
@@ -699,8 +699,8 @@ export default function ProductsClient({
                                     <svg className="mx-auto h-24 w-24 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
                                     </svg>
-                                    <h3 className="mt-4 text-lg font-medium text-gray-900">Không tìm thấy sản phẩm</h3>
-                                    <p className="mt-2 text-gray-600">Thử thay đổi bộ lọc hoặc từ khóa tìm kiếm</p>
+                                    <h3 className="mt-4 text-lg font-medium text-gray-900">{t('product.noResults')}</h3>
+                                    <p className="mt-2 text-gray-600">{t('product.noResults.desc')}</p>
                                 </div>
                             )}
 
@@ -713,7 +713,7 @@ export default function ProductsClient({
                                             disabled={currentPage === 1}
                                             className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 transform hover:scale-105 active:scale-95"
                                         >
-                                            Trước
+                                            {t('product.pagination.prev')}
                                         </button>
 
                                         {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
@@ -737,7 +737,7 @@ export default function ProductsClient({
                                             disabled={currentPage === totalPages}
                                             className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 transform hover:scale-105 active:scale-95"
                                         >
-                                            Sau
+                                            {t('product.pagination.next')}
                                         </button>
                                     </nav>
                                 </div>
