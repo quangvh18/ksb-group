@@ -148,9 +148,9 @@ export default function Header() {
           <div className="hidden lg:flex items-center space-x-2">
             <LanguageToggle />
 
-            <div className="bg-white h-[60px] py-[10px] px-[30px] rounded-b-[10px] shadow-[0px_3px_10px_0px_rgba(0,105,52,0.35)] flex items-center justify-center">
+            <div className="bg-[#2c388c] h-[60px] py-[10px] px-[30px] rounded-b-[10px] shadow-[0px_3px_10px_0px_rgba(0,105,52,0.35)] flex items-center justify-center">
               <Link href="/products" className="block">
-                <span className="text-[#bb252d] font-bold text-lg tracking-wide">KSB MALL</span>
+                <span className="text-white font-bold text-lg tracking-wide">KSB MALL</span>
               </Link>
             </div>
           </div>
@@ -301,7 +301,7 @@ export default function Header() {
                   <div className="mt-4 pt-4 border-t border-white/20">
                     <Link
                       href="/products"
-                      className="block w-full px-4 py-4 bg-white/10 hover:bg-[#bb252d] transition-all duration-200 rounded-lg text-center"
+                      className="block w-full px-4 py-4 bg-[#2c388c] hover:bg-[#1a237e] transition-all duration-200 rounded-lg text-center"
                       onClick={closeMenu}
                     >
                       <span className="text-white font-bold text-lg tracking-wide">KSB MALL</span>
