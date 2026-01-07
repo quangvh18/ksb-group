@@ -265,40 +265,39 @@ export default function ProductsClient({
                 </div>
             </div>
 
-            {/* Horizontal Category Menu */}
-            <div className="bg-white border-b border-gray-100 sticky top-0 lg:top-[70px] z-[50] shadow-sm">
-                <div className="container mx-auto px-4 max-w-[1300px]">
-                    <div className="flex items-center justify-center overflow-x-auto lg:overflow-visible lg:flex-wrap scrollbar-hide no-scrollbar py-4 px-2">
+            {/* Horizontal Category Menu - Matching Reference Design */}
+            <div className="bg-white border-b border-gray-200 sticky top-0 lg:top-[70px] z-[50]">
+                <div className="container mx-auto max-w-[1300px]">
+                    <div className="flex items-center justify-center overflow-x-auto lg:overflow-visible scrollbar-hide no-scrollbar">
                         {/* All Products Item */}
                         <div
-                            className="relative flex-shrink-0 group flex flex-col items-center px-4 sm:px-8 md:px-12 lg:px-14 border-r border-gray-100 last:border-r-0 cursor-pointer"
+                            className="relative flex-shrink-0 group flex flex-col items-center justify-center px-8 sm:px-10 md:px-12 py-5 border-r border-gray-200 cursor-pointer hover:bg-gray-50/50 transition-colors"
                             onClick={() => {
                                 handleCategoryChange('');
                                 setExpandedCategory(null);
                             }}
                         >
-                            <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center mb-2 transition-all duration-300 ${selectedCategory === '' ? 'bg-[#bb252d] text-white shadow-md' : 'bg-gray-50 text-gray-500 group-hover:bg-[#bb252d] group-hover:text-white group-hover:shadow-md'}`}>
-                                <svg className="w-6 h-6 sm:w-8 sm:h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                                    <path d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" strokeLinecap="round" strokeLinejoin="round" />
-                                </svg>
-                            </div>
-                            <span className={`text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-colors duration-300 ${selectedCategory === '' ? 'text-[#bb252d]' : 'text-gray-500 group-hover:text-[#bb252d]'}`}>
+                            <svg className={`w-8 h-8 mb-2.5 transition-colors ${selectedCategory === '' ? 'text-[#bb252d]' : 'text-gray-400 group-hover:text-gray-600'}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                                <path d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                            <span className={`text-sm whitespace-nowrap transition-colors ${selectedCategory === '' ? 'text-[#bb252d] font-medium' : 'text-gray-600 group-hover:text-gray-800'}`}>
                                 {t('product.all')}
                             </span>
                         </div>
 
                         {/* Category Items */}
-                        {categories.map((parentCategory) => {
+                        {categories.map((parentCategory, index) => {
                             const isSelected = selectedCategory === parentCategory.slug ||
                                 (parentCategory.children && parentCategory.children.some(c => c.slug === selectedCategory)) ||
                                 (parentCategory.children && parentCategory.children.some(c => c.children && c.children.some(gc => gc.slug === selectedCategory)));
 
                             const childCategories = parentCategory.children || [];
+                            const isLast = index === categories.length - 1;
 
                             return (
                                 <div
                                     key={parentCategory.id}
-                                    className="relative flex-shrink-0 group flex flex-col items-center px-4 sm:px-8 md:px-12 lg:px-14 border-r border-gray-100 last:border-r-0 cursor-pointer"
+                                    className={`relative flex-shrink-0 group flex flex-col items-center justify-center px-8 sm:px-10 md:px-12 py-5 cursor-pointer hover:bg-gray-50/50 transition-colors ${!isLast ? 'border-r border-gray-200' : ''}`}
                                     onMouseEnter={() => isDesktop && setExpandedCategory(parentCategory.slug)}
                                     onMouseLeave={() => isDesktop && setExpandedCategory(null)}
                                     onClick={(e) => {
@@ -307,75 +306,73 @@ export default function ProductsClient({
                                             setExpandedCategory(expandedCategory === parentCategory.slug ? null : parentCategory.slug);
                                         } else {
                                             handleCategoryChange(parentCategory.slug);
-                                            // Close mobile menu if it's a leaf or parent with no children
                                             if (childCategories.length === 0) setExpandedCategory(null);
                                         }
                                     }}
                                 >
-                                    <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center mb-2 transition-all duration-300 ${isSelected ? 'bg-[#bb252d] text-white shadow-md' : 'bg-gray-50 text-gray-500 group-hover:bg-[#bb252d] group-hover:text-white group-hover:shadow-md'}`}>
-                                        {/* Dynamic Icon based on slug */}
-                                        {(() => {
-                                            const iconProps = { className: "w-6 h-6 sm:w-8 sm:h-8", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "1.5" };
-                                            switch (parentCategory.slug) {
-                                                case 'thuc-pham':
-                                                    return <svg {...iconProps}><path d="M3 11c0-4.418 3.582-8 8-8s8 3.582 8 8M3 11h18M3 11v7a2 2 0 002 2h14a2 2 0 002-2v-7M9 11v3M15 11v3" strokeLinecap="round" strokeLinejoin="round" /></svg>;
-                                                case 'keo':
-                                                    return <svg {...iconProps}><path d="M16 16c-2 2-5 2-7 0s-2-5 0-7 5-2 7 0M9 9l-4-4M15 15l4 4" strokeLinecap="round" strokeLinejoin="round" /><circle cx="12" cy="12" r="3" strokeLinecap="round" strokeLinejoin="round" /></svg>;
-                                                case 'mon-an-vat':
-                                                    return <svg {...iconProps}><path d="M17 18a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v11a2 2 0 002 2h12zM9 9a2 2 0 100-4 2 2 0 000 4zM15 15a2 2 0 100-4 2 2 0 000 4z" strokeLinecap="round" strokeLinejoin="round" /></svg>;
-                                                case 'bodycare':
-                                                    return <svg {...iconProps}><path d="M9 5h6a2 2 0 012 2v12a2 2 0 01-2 2H9a2 2 0 01-2-2V7a2 2 0 012-2zM9 5V3a1 1 0 011-1h4a1 1 0 011 1v2M12 11v4" strokeLinecap="round" strokeLinejoin="round" /></svg>;
-                                                case 'facial-skincare':
-                                                    return <svg {...iconProps}><path d="M12 21a9 9 0 100-18 9 9 0 000 18z" strokeLinecap="round" strokeLinejoin="round" /><path d="M8 10h.01M16 10h.01M9 15c1 1 5 1 6 0" strokeLinecap="round" strokeLinejoin="round" /></svg>;
-                                                case 'sua':
-                                                    return <svg {...iconProps}><path d="M9 20h6M7 8l2-4h6l2 4M7 8v10a2 2 0 002 2h6a2 2 0 002-2V8M9 12h6" strokeLinecap="round" strokeLinejoin="round" /></svg>;
-                                                case 'thuc-pham-chuc-nang':
-                                                    return <svg {...iconProps}><path d="M10 10l4 4M14 10l-4 4" strokeLinecap="round" strokeLinejoin="round" /><path d="M4.5 9l4.5-4.5a3 3 0 014.24 0l6.36 6.36a3 3 0 010 4.24l-4.5 4.5a3 3 0 01-4.24 0L4.5 13.24a3 3 0 010-4.24z" strokeLinecap="round" strokeLinejoin="round" /></svg>;
-                                                case 'hoa-my-pham':
-                                                    return <svg {...iconProps}><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" strokeLinecap="round" strokeLinejoin="round" /><circle cx="12" cy="12" r="5" strokeLinecap="round" strokeLinejoin="round" /></svg>;
-                                                default:
-                                                    return <svg {...iconProps}><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" strokeLinecap="round" strokeLinejoin="round" /></svg>;
-                                            }
-                                        })()}
-                                    </div>
-                                    <span className={`text-[10px] sm:text-xs font-bold uppercase tracking-wider text-center transition-colors duration-300 ${isSelected ? 'text-[#bb252d]' : 'text-gray-500 group-hover:text-[#bb252d]'}`}>
+                                    {/* Simple Line Icon - No Background */}
+                                    {(() => {
+                                        const iconClass = `w-8 h-8 mb-2.5 transition-colors ${isSelected ? 'text-[#bb252d]' : 'text-gray-400 group-hover:text-gray-600'}`;
+                                        switch (parentCategory.slug) {
+                                            case 'thuc-pham':
+                                                return <svg className={iconClass} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 11c0-4.418 3.582-8 8-8s8 3.582 8 8M3 11h18M3 11v7a2 2 0 002 2h14a2 2 0 002-2v-7M9 11v3M15 11v3" strokeLinecap="round" strokeLinejoin="round" /></svg>;
+                                            case 'keo':
+                                                return <svg className={iconClass} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="8" strokeLinecap="round" strokeLinejoin="round" /><path d="M12 8v4l2 2" strokeLinecap="round" strokeLinejoin="round" /></svg>;
+                                            case 'mon-an-vat':
+                                                return <svg className={iconClass} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="5" width="18" height="14" rx="2" strokeLinecap="round" strokeLinejoin="round" /><path d="M3 10h18" strokeLinecap="round" strokeLinejoin="round" /></svg>;
+                                            case 'bodycare':
+                                                return <svg className={iconClass} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M9 3h6v4H9zM7 7h10v14H7z" strokeLinecap="round" strokeLinejoin="round" /><path d="M12 11v4" strokeLinecap="round" strokeLinejoin="round" /></svg>;
+                                            case 'facial-skincare':
+                                                return <svg className={iconClass} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="10" r="7" strokeLinecap="round" strokeLinejoin="round" /><path d="M8 9h.01M16 9h.01M10 14c1 1 4 1 5 0" strokeLinecap="round" strokeLinejoin="round" /></svg>;
+                                            case 'sua':
+                                                return <svg className={iconClass} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M8 4h8l1 4H7l1-4zM7 8v12a2 2 0 002 2h6a2 2 0 002-2V8" strokeLinecap="round" strokeLinejoin="round" /><path d="M10 12h4" strokeLinecap="round" strokeLinejoin="round" /></svg>;
+                                            case 'thuc-pham-chuc-nang':
+                                                return <svg className={iconClass} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 3v18M3 12h18" strokeLinecap="round" strokeLinejoin="round" /><circle cx="12" cy="12" r="9" strokeLinecap="round" strokeLinejoin="round" /></svg>;
+                                            case 'hoa-my-pham':
+                                                return <svg className={iconClass} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M7 3h10v5l-2 1v10a2 2 0 01-2 2h-2a2 2 0 01-2-2V9L7 8V3z" strokeLinecap="round" strokeLinejoin="round" /></svg>;
+                                            default:
+                                                return <svg className={iconClass} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" strokeLinecap="round" strokeLinejoin="round" /></svg>;
+                                        }
+                                    })()}
+                                    <span className={`text-sm whitespace-nowrap transition-colors ${isSelected ? 'text-[#bb252d] font-medium' : 'text-gray-600 group-hover:text-gray-800'}`}>
                                         {parentCategory.name}
                                     </span>
 
-                                    {/* Desktop Dropdown Menu - Visible on Hover */}
+                                    {/* Desktop Dropdown Menu - Premium Styling */}
                                     {isDesktop && childCategories.length > 0 && (
                                         <div
-                                            className={`absolute top-full left-1/2 -translate-x-1/2 pt-4 z-[60] w-64 transition-all duration-300 
+                                            className={`absolute top-full left-1/2 -translate-x-1/2 pt-3 z-[60] w-72 transition-all duration-300 
                                                 ${expandedCategory === parentCategory.slug
-                                                    ? 'opacity-100 visible'
-                                                    : 'opacity-0 invisible group-hover:visible group-hover:opacity-100 group-hover:animate-fadeInUp'}`}
+                                                    ? 'opacity-100 visible translate-y-0'
+                                                    : 'opacity-0 invisible -translate-y-2 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0'}`}
                                             onClick={(e) => e.stopPropagation()}
                                         >
-                                            <div className="bg-white rounded-xl shadow-2xl border border-gray-100 overflow-hidden p-2">
+                                            <div className="bg-white rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-gray-100 overflow-hidden py-2 backdrop-blur-sm bg-white/95">
                                                 {childCategories.map((child) => (
                                                     <div key={child.id} className="group/child">
                                                         <button
                                                             onClick={() => handleCategoryChange(child.slug)}
-                                                            className={`w-full flex items-center justify-between px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${selectedCategory === child.slug ? 'bg-[#bb252d] text-white' : 'hover:bg-gray-50 text-gray-700'}`}
+                                                            className={`w-full flex items-center justify-between px-5 py-2.5 text-[13px] font-medium transition-all duration-200 border-l-4 ${selectedCategory === child.slug ? 'bg-red-50/50 text-[#bb252d] border-[#bb252d]' : 'hover:bg-gray-50/80 text-gray-700 border-transparent hover:border-gray-200'}`}
                                                         >
                                                             <span>{child.name}</span>
                                                             {child.children && child.children.length > 0 && (
-                                                                <svg className="w-4 h-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                                                                <svg className="w-3.5 h-3.5 opacity-40 transition-transform group-hover/child:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
                                                                 </svg>
                                                             )}
                                                         </button>
 
-                                                        {/* Level 3 Submenu */}
+                                                        {/* Level 3 Submenu - Nested & Refined */}
                                                         {child.children && child.children.length > 0 && (
-                                                            <div className="hidden group-hover/child:block pl-4 pb-2 space-y-1">
+                                                            <div className="hidden group-hover/child:block bg-gray-50/50 py-1.5 border-t border-b border-gray-100/50">
                                                                 {child.children.map((grandChild) => (
                                                                     <button
                                                                         key={grandChild.id}
                                                                         onClick={() => handleCategoryChange(grandChild.slug)}
-                                                                        className={`w-full text-left px-4 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ${selectedCategory === grandChild.slug ? 'text-[#bb252d] bg-[#bb252d]/5' : 'text-gray-500 hover:text-gray-900 hover:bg-gray-50'}`}
+                                                                        className={`w-full text-left px-8 py-2 text-xs transition-colors relative ${selectedCategory === grandChild.slug ? 'text-[#bb252d] font-semibold' : 'text-gray-500 hover:text-gray-900'}`}
                                                                     >
-                                                                        • {grandChild.name}
+                                                                        <span className="absolute left-6 top-1/2 -translate-y-1/2 w-1 h-1 rounded-full bg-gray-300"></span>
+                                                                        {grandChild.name}
                                                                     </button>
                                                                 ))}
                                                             </div>
@@ -390,26 +387,26 @@ export default function ProductsClient({
                         })}
                     </div>
 
-                    {/* Mobile Hierarchical Submenu */}
+                    {/* Mobile Hierarchical Submenu - Modern & Clean */}
                     {!isDesktop && expandedCategory && (
-                        <div className="flex flex-col border-t border-gray-50 bg-gray-50/10">
-                            {/* Level 2 Submenu */}
-                            <div className="py-3 px-2 overflow-x-auto scrollbar-hide flex gap-2 animate-fadeInUp">
+                        <div className="flex flex-col border-t border-gray-100 bg-white">
+                            {/* Level 2 Row */}
+                            <div className="py-4 px-3 overflow-x-auto scrollbar-hide flex gap-3 animate-fadeInUp">
                                 {categories.find(c => c.slug === expandedCategory)?.children?.map(child => (
                                     <button
                                         key={child.id}
                                         onClick={() => handleCategoryChange(child.slug)}
-                                        className={`flex-shrink-0 px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 
+                                        className={`flex-shrink-0 px-5 py-2 rounded-full text-[13px] font-bold transition-all duration-300 shadow-sm
                                             ${(selectedCategory === child.slug || (child.children && child.children.some(gc => gc.slug === selectedCategory)))
-                                                ? 'bg-[#bb252d] text-white'
-                                                : 'bg-white border border-gray-200 text-gray-600'}`}
+                                                ? 'bg-[#bb252d] text-white ring-4 ring-red-50'
+                                                : 'bg-gray-50 border border-gray-100 text-gray-600 hover:bg-gray-100'}`}
                                     >
                                         {child.name}
                                     </button>
                                 ))}
                             </div>
 
-                            {/* Level 3 Submenu - Only show if current selection or path is in an L2 item that has children */}
+                            {/* Level 3 Row - Subtly Integrated */}
                             {(() => {
                                 const activeL2 = categories
                                     .find(c => c.slug === expandedCategory)?.children
@@ -417,20 +414,25 @@ export default function ProductsClient({
 
                                 if (activeL2 && activeL2.children && activeL2.children.length > 0) {
                                     return (
-                                        <div className="py-2.5 px-3 border-t border-gray-50 overflow-x-auto scrollbar-hide flex gap-3 animate-fadeInUp bg-white">
-                                            <span className="text-[10px] text-gray-400 font-bold uppercase py-1 border-r border-gray-200 pr-2 flex-shrink-0">
-                                                {activeL2.name}
-                                            </span>
-                                            {activeL2.children.map(grandChild => (
-                                                <button
-                                                    key={grandChild.id}
-                                                    onClick={() => handleCategoryChange(grandChild.slug)}
-                                                    className={`flex-shrink-0 text-xs py-1 transition-all duration-200 whitespace-nowrap
-                                                        ${selectedCategory === grandChild.slug ? 'text-[#bb252d] font-bold underline decoration-2 underline-offset-4' : 'text-gray-500 font-medium'}`}
-                                                >
-                                                    {grandChild.name}
-                                                </button>
-                                            ))}
+                                        <div className="py-3 px-4 border-t border-gray-50 overflow-x-auto scrollbar-hide flex items-center gap-4 animate-fadeInUp bg-gray-50/50">
+                                            <div className="flex items-center gap-2 flex-shrink-0 border-r border-gray-200 pr-4">
+                                                <div className="w-1.5 h-1.5 rounded-full bg-[#bb252d]"></div>
+                                                <span className="text-[11px] text-gray-400 font-black uppercase tracking-widest whitespace-nowrap">
+                                                    {activeL2.name}
+                                                </span>
+                                            </div>
+                                            <div className="flex gap-4">
+                                                {activeL2.children.map(grandChild => (
+                                                    <button
+                                                        key={grandChild.id}
+                                                        onClick={() => handleCategoryChange(grandChild.slug)}
+                                                        className={`flex-shrink-0 text-[13px] py-1 transition-all duration-200 whitespace-nowrap relative
+                                                            ${selectedCategory === grandChild.slug ? 'text-[#bb252d] font-bold after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-[#bb252d]' : 'text-gray-500 font-medium hover:text-gray-800'}`}
+                                                    >
+                                                        {grandChild.name}
+                                                    </button>
+                                                ))}
+                                            </div>
                                         </div>
                                     );
                                 }
