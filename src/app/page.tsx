@@ -71,8 +71,8 @@ async function getNewsData(): Promise<TransformedNewsItem[]> {
 
     // Danh sách slug của 2 bài viết cần hiển thị
     const featuredSlugs = [
-      'ksb-group-don-doan-dai-su-new-zealand-den-tham-va-lam-viec-tai-van-phong-ha-noi',
-      'ksb-group-ky-bien-ban-ghi-nho-de-dua-san-pham-sua-yen-mach-cao-cap-new-zealand-vao-viet-nam'
+      'ksb-group-don-tiep-dai-su-new-zealand-khoi-dau-cho-nhung-du-an-hop-tac-ben-vung',
+      'ksb-group-dua-sua-yen-mach-cao-cap-new-zealand-ve-viet-nam'
     ];
 
     // Lọc ra 2 bài viết theo slug
