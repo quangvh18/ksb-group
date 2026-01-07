@@ -280,10 +280,10 @@ export default function ProductsClient({
             {/* Main Content */}
             <main className="bg-gray-50 py-12">
                 <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
-                    <div className="flex flex-col lg:flex-row gap-8">
+                    <div className="flex flex-col lg:flex-row gap-8 lg:items-start">
                         {/* Sidebar - Filters */}
-                        <aside className="w-full lg:w-80 flex-shrink-0 lg:sticky lg:top-20">
-                            <div className="bg-white rounded-2xl shadow-lg p-4 lg:p-5 lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto scrollbar-hide border border-gray-100">
+                        <aside className="w-full lg:w-80 flex-shrink-0 sticky top-0 lg:top-20 z-[40] -mx-2 md:-mx-5 lg:mx-0 bg-white/95 backdrop-blur-sm border-b border-gray-100 lg:border-none lg:bg-transparent lg:shadow-none">
+                            <div className="bg-transparent lg:bg-white lg:rounded-2xl lg:shadow-lg p-2 lg:p-5 lg:max-h-[calc(100vh-6rem)] lg:sidebar-scroll lg:overflow-y-auto scrollbar-hide lg:border lg:border-gray-100">
                                 {/* Header - Hidden on mobile */}
                                 <div className="hidden lg:flex items-center gap-3 mb-6 pb-4 border-b border-gray-100">
                                     <div className="w-10 h-10 bg-gradient-to-br from-[#bb252d] to-[#a0153a] rounded-xl flex items-center justify-center shadow-lg">
@@ -297,13 +297,13 @@ export default function ProductsClient({
                                     </div>
                                 </div>
 
-                                <div className="flex lg:flex-col gap-3 overflow-x-auto lg:overflow-x-visible pb-2 lg:pb-0 scrollbar-hide no-scrollbar items-start">
+                                <div className="flex lg:flex-col gap-2 lg:gap-3 overflow-x-auto lg:overflow-x-visible pb-1 lg:pb-0 scrollbar-hide no-scrollbar items-center lg:items-start px-2 lg:px-0">
                                     {/* All Products Button */}
                                     <button
                                         onClick={() => handleCategoryChange('')}
-                                        className={`flex-shrink-0 lg:w-full flex items-center gap-2 lg:gap-3 p-3 lg:p-4 rounded-xl transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] ${selectedCategory === ''
-                                            ? 'bg-gradient-to-r from-[#bb252d] to-[#a0153a] text-white shadow-lg shadow-[#bb252d]/30'
-                                            : 'bg-gray-50 hover:bg-gray-100 text-gray-700'
+                                        className={`flex-shrink-0 lg:w-full flex items-center gap-2 lg:gap-3 px-3 py-2 lg:p-4 rounded-xl lg:rounded-xl transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] ${selectedCategory === ''
+                                            ? 'bg-gradient-to-r from-[#bb252d] to-[#a0153a] text-white shadow-md lg:shadow-lg shadow-[#bb252d]/30'
+                                            : 'bg-gray-100 lg:bg-gray-50 hover:bg-gray-200 lg:hover:bg-gray-100 text-gray-700'
                                             }`}
                                     >
                                         <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${selectedCategory === '' ? 'bg-white/20' : 'bg-white shadow-sm'
@@ -351,11 +351,11 @@ export default function ProductsClient({
                                                             setExpandedCategory(parentCategory.slug);
                                                         }
                                                     }}
-                                                    className={`flex-shrink-0 lg:w-full flex items-center gap-2 lg:gap-3 p-3 lg:p-4 rounded-xl transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] ${isParentSelected
-                                                        ? 'bg-gradient-to-r from-[#bb252d] to-[#a0153a] text-white shadow-lg shadow-[#bb252d]/30'
+                                                    className={`flex-shrink-0 lg:w-full flex items-center gap-2 lg:gap-3 px-3 py-2 lg:p-4 rounded-xl lg:rounded-xl transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] ${isParentSelected
+                                                        ? 'bg-gradient-to-r from-[#bb252d] to-[#a0153a] text-white shadow-md lg:shadow-lg shadow-[#bb252d]/30'
                                                         : hasSelectedChild
-                                                            ? 'bg-[#bb252d]/10 text-[#bb252d] border-2 border-[#bb252d]/20'
-                                                            : 'bg-gray-50 hover:bg-gray-100 text-gray-700'
+                                                            ? 'bg-[#bb252d]/10 text-[#bb252d] border lg:border-2 border-[#bb252d]/20'
+                                                            : 'bg-gray-100 lg:bg-gray-50 hover:bg-gray-200 lg:hover:bg-gray-100 text-gray-700'
                                                         }`}
                                                 >
                                                     <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${isParentSelected ? 'bg-white/20' : 'bg-white shadow-sm'
