@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useLanguage } from '../../contexts/LanguageContext';
@@ -21,6 +21,8 @@ export default function ProductsClient({
     initialCategory = ''
 }: ProductsClientProps) {
     const { t } = useLanguage();
+    const router = useRouter();
+    const pathname = usePathname();
     const searchParams = useSearchParams();
     const categoryFromUrl = searchParams.get('category') || initialCategory;
 
@@ -140,8 +142,18 @@ export default function ProductsClient({
     }, [selectedCategory, searchQuery, currentPage, categories]);
 
     const handleCategoryChange = (categorySlug: string) => {
-        setSelectedCategory(categorySlug === selectedCategory ? '' : categorySlug);
+        const newCategory = categorySlug === selectedCategory ? '' : categorySlug;
+        setSelectedCategory(newCategory);
         setCurrentPage(1);
+
+        // Update URL
+        const params = new URLSearchParams(searchParams.toString());
+        if (newCategory) {
+            params.set('category', newCategory);
+        } else {
+            params.delete('category');
+        }
+        router.push(`${pathname}?${params.toString()}`, { scroll: false });
     };
 
     const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
@@ -209,7 +221,7 @@ export default function ProductsClient({
                             </div>
                             {selectedCategory ? (
                                 <button
-                                    onClick={() => setSelectedCategory('')}
+                                    onClick={() => handleCategoryChange('')}
                                     className="flex items-center text-white px-2 sm:px-3 py-2 sm:py-2.5 rounded transition-all duration-200 cursor-pointer hover:bg-white/20 hover:text-white"
                                 >
                                     <span className="font-medium whitespace-nowrap">Sản phẩm</span>
@@ -269,7 +281,7 @@ export default function ProductsClient({
                                 <div className="space-y-3">
                                     {/* All Products Button */}
                                     <button
-                                        onClick={() => setSelectedCategory('')}
+                                        onClick={() => handleCategoryChange('')}
                                         className={`w-full flex items-center gap-3 p-4 rounded-xl transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] ${selectedCategory === ''
                                             ? 'bg-gradient-to-r from-[#bb252d] to-[#a0153a] text-white shadow-lg shadow-[#bb252d]/30'
                                             : 'bg-gray-50 hover:bg-gray-100 text-gray-700'
@@ -472,7 +484,7 @@ export default function ProductsClient({
                                         <div className="flex items-center justify-between">
                                             <span className="text-xs text-gray-500 uppercase tracking-wider">Đang lọc:</span>
                                             <button
-                                                onClick={() => setSelectedCategory('')}
+                                                onClick={() => handleCategoryChange('')}
                                                 className="text-xs text-[#bb252d] hover:underline font-medium"
                                             >
                                                 Xóa bộ lọc
@@ -481,7 +493,7 @@ export default function ProductsClient({
                                         <div className="mt-2 inline-flex items-center gap-2 px-3 py-1.5 bg-[#bb252d]/10 text-[#bb252d] rounded-full text-sm font-medium">
                                             <span>{categories.find(c => c.slug === selectedCategory)?.name || selectedCategory}</span>
                                             <button
-                                                onClick={() => setSelectedCategory('')}
+                                                onClick={() => handleCategoryChange('')}
                                                 className="hover:bg-[#bb252d]/20 rounded-full p-0.5"
                                             >
                                                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

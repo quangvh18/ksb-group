@@ -143,6 +143,22 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                                 <span className="font-medium whitespace-nowrap">Sản phẩm</span>
                             </Link>
                         </div>
+
+                        {product.category && (
+                            <div className="flex items-stretch">
+                                <div className="flex items-center mr-1 sm:mr-2">
+                                    <svg className="w-3 h-3 sm:w-4 sm:h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                                    </svg>
+                                </div>
+                                <Link
+                                    href={`/products?category=${product.category.slug}`}
+                                    className="flex items-center text-white px-2 sm:px-3 py-2 sm:py-2.5 rounded transition-all duration-200 cursor-pointer hover:bg-white/20 hover:text-white"
+                                >
+                                    <span className="font-medium whitespace-nowrap">{product.category.name}</span>
+                                </Link>
+                            </div>
+                        )}
                     </nav>
                 </div>
             </div>
@@ -389,13 +405,13 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                     {/* Back to Products */}
                     <div className="mt-12 pt-8 border-t border-gray-200">
                         <Link
-                            href="/products"
+                            href={product.category ? `/products?category=${product.category.slug}` : "/products"}
                             className="inline-flex items-center text-[#bb252d] font-medium hover:text-[#a0153a] transition-colors duration-300"
                         >
                             <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                             </svg>
-                            Quay lại danh sách sản phẩm
+                            {product.category ? `Quay lại ${product.category.name}` : 'Quay lại danh sách sản phẩm'}
                         </Link>
                     </div>
                 </div>
@@ -403,13 +419,27 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
 
             {/* Hidden Image Preloader */}
             <div className="hidden">
-                {product.product_variants?.map(variant => {
-                    // New API: imageUrl is an array of images on variant
-                    if (variant.imageUrl && variant.imageUrl.length > 0) {
-                        return variant.imageUrl.map((img, imgIdx) => (
+                {
+                    product.product_variants?.map(variant => {
+                        // New API: imageUrl is an array of images on variant
+                        if (variant.imageUrl && variant.imageUrl.length > 0) {
+                            return variant.imageUrl.map((img, imgIdx) => (
+                                <Image
+                                    key={`${variant.id}-imageUrl-${imgIdx}`}
+                                    src={getFullImageUrl(img.url)}
+                                    alt="preloader"
+                                    width={1}
+                                    height={1}
+                                    priority
+                                    unoptimized
+                                />
+                            ));
+                        }
+                        // Legacy API: variant_images array
+                        return variant.variant_images?.map((img, idx) => (
                             <Image
-                                key={`${variant.id}-imageUrl-${imgIdx}`}
-                                src={getFullImageUrl(img.url)}
+                                key={`${variant.id}-${idx}`}
+                                src={getFullImageUrl(img.thumbNail?.url)}
                                 alt="preloader"
                                 width={1}
                                 height={1}
@@ -417,20 +447,8 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                                 unoptimized
                             />
                         ));
-                    }
-                    // Legacy API: variant_images array
-                    return variant.variant_images?.map((img, idx) => (
-                        <Image
-                            key={`${variant.id}-${idx}`}
-                            src={getFullImageUrl(img.thumbNail?.url)}
-                            alt="preloader"
-                            width={1}
-                            height={1}
-                            priority
-                            unoptimized
-                        />
-                    ));
-                })}
+                    })
+                }
             </div>
         </div>
     );
