@@ -47,7 +47,7 @@ const EcosystemDetailSection = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="relative">
                   <Image
-                    src="/images/ecosystem-page/biofest.webp"
+                    src="/images/ecosystem-page/File_408.webp"
                     alt="Biofresh Store"
                     width={400}
                     height={300}

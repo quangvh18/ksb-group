@@ -51,7 +51,7 @@ export default function CosmeticsPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="relative">
                     <img
-                      src="/images/ecosystem-page/biofest.webp"
+                      src="/images/ecosystem-page/File_408.webp"
                       alt="Biofresh Store"
                       className="w-full h-auto rounded-2xl shadow-lg"
                     />
