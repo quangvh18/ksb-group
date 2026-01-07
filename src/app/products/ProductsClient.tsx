@@ -282,10 +282,10 @@ export default function ProductsClient({
                 <div className="container mx-auto px-2 md:px-5 max-w-[1300px]">
                     <div className="flex flex-col lg:flex-row gap-8">
                         {/* Sidebar - Filters */}
-                        <aside className="lg:w-80 flex-shrink-0">
-                            <div className="bg-white rounded-2xl shadow-lg p-5 sticky top-20 max-h-[calc(100vh-6rem)] overflow-y-auto scrollbar-hide border border-gray-100">
-                                {/* Header */}
-                                <div className="flex items-center gap-3 mb-6 pb-4 border-b border-gray-100">
+                        <aside className="w-full lg:w-80 flex-shrink-0 lg:sticky lg:top-20">
+                            <div className="bg-white rounded-2xl shadow-lg p-4 lg:p-5 lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto scrollbar-hide border border-gray-100">
+                                {/* Header - Hidden on mobile */}
+                                <div className="hidden lg:flex items-center gap-3 mb-6 pb-4 border-b border-gray-100">
                                     <div className="w-10 h-10 bg-gradient-to-br from-[#bb252d] to-[#a0153a] rounded-xl flex items-center justify-center shadow-lg">
                                         <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
@@ -297,11 +297,11 @@ export default function ProductsClient({
                                     </div>
                                 </div>
 
-                                <div className="space-y-3">
+                                <div className="flex lg:flex-col gap-3 overflow-x-auto lg:overflow-x-visible pb-2 lg:pb-0 scrollbar-hide no-scrollbar items-start">
                                     {/* All Products Button */}
                                     <button
                                         onClick={() => handleCategoryChange('')}
-                                        className={`w-full flex items-center gap-3 p-4 rounded-xl transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] ${selectedCategory === ''
+                                        className={`flex-shrink-0 lg:w-full flex items-center gap-2 lg:gap-3 p-3 lg:p-4 rounded-xl transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] ${selectedCategory === ''
                                             ? 'bg-gradient-to-r from-[#bb252d] to-[#a0153a] text-white shadow-lg shadow-[#bb252d]/30'
                                             : 'bg-gray-50 hover:bg-gray-100 text-gray-700'
                                             }`}
@@ -312,7 +312,7 @@ export default function ProductsClient({
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
                                             </svg>
                                         </div>
-                                        <div className="flex-1 text-left">
+                                        <div className="flex-1 text-left whitespace-nowrap lg:whitespace-normal">
                                             <span className="font-semibold">{t('product.all')}</span>
                                         </div>
                                         {selectedCategory === '' && (
@@ -337,7 +337,7 @@ export default function ProductsClient({
                                         return (
                                             <div
                                                 key={parentCategory.id}
-                                                className="space-y-2"
+                                                className="flex-shrink-0 lg:w-full lg:space-y-2"
                                                 style={{ animation: `slideIn 0.3s ease-out ${index * 0.05}s both` }}
                                             >
                                                 {/* Parent Category Button */}
@@ -351,7 +351,7 @@ export default function ProductsClient({
                                                             setExpandedCategory(parentCategory.slug);
                                                         }
                                                     }}
-                                                    className={`w-full flex items-center gap-3 p-4 rounded-xl transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] ${isParentSelected
+                                                    className={`flex-shrink-0 lg:w-full flex items-center gap-2 lg:gap-3 p-3 lg:p-4 rounded-xl transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] ${isParentSelected
                                                         ? 'bg-gradient-to-r from-[#bb252d] to-[#a0153a] text-white shadow-lg shadow-[#bb252d]/30'
                                                         : hasSelectedChild
                                                             ? 'bg-[#bb252d]/10 text-[#bb252d] border-2 border-[#bb252d]/20'
@@ -365,7 +365,7 @@ export default function ProductsClient({
                                                         </svg>
                                                     </div>
                                                     <div className="flex-1 text-left min-w-0">
-                                                        <span className="font-semibold text-sm leading-tight line-clamp-2" title={parentCategory.name}>{parentCategory.name}</span>
+                                                        <span className="font-semibold text-sm leading-tight whitespace-nowrap lg:whitespace-normal lg:line-clamp-2" title={parentCategory.name}>{parentCategory.name}</span>
                                                     </div>
                                                     {/* Arrow icon to indicate expandable */}
                                                     {childCategories.length > 0 && (
@@ -391,7 +391,7 @@ export default function ProductsClient({
 
                                                 {/* Child Categories (Level 2) - Collapsible with smooth animation */}
                                                 <div
-                                                    className={`ml-4 pl-4 border-l-2 border-[#bb252d]/20 flex flex-col gap-1.5 overflow-hidden ${isExpanded && childCategories.length > 0
+                                                    className={`lg:ml-4 lg:pl-4 lg:border-l-2 lg:border-[#bb252d]/20 flex flex-col gap-1.5 overflow-hidden ${isExpanded && childCategories.length > 0
                                                         ? 'max-h-[1000px] opacity-100 py-1'
                                                         : 'max-h-0 opacity-0 py-0'
                                                         }`}
@@ -425,7 +425,7 @@ export default function ProductsClient({
                                                                     <svg className={`w-4 h-4 flex-shrink-0 ${isChildSelected ? 'text-white' : 'text-[#bb252d]/70'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
                                                                     </svg>
-                                                                    <span className="flex-1 text-left text-xs leading-tight line-clamp-2" title={childCategory.name}>{childCategory.name}</span>
+                                                                    <span className="flex-1 text-left text-xs leading-tight whitespace-nowrap lg:whitespace-normal lg:line-clamp-2" title={childCategory.name}>{childCategory.name}</span>
                                                                     {/* Arrow for grandchildren */}
                                                                     {grandChildCategories.length > 0 && (
                                                                         <svg
@@ -476,7 +476,7 @@ export default function ProductsClient({
                                                                                 <svg className={`w-3 h-3 flex-shrink-0 ${selectedCategory === grandChild.slug ? 'text-white' : 'text-[#bb252d]/50'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
                                                                                 </svg>
-                                                                                <span className="flex-1 text-left leading-tight line-clamp-2" title={grandChild.name}>{grandChild.name}</span>
+                                                                                <span className="flex-1 text-left leading-tight whitespace-nowrap lg:whitespace-normal lg:line-clamp-2" title={grandChild.name}>{grandChild.name}</span>
                                                                                 {selectedCategory === grandChild.slug && (
                                                                                     <svg className="w-3 h-3 text-white flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                                                                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
@@ -497,9 +497,9 @@ export default function ProductsClient({
 
                                 </div>
 
-                                {/* Selected Filter Badge */}
+                                {/* Selected Filter Badge - Hidden on mobile as it is visible in the row */}
                                 {selectedCategory && (
-                                    <div className="mt-6 pt-4 border-t border-gray-100">
+                                    <div className="hidden lg:block mt-6 pt-4 border-t border-gray-100">
                                         <div className="flex items-center justify-between">
                                             <span className="text-xs text-gray-500 uppercase tracking-wider">{t('product.filtering')}</span>
                                             <button
