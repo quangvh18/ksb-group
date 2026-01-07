@@ -94,6 +94,24 @@ export default function ProductsClient({
         return Array.from(new Set(slugs)); // Ensure unique slugs
     };
 
+    // Helper to get path of categories for breadcrumb
+    const getCategoryPath = (slug: string, categoryList: Category[]): Category[] => {
+        for (const cat of categoryList) {
+            if (cat.slug === slug) {
+                return [cat];
+            }
+            if (cat.children && cat.children.length > 0) {
+                const subPath = getCategoryPath(slug, cat.children);
+                if (subPath.length > 0) {
+                    return [cat, ...subPath];
+                }
+            }
+        }
+        return [];
+    };
+
+    const categoryPath = selectedCategory ? getCategoryPath(selectedCategory, categories) : [];
+
     // Fetch products when filters change
     useEffect(() => {
         const fetchProducts = async () => {
@@ -189,10 +207,41 @@ export default function ProductsClient({
                                     <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
                                 </svg>
                             </div>
-                            <span className="flex items-center text-white px-2 sm:px-3 py-2 sm:py-2.5 font-medium whitespace-nowrap">
-                                Sản phẩm
-                            </span>
+                            {selectedCategory ? (
+                                <button
+                                    onClick={() => setSelectedCategory('')}
+                                    className="flex items-center text-white px-2 sm:px-3 py-2 sm:py-2.5 rounded transition-all duration-200 cursor-pointer hover:bg-white/20 hover:text-white"
+                                >
+                                    <span className="font-medium whitespace-nowrap">Sản phẩm</span>
+                                </button>
+                            ) : (
+                                <span className="flex items-center text-white px-2 sm:px-3 py-2 sm:py-2.5 font-medium whitespace-nowrap">
+                                    Sản phẩm
+                                </span>
+                            )}
                         </div>
+
+                        {categoryPath.map((pathCat, idx) => (
+                            <div key={pathCat.id} className="flex items-stretch">
+                                <div className="flex items-center mr-1 sm:mr-2">
+                                    <svg className="w-3 h-3 sm:w-4 sm:h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                                    </svg>
+                                </div>
+                                {idx === categoryPath.length - 1 ? (
+                                    <span className="flex items-center text-white px-2 sm:px-3 py-2 sm:py-2.5 font-medium whitespace-nowrap">
+                                        {pathCat.name}
+                                    </span>
+                                ) : (
+                                    <button
+                                        onClick={() => handleCategoryChange(pathCat.slug)}
+                                        className="flex items-center text-white px-2 sm:px-3 py-2 sm:py-2.5 rounded transition-all duration-200 cursor-pointer hover:bg-white/20 hover:text-white"
+                                    >
+                                        <span className="font-medium whitespace-nowrap">{pathCat.name}</span>
+                                    </button>
+                                )}
+                            </div>
+                        ))}
                     </nav>
                 </div>
             </div>
