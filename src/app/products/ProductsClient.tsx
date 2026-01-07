@@ -42,6 +42,9 @@ export default function ProductsClient({
     useEffect(() => {
         if (categoryFromUrl) {
             setSelectedCategory(categoryFromUrl);
+            // Save to session storage
+            sessionStorage.setItem('last_selected_category', categoryFromUrl);
+
             // Find and expand parent category if needed
             for (const parentCategory of categories) {
                 if (parentCategory.slug === categoryFromUrl) {
@@ -63,8 +66,17 @@ export default function ProductsClient({
                     }
                 }
             }
+        } else if (!searchParams.get('category')) {
+            // If URL has no category, check session storage for "back" navigation support
+            const savedCategory = sessionStorage.getItem('last_selected_category');
+            if (savedCategory) {
+                // Restore from session storage
+                const params = new URLSearchParams(searchParams.toString());
+                params.set('category', savedCategory);
+                router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+            }
         }
-    }, [categoryFromUrl, categories]);
+    }, [categoryFromUrl, categories, searchParams, pathname, router]);
 
     // Helper function to get all child category slugs recursively
     const getAllCategorySlugs = (slug: string, categoryList: Category[]): string[] => {
@@ -145,6 +157,13 @@ export default function ProductsClient({
         const newCategory = categorySlug === selectedCategory ? '' : categorySlug;
         setSelectedCategory(newCategory);
         setCurrentPage(1);
+
+        // Update session storage
+        if (newCategory) {
+            sessionStorage.setItem('last_selected_category', newCategory);
+        } else {
+            sessionStorage.removeItem('last_selected_category');
+        }
 
         // Update URL
         const params = new URLSearchParams(searchParams.toString());

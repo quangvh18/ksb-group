@@ -9,11 +9,17 @@ export const metadata: Metadata = {
 
 export const revalidate = 0; // Disable cache for debugging
 
-export default async function ProductsPage() {
+interface Props {
+    searchParams: { [key: string]: string | string[] | undefined };
+}
+
+export default async function ProductsPage({ searchParams }: Props) {
+    const category = typeof searchParams.category === 'string' ? searchParams.category : undefined;
+
     // Fetch initial data
     const [categoriesData, productsData] = await Promise.all([
         productService.getCategories(),
-        productService.getProducts(1, 20)
+        productService.getProducts(1, 20, category)
     ]);
 
     return (
@@ -21,6 +27,7 @@ export default async function ProductsPage() {
             initialCategories={categoriesData}
             initialProducts={productsData.data}
             initialTotal={productsData.total}
+            initialCategory={category || ''}
         />
     );
 }
