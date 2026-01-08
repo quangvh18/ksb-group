@@ -166,7 +166,9 @@ export const productService = {
 
             if (categorySlug) {
                 if (Array.isArray(categorySlug)) {
-                    params['filters[category][slug][$in]'] = categorySlug;
+                    categorySlug.forEach((slug, index) => {
+                        params[`filters[category][slug][$in][${index}]`] = slug;
+                    });
                 } else {
                     params['filters[category][slug][$eq]'] = categorySlug;
                 }
@@ -214,19 +216,15 @@ export const productService = {
         try {
             const response = await api.get<{ data: Category[] }>('/categories', {
                 params: {
-                    // Populate parent info
-                    'populate[0]': 'parent',
-                    // Filter to exclude news categories
-                    'filters[news][id][$notNull]': 'false',
-                    // Populate children (level 2)
+                    'pagination[page]': 1,
+                    'pagination[pageSize]': 30,
+                    'filters[parent][$null]': 'true',
                     'populate[children][fields][0]': 'id',
                     'populate[children][fields][1]': 'name',
                     'populate[children][fields][2]': 'slug',
-                    // Populate children's children (level 3)
                     'populate[children][populate][children][fields][0]': 'id',
                     'populate[children][populate][children][fields][1]': 'name',
                     'populate[children][populate][children][fields][2]': 'slug',
-                    'pagination[pageSize]': 250, // Get all categories
                     'sort[0]': 'order:asc',
                     'sort[1]': 'name:asc'
                 }
@@ -234,54 +232,19 @@ export const productService = {
 
             const allCategories = response.data.data;
 
-            // Excluded slugs (news-related categories)
+            // Excluded slugs (news-related categories should still be hidden on products page)
             const excludedSlugs = ['su-kien', 'tin-tuc-nganh-thuc-pham', 'tin-tuc'];
-            const forcedTopLevelSlugs = ['sua', 'thuc-pham-chuc-nang', 'bodycare', 'facial-skincare'];
 
-            // Build a set of ALL IDs that appear as children in any category
-            // These IDs should NOT be shown at top level (unless forced)
-            const childIds = new Set<number>();
-            allCategories.forEach(cat => {
-                if (cat.children && cat.children.length > 0) {
-                    cat.children.forEach(child => {
-                        childIds.add(child.id);
-                        if (child.children && child.children.length > 0) {
-                            child.children.forEach(grandChild => {
-                                childIds.add(grandChild.id);
-                            });
-                        }
-                    });
-                }
-            });
-
-            // Filter to get top-level categories:
-            // 1. Not in childIds set (unless it's a forcedTopLevelSlug)
-            // 2. Not in excluded slugs
-            // 3. Has children (to show in menu) OR is in forcedTopLevelSlugs
             return allCategories
-                .filter(cat => {
-                    const isForced = forcedTopLevelSlugs.includes(cat.slug);
-                    const isNotExcluded = !excludedSlugs.includes(cat.slug);
-                    const isParent = !childIds.has(cat.id);
-                    const hasChildren = cat.children && cat.children.length > 0;
-
-                    if (!isNotExcluded) return false;
-                    if (isForced) return true;
-                    return isParent && hasChildren;
-                })
+                .filter(cat => !excludedSlugs.includes(cat.slug))
                 .map(cat => {
-                    // Filter excluded slugs and forced-to-top-level slugs from children
                     if (cat.children && cat.children.length > 0) {
-                        cat.children = cat.children
-                            .filter(child => !excludedSlugs.includes(child.slug) && !forcedTopLevelSlugs.includes(child.slug))
-                            .map(child => {
-                                if (child.children && child.children.length > 0) {
-                                    child.children = child.children.filter(
-                                        grandChild => !excludedSlugs.includes(grandChild.slug) && !forcedTopLevelSlugs.includes(grandChild.slug)
-                                    );
-                                }
-                                return child;
-                            });
+                        cat.children = cat.children.filter(child => !excludedSlugs.includes(child.slug));
+                        cat.children.forEach(child => {
+                            if (child.children && child.children.length > 0) {
+                                child.children = child.children.filter(gc => !excludedSlugs.includes(gc.slug));
+                            }
+                        });
                     }
                     return cat;
                 });
