@@ -18,7 +18,7 @@ export default async function ProductsV2Page() {
     const [categoriesResult, productsResult, bestSellersResult] = await Promise.all([
         productService.getCategories(),
         productService.getProducts(1, 40), // Get more for the grid
-        productService.getProducts(1, 40, ['sua', 'keo', 'banh-keo']) // Specifically for Best Sellers
+        productService.getProducts(1, 40, ['keo', 'sua']) // Specifically for Best Sellers - only Candy and Milk categories
     ]);
 
     return (

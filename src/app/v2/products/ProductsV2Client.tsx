@@ -109,49 +109,18 @@ export default function ProductsV2Client({
     const [sort, setSort] = useState(searchParams.get('sort') || '');
     const pageSize = 20;
 
-    // Strictly filter products for the Best Seller section (Food-only Milk and Candy)
+    // Best Seller products - use server-filtered products from 'keo' and 'sua' categories
     const bestSellerProducts = useMemo(() => {
-        const isBeautyOrCleaning = (p: Product) => {
-            const name = p.name.toLowerCase();
-            const catName = p.category?.name?.toLowerCase() || '';
-            const catSlug = p.category?.slug?.toLowerCase() || '';
-
-            return name.includes('xà phòng') || name.includes('soap') ||
-                name.includes('sữa tắm') || name.includes('sữa rửa mặt') ||
-                name.includes('tẩy trang') || name.includes('dưỡng da') ||
-                name.includes('skincare') || name.includes('facial') ||
-                catSlug.includes('hoa-my-pham') || catSlug.includes('bodycare') ||
-                catSlug.includes('skin') || catSlug.includes('my-pham') ||
-                catName.includes('tắm') || catName.includes('mặt') ||
-                catName.includes('dưỡng') || catName.includes('mỹ phẩm');
-        };
-
-        // Prioritize initialBestSellers (already filtered by category on server)
-        // but still apply the strict name-based exclusion just in case
-        let candidates = initialBestSellers.length > 0 ? initialBestSellers : initialProducts;
-
-        const filtered = candidates.filter(p => {
-            if (isBeautyOrCleaning(p)) return false;
-
-            const catSlug = p.category?.slug?.toLowerCase() || '';
-            const catName = p.category?.name?.toLowerCase() || '';
-            const name = p.name.toLowerCase();
-
-            // Match 'sua', 'keo', 'kẹo', 'sữa'
-            return catSlug.includes('sua') ||
-                catSlug.includes('keo') ||
-                catName.includes('kẹo') ||
-                catName.includes('sữa') ||
-                name.includes('kẹo');
-        });
-
-        // Fallback only to safe food categories if no specific milk/candy found
-        if (filtered.length === 0) {
-            return initialProducts.filter(p => {
-                const catSlug = p.category?.slug?.toLowerCase() || '';
-                return catSlug.includes('thuc-pham') && !isBeautyOrCleaning(p);
-            }).slice(0, 10);
+        // initialBestSellers is already filtered by 'keo' and 'sua' categories on server
+        if (initialBestSellers.length > 0) {
+            return initialBestSellers.slice(0, 12);
         }
+
+        // Fallback: filter from initialProducts if no best sellers provided
+        const filtered = initialProducts.filter(p => {
+            const catSlug = p.category?.slug?.toLowerCase() || '';
+            return catSlug.includes('sua') || catSlug.includes('keo');
+        });
 
         return filtered.slice(0, 12);
     }, [initialBestSellers, initialProducts]);
