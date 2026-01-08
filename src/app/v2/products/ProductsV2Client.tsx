@@ -300,7 +300,7 @@ export default function ProductsV2Client({
                             const hasChildren = category.children && category.children.length > 0;
 
                             return (
-                                <div key={category.id} className="relative group flex-1 min-w-[100px] md:min-w-[140px]">
+                                <div key={category.id} className="relative group flex-shrink-0 md:flex-1 min-w-[85px] md:min-w-[140px]">
                                     {/* Category Button */}
                                     <button
                                         onClick={() => handleCategoryClick(category.slug)}
