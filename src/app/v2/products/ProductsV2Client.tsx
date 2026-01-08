@@ -14,64 +14,64 @@ interface ProductsV2ClientProps {
     initialTotal: number;
 }
 
-const CategoryIcon = ({ slug, className, strokeWidth = "1.5" }: { slug: string; className: string; strokeWidth?: string }) => {
+const CategoryIcon = ({ slug, className }: { slug: string; className: string; strokeWidth?: string }) => {
+    // Map of category slugs to their PNG icon filenames
+    const iconMap: { [key: string]: string } = {
+        'thuc-pham': 'Thực phẩm.png',
+        'keo': 'Kẹo.png',
+        'facial-skincare': 'Chăm sóc da mặt.png',
+        'bodycare': 'Chăm sóc cơ thể.png',
+    };
+
+    // If this category has a PNG icon, use it
+    if (iconMap[slug]) {
+        return (
+            <div className={`${className} relative overflow-hidden`}>
+                <Image
+                    src={`/images/${iconMap[slug]}`}
+                    alt={slug}
+                    width={200}
+                    height={200}
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-[3.5]"
+                    unoptimized
+                />
+            </div>
+        );
+    }
+
+    // Fallback to SVG icons for other categories
     switch (slug) {
-        case 'thuc-pham':
-            return (
-                <svg className={className} viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth={strokeWidth}>
-                    <path d="M8 20c0-8 8-14 16-14s16 6 16 14" strokeLinecap="round" strokeLinejoin="round" />
-                    <rect x="6" y="20" width="36" height="6" rx="2" strokeLinecap="round" strokeLinejoin="round" />
-                    <path d="M10 26v10a4 4 0 004 4h20a4 4 0 004-4V26" strokeLinecap="round" strokeLinejoin="round" />
-                    <path d="M16 14v-4M24 10V6M32 14v-4" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-            );
         case 'hoa-my-pham':
             return (
-                <svg className={className} viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth={strokeWidth}>
+                <svg className={className} viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5">
                     <path d="M18 8h12v6l-2 2v18a4 4 0 01-4 4h-0a4 4 0 01-4-4V16l-2-2V8z" strokeLinecap="round" strokeLinejoin="round" />
                     <circle cx="24" cy="24" r="3" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
             );
         case 'thuc-pham-chuc-nang':
             return (
-                <svg className={className} viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth={strokeWidth}>
+                <svg className={className} viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5">
                     <path d="M9 25l6-6 10 10 14-14" strokeLinecap="round" strokeLinejoin="round" />
                     <path d="M24 44s16-8 16-20V10l-16-6L8 10v14c0 12 16 20 16 20z" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
             );
         case 'sua':
             return (
-                <svg className={className} viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth={strokeWidth}>
+                <svg className={className} viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5">
                     <path d="M14 4h20l2 8H12l2-8zM12 12h24v28a4 4 0 01-4 4H16a4 4 0 01-4-4V12z" strokeLinecap="round" strokeLinejoin="round" />
                     <path d="M20 22h8M24 18v8" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
             );
-        case 'bodycare':
-            return (
-                <svg className={className} viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth={strokeWidth}>
-                    <path d="M16 6h16v8H16V6z" strokeLinecap="round" strokeLinejoin="round" />
-                    <path d="M14 14h20v26a4 4 0 01-4 4H18a4 4 0 01-4-4V14z" strokeLinecap="round" strokeLinejoin="round" />
-                    <path d="M24 22v10" strokeLinecap="round" strokeLinejoin="round" />
-                    <circle cx="24" cy="22" r="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-            );
-        case 'facial-skincare':
-            return (
-                <svg className={className} viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth={strokeWidth}>
-                    <circle cx="24" cy="24" r="16" strokeLinecap="round" strokeLinejoin="round" />
-                    <path d="M16 18c0 4 4 6 8 6s8-2 8-6M20 32s2 4 4 4 4-4 4-4" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-            );
         case 'gia-dung':
             return (
-                <svg className={className} viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth={strokeWidth}>
+                <svg className={className} viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5">
                     <path d="M8 12h32v24H8V12z" strokeLinecap="round" strokeLinejoin="round" />
                     <path d="M16 12V8a4 4 0 014-4h8a4 4 0 014 4v4" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
             );
         default:
             return (
-                <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth}>
+                <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                     <path d="M4 6h16M4 12h16M4 18h16" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
             );
@@ -92,7 +92,7 @@ export default function ProductsV2Client({
     const [products, setProducts] = useState<Product[]>(initialProducts);
     // Ensure we always have these 4 categories at the top for the icons
     const [categories, setCategories] = useState<Category[]>(() => {
-        const prioritySlugs = ['thuc-pham', 'hoa-my-pham', 'thuc-pham-chuc-nang', 'sua', 'bodycare', 'facial-skincare'];
+        const prioritySlugs = ['thuc-pham', 'keo', 'bodycare', 'facial-skincare'];
         // Sort and prioritize categories
         const priorityItems = initialCategories.filter(c => prioritySlugs.includes(c.slug))
             .sort((a, b) => prioritySlugs.indexOf(a.slug) - prioritySlugs.indexOf(b.slug));
@@ -313,7 +313,7 @@ export default function ProductsV2Client({
                                         <CategoryIcon
                                             slug={category.slug}
                                             strokeWidth="2.5"
-                                            className={`w-7 h-7 md:w-9 md:h-9 transition-transform group-hover:scale-110 
+                                            className={`w-10 h-10 md:w-14 md:h-14 transition-transform group-hover:scale-110 
                                                 ${isActive ? 'scale-110 stroke-[#bb252d]' : 'stroke-current hover:stroke-[#bb252d]'}`}
                                         />
                                         <span className="text-[10px] md:text-[13px] font-black whitespace-nowrap px-1 uppercase tracking-tight">
