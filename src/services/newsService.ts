@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from 'axios';
+import api from './api';
 import { getContentPreview, ContentBlock } from '../utils/contentRenderer';
 
 // Interface cho News API response
@@ -62,19 +62,11 @@ export interface NewsApiResponse {
 
 // News Service Class
 export class NewsService {
-  private baseURL: string;
-  private apiKey?: string;
-
-  constructor(baseURL: string = 'https://admin.ksbgroup.vn/api', apiKey?: string) {
-    this.baseURL = baseURL;
-    this.apiKey = apiKey;
-  }
-
   // Get news with pagination
   async getNews(page: number = 1, pageSize: number = 15): Promise<NewsItem[]> {
     try {
-      const response: AxiosResponse<NewsApiResponse> = await axios.get(
-        `${this.baseURL}/news`,
+      const response = await api.get<NewsApiResponse>(
+        '/news',
         {
           params: {
             'populate': '*',
@@ -82,12 +74,7 @@ export class NewsService {
             'pagination[pageSize]': pageSize,
             'sort': 'publishedAt:desc',
             '_t': Date.now() // Cache busting
-          },
-          headers: {
-            'Content-Type': 'application/json',
-            ...(this.apiKey && { 'Authorization': `Bearer ${this.apiKey}` })
-          },
-          timeout: 5000, // 5 seconds timeout
+          }
         }
       );
 
@@ -101,8 +88,8 @@ export class NewsService {
   // Get news with pagination and metadata
   async getNewsWithMeta(page: number = 1, pageSize: number = 15): Promise<{ data: NewsItem[], total: number }> {
     try {
-      const response: AxiosResponse<NewsApiResponse> = await axios.get(
-        `${this.baseURL}/news`,
+      const response = await api.get<NewsApiResponse>(
+        '/news',
         {
           params: {
             'populate': '*',
@@ -110,12 +97,7 @@ export class NewsService {
             'pagination[pageSize]': pageSize,
             'sort': 'publishedAt:desc',
             '_t': Date.now() // Cache busting
-          },
-          headers: {
-            'Content-Type': 'application/json',
-            ...(this.apiKey && { 'Authorization': `Bearer ${this.apiKey}` })
-          },
-          timeout: 5000, // 5 seconds timeout
+          }
         }
       );
 
@@ -132,17 +114,12 @@ export class NewsService {
   // Get single news item by ID
   async getNewsById(id: number): Promise<NewsItem | null> {
     try {
-      const response: AxiosResponse<{ data: NewsItem }> = await axios.get(
-        `${this.baseURL}/news/${id}`,
+      const response = await api.get<{ data: NewsItem }>(
+        `/news/${id}`,
         {
           params: {
             'populate': '*'
-          },
-          headers: {
-            'Content-Type': 'application/json',
-            ...(this.apiKey && { 'Authorization': `Bearer ${this.apiKey}` })
-          },
-          timeout: 5000,
+          }
         }
       );
 
@@ -156,8 +133,8 @@ export class NewsService {
   // Get news by category
   async getNewsByCategory(categoryName: string, page: number = 1, pageSize: number = 15): Promise<NewsItem[]> {
     try {
-      const response: AxiosResponse<NewsApiResponse> = await axios.get(
-        `${this.baseURL}/news`,
+      const response = await api.get<NewsApiResponse>(
+        '/news',
         {
           params: {
             'populate': '*',
@@ -165,12 +142,7 @@ export class NewsService {
             'pagination[page]': page,
             'pagination[pageSize]': pageSize,
             'sort': 'publishedAt:desc'
-          },
-          headers: {
-            'Content-Type': 'application/json',
-            ...(this.apiKey && { 'Authorization': `Bearer ${this.apiKey}` })
-          },
-          timeout: 10000,
+          }
         }
       );
 
@@ -184,8 +156,8 @@ export class NewsService {
   // Search news by title or description
   async searchNews(query: string, page: number = 1, pageSize: number = 15): Promise<NewsItem[]> {
     try {
-      const response: AxiosResponse<NewsApiResponse> = await axios.get(
-        `${this.baseURL}/news`,
+      const response = await api.get<NewsApiResponse>(
+        '/news',
         {
           params: {
             'populate': '*',
@@ -194,12 +166,7 @@ export class NewsService {
             'pagination[page]': page,
             'pagination[pageSize]': pageSize,
             'sort': 'publishedAt:desc'
-          },
-          headers: {
-            'Content-Type': 'application/json',
-            ...(this.apiKey && { 'Authorization': `Bearer ${this.apiKey}` })
-          },
-          timeout: 10000,
+          }
         }
       );
 

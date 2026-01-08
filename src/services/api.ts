@@ -4,7 +4,7 @@ import https from 'https';
 // Base API configuration
 const api = axios.create({
   baseURL: 'https://admin.ksbgroup.vn/api',
-  timeout: 30000,
+  timeout: 60000,
   headers: {
     'Content-Type': 'application/json',
   },

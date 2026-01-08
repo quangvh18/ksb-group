@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -213,8 +213,11 @@ export default function ProductsV2Client({
                 searchQuery || undefined,
                 sort || undefined
             );
-            setProducts(result.data);
-            setTotal(result.total);
+
+            if (result) {
+                setProducts(result.data);
+                setTotal(result.total);
+            }
         } catch (error) {
             console.error('Error fetching products:', error);
         } finally {
@@ -222,7 +225,14 @@ export default function ProductsV2Client({
         }
     }, [selectedCategory, selectedSubCategory, searchQuery, sort, currentPage, categories, getAllCategorySlugs]);
 
+    // Track first mount to avoid redundant initial fetch that might fail on client due to SSL/CORS
+    const hasMounted = useRef(false);
+
     useEffect(() => {
+        if (!hasMounted.current) {
+            hasMounted.current = true;
+            return;
+        }
         fetchProducts();
     }, [fetchProducts]);
 

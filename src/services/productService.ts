@@ -180,8 +180,8 @@ export const productService = {
 
             const response = await api.get<ProductsResponse>('/products', { params });
             return {
-                data: response.data.data,
-                total: response.data.meta.pagination.total
+                data: response.data?.data || [],
+                total: response.data?.meta?.pagination?.total || 0
             };
         } catch (error) {
             console.error('Error fetching products:', error);
