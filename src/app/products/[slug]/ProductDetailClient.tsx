@@ -234,10 +234,10 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                                         </div>
                                     )}
 
-                                    {product.brandName && (
+                                    {product.brand && (
                                         <div className="flex items-center gap-2">
                                             <span className="text-sm font-medium text-gray-500 uppercase tracking-wider">{t('product.detail.brand')}</span>
-                                            <span className="text-sm font-bold text-gray-900">{product.brandName}</span>
+                                            <span className="text-sm font-bold text-gray-900">{product.brand}</span>
                                         </div>
                                     )}
                                 </div>
@@ -313,10 +313,10 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                                 );
                             })()}
 
-                            {product.skuName && (
+                            {product.sku && (
                                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-full">
                                     <span className="text-xs font-bold text-gray-500 uppercase tracking-widest">{t('product.detail.sku')}</span>
-                                    <span className="text-sm font-mono font-bold text-gray-700">{product.skuName}</span>
+                                    <span className="text-sm font-mono font-bold text-gray-700">{product.sku}</span>
                                 </div>
                             )}
 
@@ -372,8 +372,8 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         {[
                                             { label: t('product.detail.name'), value: product.name },
-                                            { label: t('product.detail.brand'), value: product.brandName },
-                                            { label: t('product.detail.sku'), value: product.skuName },
+                                            { label: t('product.detail.brand'), value: product.brand },
+                                            { label: t('product.detail.sku'), value: product.sku },
                                             { label: t('product.detail.category'), value: product.category?.name },
                                             // Add Variant info if selected
                                             activeVariant ? { label: t('product.detail.version'), value: activeVariant.variantName } : null
