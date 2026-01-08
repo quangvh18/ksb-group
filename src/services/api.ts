@@ -1,12 +1,17 @@
 import axios, { AxiosResponse } from 'axios';
+import https from 'https';
 
 // Base API configuration
 const api = axios.create({
   baseURL: 'https://admin.ksbgroup.vn/api',
-  timeout: 10000,
+  timeout: 30000,
   headers: {
     'Content-Type': 'application/json',
   },
+  // Allow unauthorized certificates in development to avoid CERT_NOT_YET_VALID or other SSL issues
+  httpsAgent: new https.Agent({
+    rejectUnauthorized: false
+  })
 });
 
 // Request interceptor

@@ -300,7 +300,7 @@ export default function ProductsV2Client({
         <div className="min-h-screen bg-gray-50">
             <section className="w-full overflow-hidden bg-[#e6f4fe]">
                 <Image
-                    src="/images/products-v2-banner.jpg"
+                    src="/images/1900x600.jpg"
                     alt="KSB Mall Group Banner"
                     width={1920}
                     height={600}
