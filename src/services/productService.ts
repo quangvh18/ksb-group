@@ -66,8 +66,8 @@ export interface Product {
     slug: string;
     summary?: string;
     description?: any[]; // Keep flexible as it can be blocks
-    skuName?: string;
-    brandName?: string;
+    sku?: string;
+    brand?: string;
     publishedAt: string;
 
     // Relationships
@@ -172,7 +172,9 @@ export const productService = {
             }
 
             if (searchQuery) {
-                params['filters[name][$contains]'] = searchQuery;
+                params['filters[$or][0][name][$containsi]'] = searchQuery;
+                params['filters[$or][1][summary][$containsi]'] = searchQuery;
+                params['filters[$or][2][brand][$containsi]'] = searchQuery;
             }
 
             const response = await api.get<ProductsResponse>('/products', { params });

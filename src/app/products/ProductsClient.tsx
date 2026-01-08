@@ -33,11 +33,35 @@ export default function ProductsClient({
 
     // Filter states
     const [selectedCategory, setSelectedCategory] = useState<string>(categoryFromUrl);
-    const [searchQuery, setSearchQuery] = useState('');
+    const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || '');
+    const [debouncedSearch, setDebouncedSearch] = useState(searchQuery);
     const [currentPage, setCurrentPage] = useState(1);
     const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
     const [isDesktop, setIsDesktop] = useState(false);
     const pageSize = 20;
+
+    // Debounce search query
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setDebouncedSearch(searchQuery);
+            setCurrentPage(1); // Reset to page 1 on search
+        }, 500);
+        return () => clearTimeout(timer);
+    }, [searchQuery]);
+
+    // Update URL when search changes
+    useEffect(() => {
+        const params = new URLSearchParams(searchParams.toString());
+        if (debouncedSearch) {
+            params.set('search', debouncedSearch);
+        } else {
+            params.delete('search');
+        }
+        // Only update if search actually changed to avoid loop
+        if (params.get('search') !== searchParams.get('search')) {
+            router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+        }
+    }, [debouncedSearch, pathname, router, searchParams]);
 
     useEffect(() => {
         const checkDesktop = () => setIsDesktop(window.innerWidth >= 1024);
@@ -127,7 +151,7 @@ export default function ProductsClient({
                     currentPage,
                     pageSize,
                     categorySlugs,
-                    searchQuery || undefined
+                    debouncedSearch || undefined
                 );
                 setProducts(result.data);
                 setTotal(result.total);
@@ -139,7 +163,7 @@ export default function ProductsClient({
         };
 
         fetchProducts();
-    }, [selectedCategory, searchQuery, currentPage, categories]);
+    }, [selectedCategory, debouncedSearch, currentPage, categories]);
 
     const handleCategoryChange = (categorySlug: string) => {
         const newCategory = categorySlug === selectedCategory ? '' : categorySlug;
@@ -391,22 +415,41 @@ export default function ProductsClient({
 
                         {/* Search Bar - Integrated in Category Row */}
                         <div className="lg:ml-6 py-2 lg:py-4 px-2 lg:px-0">
-                            <form onSubmit={handleSearch} className="relative group min-w-[200px] lg:min-w-[280px]">
+                            <form onSubmit={handleSearch} className="relative group min-w-[200px] lg:min-w-[320px]">
                                 <input
                                     type="text"
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
                                     placeholder={t('product.search.placeholder')}
-                                    className="w-full bg-gray-50/80 border-none rounded-full px-5 py-2.5 pl-11 text-sm focus:bg-white focus:ring-2 focus:ring-[#bb252d]/20 transition-all duration-300"
+                                    className="w-full bg-gray-50/80 border-none rounded-full px-5 py-2.5 pl-11 pr-10 text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#bb252d]/20 transition-all duration-300"
                                 />
-                                <svg
-                                    className="absolute left-4 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within:text-[#bb252d] transition-colors"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24"
+                                <button
+                                    type="submit"
+                                    className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 group-focus-within:text-[#bb252d] transition-colors"
                                 >
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                                </svg>
+                                    <svg
+                                        className="w-4 h-4"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                    </svg>
+                                </button>
+                                {searchQuery && (
+                                    <button
+                                        type="button"
+                                        onClick={() => {
+                                            setSearchQuery('');
+                                            setDebouncedSearch('');
+                                        }}
+                                        className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+                                    >
+                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" />
+                                        </svg>
+                                    </button>
+                                )}
                             </form>
                         </div>
                     </div>
