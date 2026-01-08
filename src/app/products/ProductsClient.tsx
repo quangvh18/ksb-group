@@ -441,7 +441,7 @@ export default function ProductsClient({
 
                     {/* Products Slider */}
                     <div id="best-seller-slider" className="overflow-x-auto scrollbar-hide flex gap-5 pb-8 px-1">
-                        {bestSellerProducts.slice(0, 10).map((product: Product) => (
+                        {bestSellerProducts.slice(0, 20).map((product: Product) => (
                             <Link
                                 key={product.id}
                                 href={`/products/${product.slug}`}
