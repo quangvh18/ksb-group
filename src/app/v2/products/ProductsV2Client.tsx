@@ -32,7 +32,7 @@ const CategoryIcon = ({ slug, className }: { slug: string; className: string; st
                     alt={slug}
                     width={200}
                     height={200}
-                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-[3.5]"
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-[5]"
                     unoptimized
                 />
             </div>
