@@ -151,7 +151,8 @@ export const productService = {
         page = 1,
         pageSize = 20,
         categorySlug?: string | string[],
-        searchQuery?: string
+        searchQuery?: string,
+        sort?: string
     ): Promise<{ data: Product[]; total: number }> {
         try {
             const params: any = {
@@ -160,7 +161,7 @@ export const productService = {
                 'populate[0]': 'product_variants',
                 'populate[product_variants][populate][0]': 'imageUrl',
                 'populate[1]': 'category',
-                sort: ['createdAt:desc'],
+                sort: sort === 'best' ? ['publishedAt:asc'] : ['createdAt:desc'],
             };
 
             if (categorySlug) {
@@ -235,15 +236,15 @@ export const productService = {
 
             // Excluded slugs (news-related categories)
             const excludedSlugs = ['su-kien', 'tin-tuc-nganh-thuc-pham', 'tin-tuc'];
+            const forcedTopLevelSlugs = ['sua', 'thuc-pham-chuc-nang', 'bodycare', 'facial-skincare'];
 
             // Build a set of ALL IDs that appear as children in any category
-            // These IDs should NOT be shown at top level (they are sub-categories)
+            // These IDs should NOT be shown at top level (unless forced)
             const childIds = new Set<number>();
             allCategories.forEach(cat => {
                 if (cat.children && cat.children.length > 0) {
                     cat.children.forEach(child => {
                         childIds.add(child.id);
-                        // Also collect grandchildren IDs
                         if (child.children && child.children.length > 0) {
                             child.children.forEach(grandChild => {
                                 childIds.add(grandChild.id);
@@ -253,21 +254,27 @@ export const productService = {
                 }
             });
 
-            // Filter to get only TRUE top-level parent categories:
-            // 1. Not in childIds set (not a child of any other category)
+            // Filter to get top-level categories:
+            // 1. Not in childIds set (unless it's a forcedTopLevelSlug)
             // 2. Not in excluded slugs
-            // 3. Has children (to show in menu with sub-items)
+            // 3. Has children (to show in menu) OR is in forcedTopLevelSlugs
             return allCategories
-                .filter(cat => !childIds.has(cat.id)) // Only get TRUE parent categories (not a child of any other)
-                .filter(cat => !excludedSlugs.includes(cat.slug))
-                .filter(cat => cat.children && cat.children.length > 0) // Only categories with children
+                .filter(cat => {
+                    const isForced = forcedTopLevelSlugs.includes(cat.slug);
+                    const isNotExcluded = !excludedSlugs.includes(cat.slug);
+                    const isParent = !childIds.has(cat.id);
+                    const hasChildren = cat.children && cat.children.length > 0;
+
+                    if (!isNotExcluded) return false;
+                    if (isForced) return true;
+                    return isParent && hasChildren;
+                })
                 .map(cat => {
                     // Filter excluded slugs from children
                     if (cat.children && cat.children.length > 0) {
                         cat.children = cat.children
                             .filter(child => !excludedSlugs.includes(child.slug))
                             .map(child => {
-                                // Also filter grandchildren if they exist
                                 if (child.children && child.children.length > 0) {
                                     child.children = child.children.filter(
                                         grandChild => !excludedSlugs.includes(grandChild.slug)

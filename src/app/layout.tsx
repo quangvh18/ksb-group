@@ -1,15 +1,13 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import AOSProvider from "../components/AOSProvider";
 import { LanguageProvider } from "../contexts/LanguageContext";
 import StructuredData from "../components/StructuredData";
 import PerformanceOptimizer from "../components/PerformanceOptimizer";
-import FloatingContactButtons from "../components/FloatingContactButtons";
 import GoogleAnalytics from "../components/GoogleAnalytics";
 import AnalyticsProvider from "../components/AnalyticsProvider";
+import ConditionalLayout from "../components/ConditionalLayout";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -154,7 +152,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="vi">
+    <html lang="vi" suppressHydrationWarning>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#bb252d" />
@@ -171,6 +169,7 @@ export default function RootLayout({
       </head>
       <body
         className={`${inter.variable} antialiased`}
+        suppressHydrationWarning
       >
         <LanguageProvider>
           <AnalyticsProvider>
@@ -204,10 +203,9 @@ export default function RootLayout({
               />
               <StructuredData type="website" />
               <PerformanceOptimizer />
-              <Header />
-              {children}
-              <Footer />
-              <FloatingContactButtons />
+              <ConditionalLayout>
+                {children}
+              </ConditionalLayout>
             </AOSProvider>
           </AnalyticsProvider>
         </LanguageProvider>
