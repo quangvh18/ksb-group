@@ -85,12 +85,12 @@ export default function HeaderV2() {
                     <Link href="/v2/products" className="flex-shrink-0">
                         <div className="flex items-center pl-4">
                             <Image
-                                src="/images/logo.png"
-                                alt="KSB Group"
-                                width={140}
-                                height={45}
+                                src="/images/logo-v2.png"
+                                alt="KSB Mall Group"
+                                width={120}
+                                height={60}
                                 priority
-                                className="h-10 md:h-12 w-auto"
+                                className="h-12 md:h-16 w-auto"
                             />
                         </div>
                     </Link>
@@ -209,11 +209,11 @@ export default function HeaderV2() {
                         {/* Mobile Menu Header */}
                         <div className="flex items-center justify-between p-4 border-b bg-[#bb252d]">
                             <Image
-                                src="/images/logo.png"
-                                alt="KSB Group"
-                                width={100}
-                                height={32}
-                                className="h-8 w-auto brightness-0 invert"
+                                src="/images/logo-v2.png"
+                                alt="KSB Mall Group"
+                                width={90}
+                                height={45}
+                                className="h-10 w-auto brightness-0 invert"
                             />
                             <button
                                 onClick={() => setIsMenuOpen(false)}

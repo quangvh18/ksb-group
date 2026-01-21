@@ -301,7 +301,7 @@ export default function ProductsV2Client({
             <section className="w-full overflow-hidden bg-[#e6f4fe]">
                 <Image
                     src="/images/products-v2-banner.jpg"
-                    alt="KSB Group Banner"
+                    alt="KSB Mall Group Banner"
                     width={1920}
                     height={600}
                     priority
