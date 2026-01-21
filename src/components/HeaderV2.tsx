@@ -57,6 +57,24 @@ export default function HeaderV2() {
         }
     };
 
+    const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+        if (pathname === '/v2/products') {
+            const element = document.getElementById(id);
+            if (element) {
+                e.preventDefault();
+                const offset = 120; // Height of sticky header area
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+                setIsMenuOpen(false);
+            }
+        }
+    };
+
     return (
         <header className={`bg-white w-full sticky top-0 z-[1000] transition-all duration-300 ${isScrolled ? 'shadow-lg' : 'shadow-sm'}`}>
 
@@ -148,6 +166,7 @@ export default function HeaderV2() {
                         <li>
                             <Link
                                 href="/v2/products"
+                                onClick={(e) => scrollToSection(e, 'all-products')}
                                 className={`flex items-center gap-2 px-5 py-3 font-bold transition-all duration-300 h-12 border-b-2
                                     ${pathname === '/v2/products' && !activeCategory && !activeSort && !searchParams.get('search')
                                         ? 'text-[#bb252d] border-[#bb252d] bg-red-50/30'
@@ -166,6 +185,7 @@ export default function HeaderV2() {
                         <li>
                             <Link
                                 href="/v2/products?sort=best"
+                                onClick={(e) => scrollToSection(e, 'best-sellers')}
                                 className={`flex items-center px-5 py-3 text-sm font-bold transition-all duration-300 h-12 border-b-2
                                     ${activeSort === 'best'
                                         ? 'text-[#bb252d] border-[#bb252d] bg-gray-50'
@@ -211,7 +231,7 @@ export default function HeaderV2() {
                                 <Link
                                     href="/v2/products"
                                     className="flex items-center gap-3 px-4 py-3 text-gray-700 font-bold hover:bg-red-50 hover:text-[#bb252d] rounded-lg"
-                                    onClick={() => setIsMenuOpen(false)}
+                                    onClick={(e) => scrollToSection(e, 'all-products')}
                                 >
                                     <span className="text-xl">🏪</span>
                                     {t('v2.allMenu') || 'Tất cả sản phẩm'}
@@ -219,7 +239,7 @@ export default function HeaderV2() {
                                 <Link
                                     href="/v2/products?sort=best"
                                     className="flex items-center gap-3 px-4 py-3 text-gray-700 font-bold hover:bg-red-50 hover:text-[#bb252d] rounded-lg"
-                                    onClick={() => setIsMenuOpen(false)}
+                                    onClick={(e) => scrollToSection(e, 'best-sellers')}
                                 >
                                     <span className="text-xl">⭐</span>
                                     {t('v2.bestProducts') || 'Bán chạy'}

@@ -237,6 +237,37 @@ export default function ProductsV2Client({
         router.replace(newUrl, { scroll: false });
     }, [selectedCategory, selectedSubCategory, searchQuery, sort, pathname, router]);
 
+    // Auto-scroll Best Seller slider every 3 seconds
+    useEffect(() => {
+        const slider = document.getElementById('best-seller-slider');
+        if (!slider || bestSellerProducts.length === 0) return;
+
+        let isHovered = false;
+        const handleMouseEnter = () => { isHovered = true; };
+        const handleMouseLeave = () => { isHovered = false; };
+
+        slider.addEventListener('mouseenter', handleMouseEnter);
+        slider.addEventListener('mouseleave', handleMouseLeave);
+
+        const interval = setInterval(() => {
+            if (isHovered) return;
+
+            const maxScroll = slider.scrollWidth - slider.clientWidth;
+            if (slider.scrollLeft >= maxScroll - 20) {
+                // Instant jump back to start to maintain 'one-way' feel
+                slider.scrollTo({ left: 0 });
+            } else {
+                slider.scrollBy({ left: 300, behavior: 'smooth' });
+            }
+        }, 4000);
+
+        return () => {
+            clearInterval(interval);
+            slider.removeEventListener('mouseenter', handleMouseEnter);
+            slider.removeEventListener('mouseleave', handleMouseLeave);
+        };
+    }, [bestSellerProducts]);
+
     const handleCategoryClick = (slug: string) => {
         if (selectedCategory === slug) {
             setSelectedCategory('');
@@ -367,7 +398,7 @@ export default function ProductsV2Client({
 
 
             {/* Recommended Food Slider Section */}
-            <section className="bg-[#e4ddd3] py-12 relative overflow-hidden">
+            <section id="best-sellers" className="bg-[#e4ddd3] py-12 relative overflow-hidden">
                 {/* Subtle texture overlay */}
                 <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#000 0.5px, transparent 0.5px)', backgroundSize: '10px 10px' }}></div>
 
@@ -488,7 +519,7 @@ export default function ProductsV2Client({
             </section>
 
             {/* Featured Section Title */}
-            <section className="pt-8 pb-4">
+            <section id="all-products" className="pt-8 pb-4">
                 <div className="container mx-auto max-w-[1300px] px-4">
                     <div className="text-center mb-6">
                         <p className="text-[#bb252d] text-sm font-medium mb-2 tracking-wider uppercase">
