@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -10,6 +10,7 @@ import { Product, Category, productService, getProductImage } from '../../../ser
 interface ProductsV2ClientProps {
     initialCategories: Category[];
     initialProducts: Product[];
+    initialBestSellers?: Product[];
     initialTotal: number;
 }
 
@@ -80,6 +81,7 @@ const CategoryIcon = ({ slug, className, strokeWidth = "1.5" }: { slug: string; 
 export default function ProductsV2Client({
     initialCategories,
     initialProducts,
+    initialBestSellers = [],
     initialTotal,
 }: ProductsV2ClientProps) {
     const { t } = useLanguage();
@@ -106,6 +108,53 @@ export default function ProductsV2Client({
     const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || '');
     const [sort, setSort] = useState(searchParams.get('sort') || '');
     const pageSize = 20;
+
+    // Strictly filter products for the Best Seller section (Food-only Milk and Candy)
+    const bestSellerProducts = useMemo(() => {
+        const isBeautyOrCleaning = (p: Product) => {
+            const name = p.name.toLowerCase();
+            const catName = p.category?.name?.toLowerCase() || '';
+            const catSlug = p.category?.slug?.toLowerCase() || '';
+
+            return name.includes('xà phòng') || name.includes('soap') ||
+                name.includes('sữa tắm') || name.includes('sữa rửa mặt') ||
+                name.includes('tẩy trang') || name.includes('dưỡng da') ||
+                name.includes('skincare') || name.includes('facial') ||
+                catSlug.includes('hoa-my-pham') || catSlug.includes('bodycare') ||
+                catSlug.includes('skin') || catSlug.includes('my-pham') ||
+                catName.includes('tắm') || catName.includes('mặt') ||
+                catName.includes('dưỡng') || catName.includes('mỹ phẩm');
+        };
+
+        // Prioritize initialBestSellers (already filtered by category on server)
+        // but still apply the strict name-based exclusion just in case
+        let candidates = initialBestSellers.length > 0 ? initialBestSellers : initialProducts;
+
+        const filtered = candidates.filter(p => {
+            if (isBeautyOrCleaning(p)) return false;
+
+            const catSlug = p.category?.slug?.toLowerCase() || '';
+            const catName = p.category?.name?.toLowerCase() || '';
+            const name = p.name.toLowerCase();
+
+            // Match 'sua', 'keo', 'kẹo', 'sữa'
+            return catSlug.includes('sua') ||
+                catSlug.includes('keo') ||
+                catName.includes('kẹo') ||
+                catName.includes('sữa') ||
+                name.includes('kẹo');
+        });
+
+        // Fallback only to safe food categories if no specific milk/candy found
+        if (filtered.length === 0) {
+            return initialProducts.filter(p => {
+                const catSlug = p.category?.slug?.toLowerCase() || '';
+                return catSlug.includes('thuc-pham') && !isBeautyOrCleaning(p);
+            }).slice(0, 10);
+        }
+
+        return filtered.slice(0, 12);
+    }, [initialBestSellers, initialProducts]);
 
     // Sync state with URL params (especially for Header searches)
     useEffect(() => {
@@ -218,14 +267,14 @@ export default function ProductsV2Client({
 
     return (
         <div className="min-h-screen bg-gray-50">
-            {/* Hero Banner - Image Only */}
-            <section className="relative w-full h-[250px] md:h-[350px] lg:h-[450px] overflow-hidden">
+            <section className="w-full overflow-hidden">
                 <Image
-                    src="/images/v2-banner.png"
+                    src="/images/products-v2-banner.jpg"
                     alt="KSB Group Banner"
-                    fill
+                    width={1920}
+                    height={500}
                     priority
-                    className="object-cover"
+                    className="w-full h-auto"
                 />
             </section>
 
@@ -246,44 +295,64 @@ export default function ProductsV2Client({
                                         onClick={() => handleCategoryClick(category.slug)}
                                         className={`w-full flex flex-col items-center justify-center gap-2 py-3 md:py-5 border-r border-gray-100 transition-all duration-300 relative
                                             ${isActive
-                                                ? 'text-[#bb252d] bg-red-50/30'
+                                                ? 'text-[#bb252d] bg-gray-50/50'
                                                 : 'text-gray-600 hover:text-[#bb252d] hover:bg-gray-50/50'
                                             }`}
                                     >
                                         <CategoryIcon
                                             slug={category.slug}
-                                            strokeWidth="1.5"
+                                            strokeWidth="2.5"
                                             className={`w-7 h-7 md:w-9 md:h-9 transition-transform group-hover:scale-110 
-                                                ${isActive ? 'stroke-[#bb252d]' : 'stroke-current'}`}
+                                                ${isActive ? 'scale-110 stroke-[#bb252d]' : 'stroke-current hover:stroke-[#bb252d]'}`}
                                         />
-                                        <span className="text-[10px] md:text-[13px] font-bold whitespace-nowrap px-1 uppercase tracking-tight">
+                                        <span className="text-[10px] md:text-[13px] font-black whitespace-nowrap px-1 uppercase tracking-tight">
                                             {category.name}
                                         </span>
-                                        {isActive && (
-                                            <div className="absolute bottom-0 left-0 w-full h-1 bg-[#bb252d]" />
-                                        )}
                                     </button>
 
-                                    {/* Dropdown Menu - Compact modal attached to button */}
+                                    {/* Dropdown Menu - Supporting 3 levels of hierarchy */}
                                     {hasChildren && (
-                                        <div className="absolute top-full left-0 w-full pt-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[110]">
-                                            {/* Simple compact menu */}
-                                            <div className="bg-white rounded-b-lg shadow-xl border border-gray-200 overflow-hidden min-w-[200px]">
+                                        <div className="absolute top-full left-0 w-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[110]">
+                                            <div className="bg-white rounded-xl shadow-2xl border border-gray-100 overflow-hidden min-w-[240px] max-h-[80vh] overflow-y-auto scrollbar-hide">
                                                 {category.children?.map((child) => (
-                                                    <Link
-                                                        key={child.id}
-                                                        href={`/v2/products?category=${child.slug}`}
-                                                        onClick={() => {
-                                                            handleCategoryClick(category.slug);
-                                                            handleSubCategoryClick(child.slug);
-                                                        }}
-                                                        className={`block px-4 py-3 text-sm transition-colors border-b border-gray-50 last:border-b-0
-                                                            ${selectedSubCategory === child.slug
-                                                                ? 'text-[#bb252d] bg-red-50 font-semibold'
-                                                                : 'text-gray-700 hover:text-[#bb252d] hover:bg-gray-50'}`}
-                                                    >
-                                                        {child.name}
-                                                    </Link>
+                                                    <div key={child.id} className="border-b border-gray-50 last:border-b-0">
+                                                        <Link
+                                                            href={`/v2/products?category=${child.slug}`}
+                                                            onClick={() => {
+                                                                handleCategoryClick(category.slug);
+                                                                handleSubCategoryClick(child.slug);
+                                                            }}
+                                                            className={`block px-5 py-3 text-[14px] transition-colors
+                                                                ${selectedSubCategory === child.slug
+                                                                    ? 'text-[#bb252d] bg-red-50 font-bold'
+                                                                    : 'text-gray-900 font-bold hover:text-[#bb252d] hover:bg-gray-50'}`}
+                                                        >
+                                                            {child.name}
+                                                        </Link>
+
+                                                        {/* Level 3 Categories */}
+                                                        {child.children && child.children.length > 0 && (
+                                                            <div className="bg-gray-50/50 pb-2">
+                                                                {child.children.map(grandChild => (
+                                                                    <Link
+                                                                        key={grandChild.id}
+                                                                        href={`/v2/products?category=${grandChild.slug}`}
+                                                                        onClick={() => {
+                                                                            handleCategoryClick(category.slug);
+                                                                            handleSubCategoryClick(grandChild.slug);
+                                                                        }}
+                                                                        className={`block pl-9 pr-4 py-1.5 text-[13px] transition-colors
+                                                                            ${selectedSubCategory === grandChild.slug
+                                                                                ? 'text-[#bb252d] font-semibold'
+                                                                                : 'text-gray-600 hover:text-[#bb252d] hover:bg-white'}`}
+                                                                    >
+                                                                        <span className="opacity-50 mr-1.5">•</span>
+                                                                        {grandChild.name}
+                                                                    </Link>
+                                                                ))}
+                                                            </div>
+                                                        )}
+                                                    </div>
                                                 ))}
                                             </div>
                                         </div>
@@ -297,27 +366,144 @@ export default function ProductsV2Client({
 
 
 
+            {/* Recommended Food Slider Section */}
+            <section className="bg-[#e4ddd3] py-12 relative overflow-hidden">
+                {/* Subtle texture overlay */}
+                <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#000 0.5px, transparent 0.5px)', backgroundSize: '10px 10px' }}></div>
+
+                <div className="container mx-auto max-w-[1300px] px-4 md:px-8 relative">
+                    {/* Section Header with Navigation */}
+                    <div className="flex items-center justify-between mb-8">
+                        {/* Left: Title */}
+                        <div className="flex items-center gap-4">
+                            <div className="flex gap-1.5 select-none">
+                                {["SẢN", "PHẨM"].map((word, idx) => (
+                                    <div key={idx} className="bg-white/20 backdrop-blur-sm border border-white/40 w-[60px] md:w-[70px] h-[32px] md:h-[36px] flex items-center justify-center rounded transition-transform hover:scale-105">
+                                        <span className="text-white font-bold text-xs md:text-sm tracking-wide">{word}</span>
+                                    </div>
+                                ))}
+                                {["BÁN", "CHẠY"].map((word, idx) => (
+                                    <div key={idx} className="bg-[#bb252d] border border-[#bb252d] w-[60px] md:w-[70px] h-[32px] md:h-[36px] flex items-center justify-center rounded shadow-lg transition-transform hover:scale-105">
+                                        <span className="text-white font-bold text-xs md:text-sm tracking-wide">{word}</span>
+                                    </div>
+                                ))}
+                            </div>
+                            <div className="hidden lg:block h-8 w-[1px] bg-white/30 mx-2"></div>
+                            <span className="hidden md:inline text-[#bb252d] text-[10px] md:text-xs font-black tracking-[0.2em] uppercase opacity-80">Best Seller</span>
+                        </div>
+
+                        {/* Right: Navigation Arrows - Always Visible */}
+                        <div className="flex items-center gap-2">
+                            <button
+                                onClick={() => {
+                                    const slider = document.getElementById('best-seller-slider');
+                                    if (slider) slider.scrollBy({ left: -320, behavior: 'smooth' });
+                                }}
+                                className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-[#bb252d] shadow-md hover:bg-[#bb252d] hover:text-white transition-all duration-300 border border-gray-100"
+                            >
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" /></svg>
+                            </button>
+                            <button
+                                onClick={() => {
+                                    const slider = document.getElementById('best-seller-slider');
+                                    if (slider) slider.scrollBy({ left: 320, behavior: 'smooth' });
+                                }}
+                                className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-[#bb252d] shadow-md hover:bg-[#bb252d] hover:text-white transition-all duration-300 border border-gray-100"
+                            >
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" /></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* Products Slider */}
+                    <div id="best-seller-slider" className="overflow-x-auto scrollbar-hide flex gap-5 pb-8 px-1">
+                        {bestSellerProducts.slice(0, 10).map((product: Product) => (
+                            <Link
+                                key={product.id}
+                                href={`/products/${product.slug}`}
+                                className="bg-white w-[260px] md:w-[280px] rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 flex-shrink-0 flex flex-col group transform hover:-translate-y-1"
+                            >
+                                {/* Image Container */}
+                                <div className="relative aspect-square overflow-hidden bg-gray-100">
+                                    <Image
+                                        src={getProductImage(product)}
+                                        alt={product.name}
+                                        fill
+                                        unoptimized
+                                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                    />
+
+                                    {/* Brand Badge */}
+                                    {product.brand && (
+                                        <div className="absolute top-3 left-3">
+                                            <div className="bg-[#bb252d] text-white text-xs font-bold px-2.5 py-1 rounded-lg shadow-lg">
+                                                {product.brand}
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* Quick View Overlay */}
+                                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                                        <span className="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 bg-white text-gray-900 px-4 py-2 rounded-full text-sm font-medium shadow-lg">
+                                            {t('v2.quickView') || 'Xem nhanh'}
+                                        </span>
+                                    </div>
+                                </div>
+
+                                {/* Product Info */}
+                                <div className="p-4 flex flex-col flex-1">
+                                    {/* Category Tag */}
+                                    {product.category && (
+                                        <span className="inline-block self-start px-2 py-0.5 bg-[#bb252d]/10 text-[#bb252d] text-xs font-medium rounded mb-2">
+                                            {product.category.name}
+                                        </span>
+                                    )}
+
+                                    {/* Product Name */}
+                                    <h3 className="text-sm md:text-base font-semibold text-gray-900 line-clamp-2 mb-2 group-hover:text-[#bb252d] transition-colors min-h-[2.5rem] md:min-h-[3rem]">
+                                        {product.name}
+                                    </h3>
+
+                                    {/* Summary */}
+                                    {product.summary && (
+                                        <p className="text-xs text-gray-500 line-clamp-2 mb-3">
+                                            {product.summary}
+                                        </p>
+                                    )}
+
+                                    {/* View Detail Button */}
+                                    <div className="mt-auto flex items-center text-[#bb252d] text-sm font-medium group-hover:translate-x-1 transition-transform">
+                                        {t('v2.viewDetail') || 'Xem chi tiết'}
+                                        <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </Link>
+                        ))}
+                        {/* Spacer to ensure right padding */}
+                        <div className="min-w-[1px] shrink-0"></div>
+                    </div>
+                </div>
+            </section>
+
             {/* Featured Section Title */}
             <section className="pt-8 pb-4">
                 <div className="container mx-auto max-w-[1300px] px-4">
                     <div className="text-center mb-6">
                         <p className="text-[#bb252d] text-sm font-medium mb-2 tracking-wider uppercase">
                             {selectedCategory
-                                ? t('v2.featured.subtitle.cat') || 'Chất lượng hàng đầu từ KSB Group'
+                                ? `${categories.find(c => c.slug === selectedCategory)?.name || ''} • Chất lượng hàng đầu từ KSB Group`
                                 : t('v2.featured.subtitle') || 'Được tin dùng bởi hàng ngàn khách hàng'}
                         </p>
-                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 capitalize">
+                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 uppercase tracking-tight">
                             {searchQuery ? (
                                 <>
                                     {t('v2.search.results') || 'Kết quả tìm kiếm cho'}
                                     <span className="text-[#bb252d]"> "{searchQuery}"</span>
                                 </>
-                            ) : selectedCategory ? (
-                                categories.find(c => c.slug === selectedCategory)?.name
-                            ) : sort === 'best' ? (
-                                t('v2.bestProducts.title') || 'Sản phẩm bán chạy nhất'
                             ) : (
-                                t('v2.featured.title') || 'Sản phẩm nổi bật'
+                                'Tất cả các sản phẩm'
                             )}
                         </h2>
                     </div>

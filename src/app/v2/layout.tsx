@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import HeaderV2 from '../../components/HeaderV2';
 import Footer from '../../components/Footer';
 
@@ -8,7 +9,9 @@ export default function V2Layout({
 }) {
     return (
         <div className="min-h-screen flex flex-col">
-            <HeaderV2 />
+            <Suspense fallback={<div className="h-20 bg-white" />}>
+                <HeaderV2 />
+            </Suspense>
             <main className="flex-1">
                 {children}
             </main>

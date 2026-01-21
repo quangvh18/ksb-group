@@ -15,9 +15,10 @@ export const metadata: Metadata = {
 
 export default async function ProductsV2Page() {
     // Fetch initial data server-side
-    const [categoriesResult, productsResult] = await Promise.all([
+    const [categoriesResult, productsResult, bestSellersResult] = await Promise.all([
         productService.getCategories(),
-        productService.getProducts(1, 20),
+        productService.getProducts(1, 40), // Get more for the grid
+        productService.getProducts(1, 15, ['sua', 'keo', 'banh-keo']) // Specifically for Best Sellers
     ]);
 
     return (
@@ -25,6 +26,7 @@ export default async function ProductsV2Page() {
             <ProductsV2Client
                 initialCategories={categoriesResult}
                 initialProducts={productsResult.data}
+                initialBestSellers={bestSellersResult.data}
                 initialTotal={productsResult.total}
             />
         </Suspense>
