@@ -13,7 +13,6 @@ interface ProductsV2ClientProps {
     initialTotal: number;
 }
 
-// Category Icons Component
 const CategoryIcon = ({ slug, className, strokeWidth = "1.5" }: { slug: string; className: string; strokeWidth?: string }) => {
     switch (slug) {
         case 'thuc-pham':
@@ -62,11 +61,17 @@ const CategoryIcon = ({ slug, className, strokeWidth = "1.5" }: { slug: string; 
                     <path d="M16 18c0 4 4 6 8 6s8-2 8-6M20 32s2 4 4 4 4-4 4-4" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
             );
-        default:
+        case 'gia-dung':
             return (
                 <svg className={className} viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth={strokeWidth}>
-                    <path d="M24 4l18 10v20l-18 10L6 34V14l18-10z" strokeLinecap="round" strokeLinejoin="round" />
-                    <path d="M24 14v20M6 14l18 10M42 14l-18 10" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M8 12h32v24H8V12z" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M16 12V8a4 4 0 014-4h8a4 4 0 014 4v4" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+            );
+        default:
+            return (
+                <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth}>
+                    <path d="M4 6h16M4 12h16M4 18h16" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
             );
     }
@@ -97,6 +102,7 @@ export default function ProductsV2Client({
     const [currentPage, setCurrentPage] = useState(1);
     const [selectedCategory, setSelectedCategory] = useState(searchParams.get('category') || '');
     const [selectedSubCategory, setSelectedSubCategory] = useState('');
+    const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
     const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || '');
     const [sort, setSort] = useState(searchParams.get('sort') || '');
     const pageSize = 20;
@@ -223,67 +229,73 @@ export default function ProductsV2Client({
                 />
             </section>
 
-            {/* Category Icons */}
-            <section className="bg-white border-y border-gray-200">
-                <div className="container mx-auto max-w-[1200px] relative z-10 px-4">
-                    <div className="flex border-l border-gray-100">
-                        {categories.slice(0, 6).map((category, index) => (
-                            <button
-                                key={category.id}
-                                onClick={() => handleCategoryClick(category.slug)}
-                                className={`flex-1 flex flex-col items-center justify-center gap-2 py-4 md:py-6 border-r border-gray-100 transition-all duration-300 group
-                                    ${selectedCategory === category.slug
-                                        ? 'text-[#bb252d] bg-gray-50'
-                                        : 'text-gray-600 hover:text-[#bb252d] hover:bg-gray-50/50'
-                                    }`}
-                            >
-                                <CategoryIcon
-                                    slug={category.slug}
-                                    strokeWidth="1.5"
-                                    className={`w-8 h-8 md:w-10 md:h-10 transition-transform group-hover:scale-110 
-                                        ${selectedCategory === category.slug ? 'stroke-[#bb252d]' : 'stroke-current'}`}
-                                />
-                                <span className="text-[10px] md:text-[13px] font-medium whitespace-nowrap px-1">
-                                    {category.name}
-                                </span>
-                            </button>
-                        ))}
+            {/* Sticky Category Bar with CSS-only Dropdowns */}
+            <section className="bg-white border-b border-gray-200 sticky top-16 md:top-32 z-[100] shadow-sm">
+                <div className="container mx-auto max-w-[1300px] px-0">
+                    <div className="flex md:overflow-visible overflow-x-auto scrollbar-hide">
+                        {categories.map((category) => {
+                            const isActive = selectedCategory === category.slug ||
+                                category.children?.some(child => child.slug === selectedCategory ||
+                                    child.children?.some(gc => gc.slug === selectedCategory));
+                            const hasChildren = category.children && category.children.length > 0;
+
+                            return (
+                                <div key={category.id} className="relative group flex-1 min-w-[100px] md:min-w-[140px]">
+                                    {/* Category Button */}
+                                    <button
+                                        onClick={() => handleCategoryClick(category.slug)}
+                                        className={`w-full flex flex-col items-center justify-center gap-2 py-3 md:py-5 border-r border-gray-100 transition-all duration-300 relative
+                                            ${isActive
+                                                ? 'text-[#bb252d] bg-red-50/30'
+                                                : 'text-gray-600 hover:text-[#bb252d] hover:bg-gray-50/50'
+                                            }`}
+                                    >
+                                        <CategoryIcon
+                                            slug={category.slug}
+                                            strokeWidth="1.5"
+                                            className={`w-7 h-7 md:w-9 md:h-9 transition-transform group-hover:scale-110 
+                                                ${isActive ? 'stroke-[#bb252d]' : 'stroke-current'}`}
+                                        />
+                                        <span className="text-[10px] md:text-[13px] font-bold whitespace-nowrap px-1 uppercase tracking-tight">
+                                            {category.name}
+                                        </span>
+                                        {isActive && (
+                                            <div className="absolute bottom-0 left-0 w-full h-1 bg-[#bb252d]" />
+                                        )}
+                                    </button>
+
+                                    {/* Dropdown Menu - Compact modal attached to button */}
+                                    {hasChildren && (
+                                        <div className="absolute top-full left-0 w-full pt-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[110]">
+                                            {/* Simple compact menu */}
+                                            <div className="bg-white rounded-b-lg shadow-xl border border-gray-200 overflow-hidden min-w-[200px]">
+                                                {category.children?.map((child) => (
+                                                    <Link
+                                                        key={child.id}
+                                                        href={`/v2/products?category=${child.slug}`}
+                                                        onClick={() => {
+                                                            handleCategoryClick(category.slug);
+                                                            handleSubCategoryClick(child.slug);
+                                                        }}
+                                                        className={`block px-4 py-3 text-sm transition-colors border-b border-gray-50 last:border-b-0
+                                                            ${selectedSubCategory === child.slug
+                                                                ? 'text-[#bb252d] bg-red-50 font-semibold'
+                                                                : 'text-gray-700 hover:text-[#bb252d] hover:bg-gray-50'}`}
+                                                    >
+                                                        {child.name}
+                                                    </Link>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                            );
+                        })}
                     </div>
                 </div>
             </section>
 
-            {/* Sub-categories Pills */}
-            {selectedCategory && getSubCategories().length > 0 && (
-                <section className="py-4 bg-white border-y border-gray-100">
-                    <div className="container mx-auto max-w-[1300px] px-4">
-                        <div className="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-hide">
-                            <button
-                                onClick={() => setSelectedSubCategory('')}
-                                className={`flex-shrink-0 px-5 py-2 rounded-full text-sm font-medium transition-all duration-300
-                  ${selectedSubCategory === ''
-                                        ? 'bg-[#bb252d] text-white'
-                                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                                    }`}
-                            >
-                                {t('v2.all') || 'Tất cả'}
-                            </button>
-                            {getSubCategories().map((sub) => (
-                                <button
-                                    key={sub.id}
-                                    onClick={() => handleSubCategoryClick(sub.slug)}
-                                    className={`flex-shrink-0 px-5 py-2 rounded-full text-sm font-medium transition-all duration-300
-                    ${selectedSubCategory === sub.slug
-                                            ? 'bg-[#bb252d] text-white'
-                                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                                        }`}
-                                >
-                                    {sub.name}
-                                </button>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-            )}
+
 
             {/* Featured Section Title */}
             <section className="pt-8 pb-4">

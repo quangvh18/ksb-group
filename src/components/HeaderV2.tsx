@@ -3,14 +3,25 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import { useLanguage } from '../contexts/LanguageContext';
-
+import { Category, productService } from '../services/productService';
 
 export default function HeaderV2() {
     const { t } = useLanguage();
+    const router = useRouter();
+    const pathname = usePathname();
+    const searchParams = useSearchParams();
+
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [searchQuery, setSearchQuery] = useState('');
+    const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || '');
     const [isScrolled, setIsScrolled] = useState(false);
+    const [categories, setCategories] = useState<Category[]>([]);
+    const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
+    const [expandedMobileCat, setExpandedMobileCat] = useState<string | null>(null);
+
+    const activeCategory = searchParams.get('category');
+    const activeSort = searchParams.get('sort');
 
     // Handle scroll effect
     useEffect(() => {
@@ -21,11 +32,28 @@ export default function HeaderV2() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    // Fetch categories
+    useEffect(() => {
+        const fetchCategories = async () => {
+            try {
+                const data = await productService.getCategories();
+                setCategories(data);
+            } catch (error) {
+                console.error('Error fetching categories:', error);
+            }
+        };
+        fetchCategories();
+    }, []);
+
+    // Sync search query state with URL
+    useEffect(() => {
+        setSearchQuery(searchParams.get('search') || '');
+    }, [searchParams]);
 
     const handleSearch = (e: React.FormEvent) => {
         e.preventDefault();
         if (searchQuery.trim()) {
-            window.location.href = `/v2/products?search=${encodeURIComponent(searchQuery)}`;
+            router.push(`/v2/products?search=${encodeURIComponent(searchQuery)}`);
         }
     };
 
@@ -62,7 +90,7 @@ export default function HeaderV2() {
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
                                     placeholder={t('v2.search.placeholder') || 'Tìm kiếm sản phẩm...'}
-                                    className="w-full h-11 px-5 pr-12 bg-gray-100 border-2 border-transparent rounded-full text-sm focus:outline-none focus:border-[#bb252d] focus:bg-white transition-all duration-300"
+                                    className="w-full h-11 px-5 pr-12 bg-gray-100 border-2 border-transparent rounded-full text-sm focus:outline-none focus:border-[#bb252d] focus:bg-white focus:ring-4 focus:ring-red-500/10 transition-all duration-300"
                                 />
                                 <button
                                     type="submit"
@@ -113,35 +141,39 @@ export default function HeaderV2() {
             </div>
 
             {/* Navigation Bar */}
-            <nav className="bg-white border-t border-gray-100">
+            <nav className="bg-white border-t border-gray-100 relative">
                 <div className="container mx-auto max-w-[1300px] px-4">
-                    <ul className="hidden md:flex items-center h-12 gap-1">
-                        {/* All Menu Button */}
-                        <li className="relative">
-                            <button
-                                className="flex items-center gap-2 px-4 py-2 text-gray-700 font-medium hover:bg-gray-100 rounded-lg transition-colors"
-                                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    <ul className="hidden md:flex items-center h-12 gap-0">
+                        {/* All Products Menu */}
+                        <li>
+                            <Link
+                                href="/v2/products"
+                                className={`flex items-center gap-2 px-5 py-3 font-bold transition-all duration-300 h-12 border-b-2
+                                    ${pathname === '/v2/products' && !activeCategory && !activeSort && !searchParams.get('search')
+                                        ? 'text-[#bb252d] border-[#bb252d] bg-red-50/30'
+                                        : 'text-gray-900 border-transparent hover:text-[#bb252d] hover:bg-gray-50'}`}
                             >
                                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4 6h16M4 12h16M4 18h16" />
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
                                 </svg>
-                                {t('v2.allMenu') || 'Toàn bộ'}
-                            </button>
+                                {t('v2.allMenu') || 'Tất cả sản phẩm'}
+                            </Link>
                         </li>
 
                         <li className="h-6 w-px bg-gray-200 mx-2" />
-
 
                         {/* Best Products */}
                         <li>
                             <Link
                                 href="/v2/products?sort=best"
-                                className="flex items-center px-4 py-2 text-gray-700 font-medium hover:text-[#bb252d] hover:bg-red-50 rounded-lg transition-colors"
+                                className={`flex items-center px-5 py-3 text-sm font-bold transition-all duration-300 h-12 border-b-2
+                                    ${activeSort === 'best'
+                                        ? 'text-[#bb252d] border-[#bb252d] bg-gray-50'
+                                        : 'text-gray-700 border-transparent hover:text-[#bb252d] hover:bg-gray-50'}`}
                             >
                                 {t('v2.bestProducts') || 'Bán chạy'}
                             </Link>
                         </li>
-
                     </ul>
                 </div>
             </nav>
@@ -177,8 +209,16 @@ export default function HeaderV2() {
                         <nav className="p-4">
                             <div className="space-y-1">
                                 <Link
+                                    href="/v2/products"
+                                    className="flex items-center gap-3 px-4 py-3 text-gray-700 font-bold hover:bg-red-50 hover:text-[#bb252d] rounded-lg"
+                                    onClick={() => setIsMenuOpen(false)}
+                                >
+                                    <span className="text-xl">🏪</span>
+                                    {t('v2.allMenu') || 'Tất cả sản phẩm'}
+                                </Link>
+                                <Link
                                     href="/v2/products?sort=best"
-                                    className="flex items-center gap-3 px-4 py-3 text-gray-700 font-medium hover:bg-red-50 hover:text-[#bb252d] rounded-lg"
+                                    className="flex items-center gap-3 px-4 py-3 text-gray-700 font-bold hover:bg-red-50 hover:text-[#bb252d] rounded-lg"
                                     onClick={() => setIsMenuOpen(false)}
                                 >
                                     <span className="text-xl">⭐</span>
@@ -188,43 +228,64 @@ export default function HeaderV2() {
 
                             <div className="my-4 h-px bg-gray-200" />
 
-                            {/* Categories */}
+                            {/* Dynamic Categories Accordion */}
                             <h3 className="px-4 text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">
                                 {t('v2.categories') || 'Danh mục'}
                             </h3>
                             <div className="space-y-1">
-                                <Link
-                                    href="/v2/products?category=thuc-pham"
-                                    className="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-[#bb252d] rounded-lg"
-                                    onClick={() => setIsMenuOpen(false)}
-                                >
-                                    <span className="text-xl">🍜</span>
-                                    {t('v2.category.food') || 'Thực phẩm'}
-                                </Link>
-                                <Link
-                                    href="/v2/products?category=hoa-my-pham"
-                                    className="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-[#bb252d] rounded-lg"
-                                    onClick={() => setIsMenuOpen(false)}
-                                >
-                                    <span className="text-xl">💄</span>
-                                    {t('v2.category.cosmetics') || 'Hóa mỹ phẩm'}
-                                </Link>
-                                <Link
-                                    href="/v2/products?category=thuc-pham-chuc-nang"
-                                    className="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-[#bb252d] rounded-lg"
-                                    onClick={() => setIsMenuOpen(false)}
-                                >
-                                    <span className="text-xl">💊</span>
-                                    {t('v2.category.supplements') || 'Thực phẩm chức năng'}
-                                </Link>
-                                <Link
-                                    href="/v2/products?category=sua"
-                                    className="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-[#bb252d] rounded-lg"
-                                    onClick={() => setIsMenuOpen(false)}
-                                >
-                                    <span className="text-xl">🥛</span>
-                                    {t('v2.category.milk') || 'Sữa'}
-                                </Link>
+                                {categories.map((category) => (
+                                    <div key={category.id} className="flex flex-col">
+                                        <div className="flex items-center">
+                                            <Link
+                                                href={`/v2/products?category=${category.slug}`}
+                                                className="flex-1 px-4 py-3 text-gray-700 font-semibold hover:text-[#bb252d] rounded-l-lg"
+                                                onClick={() => setIsMenuOpen(false)}
+                                            >
+                                                {category.name}
+                                            </Link>
+                                            {category.children && category.children.length > 0 && (
+                                                <button
+                                                    onClick={() => setExpandedMobileCat(expandedMobileCat === category.slug ? null : category.slug)}
+                                                    className="p-3 text-gray-400 hover:text-[#bb252d]"
+                                                >
+                                                    <svg className={`w-4 h-4 transition-transform ${expandedMobileCat === category.slug ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                                                    </svg>
+                                                </button>
+                                            )}
+                                        </div>
+
+                                        {expandedMobileCat === category.slug && category.children && (
+                                            <div className="ml-4 border-l-2 border-red-200 pl-2 py-1 space-y-1 bg-gray-50/50 rounded-r-lg transition-all duration-300">
+                                                {category.children.map((child) => (
+                                                    <div key={child.id}>
+                                                        <Link
+                                                            href={`/v2/products?category=${child.slug}`}
+                                                            className={`block px-4 py-2 text-sm transition-colors ${activeCategory === child.slug ? 'text-[#bb252d] font-bold' : 'text-gray-600 hover:text-[#bb252d]'}`}
+                                                            onClick={() => setIsMenuOpen(false)}
+                                                        >
+                                                            {child.name}
+                                                        </Link>
+                                                        {child.children && child.children.length > 0 && (
+                                                            <div className="ml-4 space-y-1 border-l border-gray-200">
+                                                                {child.children.map((gc) => (
+                                                                    <Link
+                                                                        key={gc.id}
+                                                                        href={`/v2/products?category=${gc.slug}`}
+                                                                        className={`block px-4 py-1.5 text-xs transition-colors ${activeCategory === gc.slug ? 'text-[#bb252d] font-semibold' : 'text-gray-500 hover:text-[#bb252d]'}`}
+                                                                        onClick={() => setIsMenuOpen(false)}
+                                                                    >
+                                                                        • {gc.name}
+                                                                    </Link>
+                                                                ))}
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </div>
+                                ))}
                             </div>
 
                             <div className="my-4 h-px bg-gray-200" />
@@ -255,7 +316,7 @@ export default function HeaderV2() {
                         </nav>
 
                         {/* Back to Main Site */}
-                        <div className="absolute bottom-0 left-0 right-0 p-4 border-t bg-gray-50">
+                        <div className="p-4 border-t bg-gray-50">
                             <Link
                                 href="/"
                                 className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-[#2e3a36] text-white rounded-lg hover:bg-[#1a2320] transition-colors"

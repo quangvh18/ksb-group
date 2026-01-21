@@ -458,7 +458,7 @@ const translations = {
     'v2.support': 'Hỗ trợ',
     'v2.search.placeholder': 'Tìm kiếm sản phẩm...',
     'v2.cart': 'Giỏ hàng',
-    'v2.allMenu': 'Toàn bộ',
+    'v2.allMenu': 'Tất cả sản phẩm',
     'v2.newProducts': 'Sản phẩm mới',
     'v2.bestProducts': 'Bán chạy',
     'v2.deals': 'Khuyến mãi',
