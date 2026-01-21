@@ -270,14 +270,14 @@ export const productService = {
                     return isParent && hasChildren;
                 })
                 .map(cat => {
-                    // Filter excluded slugs from children
+                    // Filter excluded slugs and forced-to-top-level slugs from children
                     if (cat.children && cat.children.length > 0) {
                         cat.children = cat.children
-                            .filter(child => !excludedSlugs.includes(child.slug))
+                            .filter(child => !excludedSlugs.includes(child.slug) && !forcedTopLevelSlugs.includes(child.slug))
                             .map(child => {
                                 if (child.children && child.children.length > 0) {
                                     child.children = child.children.filter(
-                                        grandChild => !excludedSlugs.includes(grandChild.slug)
+                                        grandChild => !excludedSlugs.includes(grandChild.slug) && !forcedTopLevelSlugs.includes(grandChild.slug)
                                     );
                                 }
                                 return child;

@@ -485,6 +485,8 @@ const translations = {
     'v2.bestProducts.title': 'Sản phẩm bán chạy nhất',
     'v2.featured.subtitle.cat': 'Chất lượng hàng đầu từ KSB Group',
     'v2.allProducts.title': 'Tất cả các sản phẩm',
+    'v2.bestSelling.words': 'SẢN,PHẨM,BÁN,CHẠY',
+    'v2.bestSelling.subtitle': 'Bán chạy nhất',
   },
   en: {
     // Header
@@ -956,7 +958,8 @@ const translations = {
     'v2.bestProducts.title': 'Best Selling Products',
     'v2.featured.subtitle.cat': 'Top quality from KSB Group',
     'v2.allProducts.title': 'All Products',
-
+    'v2.bestSelling.words': 'BEST,SELLING,PRODUCTS',
+    'v2.bestSelling.subtitle': 'Best Seller',
   }
 };
 

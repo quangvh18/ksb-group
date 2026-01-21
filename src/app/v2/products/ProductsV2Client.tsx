@@ -409,19 +409,14 @@ export default function ProductsV2Client({
                         {/* Left: Title */}
                         <div className="flex items-center gap-4">
                             <div className="flex gap-1.5 select-none">
-                                {["SẢN", "PHẨM"].map((word, idx) => (
-                                    <div key={idx} className="bg-white/20 backdrop-blur-sm border border-white/40 w-[60px] md:w-[70px] h-[32px] md:h-[36px] flex items-center justify-center rounded transition-transform hover:scale-105">
-                                        <span className="text-white font-bold text-xs md:text-sm tracking-wide">{word}</span>
-                                    </div>
-                                ))}
-                                {["BÁN", "CHẠY"].map((word, idx) => (
-                                    <div key={idx} className="bg-[#bb252d] border border-[#bb252d] w-[60px] md:w-[70px] h-[32px] md:h-[36px] flex items-center justify-center rounded shadow-lg transition-transform hover:scale-105">
+                                {t('v2.bestSelling.words').split(',').map((word, idx) => (
+                                    <div key={idx} className="bg-[#bb252d] border border-[#bb252d] px-2 md:px-3 h-[32px] md:h-[36px] flex items-center justify-center rounded shadow-lg transition-transform hover:scale-105 min-w-[60px]">
                                         <span className="text-white font-bold text-xs md:text-sm tracking-wide">{word}</span>
                                     </div>
                                 ))}
                             </div>
                             <div className="hidden lg:block h-8 w-[1px] bg-white/30 mx-2"></div>
-                            <span className="hidden md:inline text-[#bb252d] text-[10px] md:text-xs font-black tracking-[0.2em] uppercase opacity-80">Best Seller</span>
+                            <span className="hidden md:inline text-[#bb252d] text-[10px] md:text-xs font-black tracking-[0.2em] uppercase opacity-80">{t('v2.bestSelling.subtitle') || 'Best Seller'}</span>
                         </div>
 
                         {/* Right: Navigation Arrows - Always Visible */}
@@ -525,7 +520,7 @@ export default function ProductsV2Client({
                     <div className="text-center mb-6">
                         <p className="text-[#bb252d] text-sm font-medium mb-2 tracking-wider uppercase">
                             {selectedCategory
-                                ? `${categories.find(c => c.slug === selectedCategory)?.name || ''} • Chất lượng hàng đầu từ KSB Group`
+                                ? `${categories.find(c => c.slug === selectedCategory)?.name || ''} • ${t('v2.featured.subtitle.cat') || 'Chất lượng hàng đầu từ KSB Group'}`
                                 : t('v2.featured.subtitle') || 'Được tin dùng bởi hàng ngàn khách hàng'}
                         </p>
                         <h2 className="text-2xl md:text-3xl font-bold text-gray-900 uppercase tracking-tight">
@@ -535,7 +530,7 @@ export default function ProductsV2Client({
                                     <span className="text-[#bb252d]"> "{searchQuery}"</span>
                                 </>
                             ) : (
-                                'Tất cả các sản phẩm'
+                                t('v2.allProducts.title') || 'Tất cả các sản phẩm'
                             )}
                         </h2>
                     </div>
