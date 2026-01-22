@@ -107,7 +107,7 @@ export default function ProductsClient({
     const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
     const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || '');
     const [sort, setSort] = useState(searchParams.get('sort') || '');
-    const pageSize = 20;
+    const pageSize = 40;
 
     // Best Seller products - use server-filtered products from 'keo' and 'sua' categories
     const bestSellerProducts = useMemo(() => {
@@ -141,19 +141,27 @@ export default function ProductsClient({
         }, 100);
     };
 
+    // Track previous search value to detect clearing
+    const prevSearchRef = useRef(searchParams.get('search') || '');
+
     // Sync state with URL params (especially for Header searches)
     useEffect(() => {
         const search = searchParams.get('search') || '';
         const cat = searchParams.get('category') || '';
         const s = searchParams.get('sort') || '';
 
+        const prevSearch = prevSearchRef.current;
+        prevSearchRef.current = search;
+
         setSearchQuery(search);
         setSelectedCategory(cat);
         setSort(s);
         setCurrentPage(1);
 
-        // If searching from Header or URL, scroll to products section
-        if (search) {
+        // Scroll to products section when:
+        // 1. User is searching (search has value)
+        // 2. User cleared search (prevSearch had value, now empty)
+        if (search || (prevSearch && !search)) {
             scrollToProducts();
         }
     }, [searchParams]);
