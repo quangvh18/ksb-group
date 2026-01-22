@@ -162,8 +162,9 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="format-detection" content="telephone=no" />
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/images/logo-header.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+        <link rel="icon" type="image/png" sizes="64x64" href="/favicon-64.png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || ''} />
       </head>
