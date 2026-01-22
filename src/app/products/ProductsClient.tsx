@@ -247,6 +247,22 @@ export default function ProductsClient({
         };
     }, [bestSellerProducts]);
 
+    // Scroll to all-products section
+    const scrollToProducts = () => {
+        setTimeout(() => {
+            const element = document.getElementById('all-products');
+            if (element) {
+                const offset = 230; // Height of sticky header + category bar + padding
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - offset;
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }, 100);
+    };
+
     const handleCategoryClick = (slug: string) => {
         if (selectedCategory === slug) {
             setSelectedCategory('');
@@ -256,6 +272,7 @@ export default function ProductsClient({
             setSelectedSubCategory('');
         }
         setCurrentPage(1);
+        scrollToProducts();
     };
 
     const handleSubCategoryClick = (slug: string) => {
@@ -265,6 +282,7 @@ export default function ProductsClient({
             setSelectedSubCategory(slug);
         }
         setCurrentPage(1);
+        scrollToProducts();
     };
 
     const totalPages = Math.ceil(total / pageSize);
