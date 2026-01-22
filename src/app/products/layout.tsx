@@ -2,7 +2,7 @@ import { Suspense } from 'react';
 import HeaderV2 from '../../components/HeaderV2';
 import Footer from '../../components/Footer';
 
-export default function V2Layout({
+export default function ProductsLayout({
     children,
 }: {
     children: React.ReactNode;

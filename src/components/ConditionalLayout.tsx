@@ -11,11 +11,11 @@ export default function ConditionalLayout({
     children: React.ReactNode;
 }) {
     const pathname = usePathname();
-    const isV2Route = pathname?.startsWith('/v2');
+    const isProductsRoute = pathname?.startsWith('/products');
 
-    // For v2 routes, don't render the default header/footer
-    // The v2 layout will handle its own header/footer
-    if (isV2Route) {
+    // For products routes, don't render the default header/footer
+    // The products layout will handle its own header/footer
+    if (isProductsRoute) {
         return <>{children}</>;
     }
 
