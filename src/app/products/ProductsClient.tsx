@@ -125,6 +125,22 @@ export default function ProductsClient({
         return filtered.slice(0, 12);
     }, [initialBestSellers, initialProducts]);
 
+    // Scroll to all-products section
+    const scrollToProducts = () => {
+        setTimeout(() => {
+            const element = document.getElementById('all-products');
+            if (element) {
+                const offset = 230; // Height of sticky header + category bar + padding
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - offset;
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }, 100);
+    };
+
     // Sync state with URL params (especially for Header searches)
     useEffect(() => {
         const search = searchParams.get('search') || '';
@@ -135,6 +151,11 @@ export default function ProductsClient({
         setSelectedCategory(cat);
         setSort(s);
         setCurrentPage(1);
+
+        // If searching from Header or URL, scroll to products section
+        if (search) {
+            scrollToProducts();
+        }
     }, [searchParams]);
 
     // Get all child slugs recursively
@@ -246,22 +267,6 @@ export default function ProductsClient({
             slider.removeEventListener('mouseleave', handleMouseLeave);
         };
     }, [bestSellerProducts]);
-
-    // Scroll to all-products section
-    const scrollToProducts = () => {
-        setTimeout(() => {
-            const element = document.getElementById('all-products');
-            if (element) {
-                const offset = 230; // Height of sticky header + category bar + padding
-                const elementPosition = element.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - offset;
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        }, 100);
-    };
 
     const handleCategoryClick = (slug: string) => {
         if (selectedCategory === slug) {

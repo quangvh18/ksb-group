@@ -54,6 +54,28 @@ export default function HeaderV2() {
         e.preventDefault();
         if (searchQuery.trim()) {
             router.push(`/products?search=${encodeURIComponent(searchQuery)}`);
+
+            // Scroll to products section after navigation with retry
+            const scrollToProducts = () => {
+                const element = document.getElementById('all-products');
+                if (element) {
+                    const offset = 230;
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - offset;
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            };
+
+            // Try scrolling after short delay (for same page)
+            setTimeout(scrollToProducts, 200);
+            // Retry after longer delay (for page navigation)
+            setTimeout(scrollToProducts, 600);
+        } else {
+            // If search input is empty, clear search params and show all products
+            router.push('/products');
         }
     };
 
